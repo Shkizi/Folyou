@@ -23,6 +23,9 @@ const theme = createMuiTheme({
 const styles = {
     root: {
         flexGrow: 1,
+        position: "fixed !important",
+        zIndex: 1,
+        width:"100%",
     },
     grow: {
         flexGrow: 1,

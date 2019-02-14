@@ -1,14 +1,18 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import Button from '@material-ui/core/Button';
-import { CardContent } from '@material-ui/core';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from "@material-ui/core/GridListTile";
+import { CardContent, CardHeader } from '@material-ui/core';
+import CardMedia from '@material-ui/core/CardMedia';
+
 
 const styles = {
     card: {
-        maxWidth: 300,
-        marginTop: 20,
-        marginLeft: 20
+        maxWidth: 325,
+        marginLeft: 20,
+        display: 'flex',
+        alignItems: 'flex-start'
     },
     media: {
         // ⚠️ object-fit is not supported by IE 11.
@@ -18,25 +22,34 @@ const styles = {
 
 let n = 10;
 
-function createElements(n){
-    return [...Array(n)].map(() => <div>
-    <Card  className={styles.card}>
-        <CardContent  className={styles.card}>
-        <Button>
-            Botão
-        </Button>   
-        </CardContent> 
+function createElements(n,props){
+    const {classes} = props;
+    return [...Array(n)].map(n =>{ 
+     return(<GridListTile key={n}>
+    <Card  className={classes.card}>
+        
+        <CardContent>
+        <CardHeader
+          title="Universidade Europeia"
+          subheader="Maio 31, 2019"
+        />
+         <CardMedia
+          className={classes.media}
+          image="https://pbs.twimg.com/profile_images/862599996281151488/EeyPYOpp_400x400.jpg"
+          title="UE"
+        />
+        </CardContent>   
     </Card>
-</div>
-)}
+    </GridListTile>
+     )})}
 
 
-function Cards() {
+function Cards(props) {
 
     return (
-        <div>
-        {createElements(n)}
-    </div>
+        <GridList cols={3}>
+        {createElements(n,props)}
+        </GridList>
     );
 }
 
