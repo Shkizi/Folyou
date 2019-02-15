@@ -7,33 +7,24 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import {MuiThemeProvider } from '@material-ui/core/styles';
-import { createMuiTheme } from '@material-ui/core/styles';
-
-const theme = createMuiTheme({
-    palette: {
-        primary: {
-            main: '#000',
-        },
-        secondary: {
-            main: '#FF1F32',
-        },
-    },
-});
+import theme from '../../Style/theme'
 
 const styles = {
     root: {
-        flexGrow: 1,
-        position: "fixed !important",
         zIndex: 1,
         width:"100%",
-    },
-    grow: {
-        flexGrow: 1,
+        position: "fixed !important",
     },
     menuButton: {
         marginLeft: -12,
-        marginRight: 20,
+        flexGrow: 0,
     },
+    vertical:{
+        borderLeft:'1px solid lightgrey',
+        height:'3em',
+        flexGrow: 1,
+        marginLeft:'1em',
+      }
 };
 
 function Menu(props) {
@@ -45,10 +36,14 @@ function Menu(props) {
                 <Toolbar>
                     <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
                         <MenuIcon />
-                    </IconButton>
+                        </IconButton>
+
                     <Typography variant="h6" color="inherit" className={classes.grow}>
-                        Folyou
+                        MENU     
                     </Typography>
+                    <div className={classes.vertical}></div>
+
+
                     <Button color="inherit">Login</Button>
                 </Toolbar>
             </AppBar>
