@@ -1,0 +1,14 @@
+.Card-Proposal {
+    background-color: lightblue;
+    width: 100%;
+    /*TODO - APAGAR FONT FAMILY QUANDO FICAR O THEME COMPLETO*/
+    font-family: 'Apercu Pro'
+}
+
+.Card-Portfolio {
+    background-color: green;
+}
+
+.Card-Talent {
+    background-color: blue;
+}

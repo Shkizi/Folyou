@@ -7,9 +7,7 @@ import Cards from './Components/Elements/Cards/Cards'
 class App extends Component {
   render() {
     return (
-        <div>
-             <Menu/>
-             
+        <div>             
             <Cards/>
             
            
