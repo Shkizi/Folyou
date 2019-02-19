@@ -1,6 +1,7 @@
 .C-Proposal {
     background-color: white;
-    width: 18rem;
+    width: 21vw;
+    height: 60vh;
     margin-bottom: 15px;
 }
 
@@ -28,14 +29,17 @@
     font-size: 35px;
 }
 
+.C-Proposal-Offer-Location {
+    text-align: left;
+    margin-top: 5%;
+}
+
 .C-Proposal-Offer-Name {
     margin-top: 5%;
     padding-left: 0;
+    font-weight: bold;
 }
 
-.C-Proposal-Offer-Location {
-    text-align: center;
-}
 
 .C-Proposal-Proponent-Name {
     color: #49c5b6;
@@ -44,12 +48,15 @@
 
 .C-Proposal-Proponent-Description {
     text-align: justify;
+    height: 25vh;
+    overflow: hidden;
 }
 
 .C-Proposal-Footer {
     padding: 0;
     background-color: inherit;
     border-top: 0;
+    bottom: 0;
 }
 
 .C-Proposal-Footer-Category {

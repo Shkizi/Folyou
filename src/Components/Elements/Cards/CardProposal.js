@@ -7,13 +7,14 @@ import jsonarray from './CardProposalJSON.js'
 function CreateProposal(data) {
  
   return (
+
 <Card className="C-Proposal">
  <div className="C-Proposal-Link">
    <a href={"'"+data.link+"'"} className="C-Proposal-Link">
     <Card.Body>
-         <FaUserCircle className="C-Proposal-Avatar"/>
-         <Card.Title className="C-Proposal-Offer-Name">{data.offerName}</Card.Title>
-      <Card.Subtitle className="C-Proposal-Offer-Location">{data.location}</Card.Subtitle>
+      <FaUserCircle className="C-Proposal-Avatar"/>
+      <p className="C-Proposal-Offer-Location">{data.location} </p>
+      <Card.Title className="C-Proposal-Offer-Name">{data.offerName}</Card.Title>
       <p className="C-Proposal-Proponent-Name">{data.name}</p>
       <Card.Text className="C-Proposal-Proponent-Description">
       {data.description}
@@ -31,7 +32,6 @@ function CreateProposal(data) {
     </Card.Body>
     </a>
     </div>
-
    </Card>
   )
 }
