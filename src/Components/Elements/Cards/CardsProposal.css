@@ -1,0 +1,61 @@
+.C-Proposal {
+    background-color: white;
+    width: 18rem;
+    margin-bottom: 15px;
+}
+
+.C-Proposal-Link:link {
+    color:black;
+    text-decoration: none;
+}
+.C-Proposal-Link:hover {
+    background-color: rgba(230,234,234,0.5);
+    transition: all 0.3s ease-in-out;
+    color:black;
+    text-decoration: none;
+}
+.C-Proposal-Link:visited {
+    color:black;
+    text-decoration: none;
+}
+
+.C-Proposal-Link:active {
+    color:black;
+    text-decoration: none;
+}
+
+.C-Proposal-Avatar {
+    font-size: 35px;
+}
+
+.C-Proposal-Offer-Name {
+    margin-top: 5%;
+    padding-left: 0;
+}
+
+.C-Proposal-Offer-Location {
+    text-align: center;
+}
+
+.C-Proposal-Proponent-Name {
+    color: #49c5b6;
+    margin-top: 1rem;
+}
+
+.C-Proposal-Proponent-Description {
+    text-align: justify;
+}
+
+.C-Proposal-Footer {
+    padding: 0;
+    background-color: inherit;
+    border-top: 0;
+}
+
+.C-Proposal-Footer-Category {
+text-align: left;
+}
+
+.C-Proposal-Footer-Date {
+    text-align: right;
+}
