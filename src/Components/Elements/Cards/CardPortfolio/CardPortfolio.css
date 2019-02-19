@@ -1,65 +1,69 @@
-.C-Proposal {
+.C-Porfolio {
     background-color: white;
     width: 21vw;
     height: 60vh;
     margin-bottom: 15px;
+    padding-top: 0;
 }
 
-.C-Proposal-Link:link {
+.C-Porfolio-Link:link {
     color:black;
     text-decoration: none;
 }
-.C-Proposal-Link:hover {
+.C-Porfolio-Link:hover {
     background-color: rgba(230,234,234,0.5);
     transition: all 0.3s ease-in-out;
     color:black;
     text-decoration: none;
 }
-.C-Proposal-Link:visited {
+.C-Porfolio-Link:visited {
     color:black;
     text-decoration: none;
 }
 
-.C-Proposal-Link:active {
+.C-Porfolio-Link:active {
     color:black;
     text-decoration: none;
 }
 
-.C-Proposal-Avatar {
-    font-size: 35px;
+.C-Portfolio-Image {
+    width: 10em;
 }
 
-.C-Proposal-Offer-Location {
+.C-Portfolio-Offer-Location {
     text-align: left;
     margin-top: 5%;
+    padding-left: 20px;
 }
 
-.C-Proposal-Offer-Name {
+.C-Porfolio-Offer-Name {
     margin-top: 5%;
     padding-left: 0;
     font-weight: bold;
+    padding-left: 20px;
+
 }
 
 
-.C-Proposal-Proponent-Name {
+.C-Porfolio-Proponent-Name {
     color: #49c5b6;
     margin-top: 1rem;
 }
 
-.C-Proposal-Proponent-Description {
+.C-Porfolio-Proponent-Description {
     text-align: justify;
     height: 25vh;
     overflow: hidden;
 }
 
-.C-Proposal-Footer {
+.C-Porfolio-Footer {
     padding: 0;
     background-color: inherit;
     border-top: 0;
     bottom: 0;
 }
 
-.C-Proposal-Footer-Category {
+.C-Porfolio-Footer-Category {
 text-align: left;
 }
 
