@@ -1,14 +1,25 @@
-.Card-Proposal {
-    background-color: lightblue;
-    width: 100%;
-    /*TODO - APAGAR FONT FAMILY QUANDO FICAR O THEME COMPLETO*/
-    font-family: 'Apercu Pro'
+.C-Proposal {
+    background-color: lightcoral !important;
 }
 
-.Card-Portfolio {
-    background-color: green;
+.C-Proposal-Avatar {
+    float: left;
 }
 
-.Card-Talent {
-    background-color: blue;
+.C-Proposal-Offer-Name {
+    float: right;
 }
+
+.Proposal-Proponent-Name {
+    margin-top: 0;
+    color: #49c5b6;
+}
+
+.Proposal-Proponent-Area {
+    float: left;
+}
+
+.Proposal-Proponent-Date {
+    float: right;
+}
+

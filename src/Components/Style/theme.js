@@ -1,16 +1,16 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import fonts from '../../Resources/Fonts/Fonts.css'
+import '../../Resources/Fonts/Fonts.css'
 
-const theme = createMuiTheme({
+export default createMuiTheme({
     palette: {
         primary: {
             main: '#f4f7f6',
-            fontFamily: 'Apercu Pro'
+            fontFamily: '"Apercu Pro","Roboto", "Helvetica", "Arial", sans-serif',
+            
         },
-        secondary: {
-            main: '#FF1F32',
+        title: {
+            fontFamily: '"Apercu Pro", "Roboto", "Helvetica", "Arial", sans-serif',
         },
-    },
+            },
 });
 
-export default theme;
