@@ -1,0 +1,11 @@
+{
+    "Error":{
+        "Unspecific": "Something went wrong with the site Monkeys, please report to chief Monkey.",
+        "404":"The site Monkeys couldn't find your page, please try a easier one."
+    },
+    "Menu":{
+        "Home": "Home",
+        "Login":"Login",
+        "Logout":"Logout"
+    }
+}
