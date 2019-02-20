@@ -1,15 +1,19 @@
 .C-Proposal {
     background-color: white;
-    margin-bottom: 15px;
     overflow: hidden;
+    height: 65vh;
+    position: relative;
 }
-
 
 .C-Proposal-Link:link {
     color:black;
     text-decoration: none;
 }
 .C-Proposal-Link:hover {
+    color:black;
+    text-decoration: none;
+}
+.C-Proposal:hover {
     background-color: rgba(230,234,234,0.5);
     transition: all 0.3s ease-in-out;
     color:black;
@@ -25,11 +29,6 @@
     text-decoration: none;
 }
 
-.C-Proposal-Image {
-    height: 50px;
-    width: 50px;
-}
-
 .C-Proposal-Offer-Location {
     text-align: left;
     margin-top: 5%;
@@ -39,6 +38,7 @@
     margin-top: 5%;
     padding-left: 0;
     font-weight: bold;
+    width: 100%;
 }
 
 
@@ -53,11 +53,12 @@
     overflow: hidden;
 }
 
-.C-Proposal-Footer {
-    padding: 0;
+.C-Proposal-Footer{
     background-color: inherit;
     border-top: 0;
-    bottom: 0;
+    bottom: 0; 
+    position: absolute;
+    width: 100%;
 }
 
 .C-Proposal-Footer-Category {

@@ -36,7 +36,7 @@ function CreatePortfolio(data) {
   )
 }
 
-function CardPortfolio(props) {
+function CardPortfolio() {
   
   return jsonarray.map(val =>{ 
     return (

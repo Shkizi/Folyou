@@ -7,7 +7,7 @@ export default
         "name" : "Alexandre Realinho",
         "description" : "Venha trabalhar comigo, sou um chefe exemplar",
         "category" : "Dev",
-        "date" : "3 days ago"
+        "date" : "12 days ago"
     },
     {
         "link" : "André Portfolio",

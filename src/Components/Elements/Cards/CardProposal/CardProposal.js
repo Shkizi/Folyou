@@ -7,11 +7,10 @@ import jsonarray from './CardProposalJSON.js'
 function CreateProposal(data) {
  
   return (
-
+<a href={"'"+data.link+"'"} className="C-Proposal-Link">
 <Card className="C-Proposal">
- <div className="C-Proposal-Link">
-   <a href={"'"+data.link+"'"} className="C-Proposal-Link">
-    <Card.Body>
+   
+    <Card.Body style={{paddingBottom: 0}}>
       <FaUserCircle className="C-Proposal-Avatar"/>
       <p className="C-Proposal-Offer-Location">{data.location} </p>
       <Card.Title className="C-Proposal-Offer-Name">{data.offerName}</Card.Title>
@@ -19,7 +18,8 @@ function CreateProposal(data) {
       <Card.Text className="C-Proposal-Proponent-Description">
       {data.description}
       </Card.Text>
-      <Card.Footer className="C-Proposal-Footer">
+    </Card.Body>
+    <Card.Footer className="C-Proposal-Footer">
         <Row>
           <Col xs="6" className="C-Proposal-Footer-Category">
           <p>{data.category}</p>
@@ -29,18 +29,19 @@ function CreateProposal(data) {
           </Col>
         </Row>
       </Card.Footer>
-    </Card.Body>
-    </a>
-    </div>
+   
    </Card>
+    </a>
   )
 }
 
-function CardProposal(props) {
+function CardProposal() {
   
   return jsonarray.map(val =>{ 
     return (
-        CreateProposal(val)
+      <Col xs={12} sm={6} md={3} lg={3} >
+        {CreateProposal(val)}
+       </Col>
     );
   });
 }
