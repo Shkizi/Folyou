@@ -1,6 +1,4 @@
-//taken from https://jsfiddle.net/jamuhl/3sL01fn0/#tabs=result
-
-const countryNames = {
+{
     
     "ach": {
         "name": "Acholi",
