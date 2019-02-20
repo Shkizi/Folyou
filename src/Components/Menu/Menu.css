@@ -3,10 +3,28 @@
     border-bottom: 1px solid #E6EAEA;
 }
 
-
-
 .Menu-Navbar-Brand {
+color: black;
 border-right: 1px solid #E6EAEA;
 padding-right: 23px;
 font-family: "Apercu Pro"
+}
+
+.Menu-Navbar-Brand:hover {
+    color: #64686A;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+
+}
+
+.Menu-Login {
+    color: black;
+    font-family: "Apercu Pro";
+}
+
+.Menu-Login:hover {
+    color: #64686A;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+
 }
