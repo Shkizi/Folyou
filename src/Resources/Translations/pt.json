@@ -1,0 +1,11 @@
+{
+    "Error":{
+        "Unspecific": "Um erro ocorreu com os Macacos do site, por favor informe o chefe Macaco.",
+        "404":"Os Macacos do site não encontrou a sua página, por favor, tente uma mais fácil."
+    },
+    "Menu":{
+        "Home": "Home",
+        "Login":"Login",
+        "Logout":"Logout"
+    }
+}

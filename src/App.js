@@ -6,9 +6,11 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 
 
+
 class App extends Component {
   render() {
     return (
+
           <Container style={{padding: 0, margin: 0}}>
             <Row>
             <CardProposal/>
