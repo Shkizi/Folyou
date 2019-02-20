@@ -1,8 +1,10 @@
 .C-Proposal {
     background-color: white;
     overflow: hidden;
-    height: 65vh;
+    height: 50vh;
     position: relative;
+    width: 70%;
+    margin-top: 5%;
 }
 
 .C-Proposal-Link:link {

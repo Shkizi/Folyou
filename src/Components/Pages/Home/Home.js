@@ -4,8 +4,8 @@ import CardPortfolio from '../../../Components/Elements/Cards/CardPortfolio/Card
 import { Container, Row, Col } from 'react-bootstrap';
 const Home = () => (
 
-<Container style={{padding: 0, margin: 0}} fluid={true}>
-            <Row>
+<Container fluid={true}>
+            <Row style={{margin: 0}}>
             <CardProposal/>
             </Row>
           </Container>

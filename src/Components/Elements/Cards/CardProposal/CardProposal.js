@@ -39,7 +39,7 @@ function CardProposal() {
   
   return jsonarray.map(val =>{ 
     return (
-      <Col xs={12} sm={6} md={3} lg={3} >
+      <Col md="3">
         {CreateProposal(val)}
        </Col>
     );
