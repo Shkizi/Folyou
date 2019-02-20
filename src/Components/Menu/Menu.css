@@ -1,0 +1,12 @@
+.Menu-Navbar {
+    background: #f4f7f6 ;
+    border-bottom: 1px solid #E6EAEA;
+}
+
+
+
+.Menu-Navbar-Brand {
+border-right: 1px solid #E6EAEA;
+padding-right: 23px;
+font-family: "Apercu Pro"
+}
