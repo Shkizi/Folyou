@@ -1,10 +1,15 @@
+.Login-Modal-Header {
+    border-bottom: red !important;
+}
 
 .Login-Text-SignIn {
-    padding-left: 15vh;
+    padding-left: 13vh;
+    overflow: auto;
 }
 
 .Login-Text-RegisterNow {
-    padding-right: 15vh;
+    padding-left: 6vh;
+    overflow: hidden;
 }
 
 .Login-Input-Email {
@@ -38,9 +43,10 @@
     background-color: #49c5b6;
     border: #49c5b6;
     color: white;
-    width: 76% !important;
+    width: 73% !important;
     margin-right: auto;
     margin-left: auto;
+    margin-top: 20px;
 }
 
 .Login-Button-Login:hover {
@@ -48,7 +54,16 @@
     background-color: #42AB9E;
 }
 
+.Login-Button-Login:active:focus {
+    color: #fff;
+    background-color: #42AB9E !important;
+    
+}
+
 .Login-Password-Recovery {
     color: #49c5b6;
-
+    text-decoration: underline;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
 }

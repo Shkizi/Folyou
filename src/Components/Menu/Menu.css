@@ -19,11 +19,19 @@
 .Menu-Login {
     color: black;
     font-family: "Apercu Pro";
+    background-color: inherit;
+    border-color: transparent;
 }
 
 .Menu-Login:hover {
     color: #64686A;
+    background-color: inherit;
+    border-color: transparent;
     text-decoration: none;
     transition: color 0.3s ease-in-out;
+}
 
+.Menu-Login:focus {
+    background-color: inherit;
+    border-color: transparent;
 }
