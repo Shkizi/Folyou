@@ -1,0 +1,54 @@
+
+.Login-Text-SignIn {
+    padding-left: 15vh;
+}
+
+.Login-Text-RegisterNow {
+    padding-right: 15vh;
+}
+
+.Login-Input-Email {
+    border-color: #E6EAEA;
+    width: 76% !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Login-Input-Email:focus {
+    border-color: #E6EAEA;
+    outline: none;
+    box-shadow: none;
+}
+
+.Login-Input-Password {
+    border-color: #E6EAEA;
+    width: 76% !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.Login-Input-Password:focus {
+    border-color: #E6EAEA;
+    outline: none;
+    box-shadow: none;
+}
+
+.Login-Button-Login {
+    background-color: #49c5b6;
+    border: #49c5b6;
+    color: white;
+    width: 76% !important;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.Login-Button-Login:hover {
+    color: #fff;
+    background-color: #42AB9E;
+}
+
+.Login-Password-Recovery {
+    color: #49c5b6;
+
+}
