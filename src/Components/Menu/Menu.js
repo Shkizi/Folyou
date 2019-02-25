@@ -1,12 +1,10 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
-import { Navbar, Modal, Nav, Button } from 'react-bootstrap';
+import { Navbar, Nav, Button } from 'react-bootstrap';
 import './Menu.css'
 import { IoMdMenu } from "react-icons/io";
 import { FiSearch } from "react-icons/fi";
 import Login from '../Elements/Popups/Login/Login'
-import Register from '../Elements/Popups/Register/Register'
 
 
 // The Header creates links that can be used to navigate
@@ -42,7 +40,7 @@ class Menu extends React.Component {
     <h4>Logotipo</h4>
     </div>
     <Nav className="ml-auto">
-    <Button onClick={this.handleLoginPopUpShow} className="Menu-Login">
+    <Button onClick={this.handleLoginPopUpShow} className="Menu-Login" variant="link">
     <strong>Login</strong></Button>
     </Nav>
     </Navbar>

@@ -29,9 +29,11 @@
     border-color: transparent;
     text-decoration: none;
     transition: color 0.3s ease-in-out;
+    text-decoration: none;
 }
 
 .Menu-Login:focus {
     background-color: inherit;
     border-color: transparent;
+    text-decoration: none;
 }

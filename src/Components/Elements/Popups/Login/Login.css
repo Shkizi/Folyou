@@ -12,14 +12,53 @@
     margin-bottom: 5%;
 }
 
-.Login-Text-SignIn {
-    padding-left: 13vh;
+.Login-Modal-Row {
+    width: 76% !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Login-Text-Register {
+    padding-left: 10vh;
     overflow: auto;
+    float: left;
+    padding-left: 0;
 }
 
 .Login-Text-RegisterNow {
-    padding-left: 6vh;
+    float: right;
     overflow: hidden;
+    padding-right: 0;
+}
+
+.Login-Button-RegisterNow {
+    color: #49c5b6;
+    border: #49c5b6;
+    background-color: inherit;
+    padding-right: 0;
+    padding-left: 5px;
+}
+
+.Login-Button-RegisterNow:hover {
+    color: #42AB9E;
+    border: #49c5b6;
+    background-color: inherit;
+    box-shadow: inherit;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.Login-Button-RegisterNow:active {
+    color: #42AB9E !important;
+    background-color: inherit !important;
+    box-shadow: inherit;   
+    text-decoration: none;
+}
+
+.Login-Button-RegisterNow:focus {
+   outline: none;
+   box-shadow: inherit;
+   text-decoration: none;
 }
 
 .Login-Input-Email {
@@ -62,6 +101,7 @@
 .Login-Button-Login:hover {
     color: #fff;
     background-color: #42AB9E;
+    transition: all 0.3s ease-in-out;
 }
 
 .Login-Button-Login:active:focus {
