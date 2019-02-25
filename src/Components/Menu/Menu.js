@@ -6,7 +6,7 @@ import './Menu.css'
 import { IoMdMenu } from "react-icons/io";
 import { FiSearch } from "react-icons/fi";
 import Login from '../Elements/Popups/Login/Login'
-
+import Register from '../Elements/Popups/Register/Register'
 
 
 // The Header creates links that can be used to navigate

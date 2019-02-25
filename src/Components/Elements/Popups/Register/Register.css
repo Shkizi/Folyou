@@ -1,8 +1,8 @@
-.Login-Modal-Header {
+.Register-Modal-Header {
     border-bottom: 0;
 }
 
-.Login-Modal-Logo {
+.Register-Modal-Logo {
     height: 15%;
     width: 55%;
     margin-left: auto;
@@ -12,30 +12,30 @@
     margin-bottom: 5%;
 }
 
-.Login-Text-SignIn {
+.Register-Text-SignIn {
     padding-left: 13vh;
     overflow: auto;
 }
 
-.Login-Text-RegisterNow {
-    padding-left: 6vh;
+.Register-Text-Member {
+    padding-left: 8vh;
     overflow: hidden;
 }
 
-.Login-Input-Email {
+.Register-Input-Email {
     border-color: #E6EAEA;
     width: 76% !important;
     margin-left: auto;
     margin-right: auto;
 }
 
-.Login-Input-Email:focus {
+.Register-Input-Email:focus {
     border-color: #E6EAEA;
     outline: none;
     box-shadow: none;
 }
 
-.Login-Input-Password {
+.Register-Input-Password {
     border-color: #E6EAEA;
     width: 76% !important;
     margin-left: auto;
@@ -43,13 +43,27 @@
     margin-top: 20px;
 }
 
-.Login-Input-Password:focus {
+.Register-Input-Password:focus {
     border-color: #E6EAEA;
     outline: none;
     box-shadow: none;
 }
 
-.Login-Button-Login {
+.Register-Input-Password-Repeat {
+    border-color: #E6EAEA;
+    width: 76% !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.Register-Input-Password-Repeat:focus {
+    border-color: #E6EAEA;
+    outline: none;
+    box-shadow: none;
+}
+
+.Register-Button-Create {
     background-color: #49c5b6;
     border: #49c5b6;
     color: white;
@@ -59,21 +73,13 @@
     margin-top: 20px;
 }
 
-.Login-Button-Login:hover {
+.Register-Button-Create:hover {
     color: #fff;
     background-color: #42AB9E;
 }
 
-.Login-Button-Login:active:focus {
+.Register-Button-Create:active:focus {
     color: #fff;
     background-color: #42AB9E !important;
     
-}
-
-.Login-Password-Recovery {
-    color: #49c5b6;
-    text-decoration: underline;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 20px;
 }
