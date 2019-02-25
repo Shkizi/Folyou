@@ -39,12 +39,15 @@ class Login extends React.Component {
             <Modal.Body>
             <Image className="Login-Modal-Logo" src={logo}></Image>
               <Row className="Login-Modal-Row">
-              <Col sm={6} style={{paddingLeft: 0}}><p className="Login-Text-SignIn mr-auto"><b>Sign in to continue</b></p></Col>
-              <Col sm={6} style={{paddingRight: 0}}><p className="Login-Text-RegisterNow ml-auto">Not a member yet? 
+              <Col sm={6} style={{paddingLeft: 0}}><b className="Login-Text-SignIn mr-auto">Sign in to continue</b></Col>
+              <Col sm={4} style={{paddingRight: 0}}><p className="Login-Text-RegisterNow ml-auto">Not a member yet? 
+               </p> </Col>
+                <Col sm={2} style={{paddingRight: 0, paddingLeft: 0}}>
                 <Button onClick={()=>{
                   this.handleRegisterPopUpShow();
-                } } variant="link" className="Login-Button-RegisterNow">Register Now</Button>
-              </p></Col>
+                } } variant="link" className="Login-Button-RegisterNow">Register Now
+                </Button>
+              </Col>
               </Row>
                <Form.Control  className="Login-Input-Email" placeholder="E-mail"/>
                <Form.Control  className="Login-Input-Password" placeholder="Password" type="password"/>

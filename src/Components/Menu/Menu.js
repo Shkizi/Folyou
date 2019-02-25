@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Navbar, Nav, Button } from 'react-bootstrap';
+import { Navbar, Nav, Button, Image } from 'react-bootstrap';
 import './Menu.css'
 import { IoMdMenu } from "react-icons/io";
 import { FiSearch } from "react-icons/fi";
 import Login from '../Elements/Popups/Login/Login'
+import logo from '../../Resources/Images/Logo_black_white.png'
 
 
 // The Header creates links that can be used to navigate
@@ -37,7 +38,7 @@ class Menu extends React.Component {
     <Navbar.Brand href="#"><Link to='/' className="Menu-Navbar-Brand"><IoMdMenu style={{fontSize: "25px", paddingBottom: 2}}/> Menu</Link></Navbar.Brand>  
     <FiSearch/>
     <div style={{marginLeft: "41%"}}>
-    <h4>Logotipo</h4>
+    <Image className="Menu-Logo" src={logo}></Image>
     </div>
     <Nav className="ml-auto">
     <Button onClick={this.handleLoginPopUpShow} className="Menu-Login" variant="link">

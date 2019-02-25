@@ -23,20 +23,23 @@
     overflow: auto;
     float: left;
     padding-left: 0;
+    vertical-align: text-top;
 }
 
 .Login-Text-RegisterNow {
     float: right;
     overflow: hidden;
-    padding-right: 0;
+    margin-right: 5%;
 }
 
 .Login-Button-RegisterNow {
     color: #49c5b6;
     border: #49c5b6;
     background-color: inherit;
-    padding-right: 0;
-    padding-left: 5px;
+    font-weight: bold;
+    box-shadow: inherit;
+    text-decoration: none;
+    padding: 0;
 }
 
 .Login-Button-RegisterNow:hover {

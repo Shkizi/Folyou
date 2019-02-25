@@ -16,12 +16,14 @@ class Register extends React.Component {
 
             <Modal.Body style={{paddingBottom: "50px"}}>
             <Image className="Register-Modal-Logo" src={logo}></Image>
-
-              <Row className="Login-Modal-Row">
-              <Col sm={6} style={{paddingLeft: 0}}><p className="Register-Text-Register mr-auto"><b>Register with your E-mail</b></p></Col>
-              <Col sm={6} style={{paddingRight: 0}}><p className="Register-Text-Member ml-auto">Are you a member? 
+              <Row className="Register-Modal-Row">
+              <Col sm={6} style={{paddingLeft: 0}}><b className="Register-Text-Register mr-auto">Register with your E-mail</b></Col>
+              <Col sm={4} style={{paddingRight: 0}}><p className="Register-Text-Member ml-auto">Are you a member?
+              </p></Col>
+              <Col sm={2} style={{paddingRight: 0, paddingLeft: 0}}>
               <Button className="Register-Button-LoginNow" variant="link" onClick={ () => {this.props.closer();  this.props.parent.props.parent.handleLoginPopUpShow()}}>Login Now
-              </Button></p></Col>
+              </Button>
+              </Col>
               </Row>
                <Form.Control  className="Register-Input-Email" placeholder="E-mail"/>
                <Form.Control  className="Register-Input-Password" placeholder="Password" type="password"/>

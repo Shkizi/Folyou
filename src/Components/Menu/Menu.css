@@ -3,6 +3,13 @@
     border-bottom: 1px solid #E6EAEA;
 }
 
+.Menu-Logo {
+    height: 1%;
+    width: 15%;
+    display: block;
+    margin-left: -6%;
+}
+
 .Menu-Navbar-Brand {
     color: black;
     border-right: 1px solid #E6EAEA;
