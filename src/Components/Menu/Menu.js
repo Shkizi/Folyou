@@ -6,8 +6,9 @@ import { IoMdMenu } from "react-icons/io";
 import { FiSearch } from "react-icons/fi";
 import Login from '../Elements/Popups/Login/Login'
 import logo from '../../Resources/Images/Logo_black_white.png'
-
-
+import { Translate } from "react-localize-redux";
+import LanguageSelector from "../Elements/LanguageSelector/LanguageSelector";
+import { withLocalize } from "react-localize-redux";
 // The Header creates links that can be used to navigate
 // between routes.
 class Menu extends React.Component {
@@ -35,14 +36,15 @@ class Menu extends React.Component {
   render() {
     return (  <div>
     <Navbar className="Menu-Navbar" sticky='top'>
-    <Navbar.Brand href="#"><Link to='/' className="Menu-Navbar-Brand"><IoMdMenu style={{fontSize: "25px", paddingBottom: 2}}/> Menu</Link></Navbar.Brand>  
+    <Navbar.Brand href="#"><Link to='/' className="Menu-Navbar-Brand"><IoMdMenu style={{fontSize: "25px", paddingBottom: 2}}/></Link></Navbar.Brand>
+    <LanguageSelector languages={this.props.app.props.languages} app={this.props.app} />
     <FiSearch/>
     <div style={{marginLeft: "41%"}}>
     <Image className="Menu-Logo" src={logo}></Image>
     </div>
     <Nav className="ml-auto">
     <Button onClick={this.handleLoginPopUpShow} className="Menu-Login" variant="link">
-    <strong>Login</strong></Button>
+    <strong><Translate id="login"/></strong></Button>
     </Nav>
     </Navbar>
     <Login  parent={this} closer={this.handleLoginPopUpClose}/>
@@ -50,5 +52,5 @@ class Menu extends React.Component {
 
     );} }
   
-  export default Menu
+  export default withLocalize(Menu);
   

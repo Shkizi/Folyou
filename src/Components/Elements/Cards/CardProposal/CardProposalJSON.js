@@ -5,7 +5,7 @@ export default
         "offerName" : "Junior Java Devoloper",
         "location" : "Cacém",
         "name" : "António José",
-        "description" : "Job description Job description Job description Job description Job description Job description Job description Job description ",
+        "description" : "Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description ",
         "category" : "Dev",
         "date" : "12 days ago"
     },
@@ -14,7 +14,7 @@ export default
         "offerName" : "Junior Front-End Developer",
         "location" : "Porto",
         "name" : "José Mário",
-        "description" : "Job description Job description Job description Job description Job description Job description Job description Job description ",
+        "description" : "Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description ",
         "category" : "Dev",
         "date" : "19 days ago"
     },
@@ -23,7 +23,7 @@ export default
         "offerName" : "Senior Backend Developer",
         "location" : "Londres",
         "name" : "André Oliveira",
-        "description" : "Job description Job description Job description Job description Job description Job description Job description Job description ",
+        "description" : "Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description ",
         "category" : "Dev",
         "date" : "19 days ago"
     },
@@ -32,7 +32,7 @@ export default
         "offerName" : "Junior Photoshop Internship",
         "location" : "França",
         "name" : "Alexandre Realinho",
-        "description" : "Job description Job description Job description Job description Job description Job description Job description Job description ",
+        "description" : "Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description ",
         "category" : "Art",
         "date" : "19 days ago"
     },
@@ -41,7 +41,7 @@ export default
         "offerName" : "Photoshop Master",
         "location" : "Madagascar",
         "name" : "Pedro José",
-        "description" : "Job description Job description Job description Job description Job description Job description Job description Job description ",
+        "description" : "Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description ",
         "category" : "Art",
         "date" : "19 days ago"
     },
