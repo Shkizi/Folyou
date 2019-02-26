@@ -1,10 +1,56 @@
 .C-Proposal {
-    background-color: white;
-    overflow: hidden;
-    height: 50vh;
-    position: relative;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    align-content: stretch;
+}
 
-    margin-top: 5%;
+.C-Proposal-Body {
+    padding: 30px 30px 40px 30px;
+}
+
+.C-Proposal-Avatar {
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.C-Proposal-Offer-Location {
+    text-align: left;
+}
+
+.C-Proposal-Offer-Name {
+    padding-left: 0;
+    font-weight: bold;
+    width: 100%;
+    overflow: "visible";
+}
+
+.C-Proposal-Proponent-Name {
+    color: #49c5b6;
+    height: 20px;
+    margin-bottom: 12px;
+    line-height: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.C-Proposal-Proponent-Description {
+    height: auto;
+    white-space: inherit;
+    overflow: visible;
+}
+
+.C-Proposal-Avatar-Image {
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    box-sizing: inherit;
 }
 
 .C-Proposal-Link:link {
@@ -29,30 +75,6 @@
 .C-Proposal-Link:active {
     color:black;
     text-decoration: none;
-}
-
-.C-Proposal-Offer-Location {
-    text-align: left;
-    margin-top: 5%;
-}
-
-.C-Proposal-Offer-Name {
-    margin-top: 5%;
-    padding-left: 0;
-    font-weight: bold;
-    width: 100%;
-}
-
-
-.C-Proposal-Proponent-Name {
-    color: #49c5b6;
-    margin-top: 1rem;
-}
-
-.C-Proposal-Proponent-Description {
-    text-align: justify;
-    height: 25vh;
-    overflow: hidden;
 }
 
 .C-Proposal-Footer{
