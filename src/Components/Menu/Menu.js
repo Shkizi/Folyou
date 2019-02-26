@@ -9,8 +9,8 @@ import logo from '../../Resources/Images/Logo_black_white.png'
 import { Translate } from "react-localize-redux";
 import LanguageSelector from "../Elements/LanguageSelector/LanguageSelector";
 import { withLocalize } from "react-localize-redux";
-// The Header creates links that can be used to navigate
-// between routes.
+import { withCookies } from 'react-cookie';
+
 class Menu extends React.Component {
 
   constructor(props, context) {
@@ -55,7 +55,7 @@ class Menu extends React.Component {
         {/* Language Col*/}
         <Col sm={2}>
         <Nav style={{float:"right"}}>   
-          <LanguageSelector languages={this.props.app.props.languages} app={this.props.app} />
+          <LanguageSelector languages={this.props.app.props.languages} app={this.props.app} cookies={this.props.cookies}/>
           </Nav>
         </Col>
         {/* Login/Logout Col*/}
@@ -73,5 +73,5 @@ class Menu extends React.Component {
     </>
     );} }
   
-  export default withLocalize(Menu);
+  export default withCookies(withLocalize(Menu));
   
