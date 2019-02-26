@@ -6,11 +6,13 @@ body {
     font-size: 14px;
 }
 
-.row {
+.RowCard {
     margin:0;
     margin-bottom: 12px;
     line-height: 20px;
     text-overflow: ellipsis;
     overflow: hidden;
 }
+
+
 

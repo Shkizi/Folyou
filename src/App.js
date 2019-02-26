@@ -24,7 +24,7 @@ class App extends Component {
     this.props.addTranslationForLanguage(gbTranslation,"gb");
     this.props.addTranslationForLanguage(ptTranslation,"pt");
     this.state = {
-      currentLanguage: "en",
+      currentLanguage: "gb",
       currentLanguageName:"English"
     };
     if(readCookie("folyou_language") != ""){
