@@ -1,0 +1,9 @@
+{
+    
+    "error.unspecific": "Something went wrong with the site Monkeys, please report to chief Monkey.",
+    "error.404":"The site Monkeys couldn't find your page, please try a easier one.",
+    "home": "Home",
+    "login":"Login",
+    "logout":"Logout"
+    
+}

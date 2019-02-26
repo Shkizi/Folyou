@@ -24,3 +24,5 @@ function readCookie(name) {
 function eraseCookie(name) {
 	createCookie(name,"",-1);
 }
+
+export  {eraseCookie,readCookie,createCookie}
