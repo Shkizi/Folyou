@@ -1,72 +1,100 @@
-.C-Porfolio {
-    background-color: white;
-    width: 21vw;
-    height: 60vh;
-    margin-bottom: 15px;
-    padding-top: 0;
-}
-
-.C-Porfolio-Link:link {
-    color:black;
-    text-decoration: none;
-}
-.C-Porfolio-Link:hover {
-    background-color: rgba(230,234,234,0.5);
+.C-Portfolio {
+    position: relative;
+    clear: both;
+    background-color: #fcfcfc; 
     transition: all 0.3s ease-in-out;
-    color:black;
-    text-decoration: none;
-}
-.C-Porfolio-Link:visited {
-    color:black;
-    text-decoration: none;
 }
 
-.C-Porfolio-Link:active {
-    color:black;
-    text-decoration: none;
+.C-Portfolio:hover {
+    background-color: rgba(230,234,234,0.5);
 }
 
-.C-Portfolio-Image {
-    width: 10em;
+.C-Portfolio-Link  {
+    text-decoration: none;
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out; 
+}
+
+.C-Portfolio-Link:hover  {
+    text-decoration: none;
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out; 
+}
+
+.C-Portfolio-Card {
+    background-color: inherit;
+}
+
+.C-Portfolio-Body {
+    padding: 30px 30px 40px 30px;
+}
+
+.C-Portfolio-Avatar {
+    margin-bottom: 15px;
+    overflow: hidden;
 }
 
 .C-Portfolio-Offer-Location {
     text-align: left;
-    margin-top: 5%;
-    padding-left: 20px;
 }
 
-.C-Porfolio-Offer-Name {
-    margin-top: 5%;
+.C-Portfolio-Offer-Name {
     padding-left: 0;
     font-weight: bold;
-    padding-left: 20px;
-
+    width: 100%;
+    overflow: "visible";
 }
 
-
-.C-Porfolio-Proponent-Name {
+.C-Portfolio-Proponent-Name {
     color: #49c5b6;
-    margin-top: 1rem;
-}
-
-.C-Porfolio-Proponent-Description {
-    text-align: justify;
-    height: 25vh;
+    height: 20px;
+    margin-bottom: 12px;
+    line-height: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     overflow: hidden;
 }
 
-.C-Porfolio-Footer {
-    padding: 0;
+.C-Portfolio-Proponent-Description {
+    height: auto;
+    white-space: inherit;
+    overflow: visible;
+}
+
+.C-Portfolio-Avatar-Image {
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    box-sizing: inherit;
+}
+
+.C-Portfolio-Footer{
+    min-height: 46px;
+    padding: 0 30px 30px 30px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
     background-color: inherit;
     border-top: 0;
-    bottom: 0;
 }
 
-.C-Porfolio-Footer-Category {
-text-align: left;
+.C-Portfolio-Footer-Category {
+    -webkit-box-flex: 1;
+    flex: 1;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
 }
 
-.C-Proposal-Footer-Date {
-    text-align: right;
+.C-Portfolio-Footer:hover {
+    background-color: inherit;
 }
+
+.C-Portfolio-Footer-Date {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
