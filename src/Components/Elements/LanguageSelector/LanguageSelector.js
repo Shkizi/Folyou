@@ -7,7 +7,7 @@ import { withCookies } from 'react-cookie';
 const LanguageSelector = ({ languages, app, setActiveLanguage, cookies }) => (
    <Dropdown drop="left" >
      <Dropdown.Toggle id="dropdown-custom-1" className="Dropdown-Language-Select" variant="link">
-     <Image src={getImageLanguage(cookies.get("folyou_language"))} style={{width:"25px",height:"25px"}}></Image>
+     <Image src={getImageLanguage(cookies.get("folyou_language"))} style={{width:"25px",height:"25px"}}></Image> {cookies.get("folyou_languageName")}
      </Dropdown.Toggle>
       <Dropdown.Menu className="Dropdown-Language-Menu">
        {languages.map(lang => (
