@@ -17,7 +17,7 @@ const LanguageSelector = ({ languages, app, setActiveLanguage }) => (
         </Dropdown.Item>
     ))}
     </Dropdown.Menu>
-    </Dropdown>
+</Dropdown>
   
 );
 
