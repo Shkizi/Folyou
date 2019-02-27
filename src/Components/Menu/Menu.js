@@ -55,7 +55,7 @@ class Menu extends React.Component {
         {/* Language Col*/}
         <Col sm={2}>
         <Nav className="Menu-Language-Select">   
-          <LanguageSelector languages={this.props.app.props.languages} app={this.props.app}/>
+          <LanguageSelector languages={this.props.app.props.languages} app={this.props.app} cookies={this.props.cookies}/>
          </Nav>
         </Col>
         {/* Login/Logout Col*/}

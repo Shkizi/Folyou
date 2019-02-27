@@ -3,11 +3,11 @@ import { withLocalize } from "react-localize-redux";
 import getImageLanguage from "../../../Resources/Translations/compilerLanguageImages.js"; 
 import { Image,Dropdown } from "react-bootstrap";
 import './LanguageSelector.css'
-
-const LanguageSelector = ({ languages, app, setActiveLanguage }) => (
+import { withCookies } from 'react-cookie';
+const LanguageSelector = ({ languages, app, setActiveLanguage, cookies }) => (
    <Dropdown drop="left" >
      <Dropdown.Toggle id="dropdown-custom-1" className="Dropdown-Language-Select" variant="link">
-     {app.state.currentLanguageName}
+     <Image src={getImageLanguage(cookies.get("folyou_language"))} style={{width:"25px",height:"25px"}}></Image>
      </Dropdown.Toggle>
       <Dropdown.Menu className="Dropdown-Language-Menu">
        {languages.map(lang => (
@@ -21,4 +21,4 @@ const LanguageSelector = ({ languages, app, setActiveLanguage }) => (
   
 );
 
-export default withLocalize(LanguageSelector);
+export default withCookies(withLocalize(LanguageSelector));
