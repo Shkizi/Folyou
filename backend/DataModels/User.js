@@ -1,10 +1,14 @@
 class User {
     
-    constructor(id,username,roles,rights){
+    constructor(id,username,roles,email,passwordHash,country,language){
         this.id=id;
         this.username=username;
         this.roles=roles;
-        this.rights=rights;
+        this.email=email;
+        this.passwordHash=passwordHash;
+        this.country=country;
+        this.language=language;
+      
     }
     getUserUsername(){
         return this.username;
@@ -15,12 +19,33 @@ class User {
     getUserRoles(){
         return this.roles;
     }
-    getUserRights(){
-        return this.rights;
+
+    getEmail(){
+        return this.email;
+    }
+
+    getPasswordHash(){
+        return this.passwordHash;
+    }
+
+    getCountry(){
+        return this.country;
+    }
+
+    getLanguage(){
+        return this.language;
     }
 
     toString(){
-        return "User["+ this.id + " , " + this.username + " , " + this.roles + " , " + this.rights + "]";
+        return "User["+ this.id + " , " + this.username + " , " + this.roles + "]";
+    }
+    getArrayOfRoles(isAdmin){
+        var roles=[];
+        if(isAdmin){
+            roles[1]="Admin";
+        }
+        roles[0]="User";
+        return roles;
     }
 }
 
