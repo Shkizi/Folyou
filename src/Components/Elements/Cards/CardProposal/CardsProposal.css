@@ -1,13 +1,30 @@
 .C-Proposal {
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    flex-direction: column;
-    -webkit-box-pack: start;
-    justify-content: flex-start;
-    -webkit-box-align: stretch;
-    align-items: stretch;
-    align-content: stretch;
+    position: relative;
+    clear: both;
+    background-color: #fcfcfc; 
+    transition: all 0.3s ease-in-out;
+}
+
+.C-Proposal:hover {
+    background-color: rgba(230,234,234,0.5);
+}
+
+.C-Proposal-Link  {
+    text-decoration: none;
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out; 
+}
+
+.C-Proposal-Link:hover  {
+    text-decoration: none;
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out; 
+}
+
+.C-Proposal-Card {
+    background-color: inherit;
 }
 
 .C-Proposal-Body {
@@ -53,42 +70,31 @@
     box-sizing: inherit;
 }
 
-.C-Proposal-Link:link {
-    color:black;
-    text-decoration: none;
-}
-.C-Proposal-Link:hover {
-    color:black;
-    text-decoration: none;
-}
-.C-Proposal:hover {
-    background-color: rgba(230,234,234,0.5);
-    transition: all 0.3s ease-in-out;
-    color:black;
-    text-decoration: none;
-}
-.C-Proposal-Link:visited {
-    color:black;
-    text-decoration: none;
-}
-
-.C-Proposal-Link:active {
-    color:black;
-    text-decoration: none;
-}
-
 .C-Proposal-Footer{
+    min-height: 46px;
+    padding: 0 30px 30px 30px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
     background-color: inherit;
     border-top: 0;
-    bottom: 0; 
-    position: absolute;
-    width: 100%;
 }
 
 .C-Proposal-Footer-Category {
-text-align: left;
+    -webkit-box-flex: 1;
+    flex: 1;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.C-Proposal-Footer:hover {
+    background-color: inherit;
 }
 
 .C-Proposal-Footer-Date {
-    text-align: right;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
 }
+

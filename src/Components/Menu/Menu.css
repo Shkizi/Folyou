@@ -24,6 +24,10 @@
     transition: color 0.3s ease-in-out;
 }
 
+.Menu-Language-Select {
+    float: right;
+}
+
 .Menu-Login {
     color: black;
     font-family: "Apercu Pro";
@@ -37,7 +41,6 @@
     border-color: transparent;
     text-decoration: none;
     transition: color 0.3s ease-in-out;
-    text-decoration: none;
 }
 
 .Menu-Login:focus {

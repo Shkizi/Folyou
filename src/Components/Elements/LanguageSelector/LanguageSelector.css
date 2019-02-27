@@ -1,0 +1,50 @@
+.Dropdown-Language-Menu {
+    padding: 0;
+}
+
+
+
+.Dropdown-Language-Select {
+    background-color: inherit;
+    color: black;
+    font-family: "Apercu Pro";
+    padding-bottom: 0;
+}
+
+.Dropdown-Language-Select:hover {
+    color: #64686A;
+    background-color: inherit;
+    border-color: transparent;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.Dropdown-Language-Select:focus {
+    background-color: inherit;
+    border-color: transparent;
+    text-decoration: none;
+}
+
+.Dropdown-Language-Select::before {
+    display:none !important;
+}
+
+.Dropdown-Language-Flag {
+    height: 20px;
+    width: 20px;
+    box-sizing: inherit;
+}
+
+.Dropdown-Language-Selector {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.Dropdown-Language-Selector:hover {
+    background-color: rgba(230,234,234,0.5);
+}
+
+.Dropdown-Language-Selector:focus {
+    color: black;
+}
+
