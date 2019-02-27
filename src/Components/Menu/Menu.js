@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Navbar, Nav, Button, Image, Row, Col } from 'react-bootstrap';
 import './Menu.css'
 import { IoMdMenu } from "react-icons/io";
+import {MdNotificationsActive} from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
 import Login from '../Elements/Popups/Login/Login'
 import logo from '../../Resources/Images/Logo_black_white.png'
@@ -10,6 +11,9 @@ import { Translate } from "react-localize-redux";
 import LanguageSelector from "../Elements/LanguageSelector/LanguageSelector";
 import { withLocalize } from "react-localize-redux";
 import { withCookies } from 'react-cookie';
+import Badge from '@material-ui/core/Badge';
+
+ 
 
 class Menu extends React.Component {
 
@@ -42,6 +46,14 @@ class Menu extends React.Component {
         <Navbar.Brand href="#">
           <Link to='/' className="Menu-Navbar-Brand"><IoMdMenu style={{fontSize: "25px", paddingBottom: 2}}/></Link>
         </Navbar.Brand>
+        <Link to='/NotificationHub' className="Menu-Navbar-Brand">
+          <Badge className={{margin: 2}} badgeContent={4} color="primary">
+        <MdNotificationsActive style={{width:"25px",height:"25px"}}/>
+        <span className="sr-only">unread messages</span>
+        </Badge>
+        </Link>  
+        
+        
         </Col>
         <Col sm={2}>
         <FiSearch style={{fontSize: "25px",  paddingTop:10}}/>

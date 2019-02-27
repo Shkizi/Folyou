@@ -1,0 +1,1 @@
+//view to see all the talents
