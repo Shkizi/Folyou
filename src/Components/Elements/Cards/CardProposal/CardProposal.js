@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Card, Row, Image } from 'react-bootstrap';
-import './CardsProposal.css'
+import './CardProposal.css'
 import jsonarray from './CardProposalJSON.js'
 import AvatarImage from '../../../../Resources/Images/avatar.png'
 

@@ -1,0 +1,100 @@
+.C-Talent {
+    position: relative;
+    clear: both;
+    background-color: #e6f4f2;
+    transition: all 0.3s ease-in-out;
+}
+
+.C-Talent:hover {
+    background-color: rgba(230,234,234,0.5);
+}
+
+.C-Talent-Link  {
+    text-decoration: none;
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out; 
+}
+
+.C-Talent-Link:hover  {
+    text-decoration: none;
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out; 
+}
+
+.C-Talent-Card {
+    background-color: inherit;
+}
+
+.C-Talent-Body {
+    padding: 30px 30px 40px 30px;
+}
+
+.C-Talent-Avatar {
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.C-Talent-User-Location {
+    text-align: left;
+}
+
+.C-Talent-User-Name {
+    padding-left: 0;
+    font-weight: bold;
+    width: 100%;
+    overflow: "visible";
+}
+
+.C-Talent-Website-Link {
+    color: #49c5b6;
+    height: 20px;
+    margin-bottom: 12px;
+    line-height: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.C-Talent-User-Description {
+    height: auto;
+    white-space: inherit;
+    overflow: visible;
+}
+
+.C-Talent-Avatar-Image {
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    box-sizing: inherit;
+}
+
+.C-Talent-Footer{
+    min-height: 46px;
+    padding: 0 30px 30px 30px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    background-color: inherit;
+    border-top: 0;
+}
+
+.C-Talent-Footer-Risingstar {
+    -webkit-box-flex: 1;
+    flex: 1;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.C-Talent-Footer:hover {
+    background-color: inherit;
+}
+
+.C-Talent-Footer-Mailbox {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 15px;
+}
