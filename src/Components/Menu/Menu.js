@@ -12,7 +12,7 @@ import LanguageSelector from "../Elements/LanguageSelector/LanguageSelector";
 import { withLocalize } from "react-localize-redux";
 import { withCookies } from 'react-cookie';
 import Badge from '@material-ui/core/Badge';
-import ShowDrawer from './Drawer';
+import Tabs from './Tabs';
  
 
 class Menu extends React.Component {
@@ -23,11 +23,12 @@ class Menu extends React.Component {
     this.handleLoginPopUpClose = this.handleLoginPopUpClose.bind(this);
     this.handleLoginPopUpShow = this.handleLoginPopUpShow.bind(this);
 
-    this.handleShowDrawer = this.handleShowDrawer.bind(this);
+    this.handleShowTabs = this.handleShowTabs.bind(this);
+    this.handleCloseTabs = this.handleCloseTabs.bind(this);
 
     this.state = {
       showLogin: false,
-      showDrawer: false
+      showTabs: false
     };
   }
   
@@ -39,8 +40,12 @@ class Menu extends React.Component {
     this.setState({ showLogin: true });
   }
 
-  handleShowDrawer() {
-    this.setState({ showDrawer: true});
+  handleShowTabs() {
+    this.setState({ showTabs: true});
+  }
+
+  handleCloseTabs() {
+    this.setState({ showTabs: false});
   }
 
   
@@ -51,7 +56,7 @@ class Menu extends React.Component {
       <Row>
         <Col sm={2}>
         <Navbar.Brand>
-           <Button onClick={this.handleShowDrawer}><IoMdMenu style={{fontSize: "25px", paddingBottom: 2}}/></Button> 
+           <Button onClick={this.handleShowTabs}><IoMdMenu style={{fontSize: "25px", paddingBottom: 2}}/></Button> 
         </Navbar.Brand>
         <Link to='/NotificationHub' className="Menu-Navbar-Brand">
           <Badge className={{margin: 2}} badgeContent={4} color="primary">
@@ -85,7 +90,7 @@ class Menu extends React.Component {
         </Col>
         </Row>
       </Navbar>
-      <ShowDrawer openDrawer={this}/>
+      <Tabs parent={this} closer={this.handleCloseTabs}/>
       {/* Login Modal Render*/}
       <Login parent={this} closer={this.handleLoginPopUpClose} app={this.props.app}/>
     </>
