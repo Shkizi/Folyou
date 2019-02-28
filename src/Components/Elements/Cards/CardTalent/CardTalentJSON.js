@@ -1,7 +1,7 @@
 export default
 [
     {
-        "link" : "AlexandreRealinho",
+        "link" : "/Talent/1",
         "name" : "Alexandre Realinho",
         "location" : "Cacém",
         "website" : "github/alexrealinho",
@@ -9,7 +9,7 @@ export default
         "category" : "Rising Star",
     },
     {
-        "link" : "André Portfolio",
+        "link" : "/Talent/2",
         "offerName" : "Junior Front-End Developer",
         "location" : "Porto",
         "name" : "José Mário",
@@ -18,7 +18,7 @@ export default
         "date" : "19 days ago"
     },
     {
-        "link" : "André Portfolio",
+        "link" : "/Talent/3",
         "offerName" : "Senior Backend Developer",
         "location" : "Londres",
         "name" : "André Oliveira",
@@ -27,7 +27,7 @@ export default
         "date" : "19 days ago"
     },
     {
-        "link" : "André Portfolio",
+        "link" : "/Talent/4",
         "offerName" : "Junior Photoshop Internship",
         "location" : "França",
         "name" : "Alexandre Realinho",
@@ -36,7 +36,7 @@ export default
         "date" : "19 days ago"
     },
     {
-        "link" : "André Portfolio",
+        "link" : "/Talent/5",
         "offerName" : "Photoshop Master",
         "location" : "Madagascar",
         "name" : "Pedro José",

@@ -4,13 +4,13 @@ import './CardTalent.css'
 import jsonarray from './CardTalentJSON.js'
 import AvatarImage from '../../../../Resources/Images/avatar.png'
 import { MdMailOutline } from "react-icons/md";
-
+import {  Link } from "react-router-dom";
 
 function CreateTalent(data) {
  
   return (
     <div className="C-Talent">
-  <a href={"'"+data.link+"'"} className="C-Talent-Link">
+  <Link to={data.link} className="C-Talent-Link">
 
 
   <Card className="C-Talent-Card">
@@ -29,7 +29,7 @@ function CreateTalent(data) {
     </Card.Footer>
    
    </Card>
-   </a>
+   </Link>
  </div>
   )
 }

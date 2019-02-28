@@ -1,7 +1,7 @@
 export default
 [
     {
-        "link" : "Alexandre Portfolio",
+        "link" : "/Portfolio/1",
         "offerName" : "Junior Java Devoloper",
         "location" : "Cacém",
         "name" : "Alexandre Realinho",
@@ -10,7 +10,7 @@ export default
         "date" : "3 days ago"
     },
     {
-        "link" : "André Portfolio",
+        "link" : "/Portfolio/2",
         "offerName" : "Junior Front-End Developer",
         "location" : "Madagascar",
         "name" : "André Oliveira",

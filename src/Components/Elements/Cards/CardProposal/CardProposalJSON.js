@@ -1,7 +1,7 @@
 export default
 [
     {
-        "link" : "Alexandre Portfolio",
+        "link" :"/Proposal/1",
         "offerName" : "Junior Java Devoloper",
         "location" : "Cacém",
         "name" : "António José",
@@ -10,7 +10,7 @@ export default
         "date" : "12 days ago"
     },
     {
-        "link" : "André Portfolio",
+        "link" : "/Proposal/2",
         "offerName" : "Junior Front-End Developer",
         "location" : "Porto",
         "name" : "José Mário",
@@ -19,7 +19,7 @@ export default
         "date" : "19 days ago"
     },
     {
-        "link" : "André Portfolio",
+        "link" : "/Proposal/3",
         "offerName" : "Senior Backend Developer",
         "location" : "Londres",
         "name" : "André Oliveira",
@@ -28,7 +28,7 @@ export default
         "date" : "19 days ago"
     },
     {
-        "link" : "André Portfolio",
+        "link" : "/Proposal/4",
         "offerName" : "Junior Photoshop Internship",
         "location" : "França",
         "name" : "Alexandre Realinho",
@@ -37,7 +37,7 @@ export default
         "date" : "19 days ago"
     },
     {
-        "link" : "André Portfolio",
+        "link" : "/Proposal/5",
         "offerName" : "Photoshop Master",
         "location" : "Madagascar",
         "name" : "Pedro José",
