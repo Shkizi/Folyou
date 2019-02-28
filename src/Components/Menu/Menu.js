@@ -85,9 +85,9 @@ class Menu extends React.Component {
         </Col>
         </Row>
       </Navbar>
+      <ShowDrawer openDrawer={this}/>
       {/* Login Modal Render*/}
       <Login parent={this} closer={this.handleLoginPopUpClose} app={this.props.app}/>
-      <ShowDrawer openDrawer={this}/>
     </>
     );} }
   
