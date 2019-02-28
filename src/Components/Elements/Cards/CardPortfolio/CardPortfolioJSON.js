@@ -2,19 +2,19 @@ export default
 [
     {
         "link" : "/Portfolio/1",
-        "offerName" : "Junior Java Devoloper",
+        "sheetName" : "Platinum Project",
         "location" : "Cacém",
         "name" : "Alexandre Realinho",
-        "description" : "Venha trabalhar comigo, sou um chefe exemplar",
+        "description" : "When platinum meats gold",
         "category" : "Dev",
         "date" : "3 days ago"
     },
     {
         "link" : "/Portfolio/2",
-        "offerName" : "Junior Front-End Developer",
+        "sheetName" : "Pokemon Creatures",
         "location" : "Madagascar",
         "name" : "André Oliveira",
-        "description" : "Venha trabalhar comigo, sou um chefe exemplar",
+        "description" : "New pokemons i created with Illustrator",
         "category" : "Dev",
         "date" : "19 days ago"
     }

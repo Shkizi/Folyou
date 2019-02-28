@@ -12,18 +12,17 @@ function CreatePortfolio(data) {
 
 
   <Card className="C-Portfolio-Card">
-    <Card.Body className="C-Portfolio-Body">
-     <div className="C-Portfolio-Avatar"><Image src={AvatarImage} className="C-Portfolio-Avatar-Image"/></div>
-     <div style={{minHeight: "280px", display: "block"}}>
-      <Row className="C-Portfolio-Offer-Location rowCards">{data.location}</Row>
-      <Row className="C-Portfolio-Offer-Name rowCards">{data.offerName}</Row>
-      <Row className="C-Portfolio-Proponent-Name rowCards">{data.name}</Row>
-      <Row className="C-Portfolio-Proponent-Description rowCards">{data.description}</Row>
+
+     <div className="C-Portfolio-Sheet"><Image src={AvatarImage} className="C-Portfolio-Sheet-Image"/></div>
+     <Card.Body className="C-Portfolio-Body">
+     <div style={{minHeight: "70px", display: "block"}}>
+      <Row className="C-Portfolio-Sheet-Name rowCards">{data.sheetName}</Row>
+      <Row className="C-Portfolio-Talent-Description rowCards">{data.description}</Row>
      </div>
     </Card.Body>
     <Card.Footer className="C-Portfolio-Footer">
-      <div className="C-Portfolio-Footer-Category">{data.category}</div>
-      <div  className="C-Portfolio-Footer-Date">{data.date}</div>
+      <Image src={AvatarImage} className="C-Portfolio-Footer-Avatar-Image"></Image>
+      <div  className="C-Portfolio-Footer-Date">By {data.name}</div>
     </Card.Footer>
    
    </Card>

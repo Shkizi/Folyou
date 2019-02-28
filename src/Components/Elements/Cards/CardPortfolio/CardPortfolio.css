@@ -3,6 +3,7 @@
     clear: both;
     background-color: #fcfcfc; 
     transition: all 0.3s ease-in-out;
+    width: 70%;
 }
 
 .C-Portfolio:hover {
@@ -25,67 +26,59 @@
 
 .C-Portfolio-Card {
     background-color: inherit;
+    width: 100%;
 }
 
+.card-body {
+    padding-top: 0;
+}
 .C-Portfolio-Body {
-    padding: 30px 30px 40px 30px;
+    flex: 1;
 }
 
-.C-Portfolio-Avatar {
+.C-Portfolio-Sheet {
     margin-bottom: 15px;
     overflow: hidden;
+    max-width: 100%;
 }
 
-.C-Portfolio-Offer-Location {
-    text-align: left;
+.C-Portfolio-Sheet-Image {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
-.C-Portfolio-Offer-Name {
+
+.C-Portfolio-Sheet-Name {
     padding-left: 0;
     font-weight: bold;
     width: 100%;
     overflow: "visible";
+    height: auto;
 }
 
-.C-Portfolio-Proponent-Name {
-    color: #49c5b6;
-    height: 20px;
-    margin-bottom: 12px;
-    line-height: 20px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
 
-.C-Portfolio-Proponent-Description {
+.C-Portfolio-Talent-Description {
     height: auto;
     white-space: inherit;
     overflow: visible;
 }
 
-.C-Portfolio-Avatar-Image {
-    border-radius: 50%;
-    height: 32px;
-    width: 32px;
-    box-sizing: inherit;
-}
 
 .C-Portfolio-Footer{
     min-height: 46px;
-    padding: 0 30px 30px 30px;
+    padding: 10px 20px 10px 20px;
     display: flex;
     justify-content: space-between;
     font-size: 12px;
     background-color: inherit;
-    border-top: 0;
 }
 
-.C-Portfolio-Footer-Category {
-    -webkit-box-flex: 1;
-    flex: 1;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
+.C-Portfolio-Footer-Avatar-Image {
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    box-sizing: inherit;
 }
 
 .C-Portfolio-Footer:hover {
@@ -96,5 +89,12 @@
     display: flex;
     -webkit-box-align: center;
     align-items: center;
+    -webkit-box-flex: 1;
+    flex: 1;
+    padding: 0 5px 0 8px;
+    text-transform: uppercase;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
