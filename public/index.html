@@ -23,7 +23,7 @@
   <body>
   <style>
 /* Center the loader */
-#loader {
+#loader_react {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -71,13 +71,13 @@
 
 #myDiv {
   display: none;
-  text-align: center;
+  
 }
 </style>
 </head>
 <body onload="myFunction()" style="margin:0;">
 
-<div id="loader"></div>
+<div id="loader_react"></div>
 
 
 <script>
@@ -88,7 +88,7 @@ function myFunction() {
 }
 
 function showPage() {
-  document.getElementById("loader").style.display = "none";
+  document.getElementById("loader_react").style.display = "none";
   document.getElementById("myDiv").style.display = "block";
 }
 </script>
