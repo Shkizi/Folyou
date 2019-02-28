@@ -11,6 +11,8 @@ const Home = () => (
 <Container fluid={true}>
             <Row style={{margin: 0}}>
             <CardPortfolio/>
+            <CardTalent/>
+            <CardProposal/>
             </Row>
           </Container>
 )

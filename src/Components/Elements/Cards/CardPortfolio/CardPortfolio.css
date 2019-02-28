@@ -3,7 +3,6 @@
     clear: both;
     background-color: #fcfcfc; 
     transition: all 0.3s ease-in-out;
-    width: 70%;
 }
 
 .C-Portfolio:hover {
@@ -26,25 +25,21 @@
 
 .C-Portfolio-Card {
     background-color: inherit;
-    width: 100%;
 }
 
-.card-body {
-    padding-top: 0;
-}
 .C-Portfolio-Body {
     flex: 1;
+    padding: 30px 0 0 30px;
 }
 
 .C-Portfolio-Sheet {
-    margin-bottom: 15px;
     overflow: hidden;
-    max-width: 100%;
+    width: 100%;
+    max-height: 350px;
 }
 
 .C-Portfolio-Sheet-Image {
-    width: 100%;
-    height: auto;
+    max-width:100%;
     display: block;
 }
 
