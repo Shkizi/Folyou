@@ -12,7 +12,7 @@ import LanguageSelector from "../Elements/LanguageSelector/LanguageSelector";
 import { withLocalize } from "react-localize-redux";
 import { withCookies } from 'react-cookie';
 import Badge from '@material-ui/core/Badge';
-
+import ShowDrawer from './Drawer';
  
 
 class Menu extends React.Component {
@@ -23,8 +23,11 @@ class Menu extends React.Component {
     this.handleLoginPopUpClose = this.handleLoginPopUpClose.bind(this);
     this.handleLoginPopUpShow = this.handleLoginPopUpShow.bind(this);
 
+    this.handleShowDrawer = this.handleShowDrawer.bind(this);
+
     this.state = {
       showLogin: false,
+      showDrawer: false
     };
   }
   
@@ -36,6 +39,10 @@ class Menu extends React.Component {
     this.setState({ showLogin: true });
   }
 
+  handleShowDrawer() {
+    this.setState({ showDrawer: true});
+  }
+
   
   render() {
     return (  
@@ -43,8 +50,8 @@ class Menu extends React.Component {
       <Navbar className="Menu-Navbar" sticky='top'>
       <Row>
         <Col sm={2}>
-        <Navbar.Brand href="#">
-          <Link to='/' className="Menu-Navbar-Brand"><IoMdMenu style={{fontSize: "25px", paddingBottom: 2}}/></Link>
+        <Navbar.Brand>
+           <Button onClick={this.handleShowDrawer}><IoMdMenu style={{fontSize: "25px", paddingBottom: 2}}/></Button> 
         </Navbar.Brand>
         <Link to='/NotificationHub' className="Menu-Navbar-Brand">
           <Badge className={{margin: 2}} badgeContent={4} color="primary">
@@ -52,8 +59,6 @@ class Menu extends React.Component {
         <span className="sr-only">unread messages</span>
         </Badge>
         </Link>  
-        
-        
         </Col>
         <Col sm={2}>
         <FiSearch style={{fontSize: "25px",  paddingTop:10}}/>
@@ -82,6 +87,7 @@ class Menu extends React.Component {
       </Navbar>
       {/* Login Modal Render*/}
       <Login parent={this} closer={this.handleLoginPopUpClose} app={this.props.app}/>
+      <ShowDrawer openDrawer={this}/>
     </>
     );} }
   
