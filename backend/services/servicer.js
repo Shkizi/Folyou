@@ -1,1 +1,1 @@
-module.exports.getUser = require("./getUser.js");
+module.exports.getUser = require("./User/getUserById.js");

@@ -6,16 +6,7 @@ class Porfolio {
       
     }
     
-    getUserId(){
-        return this.idUser;
-    }
-    getPortfolioId(){
-        return this.id;
-    }
-
-    toString(){
-        
-    }
+    
 }
 
 module.exports=Porfolio;

@@ -1,43 +1,36 @@
 class User {
     
-    constructor(id,username,roles,email,passwordHash,country,language){
-        this.id=id;
-        this.username=username;
-        this.roles=roles;
-        this.email=email;
-        this.passwordHash=passwordHash;
-        this.country=country;
-        this.language=language;
+    constructor(idUser,nameUser,emailUser,passwordUser,isAdmin,countryUser,regionUser,addressUser,languageUser,isActivated,createdTimestamp){
+        this.roles=this.getArrayOfRoles(isAdmin);
+        this.idUser = idUser;
+        this.nameUser = nameUser;
+        this.emailUser = emailUser;
+        this.passwordUser = passwordUser;
+        this.isAdmin = isAdmin;
+        this.countryUser = countryUser;
+        this.regionUser = regionUser;
+        this.addressUser = addressUser;
+        this.languageUser = languageUser;
+        this.isActivated = isActivated;
+        this.createdTimestamp = createdTimestamp;
       
     }
-    getUserUsername(){
-        return this.username;
-    }
-    getUserId(){
-        return this.id;
-    }
-    getUserRoles(){
-        return this.roles;
-    }
 
-    getEmail(){
-        return this.email;
-    }
-
-    getPasswordHash(){
-        return this.passwordHash;
-    }
-
-    getCountry(){
-        return this.country;
-    }
-
-    getLanguage(){
-        return this.language;
-    }
-
+        
     toString(){
-        return "User["+ this.id + " , " + this.username + " , " + this.roles + "]";
+        return "Object.User:{"+
+        this.idUser+","+
+        this.nameUser+","+
+        this.emailUser+","+
+        this.passwordUser+","+
+        this.isAdmin+","+
+        this.countryUser+","+
+        this.regionUser+","+
+        this.addressUser+","+
+        this.languageUser+","+
+        this.isActivated +","+
+        this.createdTimestamp+","+
+        this.roles + "}";
     }
     getArrayOfRoles(isAdmin){
         var roles=[];

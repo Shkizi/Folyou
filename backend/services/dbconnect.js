@@ -3,10 +3,10 @@ var mysql = require('mysql');
  * Create a connection to the Mysql Database
 */
 
-let pool = mysql.createPool({
-  host: "127.0.0.1",
+var pool = mysql.createPool({
+  host: "localhost",
   user: "root",
-  password: "password",
+  password: "",
   database : 'folyou',
   multipleStatements: true
 });
@@ -15,36 +15,39 @@ let pool = mysql.createPool({
  * Connection Test
  */
 
- module.exports.connection = {
-    query: function () {
-        var queryArgs = Array.prototype.slice.call(arguments),
-            events = [],
-            eventNameIndex = {};
+var DB = (function () {
 
-        pool.getConnection(function (err, conn) {
+    function _query(query, params, callback) {
+        pool.getConnection(function (err, connection) {
             if (err) {
-                if (eventNameIndex.error) {
-                    eventNameIndex.error();
+                connection.release();
+                callback(null, err);
+                throw err;
+            }
+
+            connection.query(query, params, function (err, rows) {
+                console.log(query,params);
+                connection.release();
+                if (!err) {
+                    callback(rows,null);
                 }
-            }
-            if (conn) { 
-                var q = conn.query.apply(conn, queryArgs);
-                q.on('end', function () {
-                    conn.release();
-                });
+                else {
+                    callback(null, err);
+                }
 
-                events.forEach(function (args) {
-                    q.on.apply(q, args);
-                });
-            }
+            });
+
+            connection.on('error', function (err) {
+                connection.release();
+                callback(null, err);
+                throw err;
+            });
         });
+    };
 
-        return {
-            on: function (eventName, callback) {
-                events.push(Array.prototype.slice.call(arguments));
-                eventNameIndex[eventName] = callback;
-                return this;
-            }
-        };
-    }
-};
+    return {
+        query: _query
+    };
+})();
+
+module.exports = DB;
