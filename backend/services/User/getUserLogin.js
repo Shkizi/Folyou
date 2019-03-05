@@ -4,12 +4,12 @@ var crypto = require('crypto');
 
 
 //gets a user by its email and hashed password with sha256
-//example: localhost:5500/getUser?emailUser=andre@outlook.pt
+//example: localhost:5500/getUser?passwordUser=[hash]&emailUser=andre@outlook.pt
 // for password use  var hash = crypto.createHash('sha256').update(params.passwordUser).digest('hex');
-function getUserById(req, res,next) {
+function getUserById(req, res) {
     let params=req.query;
    
-    db.query("SELECT * FROM `User` WHERE `idUser` = ? ; ", [params.idUser], function (rows, error) {
+    db.query("SELECT * FROM `User` WHERE `emailUser` LIKE ? AND `passwordUser` LIKE ? ; ", [params.emailUser,params.passwordUser], function (rows, error) {
           
             if(error){
                 res.send({error: true, err: error});
@@ -29,10 +29,17 @@ function getUserById(req, res,next) {
 
             let user = new User(idUser, nameUser, emailUser, passwordUser, isAdmin, countryUser, regionUser, addressUser, languageUser, isActivated, createdTimestamp);
         
-            res.send({error: false, user: user});     
-            
-            next();
-            }
+        
+        var session = crypto.createHash('sha256').update( makeid()).digest('hex');
+        // TODO: create new session in database
+        
+        
+        
+        
+        
+        
+        res.send({error: false, user: user, session:session});         
+        }
               
             
           });
@@ -41,3 +48,14 @@ function getUserById(req, res,next) {
 
 }
 module.exports = getUserById;
+
+
+function makeid() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  
+    for (var i = 0; i < 200; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+  
+    return text;
+  }

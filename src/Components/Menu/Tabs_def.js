@@ -25,6 +25,12 @@ export default
         "page" : "Talents",
         "link" : "/Talents",
         
+    },
+    {
+        "icon" : InboxIcon,
+        "page" : "TesterAxios",
+        "link" : "/TesterAxios",
+        
     }
 
 ]

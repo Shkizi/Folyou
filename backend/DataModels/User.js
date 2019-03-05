@@ -13,6 +13,7 @@ class User {
         this.languageUser = languageUser;
         this.isActivated = isActivated;
         this.createdTimestamp = createdTimestamp;
+        this.toString=this.toString;
       
     }
 
