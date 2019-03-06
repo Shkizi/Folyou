@@ -39,10 +39,12 @@ class Tabs extends React.Component {
         <Divider />
         <List>
           {['About us'].map((text, index) => (
+             <Link to={"/AboutUs"}>
             <ListItem button key={text}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
+            </Link>
           ))}
         </List>
       </div>

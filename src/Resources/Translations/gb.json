@@ -4,6 +4,6 @@
     "error.404":"The site Monkeys couldn't find your page, please try a easier one.",
     "home": "Home",
     "login":"Login",
-    "logout":"Logout"
-    
+    "logout":"Logout",
+    "aboutUs":"We build connections, for your portfolios and your proposals to take flight."
 }

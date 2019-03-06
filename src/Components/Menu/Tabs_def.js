@@ -28,8 +28,8 @@ export default
     },
     {
         "icon" : InboxIcon,
-        "page" : "TesterAxios",
-        "link" : "/TesterAxios",
+        "page" : "TestAxios",
+        "link" : "/TestAxios",
         
     }
 

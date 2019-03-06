@@ -8,7 +8,7 @@ function CreateProposal(data) {
  
   return (
     <div className="C-Proposal">
-  <a href={"'"+data.link+"'"} className="C-Proposal-Link">
+  <a href={data.link} className="C-Proposal-Link">
 
 
   <Card className="C-Proposal-Card">

@@ -8,7 +8,7 @@ function CreatePortfolio(data) {
  
   return (
     <div className="C-Portfolio">
-  <a href={"'"+data.link+"'"} className="C-Portfolio-Link">
+  <a href={data.link} className="C-Portfolio-Link">
 
 
   <Card className="C-Portfolio-Card">

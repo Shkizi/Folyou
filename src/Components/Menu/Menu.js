@@ -58,7 +58,7 @@ class Menu extends React.Component {
         <Navbar.Brand>
            <Button onClick={this.handleShowTabs}><IoMdMenu style={{fontSize: "25px", paddingBottom: 2}}/></Button> 
         </Navbar.Brand>
-        <Link to='/NotificationHub' className="Menu-Navbar-Brand">
+        <Link to='/NotificationsHub' className="Menu-Navbar-Brand">
           <Badge className={{margin: 2}} badgeContent={4} color="primary">
         <MdNotificationsActive style={{width:"25px",height:"25px"}}/>
         <span className="sr-only">unread messages</span>
