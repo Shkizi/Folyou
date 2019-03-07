@@ -63,6 +63,7 @@
     height: auto;
     white-space: inherit;
     overflow: visible;
+    flex-wrap: wrap;
 }
 
 .C-Talent-Avatar-Image {

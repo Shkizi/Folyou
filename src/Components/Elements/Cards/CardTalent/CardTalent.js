@@ -34,15 +34,14 @@ function CreateTalent(data) {
   )
 }
 
-function CardTalent() {
+class CardTalent extends React.Component { 
   
-  return jsonarray.map(val =>{ 
-    return (
+  render() {
+    return ( 
+   
       <Col xs={12} sm={6} md={6} lg={4} xl={3}>
-        {CreateTalent(val)}
+        {CreateTalent(this.props.data)}
        </Col>
-    );
-  });
-}
+    );} }
 
 export default CardTalent;

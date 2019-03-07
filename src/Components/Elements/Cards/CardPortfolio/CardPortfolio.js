@@ -1,7 +1,6 @@
 import React from 'react';
 import { Col, Card, Row, Image } from 'react-bootstrap';
 import './CardPortfolio.css'
-import jsonarray from './CardPortfolioJSON.js'
 import AvatarImage from '../../../../Resources/Images/avatar.png'
 
 function CreatePortfolio(data) {
@@ -17,7 +16,7 @@ function CreatePortfolio(data) {
      <Card.Body className="C-Portfolio-Body">
      <div style={{minHeight: "70px", display: "block"}}>
       <Row className="C-Portfolio-Sheet-Name rowCards">{data.sheetName}</Row>
-      <Row className="C-Portfolio-Talent-Description rowCards">{data.description}</Row>
+      <Row className="C-Portfolio-Description rowCards">{data.description}</Row>
      </div>
     </Card.Body>
     <Card.Footer className="C-Portfolio-Footer">
@@ -31,15 +30,13 @@ function CreatePortfolio(data) {
   )
 }
 
-function CardPortfolio() {
-  
-  return jsonarray.map(val =>{ 
-    return (
+class CardPortfolio extends React.Component { 
+   
+  render() {
+    return ( 
+   
       <Col xs={12} sm={6} md={6} lg={4} xl={3}>
-        {CreatePortfolio(val)}
+        {CreatePortfolio(this.props.data)}
        </Col>
-    );
-  });
-}
-
+    );} }
 export default CardPortfolio;

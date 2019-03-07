@@ -32,15 +32,14 @@ function CreateProposal(data) {
   )
 }
 
-function CardProposal() {
+class CardProposal extends React.Component { 
   
-  return jsonarray.map(val =>{ 
-    return (
+  render() {
+    return ( 
+   
       <Col xs={12} sm={6} md={6} lg={4} xl={3}>
-        {CreateProposal(val)}
+        {CreateProposal(this.props.data)}
        </Col>
-    );
-  });
-}
+    );} }
 
 export default CardProposal;

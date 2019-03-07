@@ -55,10 +55,11 @@
 }
 
 
-.C-Portfolio-Talent-Description {
+.C-Portfolio-Description {
     height: auto;
     white-space: inherit;
     overflow: visible;
+    padding-right: 20px;
 }
 
 
