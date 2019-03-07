@@ -1,1 +1,3 @@
+@echo off 
+echo starting frontend server ...
 npm start

@@ -1,4 +1,7 @@
 import React from 'react';
+import LanguageSelector from "../Elements/LanguageSelector/LanguageSelector";
+import { withLocalize } from "react-localize-redux";
+import { withCookies } from 'react-cookie';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -25,6 +28,9 @@ class Tabs extends React.Component {
     const { classes } = this.props;
     const sideList = (
       <div className={classes.list}>
+          
+          <LanguageSelector languages={this.props.app.props.languages} app={this.props.app} cookies={this.props.cookies}/>
+        
         <List>
           {jsonarray.map((text, index) => (
             <Link to={text.link}>
@@ -47,6 +53,7 @@ class Tabs extends React.Component {
             </Link>
           ))}
         </List>
+       
       </div>
     );
 
@@ -68,4 +75,4 @@ class Tabs extends React.Component {
   }
 }
 
-export default withStyles(styles)(Tabs);
+export default withCookies(withLocalize(withStyles(styles)(Tabs)));

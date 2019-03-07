@@ -54,7 +54,7 @@ class Menu extends React.Component {
     <>
       <Navbar className="Menu-Navbar" sticky='top'>
       <Row>
-        <Col sm={2}>
+        <Col xs={2} sm={2} md={2} lg={2} xl={2} >
         <Navbar.Brand>
            <Button onClick={this.handleShowTabs}><IoMdMenu style={{fontSize: "25px", paddingBottom: 2}}/></Button> 
         </Navbar.Brand>
@@ -65,23 +65,18 @@ class Menu extends React.Component {
         </Badge>
         </Link>  
         </Col>
-        <Col sm={2}>
+        <Col  xs={1} sm={1} md={1} lg={2} xl={2} >
         <FiSearch style={{fontSize: "25px",  paddingTop:10}}/>
         </Col>
         {/* Logo image Col */}
-        <Col sm={4}>
+        <Col  xs={2} sm={2} md={2} lg={4} xl={4} >
           <Image className="Menu-Logo" src={logo}></Image>
         </Col>
         {/* Empty Col*/}
-        <Col sm={1}></Col>
-        {/* Language Col*/}
-        <Col sm={2}>
-        <Nav className="Menu-Language-Select">   
-          <LanguageSelector languages={this.props.app.props.languages} app={this.props.app} cookies={this.props.cookies}/>
-         </Nav>
-        </Col>
+        <Col  xs={0} sm={0} md={0} lg={3} xl={3}></Col>
+        
         {/* Login/Logout Col*/}
-        <Col sm={1}>
+        <Col  xs={6} sm={6} md={6} lg={1} xl={1} >
           <Nav style={{float:"right"}}>    
             <Button onClick={this.handleLoginPopUpShow} className="Menu-Login" variant="link">
               <strong><Translate id="login"/></strong>
@@ -90,7 +85,7 @@ class Menu extends React.Component {
         </Col>
         </Row>
       </Navbar>
-      <Tabs parent={this} closer={this.handleCloseTabs}/>
+      <Tabs parent={this} app={this.props.app} closer={this.handleCloseTabs} cookies={this.props.cookies}/>
       {/* Login Modal Render*/}
       <Login parent={this} closer={this.handleLoginPopUpClose} app={this.props.app}/>
     </>

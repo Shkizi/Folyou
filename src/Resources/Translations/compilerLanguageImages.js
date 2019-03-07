@@ -7,9 +7,7 @@ function getImageLanguage(code){
         case "pt": return ptImage;
         case "gb": return gbImage;
         default : return "Not supported";
-    }
-
-    
+    }   
 }
 
 export default getImageLanguage;
