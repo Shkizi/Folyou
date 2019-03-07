@@ -22,7 +22,7 @@ function CreatePortfolio(data) {
     </Card.Body>
     <Card.Footer className="C-Portfolio-Footer">
       <Image src={AvatarImage} className="C-Portfolio-Footer-Avatar-Image"></Image>
-      <div  className="C-Portfolio-Footer-Date">By {data.name}</div>
+      <div  className="C-Portfolio-Footer-Name">By {data.name}</div>
     </Card.Footer>
    
    </Card>

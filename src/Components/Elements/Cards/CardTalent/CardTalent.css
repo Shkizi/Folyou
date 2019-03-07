@@ -3,6 +3,7 @@
     clear: both;
     background-color: #e6f4f2;
     transition: all 0.3s ease-in-out;
+    height: 100%;
 }
 
 .C-Talent:hover {
@@ -25,6 +26,7 @@
 
 .C-Talent-Card {
     background-color: inherit;
+    height: 100%;
 }
 
 .C-Talent-Body {
@@ -72,12 +74,12 @@
 
 .C-Talent-Footer{
     min-height: 46px;
-    padding: 0 30px 30px 30px;
     display: flex;
     justify-content: space-between;
     font-size: 12px;
     background-color: inherit;
     border-top: 0;
+    margin-bottom: 3px;
 }
 
 .C-Talent-Footer-Risingstar {
@@ -96,5 +98,5 @@
     display: flex;
     -webkit-box-align: center;
     align-items: center;
-    font-size: 15px;
+    font-size: 20px;
 }

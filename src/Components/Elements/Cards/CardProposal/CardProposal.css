@@ -25,6 +25,8 @@
 
 .C-Proposal-Card {
     background-color: inherit;
+    height: 100%;
+
 }
 
 .C-Proposal-Body {
@@ -72,12 +74,12 @@
 
 .C-Proposal-Footer{
     min-height: 46px;
-    padding: 0 30px 30px 30px;
     display: flex;
     justify-content: space-between;
     font-size: 12px;
     background-color: inherit;
     border-top: 0;
+    margin-bottom: 3px;
 }
 
 .C-Proposal-Footer-Category {

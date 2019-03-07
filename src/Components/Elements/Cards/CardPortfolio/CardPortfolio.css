@@ -3,6 +3,7 @@
     clear: both;
     background-color: #fcfcfc; 
     transition: all 0.3s ease-in-out;
+    height: 100%;
 }
 
 .C-Portfolio:hover {
@@ -25,6 +26,7 @@
 
 .C-Portfolio-Card {
     background-color: inherit;
+    height: 100%;
 }
 
 .C-Portfolio-Body {
@@ -33,14 +35,14 @@
 }
 
 .C-Portfolio-Sheet {
-    overflow: hidden;
     width: 100%;
     max-height: 350px;
+    align-content: center;
 }
 
 .C-Portfolio-Sheet-Image {
-    max-width:100%;
-    display: block;
+    width: 100%;
+    max-height: inherit;
 }
 
 
@@ -80,14 +82,13 @@
     background-color: inherit;
 }
 
-.C-Portfolio-Footer-Date {
+.C-Portfolio-Footer-Name {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
     -webkit-box-flex: 1;
+    padding-left: 10px;
     flex: 1;
-    padding: 0 5px 0 8px;
-    text-transform: uppercase;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
