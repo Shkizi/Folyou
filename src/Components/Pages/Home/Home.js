@@ -25,7 +25,7 @@ class Home extends React.Component {
           {/* TRENDING SECTION */}
 
                     <Row style={{margin: 0}}>
-                     <Col sm={12} style={{}}>
+                     <Col sm={12} className="Header-Sections">
                       <h1>Trending</h1>
                       </Col>
                       <Col sm={12}>
@@ -44,7 +44,7 @@ class Home extends React.Component {
          {/* PROJECT SECTION */}
 
          <Row style={{margin: 0}}>
-                     <Col sm={12} style={{}}>
+                     <Col sm={12} className="Header-Sections">
                       <h1>Projects</h1>
                       </Col>
                       <Col sm={12}>
@@ -60,7 +60,7 @@ class Home extends React.Component {
         {/* PROPONENT SECTION*/}
 
         <Row style={{margin: 0}}>
-                     <Col sm={12} style={{}}>
+                     <Col sm={12} className="Header-Sections">
                       <h1>Proposals</h1>
                       </Col>
                       <Col sm={12}>
@@ -76,7 +76,7 @@ class Home extends React.Component {
         {/* TALENT SECTION */}
 
         <Row style={{margin: 0}}>
-                     <Col sm={12} style={{}}>
+                     <Col sm={12} className="Header-Sections">
                       <h1>Rising Stars</h1>
                       </Col>
                       <Col sm={12}>
