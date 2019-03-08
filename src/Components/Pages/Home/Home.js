@@ -4,6 +4,7 @@ import CardPortfolio from '../../Elements/Cards/CardPortfolio/CardPortfolio'
 import { Container, Row, Col} from 'react-bootstrap';
 import { withLocalize } from "react-localize-redux";
 import CardTalent from '../../Elements/Cards/CardTalent/CardTalent';
+import HomeCarousel from '../../Elements/Carousel/HomeCarousel/HomeCarousel'
 import jsonPortfolio from '../../Elements/Cards/CardPortfolio/CardPortfolioJSON'
 import jsonProposal from '../../Elements/Cards/CardProposal/CardProposalJSON'
 import jsonTalent from '../../Elements/Cards/CardTalent/CardTalentJSON'
@@ -21,6 +22,14 @@ class Home extends React.Component {
   render() {
     return ( 
         <Container fluid={true}>
+        
+          {/* HOME CAROUSEL SECTION */}
+                    <Row style={{margin: 0}}>
+                      <Col sm={12} className="Header-Sections">
+                        <HomeCarousel/>
+                      </Col>
+                    </Row>
+        
 
           {/* TRENDING SECTION */}
 
