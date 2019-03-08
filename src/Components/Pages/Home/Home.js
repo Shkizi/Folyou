@@ -8,6 +8,8 @@ import jsonPortfolio from '../../Elements/Cards/CardPortfolio/CardPortfolioJSON'
 import jsonProposal from '../../Elements/Cards/CardProposal/CardProposalJSON'
 import jsonTalent from '../../Elements/Cards/CardTalent/CardTalentJSON'
 
+import './Home.css'
+
 
 class Home extends React.Component { 
 
@@ -20,21 +22,73 @@ class Home extends React.Component {
     return ( 
         <Container fluid={true}>
 
+          {/* TRENDING SECTION */}
+
                     <Row style={{margin: 0}}>
-                    <Col sm={12} style={{}}>
-                    <h1>Trending</h1>
-                    </Col>
-                    <Col sm={12}>
-                    <Row>
+                     <Col sm={12} style={{}}>
+                      <h1>Trending</h1>
+                      </Col>
+                      <Col sm={12}>
+                      <hr className="Hr-Sections"/>
+                      <Row>
                       {jsonPortfolio.map(val =>{return(
                         <CardPortfolio data={val} />
                       );})}
+                      {jsonProposal.map(val =>{return(
+                        <CardProposal data={val} />
+                      );})}
+                      </Row>
+                      </Col>
+                    </Row>
+
+         {/* PROJECT SECTION */}
+
+         <Row style={{margin: 0}}>
+                     <Col sm={12} style={{}}>
+                      <h1>Projects</h1>
+                      </Col>
+                      <Col sm={12}>
+                      <hr className="Hr-Sections"/>
+                      <Row>
+                      {jsonPortfolio.map(val =>{return(
+                        <CardPortfolio data={val} />
+                      );})}
+                      </Row>
+                      </Col>
+                    </Row>
+
+        {/* PROPONENT SECTION*/}
+
+        <Row style={{margin: 0}}>
+                     <Col sm={12} style={{}}>
+                      <h1>Proposals</h1>
+                      </Col>
+                      <Col sm={12}>
+                      <hr className="Hr-Sections"/>
+                      <Row>
+                      {jsonProposal.map(val =>{return(
+                        <CardProposal data={val} />
+                      );})}
+                      </Row>
+                      </Col>
+                    </Row>
+
+        {/* TALENT SECTION */}
+
+        <Row style={{margin: 0}}>
+                     <Col sm={12} style={{}}>
+                      <h1>Rising Stars</h1>
+                      </Col>
+                      <Col sm={12}>
+                      <hr className="Hr-Sections"/>
+                      <Row>
                       {jsonTalent.map(val =>{return(
                         <CardTalent data={val} />
                       );})}
                       </Row>
                       </Col>
                     </Row>
+
               
         </Container>
  );} }
