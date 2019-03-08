@@ -3,6 +3,8 @@
     clear: both;
     background-color: #fcfcfc; 
     transition: all 0.3s ease-in-out;
+    height: 100%;
+    border-radius: .25rem;
 }
 
 .C-Proposal:hover {

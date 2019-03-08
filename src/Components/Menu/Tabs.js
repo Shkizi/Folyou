@@ -33,7 +33,7 @@ class Tabs extends React.Component {
         
         <List>
           {jsonarray.map((text, index) => (
-            <Link to={text.link}>
+            <Link to={text.link} onClick={this.props.closer}>
             <ListItem button key={text.page}>
               <ListItemIcon><text.icon /> </ListItemIcon>
               <ListItemText primary={text.page} />
@@ -64,8 +64,6 @@ class Tabs extends React.Component {
         anchor="left">
           <div
             tabIndex={0}
-            role="button"
-            onClick={this.props.closer}
             onKeyDown={this.props.closer}
           >
             {sideList}

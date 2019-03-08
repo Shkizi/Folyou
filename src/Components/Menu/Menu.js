@@ -56,7 +56,7 @@ class Menu extends React.Component {
       <Row>
         <Col xs={2} sm={2} md={2} lg={2} xl={2} >
         <Navbar.Brand>
-           <Button onClick={this.handleShowTabs}><IoMdMenu style={{fontSize: "25px", paddingBottom: 2}}/></Button> 
+           <Button onClick={this.handleShowTabs} variant="link"><IoMdMenu style={{fontSize: "25px", paddingBottom: 2}}/></Button> 
         </Navbar.Brand>
         <Link to='/NotificationsHub' className="Menu-Navbar-Brand">
           <Badge className={{margin: 2}} badgeContent={4} color="primary">

@@ -8,6 +8,8 @@
     background-color: #fcfcfc; 
     transition: all 0.3s ease-in-out;
     height: 100%;
+    border-bottom-left-radius: .25rem;
+    border-bottom-right-radius: .25rem;
 }
 
 .C-Portfolio:hover {
