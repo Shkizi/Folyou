@@ -4,5 +4,29 @@
     "home": "Home",
     "login":"Entrar",
     "logout":"Sair",
-    "aboutUs":"Estabelecemos coneções, para os teus portfólios e propostas levantarem voo."
+    "aboutUs":"Estabelecemos coneções, para os teus portfólios e propostas levantarem voo.",
+
+
+
+
+
+
+
+
+
+
+
+
+
+    "category": "Categoria",
+    "webdevelopment": "Desenvolvimento Web",
+    "softwaredevelopment": "Desenvolvimento de Software",
+    "gamedevelopment": "Desenvolvimento de Jogos",
+    "mobiledevelopment": "Desenvolvimento Móvel",
+    "art": "Arte",
+    "design": "Design",
+    "photography": "Fotografia"
+
+
+
 }

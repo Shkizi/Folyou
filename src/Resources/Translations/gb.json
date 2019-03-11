@@ -5,5 +5,23 @@
     "home": "Home",
     "login":"Login",
     "logout":"Logout",
-    "aboutUs":"We build connections, for your portfolios and your proposals to take flight."
+    "aboutUs":"We build connections, for your portfolios and your proposals to take flight.",
+
+
+
+
+
+
+
+
+
+
+    "category": "Category",
+    "webdevelopment": "Web Development",
+    "softwaredevelopment": "Software Development",
+    "gamedevelopment": "Game Development",
+    "mobiledevelopment": "Mobile Development",
+    "art": "Art",
+    "design": "Design",
+    "photography": "Photography"
 }
