@@ -8,7 +8,12 @@ import { withLocalize } from "react-localize-redux";
 const ProposalView = ({ match }) => {
     return (
       <div>
+      <div>
       The proposal id is : {match.params.id || 'all'}
+      </div>
+      <div>
+        caralho
+      </div>
       </div>
     )
 }
