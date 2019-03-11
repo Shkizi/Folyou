@@ -53,18 +53,22 @@ class Menu extends React.Component {
     return (  
     <>
       <Navbar className="Menu-Navbar" sticky='top'>
-      <Row>
-        <Col xs={2} sm={2} md={2} lg={2} xl={2} >
+      <Row style={{width:"100%"}}>
+        <Col xs={1} sm={1} md={2} lg={2} xl={1} >
         <Navbar.Brand>
            <Button onClick={this.handleShowTabs} variant="link"><IoMdMenu style={{fontSize: "25px", paddingBottom: 2}}/></Button> 
         </Navbar.Brand>
+        </Col>
+        <Col xs={1} sm={1} md={2} lg={2} xl={1} >
+        
         <Link to='/NotificationsHub' className="Menu-Navbar-Brand">
           <Badge className={{margin: 2}} badgeContent={4} color="primary">
         <MdNotificationsActive style={{width:"25px",height:"25px"}}/>
         <span className="sr-only">unread messages</span>
         </Badge>
-        </Link>  
+        </Link> 
         </Col>
+        
         <Col  xs={1} sm={1} md={1} lg={2} xl={2} >
         <FiSearch style={{fontSize: "25px",  paddingTop:10}}/>
         </Col>
@@ -73,10 +77,10 @@ class Menu extends React.Component {
           <Image className="Menu-Logo" src={logo}></Image>
         </Col>
         {/* Empty Col*/}
-        <Col  xs={0} sm={0} md={0} lg={3} xl={3}></Col>
+        <Col  xs={1} sm={1} md={1} lg={1} xl={1}></Col>
         
         {/* Login/Logout Col*/}
-        <Col  xs={6} sm={6} md={6} lg={1} xl={1} >
+        <Col  xs={5} sm={5} md={5} lg={5} xl={3} >
           <Nav style={{float:"right"}}>    
             <Button onClick={this.handleLoginPopUpShow} className="Menu-Login" variant="link">
               <strong><Translate id="login"/></strong>

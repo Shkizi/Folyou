@@ -18,7 +18,7 @@ class App extends Component {
         { name: "English", code: "gb" },
         { name: "Português", code: "pt" }
       ],
-      options: { defaultLanguage: (cookies.get("folyou_language") != "undefined" && cookies.get("folyou_language") != "")?cookies.get("folyou_language"):"gbs",
+      options: { defaultLanguage: (cookies.get("folyou_language") != "undefined" && cookies.get("folyou_language") != "")?cookies.get("folyou_language"):"gb",
       renderToStaticMarkup: renderToStaticMarkup }
       
     });
