@@ -1,0 +1,11 @@
+.Proposal-Country-Input {
+    width: 40%;
+    float: left;
+}
+
+.Proposal-Category-Selector {
+    float: right;
+}
+.Proposal-Row{
+    margin-top:10px
+}
