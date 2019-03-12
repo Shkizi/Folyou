@@ -11,11 +11,10 @@ import { withLocalize } from "react-localize-redux";
 var data;
 const ProposalsAreaView = () => (
 
-    <Container fluid={true}>
         <Row style={{margin: 0}}>
             <CardProposal data={data}/>
         </Row>
-    </Container>
+  
 )
 
 export default withLocalize(ProposalsAreaView);

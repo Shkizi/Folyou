@@ -8,12 +8,11 @@ class AboutUsView extends React.Component {
     
     render() {
         return (
-            <Container fluid={true}>
                 <Row style={{margin: 0}}>
                 <Translate id="aboutUs"/>
                 </Row>
                 
-            </Container>
+            
         )
     }
     }

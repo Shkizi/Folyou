@@ -11,13 +11,17 @@ import AboutUsView from '../Pages/AboutUsView/AboutUsView';
 import ProposalView from '../Pages/ProposalView/ProposalView';
 import TalentAreaView from '../Pages/TalentAreaView/TalentAreaView';
 import TestsView from '../Pages/TestsView/TestsView';
-
+import { Container, Row, Col} from 'react-bootstrap';
+import Notifications from '../../Components/Elements/Notifications/Notifications';
 class Main  extends Component {
   
   render(){
      
     return(
     <main>
+       <Container fluid={true}>
+            <Notifications notifParent={this.props.app}/>
+      
       <Switch>
         <Route exact path='/' render={(routeProps)=><Home {...routeProps} app={this.props.app}/>}/>
         <Route exact path='/AboutUs'  render={(routeProps)=><AboutUsView {...routeProps} app={this.props.app}/>}/>
@@ -31,6 +35,7 @@ class Main  extends Component {
         <Route exact path='/Portfolios'  render={(routeProps)=><PortfoliosAreaView {...routeProps} app={this.props.app}/>}/>
         <Route exact path='/Portfolio/:id'  render={(routeProps)=><PortfolioView {...routeProps} app={this.props.app}/>}/>
       </Switch>
+      </Container>
     </main> 
   );
   }

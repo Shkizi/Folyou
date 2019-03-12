@@ -18,8 +18,7 @@ class PortfoliosAreaView extends React.Component {
             portfolios:[],
             filters:[],
             hasMoreItems: true,
-            error:[],
-            notificationModule:null
+            error:[]
         };
       }
     
@@ -57,15 +56,13 @@ class PortfoliosAreaView extends React.Component {
     
        
       return ( 
-    <Container fluid={true}>
-            <Notifications notifParent={this}/>
             <Row style={{margin: 0}}>
 
                 <Col sm={4} className="Header-Sections">
                 <Button
                               block
                               color="primary"
-                              onClick={() => this.state.notificationModule.notify("Test","bl",1,200)}></Button>
+                              onClick={() => this.props.app.state.notificationModule.notify("Test","bl",1,200)}></Button>
 >
                     <h1><Translate id="portfolios"/></h1>
                 </Col>
@@ -84,7 +81,7 @@ class PortfoliosAreaView extends React.Component {
                   
                 </Col>
             </Row>
-    </Container>
+    
 );} }
 
 export default withLocalize(PortfoliosAreaView);

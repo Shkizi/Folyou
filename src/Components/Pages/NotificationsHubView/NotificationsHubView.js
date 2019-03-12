@@ -52,7 +52,7 @@ class NotificationHubView extends React.Component {
         const {cookies}= this.props.cookies;
         
        
-           return (isCookieValid(cookies,"folyou_userId"))?(<Container fluid={true}>
+           return (!isCookieValid(cookies,"folyou_userId"))?(<PleaseLogin/>):(
         <Row style={{margin: 0}}>
         <Table responsive>
             <thead>
@@ -67,10 +67,9 @@ class NotificationHubView extends React.Component {
                 </tr>
             </tbody>
             </Table>
-            
         </Row>
-    </Container>
-        ):(<PleaseLogin/>);
+   
+        );
         
     }
 

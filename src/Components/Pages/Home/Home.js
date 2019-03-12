@@ -21,7 +21,7 @@ class Home extends React.Component {
   }
   render() {
     return ( 
-        <Container fluid={true}>
+        <>
         
           {/* HOME CAROUSEL SECTION */}
                     <Row style={{margin: 0}}>
@@ -99,7 +99,7 @@ class Home extends React.Component {
                     </Row>
 
               
-        </Container>
+        </>
  );} }
 
 export default withLocalize(Home);

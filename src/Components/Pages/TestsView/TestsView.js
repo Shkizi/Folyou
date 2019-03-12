@@ -29,11 +29,10 @@ class TestAxios extends React.Component {
     }
     render() {
         return (
-            <Container fluid={true}>
                 <Row style={{margin: 0}}>
                 {JSON.stringify(this.state.user)}
                 </Row>
-            </Container>
+           
         )
     }
     }
