@@ -11,7 +11,6 @@ import AboutUsView from '../Pages/AboutUsView/AboutUsView';
 import ProposalView from '../Pages/ProposalView/ProposalView';
 import TalentAreaView from '../Pages/TalentAreaView/TalentAreaView';
 import TestsView from '../Pages/TestsView/TestsView';
-import Notifications from '../Elements/Notifications/Notifications';
 
 class Main  extends Component {
   
@@ -19,9 +18,6 @@ class Main  extends Component {
      
     return(
     <main>
-      <Notifications notifParent={this.props.app}/>
-      
-      
       <Switch>
         <Route exact path='/' render={(routeProps)=><Home {...routeProps} app={this.props.app}/>}/>
         <Route exact path='/AboutUs'  render={(routeProps)=><AboutUsView {...routeProps} app={this.props.app}/>}/>

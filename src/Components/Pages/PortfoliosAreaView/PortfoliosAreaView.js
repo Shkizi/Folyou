@@ -7,6 +7,8 @@ import { withLocalize } from "react-localize-redux";
 import { Translate } from "react-localize-redux";
 import jsonPortfolio from '../../Elements/Cards/CardPortfolio/CardPortfolioJSON'
 import ServicesAPI from '../../../serviceAPI.js';
+import Notifications from '../../Elements/Notifications/Notifications';
+import { Button} from "reactstrap";
 var S = new ServicesAPI();
 
 class PortfoliosAreaView extends React.Component { 
@@ -16,7 +18,8 @@ class PortfoliosAreaView extends React.Component {
             portfolios:[],
             filters:[],
             hasMoreItems: true,
-            error:[]
+            error:[],
+            notificationModule:null
         };
       }
     
@@ -24,7 +27,8 @@ class PortfoliosAreaView extends React.Component {
     componentDidMount() {
        
        
-        S.getPortfoliosWithFilters({}).then(res => {
+       S.getter("getPortfoliosWithFilters",{filters:this.state.filters},
+          (res)=>{ 
           if(!res.data.error){
               const portfolios =res.data.portfolios;
               this.setState({portfolios});
@@ -35,11 +39,14 @@ class PortfoliosAreaView extends React.Component {
           }else{
               const error=[res.data.error,true];
               this.setState({ error} );
-          }
-      }).catch(errore => {
-        const error=[errore,true];
-        this.setState({ error} );
-      });      
+          }},(err)=>{
+            const error=[err,true];
+            this.setState({ error} );
+            console.log(error);
+
+          });
+         
+          
     }
     
   
@@ -51,8 +58,15 @@ class PortfoliosAreaView extends React.Component {
        
       return ( 
     <Container fluid={true}>
+            <Notifications notifParent={this}/>
             <Row style={{margin: 0}}>
+
                 <Col sm={4} className="Header-Sections">
+                <Button
+                              block
+                              color="primary"
+                              onClick={() => this.state.notificationModule.notify("Test","bl",1,200)}></Button>
+>
                     <h1><Translate id="portfolios"/></h1>
                 </Col>
                 <Col sm={8} className="Header-Sections">
@@ -67,11 +81,9 @@ class PortfoliosAreaView extends React.Component {
                       return (  <CardPortfolio data={portfolio}/>);
        
                   })*/}
-                  {this.state.error[0]}                 
+                  
                 </Col>
             </Row>
-            
-        
     </Container>
 );} }
 
