@@ -51,7 +51,7 @@ class Menu extends React.Component {
 
   
   render() {
-    var notif=this.props.app.notificationModule;
+    
     const {cookies}= this.props.cookies;
         
     return (  
@@ -74,11 +74,15 @@ class Menu extends React.Component {
         </Col>
         
         <Col  xs={1} sm={1} md={1} lg={2} xl={2} >
-        <FiSearch style={{fontSize: "25px",  paddingTop:10}}/>
+        <Button               variant="link"
+                              block
+                              color="primary"
+                              onClick={() => this.props.app.state.notificationModule.notify("Test","bl",1,200)}> <FiSearch style={{fontSize: "25px",  paddingTop:10}} /></Button>
+                             
         </Col>
         {/* Logo image Col */}
         <Col  xs={2} sm={2} md={2} lg={4} xl={4} >
-          <Image className="Menu-Logo" src={logo}></Image>
+          <Image className="Menu-Logo" src={logo} ></Image>
         </Col>
         {/* Empty Col*/}
         <Col  xs={1} sm={1} md={1} lg={1} xl={1}></Col>
