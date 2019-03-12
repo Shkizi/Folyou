@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css'
+import './App.css';
 import Menu from './Components/Menu/Menu';
 import Main from './Components/Main/Main';
 import { renderToStaticMarkup } from "react-dom/server";
@@ -27,7 +27,8 @@ class App extends Component {
     
     this.state = {
       currentLanguage: "gb",
-      currentLanguageName:"English"
+      currentLanguageName:"English",
+      notificationModule:null,
     };
     if(cookies.get("folyou_language") != "undefined" && cookies.get("folyou_language") != ""){
       this.changeCurrentLanguage(cookies.get("folyou_language"),cookies.get("folyou_languageName"));
@@ -48,7 +49,7 @@ class App extends Component {
     return (
       <div>
           <Menu app={this} cookies={this.props.cookies}/>
-          <Main/>
+          <Main  app={this}  cookies={this.props.cookies}/>
           </div>
     );
   }

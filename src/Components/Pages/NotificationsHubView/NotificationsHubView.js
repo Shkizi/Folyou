@@ -1,36 +1,58 @@
 //place for all the portfolios
 
-import React from 'react'
-import { Container, Row, Table } from 'react-bootstrap';
-import { withLocalize } from "react-localize-redux";
 
-import serviceAPI from '../../../serviceAPI';
+import React, { Component } from 'react';
+import { Redirect } from 'react-router';
+import { Container, Row, Table } from 'react-bootstrap';
+import { withLocalize, Translate } from "react-localize-redux";
+import isCookieValid from '../../../cookies.js';
+import ServicesAPI from '../../../serviceAPI.js';
+
+import { withCookies } from 'react-cookie';
+import PleaseLogin from '../../Elements/PleaseLogin/PleaseLogin.js';
+
+var S = new ServicesAPI();
 
 class NotificationHubView extends React.Component {
     state = {
         notifications:[],
-        error:{},
+        error:false,
+        redirect:false,
+        message:{}
       }
+      
     //request example
     componentDidMount() {
-        serviceAPI.get(`getNotificationsByUserId`, 
-          { params: {
-                idUser: '1'
-            }})
-        .then(res => {
-            if(!res.data.error){
-        const notifications = res.data.notifications;
-        console.log(res);
-        this.setState({ notifications });
-            }else{
-                const error={error:true, message:res.data.error};
-                this.setState( error );
-            }
-        })
+        const {cookies}= this.props.cookies;
+        if(isCookieValid(cookies,"folyou_userId")){
+            
+            S.getNotificationsByUserId(cookies["folyou_userId"])
+            .then(res => {
+                if(!res.data.error){
+            const notifications = res.data.notifications;
+            console.log(res);
+            this.setState({ notifications });
+                }else{
+                   var error=true;
+                    var message=res.data.error;
+                    this.setState( {error} );
+                    this.setState( {message} );
+                }
+            });
+        }else{ 
+            var error=true;
+            var message="pleaseLogin";
+            this.setState( {error} );
+            this.setState( {message} );
+        }
+        
     }
+  
     render() {
-        return (
-    <Container fluid={true}>
+        const {cookies}= this.props.cookies;
+        
+       
+           return (isCookieValid(cookies,"folyou_userId"))?(<Container fluid={true}>
         <Row style={{margin: 0}}>
         <Table responsive>
             <thead>
@@ -48,7 +70,10 @@ class NotificationHubView extends React.Component {
             
         </Row>
     </Container>
-        )}
+        ):(<PleaseLogin/>);
+        
+    }
+
 }
 
-export default withLocalize(NotificationHubView);
+export default withCookies(withLocalize(NotificationHubView));

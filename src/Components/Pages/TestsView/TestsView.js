@@ -1,9 +1,8 @@
 import React from 'react'
 import { Container, Row } from 'react-bootstrap';
 import { withLocalize } from "react-localize-redux";
-
-import serviceAPI from '../../../serviceAPI';
-
+import ServicesAPI from '../../../serviceAPI.js';
+var S = new ServicesAPI();
 
 class TestAxios extends React.Component {
     state = {
@@ -13,7 +12,7 @@ class TestAxios extends React.Component {
       }
     //request example
     componentDidMount() {
-        serviceAPI.get(`getUserById`, 
+        S.serviceAPI().get(`getUserById`, 
           { params: {
                 idUser: '1'
             }})

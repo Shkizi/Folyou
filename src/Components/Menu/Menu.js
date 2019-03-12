@@ -13,6 +13,7 @@ import { withLocalize } from "react-localize-redux";
 import { withCookies } from 'react-cookie';
 import Badge from '@material-ui/core/Badge';
 import Tabs from './Tabs';
+import isCookieValid from '../../cookies';
  
 
 class Menu extends React.Component {
@@ -50,6 +51,9 @@ class Menu extends React.Component {
 
   
   render() {
+    var notif=this.props.app.notificationModule;
+    const {cookies}= this.props.cookies;
+        
     return (  
     <>
       <Navbar className="Menu-Navbar" sticky='top'>
@@ -61,10 +65,10 @@ class Menu extends React.Component {
         </Col>
         <Col xs={1} sm={1} md={2} lg={2} xl={1} >
         
-        <Link to='/NotificationsHub' className="Menu-Navbar-Brand">
+        <Link to='/NotificationsHub' className="Menu-Navbar-Brand" >
           <Badge className={{margin: 2}} badgeContent={4} color="primary">
         <MdNotificationsActive style={{width:"25px",height:"25px"}}/>
-        <span className="sr-only">unread messages</span>
+        <span className="sr-only"><Translate id ="unreadMessages"/></span>
         </Badge>
         </Link> 
         </Col>

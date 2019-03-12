@@ -6,7 +6,8 @@ import { Container, Row, Col} from 'react-bootstrap';
 import { withLocalize } from "react-localize-redux";
 import { Translate } from "react-localize-redux";
 import jsonPortfolio from '../../Elements/Cards/CardPortfolio/CardPortfolioJSON'
-import serviceAPI from '../../../serviceAPI';
+import ServicesAPI from '../../../serviceAPI.js';
+var S = new ServicesAPI();
 
 class PortfoliosAreaView extends React.Component { 
     constructor(props, context) {
@@ -22,13 +23,8 @@ class PortfoliosAreaView extends React.Component {
 
     componentDidMount() {
        
-        serviceAPI.get(`getPortfoliosWithFilters`, 
-        { params: {
-              filters: {},
-              offset:0,
-              limit:20
-          }})
-      .then(res => {
+       
+        S.getPortfoliosWithFilters({}).then(res => {
           if(!res.data.error){
               const portfolios =res.data.portfolios;
               this.setState({portfolios});
@@ -48,14 +44,9 @@ class PortfoliosAreaView extends React.Component {
     
   
     render() {
-        var items = [];
         
         
-        this.state.portfolios.map((portfolio, i) => {
-            items.push(
-               <CardPortfolio data={portfolio}/>
-            );
-        });
+       
     
        
       return ( 
@@ -71,7 +62,11 @@ class PortfoliosAreaView extends React.Component {
                     <hr className="Hr-Sections"/>
                 </Col>
                  <Col sm={12}>
-                 {items}
+                 { /*this.state.portfolios.map((portfolio, i) => {
+           
+                      return (  <CardPortfolio data={portfolio}/>);
+       
+                  })*/}
                   {this.state.error[0]}                 
                 </Col>
             </Row>
