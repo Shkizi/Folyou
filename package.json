@@ -15,6 +15,7 @@
     "react-cookie": "^3.0.8",
     "react-dom": "^16.8.1",
     "react-icons": "^3.4.0",
+    "react-loading": "^2.0.3",
     "react-localize-redux": "^3.5.2",
     "react-notification-alert": "0.0.9",
     "react-notification-badge": "^1.4.0",

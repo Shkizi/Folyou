@@ -7,12 +7,16 @@ import { withLocalize } from "react-localize-redux";
 import gbTranslation from "./Resources/Translations/gb.json";
 import ptTranslation from "./Resources/Translations/pt.json";
 
+import ReactLoading from 'react-loading';
+
+
 import { withCookies } from 'react-cookie';
 
 class App extends Component {
   constructor(props) {
     super(props);
     const { cookies } = this.props;
+    this.state = { isLoading: true }
     this.props.initialize({
       languages: [
         { name: "English", code: "gb" },
@@ -37,6 +41,8 @@ class App extends Component {
       this.changeCurrentLanguage(this.state.currentLanguage,this.state.currentLanguageName);
     }
   }
+
+  
   changeCurrentLanguage(code,name) {
     this.setState({ currentLanguage: code,currentLanguageName:name });
     const { cookies } = this.props;
@@ -45,12 +51,34 @@ class App extends Component {
 
   }
 
+  componentDidMount() {
+    this.setState({isLoading: false})
+  }
+
+
+  loadingSection = () => (<ReactLoading type={"bars"} color={"red"} height={'20%'} width={'20%'} />)
+
+  loadingPage = () => (
+  
+    <div>     
+    <Menu app={this} cookies={this.props.cookies}/>
+    <Main  app={this}  cookies={this.props.cookies}/>
+    </div>
+    )
+
+
   render() {
+
+    this.state.isLoading ? loadingSection : loadingPage
+
     return (
-      <div>
-          <Menu app={this} cookies={this.props.cookies}/>
-          <Main  app={this}  cookies={this.props.cookies}/>
-          </div>
+
+        <div>
+
+        </div>
+
+      
+
     );
   }
 }
