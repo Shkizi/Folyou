@@ -16,7 +16,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     const { cookies } = this.props;
-    this.state = { isLoading: true }
     this.props.initialize({
       languages: [
         { name: "English", code: "gb" },
@@ -33,13 +32,8 @@ class App extends Component {
       currentLanguage: "gb",
       currentLanguageName:"English",
       notificationModule:null,
+      isLoading:true,
     };
-    if(cookies.get("folyou_language") != "undefined" && cookies.get("folyou_language") != ""){
-      this.changeCurrentLanguage(cookies.get("folyou_language"),cookies.get("folyou_languageName"));
-     
-    }else{
-      this.changeCurrentLanguage(this.state.currentLanguage,this.state.currentLanguageName);
-    }
   }
 
   
@@ -52,29 +46,37 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({isLoading: false})
+    const { cookies } = this.props;
+  
+    if(cookies.get("folyou_language") != "undefined" && cookies.get("folyou_language") != ""){
+      this.changeCurrentLanguage(cookies.get("folyou_language"),cookies.get("folyou_languageName"));
+     
+    }else{
+      this.changeCurrentLanguage(this.state.currentLanguage,this.state.currentLanguageName);
+    }
+    setTimeout(()=>{ this.setState({isLoading: false}) }, 3000);//time delay for the loading
+    
   }
 
 
-  loadingSection = () => (<ReactLoading type={"bars"} color={"red"} height={'20%'} width={'20%'} />)
+  loadingSection = () => {return(<ReactLoading type={"bars"} color={"red"} height={'20%'} width={'20%'} />)}
 
-  loadingPage = () => (
+  loadingPage = () => {return(
   
     <div>     
     <Menu app={this} cookies={this.props.cookies}/>
-    <Main  app={this}  cookies={this.props.cookies}/>
+    <Main app={this} cookies={this.props.cookies}/>
     </div>
-    )
+    )}
 
 
   render() {
 
-    this.state.isLoading ? loadingSection : loadingPage
-
+    
     return (
 
         <div>
-
+          {(this.state.isLoading)?this.loadingSection():this.loadingPage()}
         </div>
 
       
