@@ -11,7 +11,8 @@ import AboutUsView from '../Pages/AboutUsView/AboutUsView';
 import ProposalView from '../Pages/ProposalView/ProposalView';
 import TalentAreaView from '../Pages/TalentAreaView/TalentAreaView';
 import TestsView from '../Pages/TestsView/TestsView';
-import { Container, Row, Col} from 'react-bootstrap';
+import Dashboard from '../Pages/DashBoardTestView/DashBoard';
+import { Container} from 'react-bootstrap';
 import Notifications from '../../Components/Elements/Notifications/Notifications';
 class Main  extends Component {
   
@@ -19,7 +20,7 @@ class Main  extends Component {
      
     return(
     <main>
-       <Container fluid={true}>
+       <Container fluid={true}  style={{marginTop:"20px"}}>
             <Notifications notifParent={this.props.app}/>
       
       <Switch>
@@ -34,6 +35,7 @@ class Main  extends Component {
         <Route exact path='/Proposal/:id'  render={(routeProps)=><ProposalView {...routeProps} app={this.props.app}/>}/>
         <Route exact path='/Portfolios'  render={(routeProps)=><PortfoliosAreaView {...routeProps} app={this.props.app}/>}/>
         <Route exact path='/Portfolio/:id'  render={(routeProps)=><PortfolioView {...routeProps} app={this.props.app}/>}/>
+        <Route exact path='/TestDashBoard'  render={(routeProps)=><Dashboard {...routeProps} app={this.props.app}/>}/>
       </Switch>
       </Container>
     </main> 

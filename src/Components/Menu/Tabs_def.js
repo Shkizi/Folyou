@@ -31,6 +31,12 @@ export default
         "page" : "TestAxios",
         "link" : "/TestAxios",
         
+    },
+    {
+        "icon" : InboxIcon,
+        "page" : "TestDashBoard",
+        "link" : "/TestDashBoard",
+        
     }
 
 ]
