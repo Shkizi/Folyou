@@ -30,6 +30,20 @@
 
 }
 
+.Menu-Search-Box  {
+    margin-bottom: 0;
+    background-color: inherit;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0px;
+}
+
+.Menu-Search-Box:focus {
+    box-shadow: none;
+    border: 0;
+    background-color: inherit;
+}
 
 .Menu-Search-Button-Icon {
     font-size: 25px;
