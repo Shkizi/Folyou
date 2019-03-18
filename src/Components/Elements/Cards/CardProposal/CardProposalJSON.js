@@ -7,7 +7,8 @@ export default
         "name" : "António José",
         "description" : "Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description ",
         "category" : "Dev",
-        "date" : "12 days ago"
+        "date" : "12 days ago",
+        "avatarUser":""
     },
     {
         "link" : "/Proposal/2",
@@ -16,6 +17,7 @@ export default
         "name" : "José Mário",
         "description" : "Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description ",
         "category" : "Dev",
-        "date" : "19 days ago"
+        "date" : "19 days ago",
+        "avatarUser":"public/anexes/profiles/Iade.jpg"
     },
 ]

@@ -4,10 +4,12 @@ export default class ServicesAPI {
 
   serviceAPI() {
     return axios.create({
-      baseURL: `http://localhost:5500/`
+      baseURL: this.baseURL()
     });
   }
-
+baseURL(){
+  return `http://localhost:5500/`;
+}
   getter(url,params,callback,callbackerr) {
       this.serviceAPI().get(url, {
       params: params

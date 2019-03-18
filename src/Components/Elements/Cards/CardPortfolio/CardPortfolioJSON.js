@@ -7,7 +7,9 @@ export default
         "name" : "Alexandre Realinho",
         "description" : "When platinum meats gold",
         "category" : "Dev",
-        "date" : "3 days ago"
+        "date" : "3 days ago",
+        "avatarImage": "public/anexes/sheets/Portfolio.png",
+        "avatarUser":"public/anexes/profiles/Iade.jpg"
     },
     {
         "link" : "/Portfolio/2",
@@ -16,7 +18,9 @@ export default
         "name" : "André Oliveira",
         "description" : "New pokemons i created with Illustrator",
         "category" : "Dev",
-        "date" : "19 days ago"
+        "date" : "19 days ago",
+        "avatarImage": "",
+        "avatarUser":""
     }
 
 ]

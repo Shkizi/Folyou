@@ -5,9 +5,11 @@ import jsonarray from './CardTalentJSON.js'
 import AvatarImage from '../../../../Resources/Images/avatar.png'
 import { MdMailOutline } from "react-icons/md";
 import {  Link } from "react-router-dom";
-
+import ServicesAPI from "../../../../serviceAPI";
+var S = new ServicesAPI();
 function CreateTalent(data) {
- 
+   const avatUser =(data.avatarUser=="")?AvatarImage:S.baseURL()+data.avatarUser;
+  
   return (
     <div className="C-Talent">
   <Link to={data.link} className="C-Talent-Link">
@@ -15,7 +17,7 @@ function CreateTalent(data) {
 
   <Card className="C-Talent-Card">
     <Card.Body className="C-Talent-Body">
-     <div className="C-Talent-Avatar"><Image src={AvatarImage} className="C-Talent-Avatar-Image"/></div>
+     <div className="C-Talent-Avatar"><Image src={avatUser} className="C-Talent-Avatar-Image"/></div>
      <div style={{minHeight: "280px", display: "block"}}>
       <Row className="C-Talent-User-Location rowCards">{data.location}</Row>
       <Row className="C-Talent-User-Name rowCards">{data.offerName}</Row>

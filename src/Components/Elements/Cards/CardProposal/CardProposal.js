@@ -3,9 +3,11 @@ import { Col, Card, Row, Image } from 'react-bootstrap';
 import './CardProposal.css'
 import jsonarray from './CardProposalJSON.js'
 import AvatarImage from '../../../../Resources/Images/avatar.png'
-
+import ServicesAPI from "../../../../serviceAPI";
+var S = new ServicesAPI();
 function CreateProposal(data) {
- 
+   const avatUser =(data.avatarUser=="")?AvatarImage:S.baseURL()+data.avatarUser;
+  
   return (
     <div className="C-Proposal">
   <a href={data.link} className="C-Proposal-Link">
@@ -13,7 +15,7 @@ function CreateProposal(data) {
 
   <Card className="C-Proposal-Card">
     <Card.Body className="C-Proposal-Body">
-     <div className="C-Proposal-Avatar"><Image src={AvatarImage} className="C-Proposal-Avatar-Image"/></div>
+     <div className="C-Proposal-Avatar"><Image src={avatUser} className="C-Proposal-Avatar-Image"/></div>
      <div style={{minHeight: "280px", display: "block"}}>
       <Row className="C-Proposal-Offer-Location rowCards">{data.location}</Row>
       <Row className="C-Proposal-Offer-Name rowCards">{data.offerName}</Row>

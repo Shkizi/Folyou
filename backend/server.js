@@ -7,7 +7,7 @@ var cors = require('cors');
 require('events').EventEmitter.defaultMaxListeners = 100;
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({extended: true})); // support encoded bodies
-
+app.use('/public', express.static(__dirname + '/public'));
 
 var whitelist = ['http://localhost:3000']
 var corsOptions = {
@@ -15,7 +15,8 @@ var corsOptions = {
     if (whitelist.indexOf(origin) !== -1) {
       callback(null, true)
     } else {
-      callback(new Error('Not allowed by CORS'))
+     // callback(new Error('Not allowed by CORS'))
+     callback(null, true)
     }
   }
 }

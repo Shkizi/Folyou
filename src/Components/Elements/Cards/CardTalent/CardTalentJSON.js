@@ -7,6 +7,7 @@ export default
         "website" : "github/alexrealinho",
         "description" : "User owner description",
         "category" : "Rising Star",
+        "avatarUser":""
     },
     {
         "link" : "/Talent/2",
@@ -15,6 +16,7 @@ export default
         "name" : "José Mário",
         "description" : "Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description ",
         "category" : "Dev",
-        "date" : "19 days ago"
+        "date" : "19 days ago",
+        "avatarUser":"public/anexes/profiles/Iade.jpg"
     },
 ]
