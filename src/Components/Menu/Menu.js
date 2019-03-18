@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Navbar, Nav, Button, Image, Row, Col } from 'react-bootstrap';
+import { Navbar, Form, Button, s, Row, Col } from 'react-bootstrap';
 import './Menu.css'
 import { IoMdMenu } from "react-icons/io";
 import {MdNotificationsActive} from "react-icons/md";
@@ -27,9 +27,14 @@ class Menu extends React.Component {
     this.handleShowTabs = this.handleShowTabs.bind(this);
     this.handleCloseTabs = this.handleCloseTabs.bind(this);
 
+    this.handleShowSearchButton = this.handleShowSearchButton.bind(this);
+    this.handleCloseSearchButton = this.handleCloseSearchButton.bind(this);
+
+
     this.state = {
       showLogin: false,
-      showTabs: false
+      showTabs: false,
+      showSearchButton: true
     };
   }
   
@@ -49,6 +54,33 @@ class Menu extends React.Component {
     this.setState({ showTabs: false});
   }
 
+  handleShowSearchButton() {
+    this.setState({ showSearchButton: true});
+  }
+
+  handleCloseSearchButton() {
+    this.setState({ showSearchButton: false});
+
+  }
+
+  searchButton = () => {return(
+            <Button               
+               variant="link"
+               color="primary"
+               className="Menu-Search-Button"
+               onClick={this.handleCloseSearchButton}>
+              <FiSearch className="Menu-Search-Button-Icon"/>
+            </Button>  
+    )}
+
+searchLine = () => {return (
+  <Form.Group as={Row} controlId="formPlaintextPassword">
+    <Col sm="10">
+      <Form.Control type="text" placeholder="Search..." />
+    </Col>
+  </Form.Group>
+)}
+
   
   render() {
     
@@ -57,43 +89,33 @@ class Menu extends React.Component {
     return (  
     <>
       <Navbar className="Menu-Navbar" sticky='top'>
+
       <Row style={{width:"100%"}}>
-        <Col xs={1} sm={1} md={2} lg={2} xl={1} >
-        <Navbar.Brand>
-           <Button onClick={this.handleShowTabs} variant="link"><IoMdMenu style={{fontSize: "25px", paddingBottom: 2}}/></Button> 
-        </Navbar.Brand>
+
+        {/* Menu button */}
+        <Col xs={11} sm={11} md={11} lg={11} xl={11}>
+        <Row>
+            <Navbar.Brand>
+              <Button  className="Menu-Navbar-Open-Button" onClick={this.handleShowTabs} variant="link"><IoMdMenu style={{fontSize: "25px", paddingBottom: 2}}/></Button> 
+            </Navbar.Brand>
+             <Link to='/NotificationsHub' className="Menu-Navbar-Brand" >
+              <Badge style={{fontSize: "25px", paddingBottom: 2}} badgeContent={4} color="primary">
+               <MdNotificationsActive style={{fontSize: "25px", paddingBottom: 2}}/>
+             <span className="sr-only"><Translate id ="unreadMessages"/></span>
+              </Badge>
+            </Link> 
+
+            {(this.state.showSearchButton) ? this.searchButton():this.searchLine()}
+        </Row>
         </Col>
-        <Col xs={1} sm={1} md={2} lg={2} xl={1} >
-        
-        <Link to='/NotificationsHub' className="Menu-Navbar-Brand" >
-          <Badge className={{margin: 2}} badgeContent={4} color="primary">
-        <MdNotificationsActive style={{width:"25px",height:"25px"}}/>
-        <span className="sr-only"><Translate id ="unreadMessages"/></span>
-        </Badge>
-        </Link> 
-        </Col>
-        
-        <Col  xs={1} sm={1} md={1} lg={2} xl={2} >
-        <Button               variant="link"
-                              block
-                              color="primary"
-                              onClick={() => this.props.app.state.notificationModule.notify("Test","bl",1,200)}> <FiSearch style={{fontSize: "25px",  paddingTop:10}} /></Button>
-                             
-        </Col>
-        {/* Logo image Col */}
-        <Col  xs={2} sm={2} md={2} lg={4} xl={4} >
-          <Image className="Menu-Logo" src={logo} ></Image>
-        </Col>
-        {/* Empty Col*/}
-        <Col  xs={1} sm={1} md={1} lg={1} xl={1}></Col>
-        
+
+
+
         {/* Login/Logout Col*/}
-        <Col  xs={5} sm={5} md={5} lg={5} xl={3} >
-          <Nav style={{float:"right"}}>    
+        <Col  xs={1} sm={1} md={1} lg={1} xl={1} style={{paddingRight: 0}} >
             <Button onClick={this.handleLoginPopUpShow} className="Menu-Login" variant="link">
               <strong><Translate id="login"/></strong>
             </Button>
-          </Nav>
         </Col>
         </Row>
       </Navbar>

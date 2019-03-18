@@ -54,7 +54,8 @@ class App extends Component {
     }else{
       this.changeCurrentLanguage(this.state.currentLanguage,this.state.currentLanguageName);
     }
-    setTimeout(()=>{ this.setState({isLoading: false}) }, 3000);//time delay for the loading
+    //setTimeout(()=>{ this.setState({isLoading: false}) }, 3000);//time delay for the loading
+    this.setState({isLoading: false});//time delay for the loading
     
   }
 

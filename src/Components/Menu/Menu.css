@@ -3,20 +3,50 @@
     border-bottom: 1px solid #E6EAEA;
 }
 
+.Menu-Navbar-Open-Button {
+    color: black;
+    border-right: 1px solid #E6EAEA;
+    padding-right: 23px;
+    padding-left: 30px; 
+}
+
+.Menu-Navbar-Open-Button:hover {
+    color: #64686A;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.Menu-Search-Button {
+    color: black;
+    margin-left: 5%;
+    padding-top: 0;
+}
+
+
+.Menu-Search-Button:hover {
+    color: #64686A;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+
+}
+
+
+.Menu-Search-Button-Icon {
+    font-size: 25px;
+}
+
 .Menu-Logo {
     
     display: block;
     margin-left: auto;
     margin-right: auto;
-    
     max-height:35px;
 }
 
 .Menu-Navbar-Brand {
     color: black;
-    border-right: 1px solid #E6EAEA;
-    padding-right: 23px;
-    font-family: "Apercu Pro";
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .Menu-Navbar-Brand:hover {
@@ -33,6 +63,8 @@
     color: black;
     background-color: inherit;
     border-color: transparent;
+    float: right;
+    padding-right: 0;
 }
 
 .Menu-Login:hover {
