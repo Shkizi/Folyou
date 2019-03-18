@@ -1,4 +1,4 @@
-var express = require('express');
+﻿var express = require('express');
 var app = express();
 const router = require('./routes/router.js') // aceder modulo
 const port = 5500 //porta de comunicação
@@ -15,8 +15,8 @@ var corsOptions = {
     if (whitelist.indexOf(origin) !== -1) {
       callback(null, true)
     } else {
-     // callback(new Error('Not allowed by CORS'))
-     callback(null, true)
+     callback(new Error('Not allowed by CORS'))
+
     }
   }
 }
