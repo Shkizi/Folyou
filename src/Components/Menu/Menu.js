@@ -75,7 +75,7 @@ class Menu extends React.Component {
 
 searchLine = () => {return (
 
-      <Form.Control type="text" placeholder="Search..." className="Menu-Search-Box" _ref={this.searchBox} />
+      <Form.Control type="text" placeholder="Search..." className="Menu-Search-Box"  />
 )}
 
   
@@ -93,7 +93,7 @@ searchLine = () => {return (
         <Col xs={11} sm={11} md={11} lg={11} xl={11}>
         <Row>
             <Navbar.Brand>
-              <Button  className="Menu-Navbar-Open-Button" onClick={this.handleShowTabs &&  this.searchBox.focus()} variant="link"><IoMdMenu style={{fontSize: "25px", paddingBottom: 2}}/></Button> 
+              <Button  className="Menu-Navbar-Open-Button" onClick={this.handleShowTabs} variant="link"><IoMdMenu style={{fontSize: "25px", paddingBottom: 2}}/></Button> 
             </Navbar.Brand>
              <Link to='/NotificationsHub' className="Menu-Navbar-Brand" >
               <Badge style={{fontSize: "25px", paddingBottom: 2}} badgeContent={4} color="primary">
