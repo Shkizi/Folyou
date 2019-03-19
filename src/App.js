@@ -54,21 +54,24 @@ class App extends Component {
     }else{
       this.changeCurrentLanguage(this.state.currentLanguage,this.state.currentLanguageName);
     }
-    //setTimeout(()=>{ this.setState({isLoading: false}) }, 3000);//time delay for the loading
+    //setTimeout(()=>{ this.setState({isLoading: false}) }, 1300);//time delay for the loading
     this.setState({isLoading: false});//time delay for the loading
-    
+    var raisenotif= (name,position,type,icony) => this.state.notificationModule.notify(name,position,type,5,icony);
+    //raisenotif("Tset","bl",1);
   }
 
 
   loadingSection = () => {return(<ReactLoading type={"bars"} color={"red"} height={'20%'} width={'20%'} />)}
 
-  loadingPage = () => {return(
+  Page = () => {return(
   
     <div>     
     <Menu app={this} cookies={this.props.cookies}/>
     <Main app={this} cookies={this.props.cookies}/>
     </div>
     )}
+
+  
 
 
   render() {
@@ -77,7 +80,7 @@ class App extends Component {
     return (
 
         <div>
-          {(this.state.isLoading)?this.loadingSection():this.loadingPage()}
+          {(this.state.isLoading)?this.loadingSection():this.Page()}
         </div>
 
       

@@ -1,13 +1,14 @@
 import React from 'react'
 import CardProposal from '../../../Components/Elements/Cards/CardProposal/CardProposal'
 import CardPortfolio from '../../Elements/Cards/CardPortfolio/CardPortfolio'
-import { Container, Row, Col} from 'react-bootstrap';
-import { withLocalize } from "react-localize-redux";
+import { Container, Row, Col, Button} from 'react-bootstrap';
+import { withLocalize, Translate } from "react-localize-redux";
 import CardTalent from '../../Elements/Cards/CardTalent/CardTalent';
 import HomeCarousel from '../../Elements/Carousel/HomeCarousel/HomeCarousel'
 import jsonPortfolio from '../../Elements/Cards/CardPortfolio/CardPortfolioJSON'
 import jsonProposal from '../../Elements/Cards/CardProposal/CardProposalJSON'
 import jsonTalent from '../../Elements/Cards/CardTalent/CardTalentJSON'
+import { IoIosArrowForward } from "react-icons/io";
 
 import './Home.css'
 
@@ -35,8 +36,8 @@ class Home extends React.Component {
 
                     <Row style={{margin: 0}}>
                      <Col sm={12} className="Header-Sections">
-                      <h1>Trending</h1>
-                      </Col>
+                         <h1 style={{marginTop: "auto", marginBottom:"auto"}}><Translate id="trending"></Translate></h1>
+                         </Col>
                       <Col sm={12}>
                       <hr className="Hr-Sections"/>
                       <Row>
@@ -52,9 +53,22 @@ class Home extends React.Component {
 
          {/* PROJECT SECTION */}
 
-         <Row style={{margin: 0}}>
+         <Row style={{margin: 0, marginTop: "3%"}}>
                      <Col sm={12} className="Header-Sections">
-                      <h1>Projects</h1>
+                    
+                        <b style={{fontFamily: "inherit",
+                        fontWeight: "500",
+                        color: "inherit",
+                        fontSize:"26px",
+                       }}><Translate id="projects" ></Translate> 
+                       <Button className="Project-View-All">
+                           <a className="Project-View-All-Text">
+                            <Translate id="see more"></Translate>
+                           </a>
+                          <IoIosArrowForward></IoIosArrowForward>
+                      </Button>
+                       </b>
+                     
                       </Col>
                       <Col sm={12}>
                       <hr className="Hr-Sections"/>
@@ -70,7 +84,7 @@ class Home extends React.Component {
 
         <Row style={{margin: 0}}>
                      <Col sm={12} className="Header-Sections">
-                      <h1>Proposals</h1>
+                         <h1 style={{marginTop: "auto", marginBottom:"auto"}}><Translate id="proposals"></Translate>  <IoIosArrowForward></IoIosArrowForward></h1>
                       </Col>
                       <Col sm={12}>
                       <hr className="Hr-Sections"/>
@@ -86,7 +100,7 @@ class Home extends React.Component {
 
         <Row style={{margin: 0}}>
                      <Col sm={12} className="Header-Sections">
-                      <h1>Rising Stars</h1>
+                         <h1 style={{marginTop: "auto", marginBottom:"auto"}}><Translate id="talents"></Translate>  <IoIosArrowForward></IoIosArrowForward></h1>
                       </Col>
                       <Col sm={12}>
                       <hr className="Hr-Sections"/>

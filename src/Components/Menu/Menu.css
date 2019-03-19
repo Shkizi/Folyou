@@ -8,6 +8,7 @@
     border-right: 1px solid #E6EAEA;
     padding-right: 23px;
     padding-left: 30px; 
+    border-radius: 0;
 }
 
 .Menu-Navbar-Open-Button:hover {
@@ -27,22 +28,39 @@
     color: #64686A;
     text-decoration: none;
     transition: color 0.3s ease-in-out;
-
 }
 
 .Menu-Search-Box  {
-    margin-bottom: 0;
+    width: 55%;
+    margin-left:10px;
+    margin-top:auto;
+    margin-bottom: auto;
     background-color: inherit;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-radius: 0px;
+    border: 0px !important;
 }
 
-.Menu-Search-Box:focus {
-    box-shadow: none;
-    border: 0;
+
+.Menu-Search-Input  {
+    margin-left:10px;
+    margin-top:auto;
+    margin-bottom: auto;
     background-color: inherit;
+    border: 0px !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom:  1px solid #64686A !important;
+    border-radius: 0;
+
+    
+}
+
+.Menu-Search-Input:focus {
+    box-shadow: none;
+    border: 0px !important;
+    background-color: inherit;
+    border-bottom:  1px solid #64686A !important;
+    border-radius: 0;
 }
 
 .Menu-Search-Button-Icon {
@@ -94,3 +112,5 @@
     border-color: transparent;
     text-decoration: none;
 }
+
+.hidden { display:none; }

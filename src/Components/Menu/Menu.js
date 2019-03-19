@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
 import { Navbar, Form, Button, s, Row, Col } from 'react-bootstrap';
 import './Menu.css'
@@ -14,7 +15,7 @@ import { withCookies } from 'react-cookie';
 import Badge from '@material-ui/core/Badge';
 import Tabs from './Tabs';
 import isCookieValid from '../../cookies';
- 
+var classNames = require('classnames');
 
 class Menu extends React.Component {
 
@@ -34,7 +35,8 @@ class Menu extends React.Component {
     this.state = {
       showLogin: false,
       showTabs: false,
-      showSearchButton: true
+      showSearchButton: true,
+      
     };
   }
   
@@ -56,29 +58,55 @@ class Menu extends React.Component {
 
   handleShowSearchButton() {
     this.setState({ showSearchButton: true});
+    
   }
 
   handleCloseSearchButton() {
     this.setState({ showSearchButton: false});
-
+    
+    
+  }
+  componentDidUpdate(){
+    if(!this.state.showSearchButton){
+      this.focusIn("searchable");
+    }
+  }
+focusIn(elem)
+{
+  let node = ReactDOM.findDOMNode(this.refs[elem]);
+  if(node && node.focus instanceof Function){
+    node.focus();
   }
 
-  searchButton = () => {return(
+}
+  searchButton = () => {
+    var STYLES =classNames({  
+      "Menu-Search-Button":true,
+      'hidden': !this.state.showSearchButton 
+    });
+    return(
             <Button               
                variant="link"
                color="primary"
-               className="Menu-Search-Button"
+               className={STYLES} 
                onClick={this.handleCloseSearchButton}>
               <FiSearch className="Menu-Search-Button-Icon"/>
             </Button>  
     )}
 
-searchLine = () => {return (
-
-      <Form.Control type="text" placeholder="Search..." className="Menu-Search-Box"  />
+searchLine = () => {
+  var STYLES =classNames({  
+    "Menu-Search-Box":true,
+    'hidden': this.state.showSearchButton 
+  });
+  return (
+  <Form.Group as={Row} className={STYLES} >
+    <Col sm="10">
+      <Form.Control as="input" type="text" className={"Menu-Search-Input"} placeholder="Search..." ref="searchable"/>
+    </Col>
+  </Form.Group>
 )}
 
-  
   render() {
     
     const {cookies}= this.props.cookies;
@@ -92,6 +120,7 @@ searchLine = () => {return (
         {/* Menu button */}
         <Col xs={11} sm={11} md={11} lg={11} xl={11}>
         <Row>
+          
             <Navbar.Brand>
               <Button  className="Menu-Navbar-Open-Button" onClick={this.handleShowTabs} variant="link"><IoMdMenu style={{fontSize: "25px", paddingBottom: 2}}/></Button> 
             </Navbar.Brand>
@@ -101,9 +130,9 @@ searchLine = () => {return (
              <span className="sr-only"><Translate id ="unreadMessages"/></span>
               </Badge>
             </Link> 
-             <Row style={{marginLeft: "5%", width: "25%"}}>
-            {(this.state.showSearchButton) ? this.searchButton():this.searchLine()}
-            </Row>
+
+          {this.searchButton()}
+            {this.searchLine()}
         </Row>
         </Col>
 

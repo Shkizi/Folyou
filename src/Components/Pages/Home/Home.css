@@ -7,3 +7,35 @@
     width: 100%;
     margin-top: 0;
   }
+
+.Project-View-All {
+    margin-bottom: 0.4%;
+    background-color: white;
+    color: #49c5b6;
+    border: none;
+    box-shadow: 0 1px 20px 0px rgba(0, 0, 0, 0.1);
+    margin-left: 1%;
+    font-size: 70%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.Project-View-All:hover {
+    background-color: rgba(230,234,234,0.5);
+    color: #49c5b6;
+}
+
+.Project-View-All:active {
+    background-color: rgba(230,234,234,0.5) !important;
+    color: #49c5b6 !important;
+}
+
+.Project-View-All:focus {
+    box-shadow: 0 1px 20px 0px rgba(0, 0, 0, 0.1) !important;
+}
+
+.Project-View-All-Text {
+    color:black !important;
+}

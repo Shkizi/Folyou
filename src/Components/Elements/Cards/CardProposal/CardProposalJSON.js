@@ -2,7 +2,7 @@ export default
 [
     {
         "link" :"/Proposal/1",
-        "offerName" : "Junior Java Devoloper",
+        "offerName" : "Junior Java Developer",
         "location" : "Cacém",
         "name" : "António José",
         "description" : "Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description Proposal description ",
