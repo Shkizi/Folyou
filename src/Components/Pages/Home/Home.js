@@ -8,18 +8,38 @@ import HomeCarousel from '../../Elements/Carousel/HomeCarousel/HomeCarousel'
 import jsonPortfolio from '../../Elements/Cards/CardPortfolio/CardPortfolioJSON'
 import jsonProposal from '../../Elements/Cards/CardProposal/CardProposalJSON'
 import jsonTalent from '../../Elements/Cards/CardTalent/CardTalentJSON'
+import CardsModal from '../../Elements/CardsModal/CardsModal.jsx'
 import { IoIosArrowForward } from "react-icons/io";
 
 import './Home.css'
 
 
 class Home extends React.Component { 
-
-  componentDidMount() {
-
-
+  constructor(props, context) {
+    super(props, context);
+   
+    this.state = {
+      showModal: false,
+      typeModal: null,
+      idModal: null,
+    };
+    this.handleModalClose = this.handleModalClose.bind(this);
+    this.handleModalShow = this.handleModalShow.bind(this);
 
   }
+  
+  handleModalClose() {
+    this.setState({ showModal: false });
+  }
+
+  handleModalShow(type, id) {
+    this.setState({ showModal: true, typeModal: type, idModal: id });
+  }
+  componentDidMount() {
+
+  }
+
+
   render() {
     return ( 
         <>
@@ -42,7 +62,7 @@ class Home extends React.Component {
                       <hr className="Hr-Sections"/>
                       <Row>
                       {jsonPortfolio.map(val =>{return(
-                        <CardPortfolio data={val} />
+                        <CardPortfolio data={val} parent={this} />
                       );})}
                       {jsonProposal.map(val =>{return(
                         <CardProposal data={val} />
@@ -60,9 +80,9 @@ class Home extends React.Component {
                         fontWeight: "500",
                         color: "inherit",
                         fontSize:"26px",
-                       }}><Translate id="projects" ></Translate> 
-                       <Button className="Project-View-All">
-                           <a className="Project-View-All-Text">
+                       }}><Translate id="latest projects" ></Translate> 
+                       <Button className="Button-View-All">
+                           <a className="Button-View-All-Text">
                             <Translate id="see more"></Translate>
                            </a>
                           <IoIosArrowForward></IoIosArrowForward>
@@ -82,10 +102,21 @@ class Home extends React.Component {
 
         {/* PROPONENT SECTION*/}
 
-        <Row style={{margin: 0}}>
+        <Row style={{margin: 0, marginTop: "3%"}}>
                      <Col sm={12} className="Header-Sections">
-                         <h1 style={{marginTop: "auto", marginBottom:"auto"}}><Translate id="proposals"></Translate>  <IoIosArrowForward></IoIosArrowForward></h1>
-                      </Col>
+                     <b style={{fontFamily: "inherit",
+                        fontWeight: "500",
+                        color: "inherit",
+                        fontSize:"26px",
+                       }}><Translate id="latest proposals" ></Translate> 
+                       <Button className="Button-View-All">
+                           <a className="Button-View-All-Text">
+                            <Translate id="see more"></Translate>
+                           </a>
+                          <IoIosArrowForward></IoIosArrowForward>
+                      </Button>
+                       </b>
+                                           </Col>
                       <Col sm={12}>
                       <hr className="Hr-Sections"/>
                       <Row>
@@ -98,10 +129,21 @@ class Home extends React.Component {
 
         {/* TALENT SECTION */}
 
-        <Row style={{margin: 0}}>
+        <Row style={{margin: 0, marginTop: "3%"}}>
                      <Col sm={12} className="Header-Sections">
-                         <h1 style={{marginTop: "auto", marginBottom:"auto"}}><Translate id="talents"></Translate>  <IoIosArrowForward></IoIosArrowForward></h1>
-                      </Col>
+                     <b style={{fontFamily: "inherit",
+                        fontWeight: "500",
+                        color: "inherit",
+                        fontSize:"26px",
+                       }}><Translate id="latest rising stars" ></Translate> 
+                       <Button className="Button-View-All">
+                           <a className="Button-View-All-Text">
+                            <Translate id="see more"></Translate>
+                           </a>
+                          <IoIosArrowForward></IoIosArrowForward>
+                      </Button>
+                       </b>
+                                           </Col>
                       <Col sm={12}>
                       <hr className="Hr-Sections"/>
                       <Row>
@@ -111,6 +153,8 @@ class Home extends React.Component {
                       </Row>
                       </Col>
                     </Row>
+
+                    <CardsModal parent={this} closer={this.handleModalClose}/>
 
               
         </>

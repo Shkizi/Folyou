@@ -28,6 +28,7 @@
     color: black;
     text-decoration: none;
     transition: color 0.3s ease-in-out; 
+    cursor: pointer;
 }
 
 .C-Portfolio-Card {
@@ -51,6 +52,7 @@
     max-height: inherit;
     border-top-left-radius: .25rem;
     border-top-right-radius: .25rem;
+    height: 246px;
 }
 
 .C-Portfolio-Sheet-Name {

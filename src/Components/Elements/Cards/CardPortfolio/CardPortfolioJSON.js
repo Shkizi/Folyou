@@ -2,6 +2,7 @@ export default
 [
     {
         "link" : "/Portfolio/1",
+        "id":"1",
         "sheetName" : "Platinum Project",
         "location" : "Cacém",
         "name" : "Alexandre Realinho",
@@ -13,6 +14,7 @@ export default
     },
     {
         "link" : "/Portfolio/2",
+        "id":"2",
         "sheetName" : "Pokemon Creatures",
         "location" : "Madagascar",
         "name" : "André Oliveira",

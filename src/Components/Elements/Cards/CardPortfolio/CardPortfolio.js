@@ -4,12 +4,15 @@ import './CardPortfolio.css';
 import AvatarImage from '../../../../Resources/Images/avatar.png';
 import ServicesAPI from "../../../../serviceAPI";
 var S = new ServicesAPI();
-function CreatePortfolio(data) {
+function CreatePortfolio(props) {
+  var data= props.data;
+  var parent = props.parent;
+  
    const avatImage =(data.avatarImage=="")?AvatarImage:S.baseURL()+data.avatarImage;
    const avatUser =(data.avatarUser=="")?AvatarImage:S.baseURL()+data.avatarUser;
   return (
-    <div className="C-Portfolio">
-  <a href={data.link} className="C-Portfolio-Link">
+    <div className="C-Portfolio" onClick={() => {parent.handleModalShow("portfolioSheet",data.id)}}>
+  < span id={data.link} className="C-Portfolio-Link" >
 
 
   <Card className="C-Portfolio-Card">
@@ -25,9 +28,8 @@ function CreatePortfolio(data) {
       <Image src={avatUser} className="C-Portfolio-Footer-Avatar-Image"></Image>
       <div  className="C-Portfolio-Footer-Name">By {data.name}</div>
     </Card.Footer>
-   
    </Card>
-   </a>
+   </span>
  </div>
   )
 }
@@ -38,7 +40,7 @@ class CardPortfolio extends React.Component {
     return ( 
    
       <Col xs={12} sm={6} md={6} lg={4} xl={3}>
-        {CreatePortfolio(this.props.data)}
+        {CreatePortfolio(this.props)}
        </Col>
     );} }
 export default CardPortfolio;
