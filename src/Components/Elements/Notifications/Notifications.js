@@ -41,7 +41,7 @@ class Notifications extends React.Component {
       ),
       type: type,
       icon: icony||"tim-icons icon-bell-55",
-      autoDismiss: duration||7
+      autoDismiss: duration||5
     };
     this.refs.notificationAlert.notificationAlert(options);
   };
