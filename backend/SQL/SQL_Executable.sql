@@ -31,28 +31,10 @@ CREATE TABLE IF NOT EXISTS `folyou`.`User` (
   `languageUser` VARCHAR(5) NOT NULL DEFAULT 'pt',
   `isActivated` TINYINT NOT NULL DEFAULT 1,
   `createdTimestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `imageUser` VARCHAR(100) NULL,
+  `descriptionUser` VARCHAR(500) NULL,
   PRIMARY KEY (`idUser`),
   UNIQUE INDEX `nameUser_UNIQUE` (`nameUser` ASC),
   UNIQUE INDEX `emailUser_UNIQUE` (`emailUser` ASC))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `folyou`.`Portfolio`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `folyou`.`Portfolio` ;
-
-CREATE TABLE IF NOT EXISTS `folyou`.`Portfolio` (
-  `idPortfolio` INT NOT NULL,
-  `User_idUser` INT NOT NULL,
-  PRIMARY KEY (`idPortfolio`, `User_idUser`),
-  INDEX `fk_Portfolio_User1_idx` (`User_idUser` ASC),
-  CONSTRAINT `fk_Portfolio_User1`
-    FOREIGN KEY (`User_idUser`)
-    REFERENCES `folyou`.`User` (`idUser`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -171,6 +153,7 @@ CREATE TABLE IF NOT EXISTS `folyou`.`TalentArea` (
   `isVisible` TINYINT NULL,
   `User_idUser` INT NOT NULL,
   `Category_idCategory` INT NOT NULL,
+  `timestamp` TIMESTAMP NULL,
   PRIMARY KEY (`idTalentArea`, `User_idUser`, `Category_idCategory`),
   INDEX `fk_TalentArea_User1_idx` (`User_idUser` ASC),
   INDEX `fk_TalentArea_ProposalCategory1_idx` (`Category_idCategory` ASC),
@@ -188,25 +171,27 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `folyou`.`SheetPortfolio`
+-- Table `folyou`.`Portfolio`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `folyou`.`SheetPortfolio` ;
+DROP TABLE IF EXISTS `folyou`.`Portfolio` ;
 
-CREATE TABLE IF NOT EXISTS `folyou`.`SheetPortfolio` (
-  `idSheetPortfolio` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `folyou`.`Portfolio` (
+  `idPortfolio` INT NOT NULL,
   `Sheet_idSheet` INT NOT NULL,
-  `Portfolio_idPortfolio` INT NOT NULL,
-  PRIMARY KEY (`idSheetPortfolio`, `Sheet_idSheet`, `Portfolio_idPortfolio`),
+  `User_idUser` INT NOT NULL,
+  `isVisible` TINYINT NULL,
+  `wasEliminated` TINYINT NULL,
+  PRIMARY KEY (`idPortfolio`, `Sheet_idSheet`, `User_idUser`),
   INDEX `fk_SheetPortfolio_Sheet1_idx` (`Sheet_idSheet` ASC),
-  INDEX `fk_SheetPortfolio_Portfolio1_idx` (`Portfolio_idPortfolio` ASC),
+  INDEX `fk_Portfolio_User1_idx` (`User_idUser` ASC),
   CONSTRAINT `fk_SheetPortfolio_Sheet1`
     FOREIGN KEY (`Sheet_idSheet`)
     REFERENCES `folyou`.`Sheet` (`idSheet`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_SheetPortfolio_Portfolio1`
-    FOREIGN KEY (`Portfolio_idPortfolio`)
-    REFERENCES `folyou`.`Portfolio` (`idPortfolio`)
+  CONSTRAINT `fk_Portfolio_User1`
+    FOREIGN KEY (`User_idUser`)
+    REFERENCES `folyou`.`User` (`idUser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -389,9 +374,11 @@ CREATE TABLE IF NOT EXISTS `folyou`.`Anexes` (
   `path` VARCHAR(256) NOT NULL,
   `Proposal_idProposal` INT NULL DEFAULT NULL,
   `Sheet_idSheet` INT NULL DEFAULT NULL,
-  PRIMARY KEY (`idAnexes`, `Proposal_idProposal`, `Sheet_idSheet`),
+  `User_idUser` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`idAnexes`),
   INDEX `fk_Anexes_Proposal1_idx` (`Proposal_idProposal` ASC),
   INDEX `fk_Anexes_Sheet1_idx` (`Sheet_idSheet` ASC),
+  INDEX `fk_Anexes_User1_idx` (`User_idUser` ASC),
   CONSTRAINT `fk_Anexes_Proposal1`
     FOREIGN KEY (`Proposal_idProposal`)
     REFERENCES `folyou`.`Proposal` (`idProposal`)
@@ -400,6 +387,11 @@ CREATE TABLE IF NOT EXISTS `folyou`.`Anexes` (
   CONSTRAINT `fk_Anexes_Sheet1`
     FOREIGN KEY (`Sheet_idSheet`)
     REFERENCES `folyou`.`Sheet` (`idSheet`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Anexes_User1`
+    FOREIGN KEY (`User_idUser`)
+    REFERENCES `folyou`.`User` (`idUser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -510,7 +502,7 @@ CREATE TABLE IF NOT EXISTS `folyou`.`Iteraction` (
   `Sheet_idSheet` INT NOT NULL,
   `timestamp` TIMESTAMP NOT NULL,
   `InterationType_idInterationType` INT NOT NULL,
-  PRIMARY KEY (`idIteraction`, `User_idUser`, `TalentArea_idTalentArea`, `Proposal_idProposal`, `Sheet_idSheet`, `InterationType_idInterationType`),
+  PRIMARY KEY (`idIteraction`),
   INDEX `fk_Iteraction_User1_idx` (`User_idUser` ASC),
   INDEX `fk_Iteraction_TalentArea1_idx` (`TalentArea_idTalentArea` ASC),
   INDEX `fk_Iteraction_Proposal1_idx` (`Proposal_idProposal` ASC),
@@ -604,29 +596,39 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `folyou`.`Fault`
+-- Table `folyou`.`ContestationState`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `folyou`.`Fault` ;
+DROP TABLE IF EXISTS `folyou`.`ContestationState` ;
 
-CREATE TABLE IF NOT EXISTS `folyou`.`Fault` (
+CREATE TABLE IF NOT EXISTS `folyou`.`ContestationState` (
+  `idContestationState` INT NOT NULL,
+  `valueContestationState` VARCHAR(45) NULL,
+  PRIMARY KEY (`idContestationState`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `folyou`.`Contestation`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `folyou`.`Contestation` ;
+
+CREATE TABLE IF NOT EXISTS `folyou`.`Contestation` (
   `idFault` INT NOT NULL AUTO_INCREMENT,
-  `User_idUser` INT NOT NULL,
   `Proposal_idProposal` INT NULL,
   `Sheet_idSheet` INT NULL,
   `Application_idApplication` INT NULL,
-  PRIMARY KEY (`idFault`),
+  `textJustification` VARCHAR(1000) NULL,
+  `User_idUser` INT NOT NULL,
+  `ContestationState_idContestationState` INT NOT NULL,
+  PRIMARY KEY (`idFault`, `User_idUser`, `ContestationState_idContestationState`),
   INDEX `fk_Fault_Proposal1_idx` (`Proposal_idProposal` ASC),
-  INDEX `fk_Fault_User1_idx` (`User_idUser` ASC),
   INDEX `fk_Fault_Sheet1_idx` (`Sheet_idSheet` ASC),
   INDEX `fk_Fault_Application1_idx` (`Application_idApplication` ASC),
+  INDEX `fk_Contestation_User1_idx` (`User_idUser` ASC),
+  INDEX `fk_Contestation_ContestationState1_idx` (`ContestationState_idContestationState` ASC),
   CONSTRAINT `fk_Fault_Proposal1`
     FOREIGN KEY (`Proposal_idProposal`)
     REFERENCES `folyou`.`Proposal` (`idProposal`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Fault_User1`
-    FOREIGN KEY (`User_idUser`)
-    REFERENCES `folyou`.`User` (`idUser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Fault_Sheet1`
@@ -637,6 +639,16 @@ CREATE TABLE IF NOT EXISTS `folyou`.`Fault` (
   CONSTRAINT `fk_Fault_Application1`
     FOREIGN KEY (`Application_idApplication`)
     REFERENCES `folyou`.`Application` (`idApplication`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Contestation_User1`
+    FOREIGN KEY (`User_idUser`)
+    REFERENCES `folyou`.`User` (`idUser`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Contestation_ContestationState1`
+    FOREIGN KEY (`ContestationState_idContestationState`)
+    REFERENCES `folyou`.`ContestationState` (`idContestationState`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -649,6 +661,8 @@ DROP TABLE IF EXISTS `folyou`.`Badge` ;
 
 CREATE TABLE IF NOT EXISTS `folyou`.`Badge` (
   `idBadge` INT NOT NULL,
+  `valueBadge` VARCHAR(50) NOT NULL,
+  `descriptionBadge` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`idBadge`))
 ENGINE = InnoDB;
 
@@ -687,6 +701,7 @@ CREATE TABLE IF NOT EXISTS `folyou`.`BadgeUser` (
   `idBadgeUser` INT NOT NULL AUTO_INCREMENT,
   `Badge_idBadge` INT NOT NULL,
   `User_idUser` INT NOT NULL,
+  `timestamp` TIMESTAMP NOT NULL,
   PRIMARY KEY (`idBadgeUser`, `Badge_idBadge`, `User_idUser`),
   INDEX `fk_BadgeUser_Badge1_idx` (`Badge_idBadge` ASC),
   INDEX `fk_BadgeUser_User1_idx` (`User_idUser` ASC),
@@ -703,6 +718,32 @@ CREATE TABLE IF NOT EXISTS `folyou`.`BadgeUser` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `folyou`.`HistoryContestationState`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `folyou`.`HistoryContestationState` ;
+
+CREATE TABLE IF NOT EXISTS `folyou`.`HistoryContestationState` (
+  `idHistoryContestationState` INT NOT NULL,
+  `ContestationState_idContestationState` INT NOT NULL,
+  `Contestation_idFault` INT NOT NULL,
+  `textJustification` VARCHAR(500) NOT NULL,
+  PRIMARY KEY (`idHistoryContestationState`, `ContestationState_idContestationState`, `Contestation_idFault`),
+  INDEX `fk_HistoryContestationState_ContestationState1_idx` (`ContestationState_idContestationState` ASC),
+  INDEX `fk_HistoryContestationState_Contestation1_idx` (`Contestation_idFault` ASC),
+  CONSTRAINT `fk_HistoryContestationState_ContestationState1`
+    FOREIGN KEY (`ContestationState_idContestationState`)
+    REFERENCES `folyou`.`ContestationState` (`idContestationState`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_HistoryContestationState_Contestation1`
+    FOREIGN KEY (`Contestation_idFault`)
+    REFERENCES `folyou`.`Contestation` (`idFault`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
@@ -712,7 +753,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `folyou`;
-INSERT INTO `folyou`.`User` (`idUser`, `nameUser`, `emailUser`, `passwordUser`, `isAdmin`, `countryUser`, `regionUser`, `languageUser`, `isActivated`, `createdTimestamp`, `imageUser`) VALUES (1, 'André Oliveira', 'alexrealinho@gmail.com', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 1, 'pt', 'Lisboa', 'pt', 1, 'CURRENT_TIMESTAMP', '');
+INSERT INTO `folyou`.`User` (`idUser`, `nameUser`, `emailUser`, `passwordUser`, `isAdmin`, `countryUser`, `regionUser`, `languageUser`, `isActivated`, `createdTimestamp`, `descriptionUser`) VALUES (1, 'André Oliveira', 'andre@outlook.com', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 1, 'pt', 'Lisboa', 'pt', 1, 'CURRENT_TIMESTAMP', 'Pessoa com muitos Problemas');
 
 COMMIT;
 
