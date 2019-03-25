@@ -753,7 +753,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `folyou`;
-INSERT INTO `folyou`.`User` (`idUser`, `nameUser`, `emailUser`, `passwordUser`, `isAdmin`, `countryUser`, `regionUser`, `languageUser`, `isActivated`, `createdTimestamp`, `descriptionUser`) VALUES (1, 'André Oliveira', 'andre@outlook.com', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 1, 'pt', 'Lisboa', 'pt', 1, 'CURRENT_TIMESTAMP', 'Pessoa com muitos Problemas');
+INSERT INTO `folyou`.`User` (`idUser`, `nameUser`, `emailUser`, `passwordUser`, `isAdmin`, `countryUser`, `regionUser`, `languageUser`, `isActivated`, `createdTimestamp`, `descriptionUser`) VALUES (1, 'André Oliveira', 'andre@outlook.com', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 1, 'pt', 'Lisboa', 'pt', 1, DEFAULT, 'Pessoa com muitos Problemas');
 
 COMMIT;
 
