@@ -744,6 +744,54 @@ CREATE TABLE IF NOT EXISTS `folyou`.`HistoryContestationState` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `folyou`.`Notification`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `folyou`.`Notification` ;
+
+CREATE TABLE IF NOT EXISTS `folyou`.`Notification` (
+  `idNotification` INT NOT NULL,
+  `typeNotification` VARCHAR(45) NOT NULL,
+  `viewed` TINYINT NOT NULL,
+  `valueText` TEXT NOT NULL,
+  `User_idUser` INT NOT NULL,
+  PRIMARY KEY (`idNotification`, `User_idUser`),
+  INDEX `fk_Notification_User1_idx` (`User_idUser` ASC),
+  CONSTRAINT `fk_Notification_User1`
+    FOREIGN KEY (`User_idUser`)
+    REFERENCES `folyou`.`User` (`idUser`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `folyou`.`Message`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `folyou`.`Message` ;
+
+CREATE TABLE IF NOT EXISTS `folyou`.`Message` (
+  `idMessage` INT NOT NULL,
+  `viewed` TINYINT NULL,
+  `valueText` TEXT NOT NULL,
+  `User_idUser` INT NOT NULL,
+  `User_idUser1` INT NOT NULL,
+  PRIMARY KEY (`idMessage`, `User_idUser`, `User_idUser1`),
+  INDEX `fk_Message_User1_idx` (`User_idUser` ASC),
+  INDEX `fk_Message_User2_idx` (`User_idUser1` ASC),
+  CONSTRAINT `fk_Message_User1`
+    FOREIGN KEY (`User_idUser`)
+    REFERENCES `folyou`.`User` (`idUser`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Message_User2`
+    FOREIGN KEY (`User_idUser1`)
+    REFERENCES `folyou`.`User` (`idUser`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
