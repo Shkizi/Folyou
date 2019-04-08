@@ -12,6 +12,7 @@ import ProposalView from '../Pages/ProposalView/ProposalView';
 import TalentAreaView from '../Pages/TalentAreaView/TalentAreaView';
 import TestsView from '../Pages/TestsView/TestsView';
 import Dashboard from '../Pages/DashBoardTestView/DashBoard';
+import Profile from '../Pages/ProfileView/Profile';
 import { Container} from 'react-bootstrap';
 import Notifications from '../../Components/Elements/Notifications/Notifications';
 class Main  extends Component {
@@ -36,6 +37,7 @@ class Main  extends Component {
         <Route exact path='/Portfolios'  render={(routeProps)=><PortfoliosAreaView {...routeProps} app={this.props.app}/>}/>
         <Route exact path='/Portfolio/:id'  render={(routeProps)=><PortfolioView {...routeProps} app={this.props.app}/>}/>
         <Route exact path='/TestDashBoard'  render={(routeProps)=><Dashboard {...routeProps} app={this.props.app}/>}/>
+        <Route exact path='/Profile/:id' render ={(routeProps)=><Profile {...routeProps} app={this.props.app}/>}/>
       </Switch>
       </Container>
     </main> 

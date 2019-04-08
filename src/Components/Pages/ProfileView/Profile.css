@@ -1,0 +1,34 @@
+.Profile-Header-Card {
+    display: flex;
+    background-color: white;
+    height: 20vh;
+    overflow: hidden;
+    padding: 1%;
+   
+}
+
+.Profile-Header-Country {
+    background-color: blue;
+    width: 20px;
+    height: 20px;
+}
+
+
+.Profile-Card-Body {
+    margin: auto;
+}
+
+.Profile-Header-Avatar {
+    background-color: red;
+    width: 20px;
+    height: 20px;
+
+}
+
+.Profile-Header-Username{
+    font-weight: bold;
+}
+
+.Profile-Menu-Card {
+    background-color: white;
+}

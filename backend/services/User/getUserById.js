@@ -22,12 +22,12 @@ function getUserById(req, res,next) {
             var isAdmin = row.isAdmin;
             var countryUser = row.countryUser;
             var regionUser = row.regionUser;
-            var addressUser = row.addressUser;
             var languageUser = row.languageUser;
             var isActivated = row.isActivated;
             var createdTimestamp = row.createdTimestamp;
+            var descriptionUser = row.descriptionUser;
 
-            let user = new User(idUser, nameUser, emailUser, passwordUser, isAdmin, countryUser, regionUser, addressUser, languageUser, isActivated, createdTimestamp);
+            let user = new User(idUser, nameUser, emailUser, passwordUser, isAdmin, countryUser, regionUser, languageUser, isActivated, createdTimestamp, descriptionUser);
         
             res.send({error: false, user: user});     
             

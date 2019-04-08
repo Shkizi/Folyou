@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `folyou`.`User` (
   `emailUser` VARCHAR(100) NOT NULL,
   `passwordUser` VARCHAR(256) NOT NULL,
   `isAdmin` TINYINT NOT NULL DEFAULT 0,
-  `countryUser` VARCHAR(5) NOT NULL DEFAULT 'pt',
+  `countryUser` VARCHAR(20) NOT NULL DEFAULT 'pt',
   `regionUser` VARCHAR(100) NULL,
   `languageUser` VARCHAR(5) NOT NULL DEFAULT 'pt',
   `isActivated` TINYINT NOT NULL DEFAULT 1,
@@ -801,7 +801,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `folyou`;
-INSERT INTO `folyou`.`User` (`idUser`, `nameUser`, `emailUser`, `passwordUser`, `isAdmin`, `countryUser`, `regionUser`, `languageUser`, `isActivated`, `createdTimestamp`, `descriptionUser`) VALUES (1, 'André Oliveira', 'andre@outlook.com', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 1, 'pt', 'Lisboa', 'pt', 1, DEFAULT, 'Pessoa com muitos Problemas');
+INSERT INTO `folyou`.`User` (`idUser`, `nameUser`, `emailUser`, `passwordUser`, `isAdmin`, `countryUser`, `regionUser`, `languageUser`, `isActivated`, `createdTimestamp`, `descriptionUser`) VALUES (1, 'André Oliveira', 'andre@outlook.com', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 1, 'Portugal', 'Lisboa', 'pt', 1, DEFAULT, 'Pessoa com muitos Problemas');
 
 COMMIT;
 
