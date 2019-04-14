@@ -15,7 +15,6 @@ export default
         "link" : "/Portfolio/2",
         "id":"2",
         "sheetName" : "Como funciona a ai? ",
-        "location" : "Madagascar",
         "name" : "Manuel Letras",
         "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore",
         "category" : "Dev",
