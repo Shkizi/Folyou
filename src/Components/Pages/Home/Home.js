@@ -8,7 +8,9 @@ import HomeCarousel from '../../Elements/Carousel/HomeCarousel/HomeCarousel'
 import jsonPortfolio from '../../Elements/Cards/CardPortfolio/CardPortfolioJSON'
 import jsonProposal from '../../Elements/Cards/CardProposal/CardProposalJSON'
 import jsonTalent from '../../Elements/Cards/CardTalent/CardTalentJSON'
-import CardsModal from '../../Elements/CardsModal/CardsModal.jsx'
+import CardsModalPortfolio from '../../Elements/CardsModal/Types/CardsModalPorfolio/CardsModalPortfolio.jsx'
+//import CardsModalTalent from '../../Elements/CardsModal/Types/CardsModalTalent/CardsModalTalent.jsx'
+//import CardsModalProposal from '../../Elements/CardsModal/Types/CardsModalProposal/CardsModalProposal.jsx'
 import { IoIosArrowForward } from "react-icons/io";
 
 import './Home.css'
@@ -19,7 +21,9 @@ class Home extends React.Component {
     super(props, context);
    
     this.state = {
-      showModal: false,
+      showModalPortfolio: false,
+      showModalTalent: false,
+      showModalProposal: false,
       typeModal: null,
       idModal: null,
     };
@@ -29,11 +33,17 @@ class Home extends React.Component {
   }
   
   handleModalClose() {
-    this.setState({ showModal: false });
+    this.setState({showModalPortfolio: false});
+    this.setState({showModalTalent: false});
+    this.setState({showModalProposal: false});
   }
 
   handleModalShow(type, id) {
-    this.setState({ showModal: true, typeModal: type, idModal: id });
+    this.setState({ typeModal: type, idModal: id });
+    this.setState({showModalPortfolio: type=="portfolioSheet"});
+    this.setState({showModalTalent: type=="talentSheet"});
+    this.setState({showModalProposal: type=="proposalSheet"});
+    console.log(type, id , this.state);
   }
   componentDidMount() {
 
@@ -65,7 +75,7 @@ class Home extends React.Component {
                         <CardPortfolio data={val} parent={this} />
                       );})}
                       {jsonProposal.map(val =>{return(
-                        <CardProposal data={val} />
+                        <CardProposal data={val} parent={this}  />
                       );})}
                       </Row>
                       </Col>
@@ -154,10 +164,14 @@ class Home extends React.Component {
                       </Col>
                     </Row>
 
-                    <CardsModal parent={this} closer={this.handleModalClose}/>
+                    <CardsModalPortfolio parent={this} closer={this.handleModalClose}/>
+                    
 
               
         </>
  );} }
 
+
+ //<CardsModalTalent parent={this} closer={this.handleModalClose}/>
+ //<CardsModalProposal parent={this} closer={this.handleModalClose}/>
 export default withLocalize(Home);

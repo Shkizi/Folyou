@@ -21,12 +21,15 @@ function CreatePortfolio(props) {
      <Card.Body className="C-Portfolio-Body">
      <div style={{minHeight: "70px", display: "block"}}>
       <Row className="C-Portfolio-Sheet-Name rowCards">{data.sheetName}</Row>
+      <Row className="C-Portfolio-Location rowCards">{data.region + ', ' +data.country}</Row>
+      <Row className="C-Portfolio-Keywords rowCards">{data.keywords}</Row>
       <Row className="C-Portfolio-Description rowCards">{data.description}</Row>
      </div>
     </Card.Body>
     <Card.Footer className="C-Portfolio-Footer">
       <Image src={avatUser} className="C-Portfolio-Footer-Avatar-Image"></Image>
       <div  className="C-Portfolio-Footer-Name">By {data.name}</div>
+      <div className="C-Portfolio-Footer-Category">{data.category}</div>
     </Card.Footer>
    </Card>
    </span>

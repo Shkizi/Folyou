@@ -71,6 +71,10 @@
     padding-right: 20px;
 }
 
+.C-Portfolio-Keywords {
+    font-weight: bold;
+}
+
 
 .C-Portfolio-Footer{
     min-height: 46px;
@@ -99,6 +103,16 @@
     -webkit-box-flex: 1;
     padding-left: 10px;
     flex: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.C-Portfolio-Footer-Category {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-flex: 1;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
