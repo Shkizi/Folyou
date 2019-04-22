@@ -1,3 +1,44 @@
-.C-Proposal-Category {
-    right: 0;
+.Modal-Portfolio-Avatar {
+    height: 32px;
+    width: 32px;
+    box-sizing: inherit;
+}
+
+.Modal-Portfolio-Username {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-flex: 1;
+    padding-left: 10px;
+    flex: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.Modal-Portfolio-User-Location {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-flex: 1;
+    padding-left: 10px;
+    flex: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.Modal-Porfolio-Sheet-Category {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-flex: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.Modal-Portfolio-SheetName {
+    text-align: center;
+    font-weight: bold;
 }

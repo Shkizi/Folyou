@@ -30,27 +30,31 @@ class CardsModal extends React.Component {
       >
         <Modal.Header closeButton>
         <div>
-          <Image style={{backgroundColor: "black"}} className="C-Proposal-Avatar-Image"/>
-          {this.state.data.sheetName}
+          <Row style={{padding: "16px"}}>
+          <Image src="https://www.w3schools.com/howto/img_avatar.png" className="Modal-Portfolio-Avatar" roundedCircle />
+          <div className="Modal-Portfolio-Username">{this.state.data.name}</div>
+          </Row>
           </div>
         </Modal.Header>
-        <Modal.Body>
-        <Card>
+        <Modal.Body  style={{padding: 0}}>
+        <Card style={{backgroundColor: "#f1c40f"}}>
           <Card.Body>
-            <Row>
-              <Image style={{backgroundColor: "black"}} className="C-Proposal-Avatar-Image"/>
-              <div>Lisbon, Portugal</div>
-              <div className="C-Proposal-Category">Category</div>
+            <Row  style={{padding: "16px"}}>
+              <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Portugal.svg/255px-Flag_of_Portugal.svg.png" className="C-Proposal-Avatar-Image"/>
+              <div className="Modal-Portfolio-User-Location">{this.state.data.region + ", " + this.state.data.country}</div>
+              <div className="Modal-Porfolio-Sheet-Category">{this.state.data.category}</div>
             </Row>
+            <div className="Modal-Portfolio-SheetName">{this.state.data.sheetName}</div> 
+
           
           </Card.Body>
         </Card>
-          <h4>Centered Modal</h4>
-          <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-            ac consectetur ac, vestibulum at eros.
-          </p>
+          <Card>
+            {this.state.data.description}
+            
+          </Card>
+       
+
         </Modal.Body>
         <Modal.Footer>
         </Modal.Footer>

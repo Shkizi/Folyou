@@ -36,6 +36,7 @@ class Home extends React.Component {
     this.setState({showModalPortfolio: false});
     this.setState({showModalTalent: false});
     this.setState({showModalProposal: false});
+    console.log(this.state);
   }
 
   handleModalShow(type, id) {
@@ -45,10 +46,7 @@ class Home extends React.Component {
     this.setState({showModalProposal: type=="proposalSheet"});
     console.log(type, id , this.state);
   }
-  componentDidMount() {
-
-  }
-
+ 
 
   render() {
     return ( 
