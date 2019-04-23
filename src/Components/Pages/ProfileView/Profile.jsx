@@ -3,7 +3,7 @@ import CardProposal from '../../../Components/Elements/Cards/CardProposal/CardPr
 import CardPortfolio from '../../Elements/Cards/CardPortfolio/CardPortfolio'
 import { Card, Image, Row, Button, Col } from 'react-bootstrap';
 import { withLocalize, Translate } from "react-localize-redux";
-
+import manel from '../../../Resources/Images/manel.png'
 import './Profile.css'
 import ServicesAPI from '../../../serviceAPI.js';
 var S = new ServicesAPI();
@@ -42,48 +42,53 @@ class ProfileView extends React.Component {
         return (
             <>
                 <Card className="Profile-Header-Card">
-                    <Row style={{margin:"1%"}}>
-                        <Image className="Profile-Header-Country" />
+                    <Row className="Profile-Top-Row">
+                    <Image src="https://www.w3schools.com/howto/img_avatar.png" className="Modal-Portfolio-Avatar" roundedCircle />
                         <Card.Text className="Profile-Header-RegionCountry">
-                            {this.state.user.regionUser},{this.state.user.countryUser}
+                            {"<-- Colocar imagem do pais --> " + this.state.user.regionUser}
                         </Card.Text>
                     </Row>
 
-                    <Card.Body className="Profile-Card-Body">
-                        <Image className="Profile-Header-Avatar" />
+                    <Image src={manel} className="Profile-Avatar" roundedCircle />
+
+                    <Card.Body style={{paddingTop: "5px"}}>
                         <Card.Text className="Profile-Header-Username">
                             {this.state.user.nameUser}
                         </Card.Text>
                     </Card.Body>
                 </Card>
 
-                <Card className="Profile-Menu-Card">
                     <Row>
-                        <Col md={5}>
+                        <Col m={5}>
                         <Row>
-                            <Col md={6}>
-                            <Button variant="link">Projetos</Button>
+                            <Col m={6} style={{textAlign: "center", paddingRight:5}}>
+                            <Button className="Modal-Portfolio-Button-Categories"><Translate id="projects"></Translate></Button>
                             </Col>
-                            <Col md={6}>
-                            <Button variant="link">Sobre mim</Button>
+                            <Col m={6} style={{textAlign: "center", paddingLeft: 5, paddingRight: 5}}>
+                            <Button className="Modal-Portfolio-Button-Categories"><Translate id="proposals"></Translate></Button>
                             </Col>
                         </Row>
                         </Col>
-                        <Col md={2}>
-                        <p></p>
-                        </Col>
-                        <Col md={5}>
+
+                        <Col m={2}>
                         <Row>
-                            <Col md={6}>
-                            <Button variant="link">Estatisticas</Button>
+                            <Col style={{textAlign: "center", paddingLeft: 5, paddingRight: 5}}>
+                            <Button className="Modal-Portfolio-Button-Categories"><Translate id="dashboard"></Translate></Button>
                             </Col>
-                            <Col md={6}>
-                            <Button variant="link">Badges</Button>
+                        </Row>
+                        </Col>
+
+                        <Col m={5}>
+                        <Row>
+                            <Col m={6} style={{textAlign: "center", paddingLeft: 5, paddingRight: 5}}>
+                            <Button className="Modal-Portfolio-Button-Categories"><Translate id="about me"></Translate></Button>
+                            </Col>
+                            <Col m={6} style={{textAlign: "center", paddingLeft: 5}}>
+                            <Button className="Modal-Portfolio-Button-Categories"><Translate id="settings"></Translate></Button>
                             </Col>
                         </Row>
                         </Col>
                     </Row>
-                </Card>
             </>
         )
     }

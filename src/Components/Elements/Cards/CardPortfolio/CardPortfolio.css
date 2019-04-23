@@ -59,16 +59,17 @@
     padding-left: 0;
     font-weight: bold;
     width: 100%;
-    overflow: "visible";
+    overflow: visible;
     height: auto;
 }
 
 
 .C-Portfolio-Description {
-    height: auto;
+    height: 15vh;
     white-space: inherit;
-    overflow: visible;
+    overflow: hidden;
     padding-right: 20px;
+    text-align: justify;
 }
 
 .C-Portfolio-Keywords {

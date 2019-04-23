@@ -62,9 +62,10 @@
 }
 
 .C-Proposal-Proponent-Description {
-    height: auto;
+    height: 15vh;
     white-space: inherit;
-    overflow: visible;
+    overflow: hidden;
+    text-align: justify;
 }
 
 .C-Proposal-Avatar-Image {

@@ -1,34 +1,63 @@
+.Profile-Top-Row {
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
 .Profile-Header-Card {
     display: flex;
-    background-color: white;
+    background-color: #48dbfb;
     height: 20vh;
     overflow: hidden;
     padding: 1%;
    
 }
 
-.Profile-Header-Country {
-    background-color: blue;
-    width: 20px;
-    height: 20px;
+.Profile-Header-RegionCountry {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-flex: 1;
+    padding-left: 10px;
+    flex: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
-
-.Profile-Card-Body {
-    margin: auto;
-}
-
-.Profile-Header-Avatar {
-    background-color: red;
-    width: 20px;
-    height: 20px;
-
+.Profile-Avatar {
+    height: 55%;
+    width: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -2%;
 }
 
 .Profile-Header-Username{
+    text-align: center;
     font-weight: bold;
+    font-size: 20px;
 }
 
-.Profile-Menu-Card {
-    background-color: white;
+.Modal-Portfolio-Button-Categories {
+    background-color: inherit;
+    color: black;
+    border: none;
+    box-shadow: 0 1px 20px 0px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2%;
+    width: 100%;
+}
+
+.Modal-Portfolio-Button-Categories:hover {
+    background-color: rgba(230,234,234,0.5);
+    color:black;
+    border-color: grey;
+}
+
+.Modal-Portfolio-Button-Categories:active {
+    background-color: rgba(230,234,234,0.5) !important;
+    color:black !important;
+}
+
+.Modal-Portfolio-Button-Categories:focus {
+    box-shadow: 0 1px 20px 0px rgba(0, 0, 0, 0.1) !important;
 }

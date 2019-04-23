@@ -61,10 +61,12 @@
 }
 
 .C-Talent-User-Description {
-    height: auto;
+    height: 15vh;
     white-space: inherit;
-    overflow: visible;
+    overflow: hidden;
     flex-wrap: wrap;
+    text-align: justify;
+
 }
 
 .C-Talent-Avatar-Image {
