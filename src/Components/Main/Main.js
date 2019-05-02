@@ -5,11 +5,8 @@ import NotificationsHubView from "../Pages/NotificationsHubView/NotificationsHub
 import React, { Component } from 'react';
 import TalentSpaceView from "../Pages/TalentSpaceView/TalentSpaceView"
 import ProposalsAreaView from "../Pages/ProposalsAreaView/ProposalsAreaView"
-import PortfolioView from "../Pages/PortfolioView/PortfolioView"
 import PortfoliosAreaView from "../Pages/PortfoliosAreaView/PortfoliosAreaView"
 import AboutUsView from '../Pages/AboutUsView/AboutUsView';
-import ProposalView from '../Pages/ProposalView/ProposalView';
-import TalentAreaView from '../Pages/TalentAreaView/TalentAreaView';
 import TestsView from '../Pages/TestsView/TestsView';
 import Dashboard from '../Pages/DashBoardTestView/DashBoard';
 import Profile from '../Pages/ProfileView/Profile';
@@ -30,12 +27,9 @@ class Main  extends Component {
         <Route exact path='/TestAxios'  render={(routeProps)=><TestsView {...routeProps} app={this.props.app}/>}/>
         <Route exact path='/NotificationsHub'  render={(routeProps)=><NotificationsHubView {...routeProps} app={this.props.app}/>}/>
         <Route exact path='/Talents'  render={(routeProps)=><TalentSpaceView {...routeProps} app={this.props.app}/>}/>
-        <Route exact path='/Talent/:id'  render={(routeProps)=><TalentAreaView {...routeProps} app={this.props.app}/>}/>
         <Route exact path='/Profile'  render={(routeProps)=><TalentSpaceView {...routeProps} app={this.props.app}/>}/>
         <Route exact path='/Proposals'  render={(routeProps)=><ProposalsAreaView {...routeProps} app={this.props.app}/>}/>
-        <Route exact path='/Proposal/:id'  render={(routeProps)=><ProposalView {...routeProps} app={this.props.app}/>}/>
         <Route exact path='/Portfolios'  render={(routeProps)=><PortfoliosAreaView {...routeProps} app={this.props.app}/>}/>
-        <Route exact path='/Portfolio/:id'  render={(routeProps)=><PortfolioView {...routeProps} app={this.props.app}/>}/>
         <Route exact path='/TestDashBoard'  render={(routeProps)=><Dashboard {...routeProps} app={this.props.app}/>}/>
         <Route exact path='/Profile/:id' render ={(routeProps)=><Profile {...routeProps} app={this.props.app}/>}/>
       </Switch>

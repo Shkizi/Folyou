@@ -3,6 +3,8 @@ function router(app, express) {
 
 
 app.get("/getUserById", (req, res,next) => {  servicer.getUserById(req,res,next)});
+app.get("/getPortfolioById", (req, res,next) => {  servicer.getPortfolioById(req,res,next)});
+
 
 
 

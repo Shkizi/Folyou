@@ -24,28 +24,16 @@ class PortfoliosAreaView extends React.Component {
     
 
     componentDidMount() {
-       
-       
-       S.getter("getPortfoliosWithFilters",{filters:this.state.filters},
-          (res)=>{ 
-          if(!res.data.error){
-              const portfolios =res.data.portfolios;
-              this.setState({portfolios});
-              const error=[res.data.error,false];
-              this.setState({ error} );
-      console.log(res);
-      
-          }else{
-              const error=[res.data.error,true];
-              this.setState({ error} );
-          }},(err)=>{
-            const error=[err,true];
-            this.setState({ error} );
-            console.log(error);
-
-          });
-         
-          
+        S.getter(`getPortfolioById`, { }, (res) => {  
+               const portfolios = res.data.portfolioList;
+                console.log(res);
+                 this.setState({ portfolios: portfolios });
+         },
+       (error) => { 
+        console.log("Error do alexandre", error);
+              this.setState({ error: {message:error,error:true} });
+        });
+        console.log("finish Mounting");
     }
     
   
@@ -59,12 +47,13 @@ class PortfoliosAreaView extends React.Component {
             <Row style={{margin: 0}}>
 
                 <Col sm={4} className="Header-Sections">
+                {/* BOTAO PARA NOTIFICACOES 
                 <Button
                               block
                               color="primary"
-                              onClick={() => this.props.app.state.notificationModule.notify("Test","bl",1,200)}></Button>
->
-                    <h1><Translate id="portfolios"/></h1>
+                              onClick={() => this.props.app.state.notificationModule.notify("Test","bl",1,200)}></Button> */}
+
+                    <h1><Translate id="projects"/></h1>
                 </Col>
                 <Col sm={8} className="Header-Sections">
                 <h1>Filters Here(Country, Region Search, Keyword[Cat] Search, Per page drop )</h1>
@@ -73,11 +62,11 @@ class PortfoliosAreaView extends React.Component {
                     <hr className="Hr-Sections"/>
                 </Col>
                  <Col sm={12}>
-                 { /*this.state.portfolios.map((portfolio, i) => {
-           
+                 { this.state.portfolios.map((portfolio, i) => {
+                        console.log(portfolio);
                       return (  <CardPortfolio data={portfolio}/>);
        
-                  })*/}
+                  })}
                   
                 </Col>
             </Row>

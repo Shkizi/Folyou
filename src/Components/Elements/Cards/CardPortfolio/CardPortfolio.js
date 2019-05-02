@@ -17,13 +17,13 @@ function CreatePortfolio(props) {
 
   <Card className="C-Portfolio-Card">
 
-     <div className="C-Portfolio-Sheet"><Image src={avatImage} className="C-Portfolio-Sheet-Image"/></div>
+     <div className="C-Portfolio-Sheet"><Image src={S.baseURL()+"public/anexes/sheets/"+data.defaultImageSheet} className="C-Portfolio-Sheet-Image"/></div>
      <Card.Body className="C-Portfolio-Body">
      <div style={{minHeight: "70px", display: "block"}}>
-      <Row className="C-Portfolio-Sheet-Name rowCards">{data.sheetName}</Row>
-      <Row className="C-Portfolio-Location rowCards">{data.region + ', ' +data.country}</Row>
+      <Row className="C-Portfolio-Sheet-Name rowCards">{data.nameSheet}</Row>
+      <Row className="C-Portfolio-Location rowCards">{data.regionSheet + ', ' +data.countrySheet}</Row>
       <Row className="C-Portfolio-Keywords rowCards">{data.keywords}</Row>
-      <Row className="C-Portfolio-Description rowCards">{data.description}</Row>
+      <Row className="C-Portfolio-Description rowCards">{data.descriptionSheet}</Row>
      </div>
     </Card.Body>
     <Card.Footer className="C-Portfolio-Footer">

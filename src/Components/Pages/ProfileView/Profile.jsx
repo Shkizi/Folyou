@@ -21,10 +21,7 @@ class ProfileView extends React.Component {
     componentDidMount() {
         S.serviceAPI().get(`getUserById`, 
           { params: {
-                idUser: '1',
-                nameUser: '',
-                countryUser: '',
-                regionUser: ''
+                idUser: '1'
             }})
         .then(res => {
             if(!res.data.error){

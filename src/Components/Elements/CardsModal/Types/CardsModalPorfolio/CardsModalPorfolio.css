@@ -33,6 +33,7 @@
     -webkit-box-align: center;
     align-items: center;
     -webkit-box-flex: 1;
+    letter-spacing: 0.5px;
 }
 
 .Modal-Portfolio-SheetName {

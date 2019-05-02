@@ -44,10 +44,10 @@ class CardsModal extends React.Component {
             <Row  style={{padding: "16px"}}>
               <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Portugal.svg/255px-Flag_of_Portugal.svg.png" className="C-Proposal-Avatar-Image"/>
               <div className="Modal-Portfolio-User-Location">{this.state.data.region + ", " + this.state.data.country}</div>
-              <div className="Modal-Portfolio-Sheet-Category"><b><Translate id="category profile"></Translate></b>{"" + this.state.data.category}</div>
+              <div className="Modal-Portfolio-Sheet-Category"><b><Translate id="category profile"></Translate></b>{"  " + this.state.data.category}</div>
             </Row>
             <div className="Modal-Portfolio-SheetName">{this.state.data.sheetName}</div> 
-            <div className="Modal-Portfolio-Keywords"><b><Translate id="keywords profile"></Translate></b>{this.state.data.keywords}</div>
+            <div className="Modal-Portfolio-Keywords"><b><Translate id="keywords profile"></Translate> </b>{this.state.data.keywords}</div>
 
           
           </Card.Body>

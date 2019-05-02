@@ -5,15 +5,16 @@ import { Container, Row, Col, Button} from 'react-bootstrap';
 import { withLocalize, Translate } from "react-localize-redux";
 import CardTalent from '../../Elements/Cards/CardTalent/CardTalent';
 import HomeCarousel from '../../Elements/Carousel/HomeCarousel/HomeCarousel'
-import jsonPortfolio from '../../Elements/Cards/CardPortfolio/CardPortfolioJSON'
 import jsonProposal from '../../Elements/Cards/CardProposal/CardProposalJSON'
 import jsonTalent from '../../Elements/Cards/CardTalent/CardTalentJSON'
 import CardsModalPortfolio from '../../Elements/CardsModal/Types/CardsModalPorfolio/CardsModalPortfolio.jsx'
 //import CardsModalTalent from '../../Elements/CardsModal/Types/CardsModalTalent/CardsModalTalent.jsx'
 //import CardsModalProposal from '../../Elements/CardsModal/Types/CardsModalProposal/CardsModalProposal.jsx'
 import { IoIosArrowForward } from "react-icons/io";
-
 import './Home.css'
+import ServicesAPI from '../../../serviceAPI.js';
+var S = new ServicesAPI();
+
 
 
 class Home extends React.Component { 
@@ -46,6 +47,23 @@ class Home extends React.Component {
     this.setState({showModalProposal: type=="proposalSheet"});
     console.log(type, id , this.state);
   }
+
+  componentDidMount() {
+    S.serviceAPI().get(`getUserById`, 
+      { params: {
+            idUser: '1'
+        }})
+    .then(res => {
+        if(!res.data.error){
+    const user = res.data.user;
+    console.log(res);
+    this.setState({ user });
+        }else{
+            const error={message:res.data.error,error:true};
+            this.setState( error );
+        }
+    })
+}
  
 
   render() {
