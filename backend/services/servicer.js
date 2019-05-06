@@ -7,4 +7,6 @@ module.exports.getProposalByIdRecent = require("./Proposal/getProposalByIdRecent
 
 module.exports.getTalentByIdRecent = require("./Talent/getTalentByIdRecent.js");
 
+module.exports.dbconnect = require("./dbconnect.js");
+
 

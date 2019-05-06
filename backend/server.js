@@ -3,6 +3,7 @@ var app = express();
 const router = require('./routes/router.js') // aceder modulo
 const port = 5500 //porta de comunicação
 var bodyParser = require('body-parser');
+var db = require('./services/dbconnect.js');
 var cors = require('cors');
 require('events').EventEmitter.defaultMaxListeners = 100;
 app.use(bodyParser.json()); // support json encoded bodies
@@ -38,6 +39,12 @@ router.router(app,express);
 var server = app.listen(port, function () {
    var host = server.address().address
    var port = server.address().port
-   
+   db.query("SELECT 0 FROM dual ; ", [], function (rows, error) {
+     if(error){
+      console.log("Database Error: Could not connect");
+     }else{
+      console.log("Database Connected");
+     }
+   });
    console.log("Example app listening at http://%s:%s", host, port)
 })

@@ -140,7 +140,7 @@ searchLine = () => {
 
         {/* Login/Logout Col*/}
         <Col  xs={1} sm={1} md={1} lg={1} xl={1} style={{paddingRight: 0}} >
-         <Link to='/Profile/:id'>
+         <Link to='/Profile/1'>
         <Button className="Menu-Login" variant="link">
               <strong>Avatar</strong>
             </Button>

@@ -25,10 +25,11 @@ function getTalentByIdRecent(req, res, next) {
                             e:params
                         });
                     } else {
+                        
                         rows.forEach((valuePort,indexPort,arrayPort)=>{   rows[indexPort].keywords=[]; });
                         rows.forEach((valuePort,indexPort,arrayPort)=>{    
                             rowsKeywords.forEach((value, index, array)=> {
-                                if(rows[indexPort].idTalentArea==rowsKeywords[index].Talent_idTalent){
+                                if(rows[indexPort].idTalentArea==rowsKeywords[index].Talent_idTalentArea){
                                     rows[indexPort].keywords.push(rowsKeywords[index].valueProposalKeywords);
                                 }
                                

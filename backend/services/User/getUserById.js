@@ -9,7 +9,7 @@ var crypto = require('crypto');
 function getUserById(req, res,next) {
     let params=req.query;
    
-    db.query("SELECT * FROM `User` WHERE `idUser` = ? ; ", [params.idUser], function (rows, error) {
+    db.query("SELECT * FROM `User`, `Anexes` WHERE `idUser` = ? AND `User`.`idUser`= `Anexes`.`User_idUser` ; ", [params.idUser], function (rows, error) {
           
             if(error){
                 res.send({error: true, err: error});
@@ -27,8 +27,14 @@ function getUserById(req, res,next) {
             var createdTimestamp = row.createdTimestamp;
             var descriptionUser = row.descriptionUser;
 
+           
+
             let user = new User(idUser, nameUser, emailUser, passwordUser, isAdmin, countryUser, regionUser, languageUser, isActivated, createdTimestamp, descriptionUser);
-        
+            user.anexes={
+                  idAnexes:row.idAnexes,
+                  fileName:row.fileName            
+            }
+            
             res.send({error: false, user: user});     
             
             next();
