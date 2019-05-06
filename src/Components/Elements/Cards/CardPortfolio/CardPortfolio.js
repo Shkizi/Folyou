@@ -11,7 +11,7 @@ function CreatePortfolio(props) {
    const avatImage =(data.avatarImage=="")?AvatarImage:S.baseURL()+data.avatarImage;
    const avatUser =(data.avatarUser=="")?AvatarImage:S.baseURL()+data.avatarUser;
   return (
-    <div className="C-Portfolio" onClick={() => {parent.handleModalShow("portfolioSheet",data.id)}}>
+    <div className="C-Portfolio" onClick={() => {parent.handleModalShow("portfolioSheet",data.idSheet)}}>
   < span id={data.link} className="C-Portfolio-Link" >
 
 
@@ -28,7 +28,7 @@ function CreatePortfolio(props) {
     </Card.Body>
     <Card.Footer className="C-Portfolio-Footer">
       <Image src={avatUser} className="C-Portfolio-Footer-Avatar-Image"></Image>
-      <div  className="C-Portfolio-Footer-Name">By {data.name}</div>
+      <div  className="C-Portfolio-Footer-Name">By {data.nameUser}</div>
       <div className="C-Portfolio-Footer-Category">{data.category}</div>
     </Card.Footer>
    </Card>

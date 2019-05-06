@@ -4,6 +4,12 @@
     box-sizing: inherit;
 }
 
+.Modal-Portfolio-Avatar-Country {
+    height: 32px;
+    width: 32px;
+
+}
+
 .Modal-Portfolio-Username {
     display: flex;
     -webkit-box-align: center;

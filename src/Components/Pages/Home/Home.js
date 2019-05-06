@@ -5,8 +5,6 @@ import { Container, Row, Col, Button} from 'react-bootstrap';
 import { withLocalize, Translate } from "react-localize-redux";
 import CardTalent from '../../Elements/Cards/CardTalent/CardTalent';
 import HomeCarousel from '../../Elements/Carousel/HomeCarousel/HomeCarousel'
-import jsonProposal from '../../Elements/Cards/CardProposal/CardProposalJSON'
-import jsonTalent from '../../Elements/Cards/CardTalent/CardTalentJSON'
 import CardsModalPortfolio from '../../Elements/CardsModal/Types/CardsModalPorfolio/CardsModalPortfolio.jsx'
 //import CardsModalTalent from '../../Elements/CardsModal/Types/CardsModalTalent/CardsModalTalent.jsx'
 //import CardsModalProposal from '../../Elements/CardsModal/Types/CardsModalProposal/CardsModalProposal.jsx'
@@ -22,6 +20,11 @@ class Home extends React.Component {
     super(props, context);
    
     this.state = {
+      portfolios:[],
+      talents:[],
+      proposals:[],
+      portTrending:[],
+      propTrending:[],
       showModalPortfolio: false,
       showModalTalent: false,
       showModalProposal: false,
@@ -49,21 +52,20 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    S.serviceAPI().get(`getUserById`, 
-      { params: {
-            idUser: '1'
-        }})
-    .then(res => {
-        if(!res.data.error){
-    const user = res.data.user;
-    console.log(res);
-    this.setState({ user });
-        }else{
-            const error={message:res.data.error,error:true};
-            this.setState( error );
-        }
-    })
-}
+        S.getter(`getPortfolioByIdRecent`, {
+          limit:4,
+        }, (res) => {  
+          const portfolios = res.data.portfolioList;
+          console.log(res);
+            this.setState({ portfolios: portfolios });
+      },
+      (error) => { 
+      console.log("Error do alexandre", error);
+          this.setState({ error: {message:error,error:true} });
+      });
+      console.log("finish Mounting");
+  }
+
  
 
   render() {
@@ -87,10 +89,10 @@ class Home extends React.Component {
                       <Col sm={12}>
                       <hr className="Hr-Sections"/>
                       <Row>
-                      {jsonPortfolio.map(val =>{return(
+                      {this.state.portTrending.map(val =>{return(
                         <CardPortfolio data={val} parent={this} />
                       );})}
-                      {jsonProposal.map(val =>{return(
+                      {this.state.propTrending.map(val =>{return(
                         <CardProposal data={val} parent={this}  />
                       );})}
                       </Row>
@@ -119,8 +121,8 @@ class Home extends React.Component {
                       <Col sm={12}>
                       <hr className="Hr-Sections"/>
                       <Row>
-                      {jsonPortfolio.map(val =>{return(
-                        <CardPortfolio data={val} />
+                      {this.state.portfolios.map(val =>{return(
+                        <CardPortfolio parent={this} data={val} />
                       );})}
                       </Row>
                       </Col>
@@ -146,7 +148,7 @@ class Home extends React.Component {
                       <Col sm={12}>
                       <hr className="Hr-Sections"/>
                       <Row>
-                      {jsonProposal.map(val =>{return(
+                      {this.state.proposals.map(val =>{return(
                         <CardProposal data={val} />
                       );})}
                       </Row>
@@ -173,14 +175,14 @@ class Home extends React.Component {
                       <Col sm={12}>
                       <hr className="Hr-Sections"/>
                       <Row>
-                      {jsonTalent.map(val =>{return(
+                      {this.state.talents.map(val =>{return(
                         <CardTalent data={val} />
                       );})}
                       </Row>
                       </Col>
                     </Row>
 
-                    <CardsModalPortfolio parent={this} closer={this.handleModalClose}/>
+              <CardsModalPortfolio parent={this} closer={this.handleModalClose}/>
                     
 
               

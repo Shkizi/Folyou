@@ -6,22 +6,24 @@ var crypto = require('crypto');
 //gets a user by its email and hashed password with sha256
 //example: localhost:5500/getUser?emailUser=andre@outlook.pt
 // for password use  var hash = crypto.createHash('sha256').update(params.passwordUser).digest('hex');
-function getPortfolioById(req, res, next) {
+function getPortfolioByIdRecent(req, res, next) {
     let params = req.query;
 
     db.query("SELECT * FROM `Sheet`,`Portfolio`, `Category`, `User`  WHERE `Category`.`idCategory` =`Sheet`.`Category_idCategory`"+
     " AND `User`.`idUser` = `Portfolio`.`User_idUser` "+
     "AND `Sheet`.`idSheet` = `Portfolio`.`Sheet_idSheet`"+
-    "ORDER BY `Sheet`.`createdTimestamp`",[], function (rows, error) {
+    "ORDER BY `Sheet`.`createdTimestamp` DESC LIMIT ? ; ",[parseInt(params.limit)] , function (rows, error) {
+        console.log(params);
         if (!error) {
             console.log(rows);
              db.query("SELECT * FROM `Keyword`; ",[], function (rowsKeywords, errorkey) {
                      if (errorkey && rowsKeywords == null) {
                          res.send({
                             error: true,
-                            err: "Keyword Error",
+                            err: "createdTimeStamp Error",
                             errorObj:error,
-                             rows:rows
+                            rows:rows,
+                            e:params
                         });
                     } else {
                         rows.forEach((valuePort,indexPort,arrayPort)=>{   rows[indexPort].keywords=[]; });
@@ -37,6 +39,7 @@ function getPortfolioById(req, res, next) {
                         res.send({
                             error: false,
                             portfolioList: rows
+                          
                         });
 
                         next();
@@ -46,7 +49,7 @@ function getPortfolioById(req, res, next) {
         } else {
             res.send({
                 error: true,
-                err: "Sheet Error",
+                err: "createdTimestamp Error",
                 errorObj:error,
                 rows:rows
             });
@@ -54,4 +57,4 @@ function getPortfolioById(req, res, next) {
         }
     });
 }
-module.exports = getPortfolioById;
+module.exports = getPortfolioByIdRecent;

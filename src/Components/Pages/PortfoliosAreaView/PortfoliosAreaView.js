@@ -5,7 +5,6 @@ import CardPortfolio from '../../../Components/Elements/Cards/CardPortfolio/Card
 import { Container, Row, Col} from 'react-bootstrap';
 import { withLocalize } from "react-localize-redux";
 import { Translate } from "react-localize-redux";
-import jsonPortfolio from '../../Elements/Cards/CardPortfolio/CardPortfolioJSON'
 import ServicesAPI from '../../../serviceAPI.js';
 import Notifications from '../../Elements/Notifications/Notifications';
 import { Button} from "reactstrap";
