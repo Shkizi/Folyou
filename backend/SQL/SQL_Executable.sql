@@ -2,7 +2,7 @@
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
 -- Schema folyou
@@ -33,8 +33,8 @@ CREATE TABLE IF NOT EXISTS `folyou`.`User` (
   `createdTimestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `descriptionUser` VARCHAR(500) NULL,
   PRIMARY KEY (`idUser`),
-  UNIQUE INDEX `nameUser_UNIQUE` (`nameUser` ASC) VISIBLE,
-  UNIQUE INDEX `emailUser_UNIQUE` (`emailUser` ASC) VISIBLE)
+  UNIQUE INDEX `nameUser_UNIQUE` (`nameUser` ASC),
+  UNIQUE INDEX `emailUser_UNIQUE` (`emailUser` ASC))
 ENGINE = InnoDB;
 
 
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `folyou`.`Sheet` (
   `countrySheet` VARCHAR(5) NULL,
   `regionSheet` VARCHAR(100) NULL,
   PRIMARY KEY (`idSheet`, `Category_idCategory`),
-  INDEX `fk_Sheet_ProposalCategory1_idx` (`Category_idCategory` ASC) VISIBLE,
+  INDEX `fk_Sheet_ProposalCategory1_idx` (`Category_idCategory` ASC),
   CONSTRAINT `fk_Sheet_ProposalCategory1`
     FOREIGN KEY (`Category_idCategory`)
     REFERENCES `folyou`.`Category` (`idCategory`)
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `folyou`.`SheetTeam` (
   `nameSheetTeam` VARCHAR(45) NULL,
   `Sheet_idSheet` INT NOT NULL,
   PRIMARY KEY (`idSheetTeam`, `Sheet_idSheet`),
-  INDEX `fk_SheetTeam_Sheet1_idx` (`Sheet_idSheet` ASC) VISIBLE,
+  INDEX `fk_SheetTeam_Sheet1_idx` (`Sheet_idSheet` ASC),
   CONSTRAINT `fk_SheetTeam_Sheet1`
     FOREIGN KEY (`Sheet_idSheet`)
     REFERENCES `folyou`.`Sheet` (`idSheet`)
@@ -107,8 +107,8 @@ CREATE TABLE IF NOT EXISTS `folyou`.`SheetTeamUser` (
   `User_idUser` INT NOT NULL,
   `SheetTeam_idSheetTeam` INT NOT NULL,
   PRIMARY KEY (`idSheetTeamUser`, `User_idUser`, `SheetTeam_idSheetTeam`),
-  INDEX `fk_SheetTeamUser_User1_idx` (`User_idUser` ASC) VISIBLE,
-  INDEX `fk_SheetTeamUser_SheetTeam1_idx` (`SheetTeam_idSheetTeam` ASC) VISIBLE,
+  INDEX `fk_SheetTeamUser_User1_idx` (`User_idUser` ASC),
+  INDEX `fk_SheetTeamUser_SheetTeam1_idx` (`SheetTeam_idSheetTeam` ASC),
   CONSTRAINT `fk_SheetTeamUser_User1`
     FOREIGN KEY (`User_idUser`)
     REFERENCES `folyou`.`User` (`idUser`)
@@ -134,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `folyou`.`UserLoginHistory` (
   `loginKey` VARCHAR(256) NULL,
   `User_idUser` INT NOT NULL,
   PRIMARY KEY (`idUserLoginHistory`, `User_idUser`),
-  INDEX `fk_UserLoginHistory_User1_idx` (`User_idUser` ASC) VISIBLE,
+  INDEX `fk_UserLoginHistory_User1_idx` (`User_idUser` ASC),
   CONSTRAINT `fk_UserLoginHistory_User1`
     FOREIGN KEY (`User_idUser`)
     REFERENCES `folyou`.`User` (`idUser`)
@@ -157,8 +157,8 @@ CREATE TABLE IF NOT EXISTS `folyou`.`TalentArea` (
   `Category_idCategory` INT NOT NULL,
   `timestamp` TIMESTAMP NULL,
   PRIMARY KEY (`idTalentArea`, `User_idUser`, `Category_idCategory`),
-  INDEX `fk_TalentArea_User1_idx` (`User_idUser` ASC) VISIBLE,
-  INDEX `fk_TalentArea_ProposalCategory1_idx` (`Category_idCategory` ASC) VISIBLE,
+  INDEX `fk_TalentArea_User1_idx` (`User_idUser` ASC),
+  INDEX `fk_TalentArea_ProposalCategory1_idx` (`Category_idCategory` ASC),
   CONSTRAINT `fk_TalentArea_User1`
     FOREIGN KEY (`User_idUser`)
     REFERENCES `folyou`.`User` (`idUser`)
@@ -184,8 +184,8 @@ CREATE TABLE IF NOT EXISTS `folyou`.`Portfolio` (
   `isVisible` TINYINT NULL,
   `wasEliminated` TINYINT NULL,
   PRIMARY KEY (`idPortfolio`, `Sheet_idSheet`, `User_idUser`),
-  INDEX `fk_SheetPortfolio_Sheet1_idx` (`Sheet_idSheet` ASC) VISIBLE,
-  INDEX `fk_Portfolio_User1_idx` (`User_idUser` ASC) VISIBLE,
+  INDEX `fk_SheetPortfolio_Sheet1_idx` (`Sheet_idSheet` ASC),
+  INDEX `fk_Portfolio_User1_idx` (`User_idUser` ASC),
   CONSTRAINT `fk_SheetPortfolio_Sheet1`
     FOREIGN KEY (`Sheet_idSheet`)
     REFERENCES `folyou`.`Sheet` (`idSheet`)
@@ -229,9 +229,9 @@ CREATE TABLE IF NOT EXISTS `folyou`.`Proposal` (
   `ProposalState_idProposalState` INT NOT NULL,
   `Category_idCategory` INT NOT NULL,
   PRIMARY KEY (`idProposal`, `User_idUser`, `ProposalState_idProposalState`, `Category_idCategory`),
-  INDEX `fk_Proposal_User1_idx` (`User_idUser` ASC) VISIBLE,
-  INDEX `fk_Proposal_ProposalState1_idx` (`ProposalState_idProposalState` ASC) VISIBLE,
-  INDEX `fk_Proposal_ProposalCategory1_idx` (`Category_idCategory` ASC) VISIBLE,
+  INDEX `fk_Proposal_User1_idx` (`User_idUser` ASC),
+  INDEX `fk_Proposal_ProposalState1_idx` (`ProposalState_idProposalState` ASC),
+  INDEX `fk_Proposal_ProposalCategory1_idx` (`Category_idCategory` ASC),
   CONSTRAINT `fk_Proposal_User1`
     FOREIGN KEY (`User_idUser`)
     REFERENCES `folyou`.`User` (`idUser`)
@@ -260,8 +260,8 @@ CREATE TABLE IF NOT EXISTS `folyou`.`ProposalSheet` (
   `Sheet_idSheet` INT NOT NULL,
   `Proposal_idProposal` INT NOT NULL,
   PRIMARY KEY (`idProposalSheet`, `Sheet_idSheet`, `Proposal_idProposal`),
-  INDEX `fk_ProposalSheet_Sheet1_idx` (`Sheet_idSheet` ASC) VISIBLE,
-  INDEX `fk_ProposalSheet_Proposal1_idx` (`Proposal_idProposal` ASC) VISIBLE,
+  INDEX `fk_ProposalSheet_Sheet1_idx` (`Sheet_idSheet` ASC),
+  INDEX `fk_ProposalSheet_Proposal1_idx` (`Proposal_idProposal` ASC),
   CONSTRAINT `fk_ProposalSheet_Sheet1`
     FOREIGN KEY (`Sheet_idSheet`)
     REFERENCES `folyou`.`Sheet` (`idSheet`)
@@ -287,8 +287,8 @@ CREATE TABLE IF NOT EXISTS `folyou`.`Keyword` (
   `Sheet_idSheet` INT NULL,
   `TalentArea_idTalentArea` INT NULL,
   PRIMARY KEY (`idKeyword`),
-  INDEX `fk_ProposalKeywords_Sheet1_idx` (`Sheet_idSheet` ASC) VISIBLE,
-  INDEX `fk_ProposalKeywords_TalentArea1_idx` (`TalentArea_idTalentArea` ASC) VISIBLE,
+  INDEX `fk_ProposalKeywords_Sheet1_idx` (`Sheet_idSheet` ASC),
+  INDEX `fk_ProposalKeywords_TalentArea1_idx` (`TalentArea_idTalentArea` ASC),
   CONSTRAINT `fk_ProposalKeywords_Proposal1`
     FOREIGN KEY (`Proposal_idProposal`)
     REFERENCES `folyou`.`Proposal` (`idProposal`)
@@ -317,8 +317,8 @@ CREATE TABLE IF NOT EXISTS `folyou`.`QR` (
   `User_idUser` INT NOT NULL,
   `Proposal_idProposal` INT NOT NULL,
   PRIMARY KEY (`idQR`, `User_idUser`, `Proposal_idProposal`),
-  INDEX `fk_QR_User1_idx` (`User_idUser` ASC) VISIBLE,
-  INDEX `fk_QR_Proposal1_idx` (`Proposal_idProposal` ASC) VISIBLE,
+  INDEX `fk_QR_User1_idx` (`User_idUser` ASC),
+  INDEX `fk_QR_Proposal1_idx` (`Proposal_idProposal` ASC),
   CONSTRAINT `fk_QR_User1`
     FOREIGN KEY (`User_idUser`)
     REFERENCES `folyou`.`User` (`idUser`)
@@ -344,8 +344,8 @@ CREATE TABLE IF NOT EXISTS `folyou`.`ProposaStatelHistory` (
   `QR_idQR` INT NOT NULL,
   `justification` VARCHAR(500) NOT NULL,
   PRIMARY KEY (`idProposalStateHistory`, `Proposal_idProposal`, `ProposalState_idProposalState`, `QR_idQR`),
-  INDEX `fk_ProposalHistory_ProposalState1_idx` (`ProposalState_idProposalState` ASC) VISIBLE,
-  INDEX `fk_ProposaStatelHistory_QR1_idx` (`QR_idQR` ASC) VISIBLE,
+  INDEX `fk_ProposalHistory_ProposalState1_idx` (`ProposalState_idProposalState` ASC),
+  INDEX `fk_ProposaStatelHistory_QR1_idx` (`QR_idQR` ASC),
   CONSTRAINT `fk_ProposalHistory_Proposal1`
     FOREIGN KEY (`Proposal_idProposal`)
     REFERENCES `folyou`.`Proposal` (`idProposal`)
@@ -378,9 +378,9 @@ CREATE TABLE IF NOT EXISTS `folyou`.`Anexes` (
   `Sheet_idSheet` INT NULL DEFAULT NULL,
   `User_idUser` INT NULL DEFAULT NULL,
   PRIMARY KEY (`idAnexes`),
-  INDEX `fk_Anexes_Proposal1_idx` (`Proposal_idProposal` ASC) VISIBLE,
-  INDEX `fk_Anexes_Sheet1_idx` (`Sheet_idSheet` ASC) VISIBLE,
-  INDEX `fk_Anexes_User1_idx` (`User_idUser` ASC) VISIBLE,
+  INDEX `fk_Anexes_Proposal1_idx` (`Proposal_idProposal` ASC),
+  INDEX `fk_Anexes_Sheet1_idx` (`Sheet_idSheet` ASC),
+  INDEX `fk_Anexes_User1_idx` (`User_idUser` ASC),
   CONSTRAINT `fk_Anexes_Proposal1`
     FOREIGN KEY (`Proposal_idProposal`)
     REFERENCES `folyou`.`Proposal` (`idProposal`)
@@ -433,9 +433,9 @@ CREATE TABLE IF NOT EXISTS `folyou`.`Application` (
   `ApplicationTeam_idApplicationTeam` INT NOT NULL,
   `ApplicationState_idApplicationState` INT NOT NULL,
   PRIMARY KEY (`idApplication`, `Proposal_idProposal`, `ApplicationTeam_idApplicationTeam`, `ApplicationState_idApplicationState`),
-  INDEX `fk_Application_Proposal1_idx` (`Proposal_idProposal` ASC) VISIBLE,
-  INDEX `fk_Application_ApplicationTeam1_idx` (`ApplicationTeam_idApplicationTeam` ASC) VISIBLE,
-  INDEX `fk_Application_ApplicationState1_idx` (`ApplicationState_idApplicationState` ASC) VISIBLE,
+  INDEX `fk_Application_Proposal1_idx` (`Proposal_idProposal` ASC),
+  INDEX `fk_Application_ApplicationTeam1_idx` (`ApplicationTeam_idApplicationTeam` ASC),
+  INDEX `fk_Application_ApplicationState1_idx` (`ApplicationState_idApplicationState` ASC),
   CONSTRAINT `fk_Application_Proposal1`
     FOREIGN KEY (`Proposal_idProposal`)
     REFERENCES `folyou`.`Proposal` (`idProposal`)
@@ -464,8 +464,8 @@ CREATE TABLE IF NOT EXISTS `folyou`.`ApplicationTeamUser` (
   `User_idUser` INT NOT NULL,
   `ApplicationTeam_idApplicationTeam` INT NOT NULL,
   PRIMARY KEY (`idApplicationTeamUser`, `User_idUser`, `ApplicationTeam_idApplicationTeam`),
-  INDEX `fk_ApplicationTeamUser_User1_idx` (`User_idUser` ASC) VISIBLE,
-  INDEX `fk_ApplicationTeamUser_ApplicationTeam1_idx` (`ApplicationTeam_idApplicationTeam` ASC) VISIBLE,
+  INDEX `fk_ApplicationTeamUser_User1_idx` (`User_idUser` ASC),
+  INDEX `fk_ApplicationTeamUser_ApplicationTeam1_idx` (`ApplicationTeam_idApplicationTeam` ASC),
   CONSTRAINT `fk_ApplicationTeamUser_User1`
     FOREIGN KEY (`User_idUser`)
     REFERENCES `folyou`.`User` (`idUser`)
@@ -505,11 +505,11 @@ CREATE TABLE IF NOT EXISTS `folyou`.`Iteraction` (
   `timestamp` TIMESTAMP NOT NULL,
   `InterationType_idInterationType` INT NOT NULL,
   PRIMARY KEY (`idIteraction`),
-  INDEX `fk_Iteraction_User1_idx` (`User_idUser` ASC) VISIBLE,
-  INDEX `fk_Iteraction_TalentArea1_idx` (`TalentArea_idTalentArea` ASC) VISIBLE,
-  INDEX `fk_Iteraction_Proposal1_idx` (`Proposal_idProposal` ASC) VISIBLE,
-  INDEX `fk_Iteraction_Sheet1_idx` (`Sheet_idSheet` ASC) VISIBLE,
-  INDEX `fk_Iteraction_InterationType1_idx` (`InterationType_idInterationType` ASC) VISIBLE,
+  INDEX `fk_Iteraction_User1_idx` (`User_idUser` ASC),
+  INDEX `fk_Iteraction_TalentArea1_idx` (`TalentArea_idTalentArea` ASC),
+  INDEX `fk_Iteraction_Proposal1_idx` (`Proposal_idProposal` ASC),
+  INDEX `fk_Iteraction_Sheet1_idx` (`Sheet_idSheet` ASC),
+  INDEX `fk_Iteraction_InterationType1_idx` (`InterationType_idInterationType` ASC),
   CONSTRAINT `fk_Iteraction_User1`
     FOREIGN KEY (`User_idUser`)
     REFERENCES `folyou`.`User` (`idUser`)
@@ -548,8 +548,8 @@ CREATE TABLE IF NOT EXISTS `folyou`.`Jury` (
   `Proposal_idProposal` INT NOT NULL,
   `User_idUser` INT NOT NULL,
   PRIMARY KEY (`idJury`, `Proposal_idProposal`, `User_idUser`),
-  INDEX `fk_Jury_Proposal1_idx` (`Proposal_idProposal` ASC) VISIBLE,
-  INDEX `fk_Jury_User1_idx` (`User_idUser` ASC) VISIBLE,
+  INDEX `fk_Jury_Proposal1_idx` (`Proposal_idProposal` ASC),
+  INDEX `fk_Jury_User1_idx` (`User_idUser` ASC),
   CONSTRAINT `fk_Jury_Proposal1`
     FOREIGN KEY (`Proposal_idProposal`)
     REFERENCES `folyou`.`Proposal` (`idProposal`)
@@ -576,9 +576,9 @@ CREATE TABLE IF NOT EXISTS `folyou`.`ApplicationStateHistory` (
   `Jury_idJury` INT NOT NULL,
   `justification` VARCHAR(500) NOT NULL,
   PRIMARY KEY (`idApplicationStateHistory`, `ApplicationState_idApplicationState`, `Application_idApplication`, `Jury_idJury`),
-  INDEX `fk_ApplicationStateHistory_ApplicationState1_idx` (`ApplicationState_idApplicationState` ASC) VISIBLE,
-  INDEX `fk_ApplicationStateHistory_Application1_idx` (`Application_idApplication` ASC) VISIBLE,
-  INDEX `fk_ApplicationStateHistory_Jury1_idx` (`Jury_idJury` ASC) VISIBLE,
+  INDEX `fk_ApplicationStateHistory_ApplicationState1_idx` (`ApplicationState_idApplicationState` ASC),
+  INDEX `fk_ApplicationStateHistory_Application1_idx` (`Application_idApplication` ASC),
+  INDEX `fk_ApplicationStateHistory_Jury1_idx` (`Jury_idJury` ASC),
   CONSTRAINT `fk_ApplicationStateHistory_ApplicationState1`
     FOREIGN KEY (`ApplicationState_idApplicationState`)
     REFERENCES `folyou`.`ApplicationState` (`idApplicationState`)
@@ -623,11 +623,11 @@ CREATE TABLE IF NOT EXISTS `folyou`.`Contestation` (
   `User_idUser` INT NOT NULL,
   `ContestationState_idContestationState` INT NOT NULL,
   PRIMARY KEY (`idFault`, `User_idUser`, `ContestationState_idContestationState`),
-  INDEX `fk_Fault_Proposal1_idx` (`Proposal_idProposal` ASC) VISIBLE,
-  INDEX `fk_Fault_Sheet1_idx` (`Sheet_idSheet` ASC) VISIBLE,
-  INDEX `fk_Fault_Application1_idx` (`Application_idApplication` ASC) VISIBLE,
-  INDEX `fk_Contestation_User1_idx` (`User_idUser` ASC) VISIBLE,
-  INDEX `fk_Contestation_ContestationState1_idx` (`ContestationState_idContestationState` ASC) VISIBLE,
+  INDEX `fk_Fault_Proposal1_idx` (`Proposal_idProposal` ASC),
+  INDEX `fk_Fault_Sheet1_idx` (`Sheet_idSheet` ASC),
+  INDEX `fk_Fault_Application1_idx` (`Application_idApplication` ASC),
+  INDEX `fk_Contestation_User1_idx` (`User_idUser` ASC),
+  INDEX `fk_Contestation_ContestationState1_idx` (`ContestationState_idContestationState` ASC),
   CONSTRAINT `fk_Fault_Proposal1`
     FOREIGN KEY (`Proposal_idProposal`)
     REFERENCES `folyou`.`Proposal` (`idProposal`)
@@ -679,8 +679,8 @@ CREATE TABLE IF NOT EXISTS `folyou`.`Recomendation` (
   `User_idUser` INT NOT NULL,
   `User_idUser1` INT NOT NULL,
   PRIMARY KEY (`idRecomendation`, `User_idUser`, `User_idUser1`),
-  INDEX `fk_Recomendation_User1_idx` (`User_idUser` ASC) VISIBLE,
-  INDEX `fk_Recomendation_User2_idx` (`User_idUser1` ASC) VISIBLE,
+  INDEX `fk_Recomendation_User1_idx` (`User_idUser` ASC),
+  INDEX `fk_Recomendation_User2_idx` (`User_idUser1` ASC),
   CONSTRAINT `fk_Recomendation_User1`
     FOREIGN KEY (`User_idUser`)
     REFERENCES `folyou`.`User` (`idUser`)
@@ -705,8 +705,8 @@ CREATE TABLE IF NOT EXISTS `folyou`.`BadgeUser` (
   `User_idUser` INT NOT NULL,
   `timestamp` TIMESTAMP NOT NULL,
   PRIMARY KEY (`idBadgeUser`, `Badge_idBadge`, `User_idUser`),
-  INDEX `fk_BadgeUser_Badge1_idx` (`Badge_idBadge` ASC) VISIBLE,
-  INDEX `fk_BadgeUser_User1_idx` (`User_idUser` ASC) VISIBLE,
+  INDEX `fk_BadgeUser_Badge1_idx` (`Badge_idBadge` ASC),
+  INDEX `fk_BadgeUser_User1_idx` (`User_idUser` ASC),
   CONSTRAINT `fk_BadgeUser_Badge1`
     FOREIGN KEY (`Badge_idBadge`)
     REFERENCES `folyou`.`Badge` (`idBadge`)
@@ -731,8 +731,8 @@ CREATE TABLE IF NOT EXISTS `folyou`.`HistoryContestationState` (
   `Contestation_idFault` INT NOT NULL,
   `textJustification` VARCHAR(500) NOT NULL,
   PRIMARY KEY (`idHistoryContestationState`, `ContestationState_idContestationState`, `Contestation_idFault`),
-  INDEX `fk_HistoryContestationState_ContestationState1_idx` (`ContestationState_idContestationState` ASC) VISIBLE,
-  INDEX `fk_HistoryContestationState_Contestation1_idx` (`Contestation_idFault` ASC) VISIBLE,
+  INDEX `fk_HistoryContestationState_ContestationState1_idx` (`ContestationState_idContestationState` ASC),
+  INDEX `fk_HistoryContestationState_Contestation1_idx` (`Contestation_idFault` ASC),
   CONSTRAINT `fk_HistoryContestationState_ContestationState1`
     FOREIGN KEY (`ContestationState_idContestationState`)
     REFERENCES `folyou`.`ContestationState` (`idContestationState`)
@@ -758,7 +758,7 @@ CREATE TABLE IF NOT EXISTS `folyou`.`Notification` (
   `valueText` TEXT NOT NULL,
   `User_idUser` INT NOT NULL,
   PRIMARY KEY (`idNotification`, `User_idUser`),
-  INDEX `fk_Notification_User1_idx` (`User_idUser` ASC) VISIBLE,
+  INDEX `fk_Notification_User1_idx` (`User_idUser` ASC),
   CONSTRAINT `fk_Notification_User1`
     FOREIGN KEY (`User_idUser`)
     REFERENCES `folyou`.`User` (`idUser`)
@@ -779,8 +779,8 @@ CREATE TABLE IF NOT EXISTS `folyou`.`Message` (
   `User_idUser` INT NOT NULL,
   `User_idUser1` INT NOT NULL,
   PRIMARY KEY (`idMessage`, `User_idUser`, `User_idUser1`),
-  INDEX `fk_Message_User1_idx` (`User_idUser` ASC) VISIBLE,
-  INDEX `fk_Message_User2_idx` (`User_idUser1` ASC) VISIBLE,
+  INDEX `fk_Message_User1_idx` (`User_idUser` ASC),
+  INDEX `fk_Message_User2_idx` (`User_idUser1` ASC),
   CONSTRAINT `fk_Message_User1`
     FOREIGN KEY (`User_idUser`)
     REFERENCES `folyou`.`User` (`idUser`)
@@ -848,6 +848,16 @@ START TRANSACTION;
 USE `folyou`;
 INSERT INTO `folyou`.`SheetTeamUser` (`idSheetTeamUser`, `namePosition`, `isInTeam`, `addedTimestamp`, `User_idUser`, `SheetTeam_idSheetTeam`) VALUES (1, 'Owner', 1, NULL, 2, 1);
 INSERT INTO `folyou`.`SheetTeamUser` (`idSheetTeamUser`, `namePosition`, `isInTeam`, `addedTimestamp`, `User_idUser`, `SheetTeam_idSheetTeam`) VALUES (2, 'Owner', 1, NULL, 1, 2);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `folyou`.`TalentArea`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `folyou`;
+INSERT INTO `folyou`.`TalentArea` (`idTalentArea`, `nameTalentArea`, `descriptionTalentArea`, `isVisible`, `User_idUser`, `Category_idCategory`, `timestamp`) VALUES (1, 'FULLSTACK DEV', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, 1, 1, NULL);
 
 COMMIT;
 

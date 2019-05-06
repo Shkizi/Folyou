@@ -6,12 +6,11 @@ import { withLocalize, Translate } from "react-localize-redux";
 import CardTalent from '../../Elements/Cards/CardTalent/CardTalent';
 import HomeCarousel from '../../Elements/Carousel/HomeCarousel/HomeCarousel'
 import CardsModalPortfolio from '../../Elements/CardsModal/Types/CardsModalPorfolio/CardsModalPortfolio.jsx'
-//import CardsModalTalent from '../../Elements/CardsModal/Types/CardsModalTalent/CardsModalTalent.jsx'
-//import CardsModalProposal from '../../Elements/CardsModal/Types/CardsModalProposal/CardsModalProposal.jsx'
 import { IoIosArrowForward } from "react-icons/io";
 import './Home.css'
 import ServicesAPI from '../../../serviceAPI.js';
 import CardsModalProposal from '../../Elements/CardsModal/Types/CardsModalProposal/CardsModalProposal';
+import CardsModalTalent from '../../Elements/CardsModal/Types/CardsModalTalent/CardsModalTalent';
 var S = new ServicesAPI();
 
 
@@ -72,7 +71,18 @@ class Home extends React.Component {
           this.setState({ proposals: proposals });
       },
       (error) => { 
-          console.log("Error do alexandre", error);
+          console.log("Error: Proposal", error);
+          this.setState({ error: {message:error,error:true} });
+      });
+      S.getter(`getTalentByIdRecent`, {
+        limit:4,
+      }, (res) => {  
+        const talents = res.data.talentList;
+        console.log(res);
+          this.setState({ talents: talents });
+      },
+      (error) => { 
+          console.log("Error: Talent", error);
           this.setState({ error: {message:error,error:true} });
       });
 
@@ -163,7 +173,7 @@ class Home extends React.Component {
                       <hr className="Hr-Sections"/>
                       <Row>
                       {this.state.proposals.map(val =>{return(
-                        <CardProposal data={val} />
+                        <CardProposal  parent={this} data={val} />
                       );})}
                       </Row>
                       </Col>
@@ -190,7 +200,7 @@ class Home extends React.Component {
                       <hr className="Hr-Sections"/>
                       <Row>
                       {this.state.talents.map(val =>{return(
-                        <CardTalent data={val} />
+                        <CardTalent data={val} parent={this} />
                       );})}
                       </Row>
                       </Col>
@@ -198,6 +208,7 @@ class Home extends React.Component {
 
                     <CardsModalPortfolio parent={this} closer={this.handleModalClose}/>
               <CardsModalProposal parent={this} closer={this.handleModalClose}/>
+              <CardsModalTalent parent={this} closer={this.handleModalClose}/>
                     
 
               

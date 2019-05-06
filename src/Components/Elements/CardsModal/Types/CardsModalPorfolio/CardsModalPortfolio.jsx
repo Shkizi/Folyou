@@ -65,10 +65,10 @@ class CardsModalPortfolio extends React.Component {
                 <Row  style={{padding: "16px"}}>
                   <Image src={getImageLanguage(data.countrySheet)} className="Modal-Portfolio-Avatar-Country" roundedCircle/>
                   <div className="Modal-Portfolio-User-Location">{data.regionSheet}</div>
-                  <div className="Modal-Portfolio-Sheet-Category"><b><Translate id="category profile"></Translate></b>{"  " + data.valueCategory}</div>
+                  <div className="Modal-Portfolio-Sheet-Category"><b><Translate id="category"></Translate></b>{"  " + data.valueCategory}</div>
                 </Row>
                 <div className="Modal-Portfolio-SheetName">{data.nameSheet}</div> 
-                <div className="Modal-Portfolio-Keywords"><b><Translate id="keywords profile"></Translate> </b>{data.keywords}</div>
+                <div className="Modal-Portfolio-Keywords"><b><Translate id="keywords"></Translate> </b>{data.keywords.join(", ")}</div>
 
               
               </Card.Body>

@@ -68,7 +68,7 @@ class CardsModalPortfolio extends React.Component {
                   <div className="Modal-Portfolio-Proposal-Category"><b><Translate id="category profile"></Translate></b>{"  " + data.valueCategory}</div>
                 </Row>
                 <div className="Modal-Portfolio-ProposalName">{data.nameProposal}</div> 
-                <div className="Modal-Portfolio-Keywords"><b><Translate id="keywords profile"></Translate> </b>{data.keywords}</div>
+                <div className="Modal-Portfolio-Keywords"><b><Translate id="keywords"></Translate> </b>{data.keywords.join(", ")}</div>
 
               
               </Card.Body>

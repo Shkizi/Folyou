@@ -5,4 +5,6 @@ module.exports.getPortfolioByIdRecent = require("./Portfolio/getPortfolioByIdRec
 
 module.exports.getProposalByIdRecent = require("./Proposal/getProposalByIdRecent.js");
 
+module.exports.getTalentByIdRecent = require("./Talent/getTalentByIdRecent.js");
+
 

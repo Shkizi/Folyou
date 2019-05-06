@@ -3,14 +3,18 @@ import { Col, Card, Row, Image } from 'react-bootstrap';
 import './CardProposal.css'
 import AvatarImage from '../../../../Resources/Images/avatar.png'
 import ServicesAPI from "../../../../serviceAPI";
+import { withLocalize, Translate } from "react-localize-redux";
 var S = new ServicesAPI();
-function CreateProposal(data) {
-   const avatUser =(data.avatarUser=="")?AvatarImage:S.baseURL()+data.avatarUser;
-  
+function CreateProposal(props) {
+  var data= props.data;
+   var parent = props.parent; 
+  const avatUser =(data.avatarUser=="")?AvatarImage:S.baseURL()+data.avatarUser;
+   
+   
   return (
-    <div className="C-Proposal">
-  <a href={data.link} className="C-Proposal-Link">
-
+    
+   <div className="C-Proposal" onClick={() => {parent.handleModalShow("proposalSheet",data.idProposal)}}>
+  < span id={data.link} className="C-Proposal-Link" >
 
   <Card className="C-Proposal-Card">
     <Card.Body className="C-Proposal-Body">
@@ -20,6 +24,7 @@ function CreateProposal(data) {
       <Row className="C-Proposal-Offer-Name rowCards">{data.nameProposal}</Row>
       <Row className="C-Proposal-Proponent-Name rowCards">{data.nameUser}</Row>
       <Row className="C-Proposal-Proponent-Description rowCards">{data.descriptionProposal}</Row>
+      <Row className="C-Proposal-Keywords rowCards"><Translate id="keywords"></Translate >: {data.keywords.join(", ")}</Row>
      </div>
     </Card.Body>
     <Card.Footer className="C-Proposal-Footer">
@@ -28,7 +33,7 @@ function CreateProposal(data) {
     </Card.Footer>
    
    </Card>
-   </a>
+   </span>
  </div>
   )
 }
@@ -39,8 +44,8 @@ class CardProposal extends React.Component {
     return ( 
    
       <Col xs={12} sm={6} md={6} lg={4} xl={3}>
-        {CreateProposal(this.props.data)}
+        {CreateProposal(this.props)}
        </Col>
     );} }
 
-export default CardProposal;
+export default withLocalize(CardProposal);
