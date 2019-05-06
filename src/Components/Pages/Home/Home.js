@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 import CardProposal from '../../../Components/Elements/Cards/CardProposal/CardProposal'
 import CardPortfolio from '../../Elements/Cards/CardPortfolio/CardPortfolio'
 import { Container, Row, Col, Button} from 'react-bootstrap';
@@ -134,9 +135,10 @@ class Home extends React.Component {
                         fontSize:"26px",
                        }}><Translate id="latest projects" ></Translate> 
                        <Button className="Button-View-All">
-                           <a className="Button-View-All-Text">
+                       <Link to = {"/Portfolios"} className="Button-View-All-Text">
+                          
                             <Translate id="see more"></Translate>
-                           </a>
+                           </Link>
                           <IoIosArrowForward></IoIosArrowForward>
                       </Button>
                        </b>
@@ -161,12 +163,14 @@ class Home extends React.Component {
                         color: "inherit",
                         fontSize:"26px",
                        }}><Translate id="latest proposals" ></Translate> 
+                       
                        <Button className="Button-View-All">
-                           <a className="Button-View-All-Text">
+                           <Link to = {"/Proposals"} className="Button-View-All-Text">
                             <Translate id="see more"></Translate>
-                           </a>
+                           </Link>
                           <IoIosArrowForward></IoIosArrowForward>
                       </Button>
+                      
                        </b>
                                            </Col>
                       <Col sm={12}>
@@ -189,9 +193,9 @@ class Home extends React.Component {
                         fontSize:"26px",
                        }}><Translate id="latest rising stars" ></Translate> 
                        <Button className="Button-View-All">
-                           <a className="Button-View-All-Text">
-                            <Translate id="see more"></Translate>
-                           </a>
+                       <Link to = {"/Talents"} className="Button-View-All-Text">
+                           <Translate id="see more"></Translate>
+                           </Link>
                           <IoIosArrowForward></IoIosArrowForward>
                       </Button>
                        </b>
