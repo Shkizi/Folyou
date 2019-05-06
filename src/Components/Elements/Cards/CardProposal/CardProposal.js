@@ -1,7 +1,6 @@
 import React from 'react';
 import { Col, Card, Row, Image } from 'react-bootstrap';
 import './CardProposal.css'
-import jsonarray from './CardProposalJSON.js'
 import AvatarImage from '../../../../Resources/Images/avatar.png'
 import ServicesAPI from "../../../../serviceAPI";
 var S = new ServicesAPI();
@@ -17,15 +16,15 @@ function CreateProposal(data) {
     <Card.Body className="C-Proposal-Body">
      <div className="C-Proposal-Avatar"><Image src={avatUser} className="C-Proposal-Avatar-Image"/></div>
      <div style={{minHeight: "280px", display: "block"}}>
-      <Row className="C-Proposal-Offer-Location rowCards">{data.location}</Row>
-      <Row className="C-Proposal-Offer-Name rowCards">{data.offerName}</Row>
-      <Row className="C-Proposal-Proponent-Name rowCards">{data.name}</Row>
-      <Row className="C-Proposal-Proponent-Description rowCards">{data.description}</Row>
+      <Row className="C-Proposal-Offer-Location rowCards">{data.regionProposal + ', ' +data.countryProposal}</Row>
+      <Row className="C-Proposal-Offer-Name rowCards">{data.nameProposal}</Row>
+      <Row className="C-Proposal-Proponent-Name rowCards">{data.nameUser}</Row>
+      <Row className="C-Proposal-Proponent-Description rowCards">{data.descriptionProposal}</Row>
      </div>
     </Card.Body>
     <Card.Footer className="C-Proposal-Footer">
-      <div className="C-Proposal-Footer-Category">{data.category}</div>
-      <div  className="C-Proposal-Footer-Date">{data.date}</div>
+      <div className="C-Proposal-Footer-Category">{data.valueCategory}</div>
+      <div  className="C-Proposal-Footer-Date">{data.createdTimestamp}</div>
     </Card.Footer>
    
    </Card>

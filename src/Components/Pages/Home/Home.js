@@ -11,6 +11,7 @@ import CardsModalPortfolio from '../../Elements/CardsModal/Types/CardsModalPorfo
 import { IoIosArrowForward } from "react-icons/io";
 import './Home.css'
 import ServicesAPI from '../../../serviceAPI.js';
+import CardsModalProposal from '../../Elements/CardsModal/Types/CardsModalProposal/CardsModalProposal';
 var S = new ServicesAPI();
 
 
@@ -60,9 +61,22 @@ class Home extends React.Component {
             this.setState({ portfolios: portfolios });
       },
       (error) => { 
-      console.log("Error do alexandre", error);
+      console.log("Error: Portfolio", error);
           this.setState({ error: {message:error,error:true} });
       });
+      S.getter(`getProposalByIdRecent`, {
+        limit:4,
+      }, (res) => {  
+        const proposals = res.data.proposalList;
+        console.log(res);
+          this.setState({ proposals: proposals });
+      },
+      (error) => { 
+          console.log("Error do alexandre", error);
+          this.setState({ error: {message:error,error:true} });
+      });
+
+
       console.log("finish Mounting");
   }
 
@@ -182,7 +196,8 @@ class Home extends React.Component {
                       </Col>
                     </Row>
 
-              <CardsModalPortfolio parent={this} closer={this.handleModalClose}/>
+                    <CardsModalPortfolio parent={this} closer={this.handleModalClose}/>
+              <CardsModalProposal parent={this} closer={this.handleModalClose}/>
                     
 
               
