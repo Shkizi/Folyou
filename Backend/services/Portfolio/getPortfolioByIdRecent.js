@@ -9,51 +9,31 @@ var crypto = require('crypto');
 function getPortfolioByIdRecent(req, res, next) {
     let params = req.query;
 
-    db.query("SELECT * FROM `Sheet`,`Portfolio`, `Category`, `User`  WHERE `Category`.`idCategory` =`Sheet`.`Category_idCategory`"+
+    db.query("SELECT * FROM `Sheet`,`Portfolio`, `Category`, `User`,"+
+    "(SELECT Sheet_idSheet, GROUP_CONCAT(DISTINCT valueProposalKeywords) keywords "+
+    "FROM keyword WHERE Sheet_idSheet IS NOT NULL "+
+   "GROUP BY Sheet_idSheet ) AS keywords " +
+    "  WHERE `Category`.`idCategory` =`Sheet`.`Category_idCategory`"+
     " AND `User`.`idUser` = `Portfolio`.`User_idUser` "+
     "AND `Sheet`.`idSheet` = `Portfolio`.`Sheet_idSheet`"+
+    "AND  keywords.Sheet_idSheet = idSheet "+
     "ORDER BY `Sheet`.`createdTimestamp` DESC LIMIT ? ; ",[parseInt(params.limit)] , function (rows, error) {
         console.log(params);
         if (!error) {
+            rows.forEach((valuePort,indexPort,arrayPort)=>{   rows[indexPort].keywords=rows[indexPort].keywords.split(","); });
             console.log(rows);
-             db.query("SELECT * FROM `Keyword`; ",[], function (rowsKeywords, errorkey) {
-                     if (errorkey && rowsKeywords == null) {
-                         res.send({
-                            error: true,
-                            err: "createdTimeStamp Error",
-                            errorObj:error,
-                            rows:rows,
-                            e:params
-                        });
-                    } else {
-                        rows.forEach((valuePort,indexPort,arrayPort)=>{   rows[indexPort].keywords=[]; });
-                        rows.forEach((valuePort,indexPort,arrayPort)=>{    
-                            rowsKeywords.forEach((value, index, array)=> {
-                                if(rows[indexPort].idSheet==rowsKeywords[index].Sheet_idSheet){
-                                    rows[indexPort].keywords.push(rowsKeywords[index].valueProposalKeywords);
-                                }
-                               
-                            });
-                        });
-                        console.log(rows);
-                        res.send({
-                            error: false,
-                            portfolioList: rows
-                          
-                        });
-
-                        next();
-                    }
-                
+            res.send({
+                error: false,
+                portfolioList: rows
             });
+            next();
         } else {
             res.send({
                 error: true,
-                err: "createdTimestamp Error",
+                err: "Error Portfolio",
                 errorObj:error,
                 rows:rows
-            });
-            
+            }); 
         }
     });
 }

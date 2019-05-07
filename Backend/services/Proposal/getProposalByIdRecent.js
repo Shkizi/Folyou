@@ -9,42 +9,23 @@ var crypto = require('crypto');
 function getProposalByIdRecent(req, res, next) {
     let params = req.query;
 
-    db.query("SELECT * FROM `Proposal`, `Category`, `User`  WHERE `Category`.`idCategory` =`Proposal`.`Category_idCategory`"+
+    db.query("SELECT * FROM `Proposal`, `Category`, `User`, "+
+    "(SELECT Proposal_idProposal, GROUP_CONCAT(DISTINCT valueProposalKeywords) keywords"+
+    " FROM keyword WHERE Proposal_idProposal IS NOT NULL "+
+   "GROUP BY Proposal_idProposal ) AS keywords " +
+    " WHERE `Category`.`idCategory` =`Proposal`.`Category_idCategory`"+
     " AND `User`.`idUser` = `Proposal`.`User_idUser` "+
+    "AND  keywords.Proposal_idProposal = idProposal "+
     "ORDER BY `Proposal`.`createdTimestamp` DESC LIMIT ? ; ",[parseInt(params.limit)] , function (rows, error) {
         console.log(params);
         if (!error) {
+            rows.forEach((valuePort,indexPort,arrayPort)=>{   rows[indexPort].keywords=rows[indexPort].keywords.split(","); });
             console.log(rows);
-             db.query("SELECT * FROM `Keyword`; ",[], function (rowsKeywords, errorkey) {
-                     if (errorkey && rowsKeywords == null) {
-                         res.send({
-                            error: true,
-                            err: "createdTimeStamp Error",
-                            errorObj:error,
-                            rows:rows,
-                            e:params
-                        });
-                    } else {
-                        rows.forEach((valuePort,indexPort,arrayPort)=>{   rows[indexPort].keywords=[]; });
-                        rows.forEach((valuePort,indexPort,arrayPort)=>{    
-                            rowsKeywords.forEach((value, index, array)=> {
-                                if(rows[indexPort].idProposal==rowsKeywords[index].Proposal_idProposal){
-                                    rows[indexPort].keywords.push(rowsKeywords[index].valueProposalKeywords);
-                                }
-                               
-                            });
-                        });
-                        console.log(rows);
-                        res.send({
-                            error: false,
-                            proposalList: rows
-                          
-                        });
-
-                        next();
-                    }
-                
+            res.send({
+                error: false,
+                proposalList: rows
             });
+            next();
         } else {
             res.send({
                 error: true,
@@ -52,7 +33,6 @@ function getProposalByIdRecent(req, res, next) {
                 errorObj:error,
                 rows:rows
             });
-            
         }
     });
 }
