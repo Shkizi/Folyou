@@ -1,6 +1,4 @@
-var User = require("../../DataModels/User.js");
 var db = require('../dbconnect.js');
-var crypto = require('crypto');
 
 
 //gets a user by its email and hashed password with sha256
@@ -19,7 +17,7 @@ function getTalentByIdRecent(req, res, next) {
     "ORDER BY `TalentArea`.`timestamp` DESC LIMIT ? ; ",[parseInt(params.limit)] , function (rows, error) {
         console.log(params);
         if (!error) {
-            console.log(rows);
+            
             rows.forEach((valuePort,indexPort,arrayPort)=>{   rows[indexPort].keywords=rows[indexPort].keywords.split(","); });
             console.log(rows);
             res.send({

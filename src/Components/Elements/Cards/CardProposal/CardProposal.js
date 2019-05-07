@@ -4,6 +4,8 @@ import './CardProposal.css'
 import AvatarImage from '../../../../Resources/Images/avatar.png'
 import ServicesAPI from "../../../../serviceAPI";
 import { withLocalize, Translate } from "react-localize-redux";
+import getImageLanguage from "../../../../Resources/Translations/compilerLanguageImages.js"
+
 var S = new ServicesAPI();
 function CreateProposal(props) {
   var data= props.data;
@@ -20,7 +22,8 @@ function CreateProposal(props) {
     <Card.Body className="C-Proposal-Body">
      <div className="C-Proposal-Avatar"><Image src={avatUser} className="C-Proposal-Avatar-Image"/></div>
      <div style={{minHeight: "280px", display: "block"}}>
-      <Row className="C-Proposal-Offer-Location rowCards">{data.regionProposal + ', ' +data.countryProposal}</Row>
+     
+      <Row className="C-Proposal-Offer-Location rowCards"><Image src={getImageLanguage(data.countryProposal)} className="Modal-Portfolio-Avatar-Country" roundedCircle/> {data.regionProposal }</Row>
       <Row className="C-Proposal-Offer-Name rowCards">{data.nameProposal}</Row>
       <Row className="C-Proposal-Proponent-Name rowCards">{data.nameUser}</Row>
       <Row className="C-Proposal-Proponent-Description rowCards">{data.descriptionProposal}</Row>

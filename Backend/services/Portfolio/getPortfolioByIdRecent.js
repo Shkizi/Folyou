@@ -1,6 +1,5 @@
-var User = require("../../DataModels/User.js");
 var db = require('../dbconnect.js');
-var crypto = require('crypto');
+
 
 
 //gets a user by its email and hashed password with sha256

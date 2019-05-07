@@ -6,6 +6,7 @@ import { MdMailOutline } from "react-icons/md";
 import {  Link } from "react-router-dom";
 import ServicesAPI from "../../../../serviceAPI";
 import { withLocalize, Translate } from "react-localize-redux";
+import getImageLanguage from "../../../../Resources/Translations/compilerLanguageImages.js"
 var S = new ServicesAPI();
 function CreateTalent(props) {
   var data= props.data;
@@ -22,7 +23,8 @@ function CreateTalent(props) {
     <Card.Body className="C-Talent-Body">
      <div className="C-Talent-Avatar"><Image src={avatUser} className="C-Talent-Avatar-Image"/></div>
      <div style={{minHeight: "280px", display: "block"}}>
-      <Row className="C-Talent-User-Location rowCards">{data.regionUser + ', ' +data.countryUser}</Row>
+     
+      <Row className="C-Talent-User-Location rowCards"><Image src={getImageLanguage(data.countryUser)} className="Modal-Portfolio-Avatar-Country" roundedCircle/> {data.regionUser}</Row>
       <Row className="C-Talent-User-Name rowCards">{data.nameUser}</Row>
       <Row className="C-Talent-Website-Link rowCards">{data.nameTalentArea}</Row>
       <Row className="C-Talent-User-Description rowCards">{data.descriptionTalentArea}</Row>

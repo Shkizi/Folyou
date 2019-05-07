@@ -1,6 +1,4 @@
-var User = require("../../DataModels/User.js");
 var db = require('../dbconnect.js');
-var crypto = require('crypto');
 
 
 //gets a user by its email and hashed password with sha256
@@ -29,7 +27,7 @@ function getProposalByIdRecent(req, res, next) {
         } else {
             res.send({
                 error: true,
-                err: "createdTimestamp Error",
+                err: " Error Proposal",
                 errorObj:error,
                 rows:rows
             });

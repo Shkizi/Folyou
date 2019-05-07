@@ -4,6 +4,7 @@ import './CardPortfolio.css';
 import AvatarImage from '../../../../Resources/Images/avatar.png';
 import ServicesAPI from "../../../../serviceAPI";
 import { withLocalize, Translate } from "react-localize-redux";
+import getImageLanguage from "../../../../Resources/Translations/compilerLanguageImages.js"
 var S = new ServicesAPI();
 function CreatePortfolio(props) {
   var data= props.data;
@@ -22,7 +23,8 @@ function CreatePortfolio(props) {
      <Card.Body className="C-Portfolio-Body">
      <div style={{minHeight: "70px", display: "block"}}>
       <Row className="C-Portfolio-Sheet-Name rowCards">{data.nameSheet}</Row>
-      <Row className="C-Portfolio-Location rowCards">{data.regionSheet + ', ' +data.countrySheet}</Row>
+      
+      <Row className="C-Portfolio-Location rowCards"><Image src={getImageLanguage(data.countrySheet)} className="Modal-Portfolio-Avatar-Country" roundedCircle/> {data.regionSheet}</Row>
       <Row className="C-Portfolio-Keywords rowCards"><Translate id="keywords"></Translate>:{data.keywords.join(", ")}</Row>
       <Row className="C-Portfolio-Description rowCards">{data.descriptionSheet}</Row>
      </div>
