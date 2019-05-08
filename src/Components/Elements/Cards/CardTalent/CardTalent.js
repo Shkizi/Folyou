@@ -11,7 +11,7 @@ var S = new ServicesAPI();
 function CreateTalent(props) {
   var data= props.data;
    var parent = props.parent;
-   const avatUser =(data.avatarUser=="")?AvatarImage:S.baseURL()+data.avatarUser;
+   const avatUser =(data.avatarUser=="")?AvatarImage:S.baseURL()+"public/anexes/profiles/"+data.avatarUser;
   
   return (
    

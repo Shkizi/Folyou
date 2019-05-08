@@ -11,7 +11,7 @@ function CreatePortfolio(props) {
   var parent = props.parent;
   
    const avatImage =(data.avatarImage=="")?AvatarImage:S.baseURL()+data.avatarImage;
-   const avatUser =(data.avatarUser=="")?AvatarImage:S.baseURL()+data.avatarUser;
+   const avatUser =(data.avatarUser=="")?AvatarImage:S.baseURL()+"public/anexes/profiles/"+data.avatarUser;
   return (
     <div className="C-Portfolio" onClick={() => {parent.handleModalShow("portfolioSheet",data.idSheet)}}>
   < span id={data.link} className="C-Portfolio-Link" >

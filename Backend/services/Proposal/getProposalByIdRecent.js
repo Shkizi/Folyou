@@ -10,9 +10,9 @@ function getProposalByIdRecent(req, res, next) {
     db.query("SELECT * FROM `Proposal`, `Category`, `User`, "+
     "(SELECT Proposal_idProposal, GROUP_CONCAT(DISTINCT valueProposalKeywords) keywords"+
     " FROM keyword WHERE Proposal_idProposal IS NOT NULL "+
-   "GROUP BY Proposal_idProposal ) AS keywords " +
+   "GROUP BY Proposal_idProposal ) AS keywords ,(SELECT filename as `avatarUser`, User_idUser from Anexes) as avatar  " +
     " WHERE `Category`.`idCategory` =`Proposal`.`Category_idCategory`"+
-    " AND `User`.`idUser` = `Proposal`.`User_idUser` "+
+    " AND `User`.`idUser` = `Proposal`.`User_idUser` AND `User`.`idUser` = avatar.User_idUser "+
     "AND  keywords.Proposal_idProposal = idProposal "+
     "ORDER BY `Proposal`.`createdTimestamp` DESC LIMIT ? ; ",[parseInt(params.limit)] , function (rows, error) {
         console.log(params);

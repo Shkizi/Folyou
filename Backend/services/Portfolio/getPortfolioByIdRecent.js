@@ -11,9 +11,9 @@ function getPortfolioByIdRecent(req, res, next) {
     db.query("SELECT * FROM `Sheet`,`Portfolio`, `Category`, `User`,"+
     "(SELECT Sheet_idSheet, GROUP_CONCAT(DISTINCT valueProposalKeywords) keywords "+
     "FROM keyword WHERE Sheet_idSheet IS NOT NULL "+
-   "GROUP BY Sheet_idSheet ) AS keywords " +
+   "GROUP BY Sheet_idSheet ) AS keywords ,(SELECT filename as `avatarUser`, User_idUser from Anexes) as avatar " +
     "  WHERE `Category`.`idCategory` =`Sheet`.`Category_idCategory`"+
-    " AND `User`.`idUser` = `Portfolio`.`User_idUser` "+
+    " AND `User`.`idUser` = `Portfolio`.`User_idUser` AND `User`.`idUser` = avatar.User_idUser  "+
     "AND `Sheet`.`idSheet` = `Portfolio`.`Sheet_idSheet`"+
     "AND  keywords.Sheet_idSheet = idSheet "+
     "ORDER BY `Sheet`.`createdTimestamp` DESC LIMIT ? ; ",[parseInt(params.limit)] , function (rows, error) {

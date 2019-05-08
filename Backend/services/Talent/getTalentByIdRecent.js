@@ -10,9 +10,9 @@ function getTalentByIdRecent(req, res, next) {
     db.query("SELECT * FROM `TalentArea`, `Category`, `User`,"+
     "(SELECT TalentArea_idTalentArea, GROUP_CONCAT(DISTINCT valueProposalKeywords) keywords "+
     "FROM keyword WHERE TalentArea_idTalentArea IS NOT NULL "+
-   "GROUP BY TalentArea_idTalentArea ) AS keywords " +
+   "GROUP BY TalentArea_idTalentArea ) AS keywords,(SELECT filename as `avatarUser`, User_idUser from Anexes) as avatar " +
     "  WHERE `Category`.`idCategory` =`TalentArea`.`Category_idCategory`"+
-    " AND `User`.`idUser` = `TalentArea`.`User_idUser` "+
+    " AND `User`.`idUser` = `TalentArea`.`User_idUser` AND `User`.`idUser` = avatar.User_idUser "+
     "AND  keywords.TalentArea_idTalentArea = idTalentArea "+
     "ORDER BY `TalentArea`.`timestamp` DESC LIMIT ? ; ",[parseInt(params.limit)] , function (rows, error) {
         console.log(params);
