@@ -32,7 +32,7 @@ class PortfoliosAreaView extends React.Component {
               
            ],
           suggestions: [
-              { id: 'USA', text: 'USA' },
+              { id: 'Dev', text: 'Dev' },
               { id: 'Germany', text: 'Germany' },
               { id: 'Austria', text: 'Austria' },
               { id: 'Costa Rica', text: 'Costa Rica' },
@@ -83,22 +83,27 @@ class PortfoliosAreaView extends React.Component {
       return ( 
             <Row style={{margin: 0}}>
 
-                <Col sm={4} className="Header-Sections">
+                <Col sm={2} className="Header-Sections" style={{marginTop: 0}}>
                 {/* BOTAO PARA NOTIFICACOES 
                 <Button
                               block
                               color="primary"
                               onClick={() => this.props.app.state.notificationModule.notify("Test","bl",1,200)}></Button> */}
 
-                    <h1><Translate id="projects"/></h1>
+                <div className="Portfolios-Page-Title">
+                    <Translate id="projects" ></Translate>
+                </div>
                 </Col>
-                <Col sm={8} className="Header-Sections">
+                <Col sm={10} className="Header-Sections">
                 <ReactTags tags={tags}
                     suggestions={suggestions}
                     handleDelete={this.handleDelete}
                     handleAddition={this.handleAddition}
                     handleDrag={this.handleDrag}
-                    delimiters={delimiters} />
+                    delimiters={delimiters}
+                    placeholder="Keywords" 
+                    allowDragDrop="false"
+                    />
                 </Col>
                 <Col sm={12}>
                     <hr className="Hr-Sections"/>

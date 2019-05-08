@@ -1,3 +1,11 @@
+.Portfolios-Page-Title {
+    font-family: inherit;
+    font-weight: 500;
+    color: inherit;
+    font-size: 5vh;
+    
+}
+
 /* Example Styles for React Tags*/
 div.ReactTags__tags {
     position: relative;
@@ -11,6 +19,7 @@ div.ReactTags__tagInput {
 }
 div.ReactTags__tagInput input.ReactTags__tagInputField,
 div.ReactTags__tagInput input.ReactTags__tagInputField:focus {
+    display: flex;
     height: 31px;
     margin: 0;
     font-size: 12px;
@@ -20,8 +29,8 @@ div.ReactTags__tagInput input.ReactTags__tagInputField:focus {
 
 /* Styles for selected tags */
 div.ReactTags__selected span.ReactTags__tag {
-    border: 1px solid #ddd;
-    background: #eee;
+    border: 1px solid white;
+    background:white;
     font-size: 12px;
     display: inline-block;
     padding: 5px;
@@ -29,7 +38,7 @@ div.ReactTags__selected span.ReactTags__tag {
     border-radius: 2px;
 }
 div.ReactTags__selected a.ReactTags__remove {
-    color: #aaa;
+    color: rgb(73, 197, 182);
     margin-left: 5px;
     cursor: pointer;
 }

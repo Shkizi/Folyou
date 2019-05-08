@@ -18,7 +18,7 @@ class Main  extends Component {
      
     return(
     <main>
-       <Container fluid={true}  style={{marginTop:"20px"}}>
+       <Container fluid={true}  style={{marginTop: 0}}>
             <Notifications notifParent={this.props.app}/>
       
       <Switch>
