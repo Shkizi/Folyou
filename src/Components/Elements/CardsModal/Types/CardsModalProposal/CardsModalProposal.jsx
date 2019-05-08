@@ -4,7 +4,8 @@ import { Translate } from "react-localize-redux";
 import './CardsModalProposal.css';
 import getImageLanguage from "../../../../../Resources/Translations/compilerLanguageImages.js"
 import { isNull } from 'util';
-
+import ServicesAPI from "../../../../../serviceAPI";
+var S = new ServicesAPI();
 class CardsModalPortfolio extends React.Component {
 
   constructor(props, context) {
@@ -54,7 +55,7 @@ class CardsModalPortfolio extends React.Component {
             <Modal.Header closeButton>
             <div>
               <Row style={{padding: "16px"}}>
-              <Image src="https://www.w3schools.com/howto/img_avatar.png" className="Modal-Portfolio-Avatar" roundedCircle />
+              <Image src={(data.avatarUser=="")?"https://www.w3schools.com/howto/img_avatar.png":S.baseURL()+"public/anexes/profiles/"+data.avatarUser} className="Modal-Portfolio-Avatar" roundedCircle />
               <div className="Modal-Portfolio-Username">{data.nameUser}</div>
               </Row>
               </div>
