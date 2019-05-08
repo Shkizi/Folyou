@@ -134,13 +134,15 @@ class Home extends React.Component {
                         color: "inherit",
                         fontSize:"26px",
                        }}><Translate id="latest projects" ></Translate> 
+                        <Link to = {"/Portfolios"} className="Button-View-All-Text">
+
                        <Button className="Button-View-All">
-                       <Link to = {"/Portfolios"} className="Button-View-All-Text">
                           
                             <Translate id="see more"></Translate>
-                           </Link>
-                          <IoIosArrowForward></IoIosArrowForward>
+                          <IoIosArrowForward style={{    color: "#49c5b6"}}></IoIosArrowForward>
                       </Button>
+                      </Link>
+
                        </b>
                      
                       </Col>
@@ -164,15 +166,14 @@ class Home extends React.Component {
                         fontSize:"26px",
                        }}><Translate id="latest proposals" ></Translate> 
                        
+                       <Link to = {"/Proposals"} className="Button-View-All-Text">
                        <Button className="Button-View-All">
-                           <Link to = {"/Proposals"} className="Button-View-All-Text">
                             <Translate id="see more"></Translate>
-                           </Link>
-                          <IoIosArrowForward></IoIosArrowForward>
+                           <IoIosArrowForward style={{color: "#49c5b6"}}></IoIosArrowForward>
                       </Button>
-                      
+                      </Link>
                        </b>
-                                           </Col>
+                       </Col>
                       <Col sm={12}>
                       <hr className="Hr-Sections"/>
                       <Row>
@@ -192,12 +193,12 @@ class Home extends React.Component {
                         color: "inherit",
                         fontSize:"26px",
                        }}><Translate id="latest rising stars" ></Translate> 
-                       <Button className="Button-View-All">
                        <Link to = {"/Talents"} className="Button-View-All-Text">
+                       <Button className="Button-View-All">
                            <Translate id="see more"></Translate>
-                           </Link>
-                          <IoIosArrowForward></IoIosArrowForward>
+                           <IoIosArrowForward style={{color: "#49c5b6"}}></IoIosArrowForward>
                       </Button>
+                      </Link>
                        </b>
                                            </Col>
                       <Col sm={12}>

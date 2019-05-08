@@ -23,7 +23,7 @@ function CreateProposal(props) {
      <div className="C-Proposal-Avatar"><Image src={avatUser} className="C-Proposal-Avatar-Image"/></div>
      <div style={{minHeight: "280px", display: "block"}}>
      
-      <Row className="C-Proposal-Offer-Location rowCards"><Image src={getImageLanguage(data.countryProposal)} className="Modal-Portfolio-Avatar-Country" roundedCircle/> {data.regionProposal }</Row>
+      <Row className="C-Proposal-Offer-Location rowCards"><Image src={getImageLanguage(data.countryProposal)} className="Modal-Portfolio-Avatar-Country" roundedCircle/><div className="C-Proposal-Country-Name">{data.regionProposal}</div></Row>
       <Row className="C-Proposal-Offer-Name rowCards">{data.nameProposal}</Row>
       <Row className="C-Proposal-Proponent-Name rowCards">{data.nameUser}</Row>
       <Row className="C-Proposal-Proponent-Description rowCards">{data.descriptionProposal}</Row>

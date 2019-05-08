@@ -4,11 +4,20 @@ import React from 'react';
 import CardPortfolio from '../../../Components/Elements/Cards/CardPortfolio/CardPortfolio';
 import { Container, Row, Col} from 'react-bootstrap';
 import { withLocalize } from "react-localize-redux";
+import { WithContext as ReactTags } from 'react-tag-input';
 import { Translate } from "react-localize-redux";
 import ServicesAPI from '../../../serviceAPI.js';
 import Notifications from '../../Elements/Notifications/Notifications';
 import { Button} from "reactstrap";
+import "./PortfoliosAreaView.css";
 var S = new ServicesAPI();
+
+const KeyCodes = {
+  comma: 188,
+  enter: 13,
+};
+
+const delimiters = [KeyCodes.comma, KeyCodes.enter];
 
 class PortfoliosAreaView extends React.Component { 
     constructor(props, context) {
@@ -17,9 +26,38 @@ class PortfoliosAreaView extends React.Component {
             portfolios:[],
             filters:[],
             hasMoreItems: true,
-            error:[]
+            error:[],
+
+            tags: [
+              
+           ],
+          suggestions: [
+              { id: 'USA', text: 'USA' },
+              { id: 'Germany', text: 'Germany' },
+              { id: 'Austria', text: 'Austria' },
+              { id: 'Costa Rica', text: 'Costa Rica' },
+              { id: 'Sri Lanka', text: 'Sri Lanka' },
+              { id: 'Thailand', text: 'Thailand' }
+           ] 
         };
+        this.handleDelete = this.handleDelete.bind(this);
+        this.handleAddition = this.handleAddition.bind(this);
       }
+
+      handleDelete(i) {
+        const { tags } = this.state;
+        this.setState({
+         tags: tags.filter((tag, index) => index !== i),
+        });
+    }
+
+    handleAddition(tag) {
+        this.setState(state => ({ tags: [...state.tags, tag] }));
+    }
+
+  
+
+      
     
 
     componentDidMount() {
@@ -40,7 +78,7 @@ class PortfoliosAreaView extends React.Component {
         
         
        
-    
+      const { tags, suggestions } = this.state;
        
       return ( 
             <Row style={{margin: 0}}>
@@ -55,7 +93,12 @@ class PortfoliosAreaView extends React.Component {
                     <h1><Translate id="projects"/></h1>
                 </Col>
                 <Col sm={8} className="Header-Sections">
-                <h1>Filters Here(Country, Region Search, Keyword[Cat] Search, Per page drop )</h1>
+                <ReactTags tags={tags}
+                    suggestions={suggestions}
+                    handleDelete={this.handleDelete}
+                    handleAddition={this.handleAddition}
+                    handleDrag={this.handleDrag}
+                    delimiters={delimiters} />
                 </Col>
                 <Col sm={12}>
                     <hr className="Hr-Sections"/>
@@ -63,8 +106,13 @@ class PortfoliosAreaView extends React.Component {
                  <Col sm={12}>
                  { this.state.portfolios.map((portfolio, i) => {
                         console.log(portfolio);
-                      return (  <CardPortfolio data={portfolio}/>);
-       
+                      return (  
+                       
+                       
+                      <CardPortfolio data={portfolio}/>
+                      
+                      );
+                          
                   })}
                   
                 </Col>

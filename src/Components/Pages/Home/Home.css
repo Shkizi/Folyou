@@ -11,7 +11,7 @@
 .Button-View-All {
     margin-bottom: 0.4%;
     background-color: white;
-    color: #49c5b6;
+    color: black;
     border: none;
     box-shadow: 0 1px 20px 0px rgba(0, 0, 0, 0.1);
     margin-left: 1%;
@@ -24,12 +24,12 @@
 
 .Button-View-All:hover {
     background-color: rgba(230,234,234,0.5);
-    color: #49c5b6;
+    color: black;
 }
 
 .Button-View-All:active {
     background-color: rgba(230,234,234,0.5) !important;
-    color: #49c5b6 !important;
+    color: black !important;
 }
 
 .Button-View-All:focus {
