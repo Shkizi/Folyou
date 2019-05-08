@@ -9,7 +9,7 @@ var data;
 const TalentSpaceView = () => (
 
          <Row style={{margin: 0}}>
-            <CardTalent data={data}/>
+            
         </Row>
    
 )

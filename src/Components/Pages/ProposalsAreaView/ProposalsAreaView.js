@@ -12,7 +12,7 @@ var data;
 const ProposalsAreaView = () => (
 
         <Row style={{margin: 0}}>
-            <CardProposal data={data}/>
+            
         </Row>
   
 )

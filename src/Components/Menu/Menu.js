@@ -1,20 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
-import { Navbar, Form, Button, s, Row, Col } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
+import { Navbar, Form, Button, Row, Col } from 'react-bootstrap';
 import './Menu.css'
 import { IoMdMenu } from "react-icons/io";
 import {MdNotificationsActive} from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
 import Login from '../Elements/Popups/Login/Login'
-import logo from '../../Resources/Images/Logo_black_white.png'
+
 import { Translate } from "react-localize-redux";
-import LanguageSelector from "../Elements/LanguageSelector/LanguageSelector";
 import { withLocalize } from "react-localize-redux";
 import { withCookies } from 'react-cookie';
 import Badge from '@material-ui/core/Badge';
 import Tabs from './Tabs';
 import isCookieValid from '../../cookies';
+import ServicesAPI from "../../serviceAPI";
+var S = new ServicesAPI();
 var classNames = require('classnames');
 
 class Menu extends React.Component {
@@ -36,7 +38,7 @@ class Menu extends React.Component {
       showLogin: false,
       showTabs: false,
       showSearchButton: true,
-      
+      userLogged:{set:true,idUser:1,anexes:{fileName:"Iade.jpg"}}
     };
   }
   
@@ -140,11 +142,9 @@ searchLine = () => {
 
         {/* Login/Logout Col*/}
         <Col  xs={1} sm={1} md={1} lg={1} xl={1} style={{paddingRight: 0}} >
-         <Link to='/Profile/1'>
-        <Button className="Menu-Login" variant="link">
-              <strong>Avatar</strong>
-            </Button>
-            </Link>
+         
+        {(this.state.userLogged.set)?this.renderLogged():this.renderSign()}
+            
 
 
             {/* <Button onClick={this.handleLoginPopUpShow} className="Menu-Login" variant="link">
@@ -157,7 +157,19 @@ searchLine = () => {
       {/* Login Modal Render*/}
       <Login parent={this} closer={this.handleLoginPopUpClose} app={this.props.app}/>
     </>
-    );} }
-  
+    );} 
+     renderLogged(){
+      return (
+        <Link to={'/Profile/'+this.state.userLogged.idUser}>
+      <Image src={S.baseURL()+"public/anexes/profiles/"+this.state.userLogged.anexes.fileName} className="Profile-Avatar" roundedCircle />
+    </Link>
+      );
+    }
+     renderSign(){
+      return (<Button onClick={this.handleLoginPopUpShow} className="Menu-Login" variant="link">
+      <strong><Translate id="login"/></strong>
+    </Button>);
+    }
+  }
   export default withCookies(withLocalize(Menu));
   
