@@ -10,6 +10,7 @@ import ServicesAPI from '../../../serviceAPI.js';
 import Notifications from '../../Elements/Notifications/Notifications';
 import { Button} from "reactstrap";
 import "./PortfoliosAreaView.css";
+import CardsModalPortfolio from '../../Elements/CardsModal/Types/CardsModalPorfolio/CardsModalPortfolio.jsx'
 var S = new ServicesAPI();
 
 const KeyCodes = {
@@ -32,16 +33,27 @@ class PortfoliosAreaView extends React.Component {
               
            ],
           suggestions: [
-              { id: 'Dev', text: 'Dev' },
-              { id: 'Germany', text: 'Germany' },
-              { id: 'Austria', text: 'Austria' },
-              { id: 'Costa Rica', text: 'Costa Rica' },
-              { id: 'Sri Lanka', text: 'Sri Lanka' },
-              { id: 'Thailand', text: 'Thailand' }
            ] 
         };
         this.handleDelete = this.handleDelete.bind(this);
         this.handleAddition = this.handleAddition.bind(this);
+        this.handleModalClose = this.handleModalClose.bind(this);
+    this.handleModalShow = this.handleModalShow.bind(this);
+
+      }
+      handleModalClose() {
+        this.setState({showModalPortfolio: false});
+        this.setState({showModalTalent: false});
+        this.setState({showModalProposal: false});
+        console.log(this.state);
+      }
+    
+      handleModalShow(type, id) {
+        this.setState({ typeModal: type, idModal: id });
+        this.setState({showModalPortfolio: type=="portfolioSheet"});
+        this.setState({showModalTalent: type=="talentSheet"});
+        this.setState({showModalProposal: type=="proposalSheet"});
+        console.log(type, id , this.state);
       }
 
       handleDelete(i) {
@@ -61,26 +73,40 @@ class PortfoliosAreaView extends React.Component {
     
 
     componentDidMount() {
-        S.getter(`getPortfolioById`, { }, (res) => {  
+        S.getter(`getPortfolioByIdRecent`, {limit:1000 }, (res) => {  
                const portfolios = res.data.portfolioList;
                 console.log(res);
                  this.setState({ portfolios: portfolios });
          },
        (error) => { 
-        console.log("Error do alexandre", error);
+        console.log("Error do Portfolio", error);
               this.setState({ error: {message:error,error:true} });
         });
-        console.log("finish Mounting");
+        S.getter(`getKeywords`, {type:"all" }, (res) => {  
+            const keywords = res.data.keywords;
+             
+             let suggest=[];
+             keywords.forEach(element => {
+                suggest.push({ id: element, text: element });
+             });
+             console.log(suggest);
+              this.setState({ suggestions: suggest });
+      },
+    (error) => { 
+     console.log("Error do Keywords", error);
+           this.setState({ error: {message:error,error:true} });
+     });
+     console.log("finish Mounting");
+        
     }
     
   
     render() {
         
-        
-       
       const { tags, suggestions } = this.state;
        
-      return ( 
+      return (
+          <>
             <Row style={{margin: 0}}>
 
                 <Col sm={2} className="Header-Sections" style={{marginTop: 0}}>
@@ -96,6 +122,8 @@ class PortfoliosAreaView extends React.Component {
                 </Col>
                 <Col sm={10} className="Header-Sections">
                 <ReactTags tags={tags}
+                    
+                    inputFieldPosition="top"
                     suggestions={suggestions}
                     handleDelete={this.handleDelete}
                     handleAddition={this.handleAddition}
@@ -110,19 +138,15 @@ class PortfoliosAreaView extends React.Component {
                 </Col>
                  <Col sm={12}>
                  { this.state.portfolios.map((portfolio, i) => {
-                        console.log(portfolio);
                       return (  
-                       
-                       
-                      <CardPortfolio data={portfolio}/>
-                      
+                      <CardPortfolio data={portfolio} parent={this}/>
                       );
-                          
                   })}
                   
                 </Col>
             </Row>
-    
+    <CardsModalPortfolio parent={this} closer={this.handleModalClose}/>
+         </>     
 );} }
 
 export default withLocalize(PortfoliosAreaView);

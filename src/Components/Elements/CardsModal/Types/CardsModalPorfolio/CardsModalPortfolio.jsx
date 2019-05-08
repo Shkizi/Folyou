@@ -25,16 +25,14 @@ class CardsModalPortfolio extends React.Component {
   render() {
     if( this.props.parent.state.showModalPortfolio){
       let data = {};
-      console.log(this.props.parent.state.portTrending);
-      console.log(this.props.parent.state.portfolios);
-      console.log(this.props.parent.state.idModal);
-      if (this.props.parent.state.portTrending.length > 0){
+      
+      if (!(typeof this.props.parent.state.portTrending ==="undefined")&&this.props.parent.state.portTrending.length > 0){
        this.props.parent.state.portTrending.forEach((valuePort,indexPort,arrayPort)=>{
           if (this.props.parent.state.portTrending[indexPort].idSheet == this.props.parent.state.idModal){
           data = this.props.parent.state.portTrending[indexPort];
             }
         });
-      }else if (this.props.parent.state.portfolios.length > 0){
+      }else if (!(typeof this.props.parent.state.portfolios ==="undefined")&&this.props.parent.state.portfolios.length > 0){
         this.props.parent.state.portfolios.forEach((valuePort,indexPort,arrayPort)=>{
           if (this.props.parent.state.portfolios[indexPort].idSheet == this.props.parent.state.idModal){
           data = this.props.parent.state.portfolios[indexPort];
