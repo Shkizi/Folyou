@@ -24,7 +24,7 @@ function CreatePortfolio(props) {
      <div style={{minHeight: "70px", display: "block"}}>
       <Row className="C-Portfolio-Sheet-Name rowCards">{data.nameSheet}</Row>
       
-      <Row className="C-Portfolio-Location rowCards"><Image src={getImageLanguage(data.countrySheet)} className="Modal-Portfolio-Avatar-Country" roundedCircle/> <div className="C-Portfolio-Country-Name">{data.regionSheet}</div></Row>
+      <Row className="C-Portfolio-Location rowCards"><Image src={getImageLanguage(data.countrySheet)} style={{height: "32px",width: "32px"}} roundedCircle/> <div className="C-Portfolio-Country-Name">{data.regionSheet}</div></Row>
       <Row className="C-Portfolio-Keywords rowCards"><Translate id="keywords"></Translate>:<div className="C-Portfolio-Keywords-Name">{data.keywords.join(", ")}</div></Row>
       <Row className="C-Portfolio-Description rowCards">{data.descriptionSheet}</Row>
      </div>

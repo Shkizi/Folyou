@@ -23,6 +23,7 @@
     color: black;
     text-decoration: none;
     transition: color 0.3s ease-in-out; 
+    cursor: pointer;
 }
 
 .C-Proposal-Card {
@@ -79,6 +80,14 @@
     overflow: hidden;
     text-align: justify;
     line-height: 21px;
+}
+
+.C-Proposal-Keywords {
+    font-weight: bold;
+}
+.C-Proposal-Keywords-Name {
+    font-weight: normal;
+    padding-left: 1%;
 }
 
 .C-Proposal-Avatar-Image {

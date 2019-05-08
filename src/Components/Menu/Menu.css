@@ -114,3 +114,10 @@
 }
 
 .hidden { display:none; }
+
+.Logged-Home-Avatar {
+    width: 32px;
+    height: 32px;
+    float: right;
+    margin-top: 2px;
+}

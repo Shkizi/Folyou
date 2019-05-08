@@ -161,7 +161,7 @@ searchLine = () => {
      renderLogged(){
       return (
         <Link to={'/Profile/'+this.state.userLogged.idUser}>
-      <Image src={S.baseURL()+"public/anexes/profiles/"+this.state.userLogged.anexes.fileName} className="Profile-Avatar" roundedCircle />
+      <Image src={S.baseURL()+"public/anexes/profiles/"+this.state.userLogged.anexes.fileName} className="Logged-Home-Avatar" roundedCircle />
     </Link>
       );
     }

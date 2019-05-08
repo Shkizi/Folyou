@@ -23,11 +23,11 @@ function CreateProposal(props) {
      <div className="C-Proposal-Avatar"><Image src={avatUser} className="C-Proposal-Avatar-Image"/></div>
      <div style={{minHeight: "280px", display: "block"}}>
      
-      <Row className="C-Proposal-Offer-Location rowCards"><Image src={getImageLanguage(data.countryProposal)} className="Modal-Portfolio-Avatar-Country" roundedCircle/><div className="C-Proposal-Country-Name">{data.regionProposal}</div></Row>
+      <Row className="C-Proposal-Offer-Location rowCards"><Image src={getImageLanguage(data.countryProposal)} style={{height: "32px",width: "32px"}} roundedCircle/><div className="C-Proposal-Country-Name">{data.regionProposal}</div></Row>
       <Row className="C-Proposal-Offer-Name rowCards">{data.nameProposal}</Row>
       <Row className="C-Proposal-Proponent-Name rowCards">{data.nameUser}</Row>
       <Row className="C-Proposal-Proponent-Description rowCards">{data.descriptionProposal}</Row>
-      <Row className="C-Proposal-Keywords rowCards"><Translate id="keywords"></Translate >: {data.keywords.join(", ")}</Row>
+      <Row className="C-Proposal-Keywords rowCards"><Translate id="keywords"></Translate >:<div className="C-Proposal-Keywords-Name">{data.keywords.join(", ")}</div></Row>
      </div>
     </Card.Body>
     <Card.Footer className="C-Proposal-Footer">

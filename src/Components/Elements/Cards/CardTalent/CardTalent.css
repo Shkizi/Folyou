@@ -23,6 +23,7 @@
     color: black;
     text-decoration: none;
     transition: color 0.3s ease-in-out; 
+    cursor: pointer;
 }
 
 .C-Talent-Card {
@@ -41,6 +42,18 @@
 
 .C-Talent-User-Location {
     text-align: left;
+}
+
+.C-Talent-Country-Name {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-flex: 1;
+    padding-left: 10px;
+    flex: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .C-Talent-User-Name {
@@ -66,7 +79,16 @@
     overflow: hidden;
     flex-wrap: wrap;
     text-align: justify;
+    line-height: 21px;
+}
 
+.C-Talent-Keywords {
+    font-weight: bold;
+}
+
+.C-Talent-Keywords-Name {
+    font-weight: normal;
+    padding-left: 1%;
 }
 
 .C-Talent-Avatar-Image {

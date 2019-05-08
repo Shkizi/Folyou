@@ -24,11 +24,11 @@ function CreateTalent(props) {
      <div className="C-Talent-Avatar"><Image src={avatUser} className="C-Talent-Avatar-Image"/></div>
      <div style={{minHeight: "280px", display: "block"}}>
      
-      <Row className="C-Talent-User-Location rowCards"><Image src={getImageLanguage(data.countryUser)} className="Modal-Portfolio-Avatar-Country" roundedCircle/> {data.regionUser}</Row>
+      <Row className="C-Talent-User-Location rowCards"><Image src={getImageLanguage(data.countryUser)} style={{height: "32px",width: "32px"}} roundedCircle/><div className="C-Talent-Country-Name">{data.regionUser}</div></Row>
       <Row className="C-Talent-User-Name rowCards">{data.nameUser}</Row>
       <Row className="C-Talent-Website-Link rowCards">{data.nameTalentArea}</Row>
       <Row className="C-Talent-User-Description rowCards">{data.descriptionTalentArea}</Row>
-      <Row className="C-Proposal-Keywords rowCards"><Translate id="keywords"></Translate >: {data.keywords.join(", ")}</Row>
+      <Row className="C-Talent-Keywords rowCards"><Translate id="keywords"></Translate >:<div className="C-Talent-Keywords-Name">{data.keywords.join(", ")}</div></Row>
      </div>
     </Card.Body>
     <Card.Footer className="C-Talent-Footer">
