@@ -1,6 +1,7 @@
 import React from 'react'
 import CardProposal from '../../../Components/Elements/Cards/CardProposal/CardProposal'
 import CardPortfolio from '../../Elements/Cards/CardPortfolio/CardPortfolio'
+import CardTalent from '../../Elements/Cards/CardTalent/CardTalent'
 import { Card, Image, Row, Button, Col } from 'react-bootstrap';
 import { withLocalize, Translate } from "react-localize-redux";
 import getImageLanguage from "../../../Resources/Translations/compilerLanguageImages.js"
@@ -17,6 +18,7 @@ class ProfileView extends React.Component {
         user: {},
         error:{},
         showRender:false,
+        pageContent: 'Projects'
       }
     //request example
     componentDidMount() {
@@ -49,7 +51,7 @@ class ProfileView extends React.Component {
                             <Col xs={2} s={2} m={2} l={2} xl={2}>
                                 <Image src={S.baseURL()+"public/anexes/profiles/"+this.state.user.anexes.fileName} className="Profile-Avatar"  />
                             </Col>
-                            <Col xs={10} s={10} m={10} l={10} xl={10}>
+                            <Col xs={2} s={2} m={2} l={2} xl={2}>
                             <Row>
                                 <Col m={12} l={12} xl={12}>
                                 <Row>
@@ -64,7 +66,8 @@ class ProfileView extends React.Component {
                                 </Col>
                             </Row>
                             </Col>
-                            <Col xs={10} s={10} m={10} l={10} xl={10}>
+                            <Col xs={8} s={8} m={8} l={8} xl={8}>
+
                             </Col>
                         </Row>
                     </Card.Body>
@@ -74,10 +77,10 @@ class ProfileView extends React.Component {
                         <Col m={5}>
                         <Row>
                             <Col m={6} style={{textAlign: "center", paddingRight:5}}>
-                            <Button className="Modal-Portfolio-Button-Categories"><Translate id="projects"></Translate></Button>
+                            <Button onClick={()=>{this.setState({pageContent:'Projects'})}} className="Modal-Portfolio-Button-Categories"><Translate id="projects"></Translate></Button>
                             </Col>
                             <Col m={6} style={{textAlign: "center", paddingLeft: 5, paddingRight: 5}}>
-                            <Button className="Modal-Portfolio-Button-Categories"><Translate id="proposals"></Translate></Button>
+                            <Button onClick={()=>{this.setState({pageContent:'Proposals'})}} className="Modal-Portfolio-Button-Categories"><Translate id="proposals"></Translate></Button>
                             </Col>
                         </Row>
                         </Col>
@@ -93,7 +96,7 @@ class ProfileView extends React.Component {
                         <Col m={5}>
                         <Row>
                             <Col m={6} style={{textAlign: "center", paddingLeft: 5, paddingRight: 5}}>
-                            <Button className="Modal-Portfolio-Button-Categories"><Translate id="about me"></Translate></Button>
+                            <Button className="Modal-Portfolio-Button-Categories"><Translate id="talents"></Translate></Button>
                             </Col>
                             <Col m={6} style={{textAlign: "center", paddingLeft: 5}}>
                             <Button className="Modal-Portfolio-Button-Categories"><Translate id="settings"></Translate></Button>
@@ -101,12 +104,38 @@ class ProfileView extends React.Component {
                         </Row>
                         </Col>
                     </Row>
+
+
+
+
+                    <Row>
+                        
+                        {
+                        (this.state.pageContent=='Projects')?this.pageContentProjects():
+                        ((this.state.pageContent=='Proposals')?this.pageContentProposals():
+                        this.pageContentTalents())
+                       
+                        }
+
+
+                        
+
+                    </Row>
             </>
         )
         }else{
             return(<></>);
         }
     }
+        pageContentProjects(){
+            return (<div></div>);
+        }
+        pageContentProposals(){
+            return (<div>Proposals</div>);
+        }
+        pageContentTalents(){
+            return (<div>Talents</div>);
+        }
     }
 
 export default withLocalize(ProfileView);
