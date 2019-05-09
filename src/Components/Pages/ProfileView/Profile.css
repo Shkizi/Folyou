@@ -1,15 +1,16 @@
-.Profile-Top-Row {
-    margin-top: 1%;
-    margin-left: 1%;
-}
+
 
 .Profile-Header-Card {
     display: flex;
-    background-color: #48dbfb;
-    height: 20vh;
+    background-color: white;
+    height: 100%;
     overflow: hidden;
     padding: 1%;
-   
+    margin-top: 3vh;
+}
+
+.C-Portfolio-Username {
+    position: relative;
 }
 
 .Profile-Header-RegionCountry {
@@ -25,18 +26,11 @@
 }
 
 .Profile-Avatar {
-    height: 50%;
-    width: 4%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: -2%;
+    width: 11.5rem;
+    height: 11.5rem;
+    border-radius: 3%;
 }
 
-.Profile-Header-Username{
-    text-align: center;
-    font-weight: bold;
-    font-size: 20px;
-}
 
 .Modal-Portfolio-Button-Categories {
     background-color: inherit;
