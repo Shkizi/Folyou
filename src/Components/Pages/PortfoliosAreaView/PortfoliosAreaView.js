@@ -7,12 +7,15 @@ import { withLocalize } from "react-localize-redux";
 import { WithContext as ReactTags } from 'react-tag-input';
 import { Translate } from "react-localize-redux";
 import ServicesAPI from '../../../serviceAPI.js';
-import Notifications from '../../Elements/Notifications/Notifications';
+import Notifications from '../../searchboxstyle.css';
 import { Button} from "reactstrap";
+import '../../Elements/Notifications/Notifications';
 import "./PortfoliosAreaView.css";
 import CardsModalPortfolio from '../../Elements/CardsModal/Types/CardsModalPorfolio/CardsModalPortfolio.jsx'
-var S = new ServicesAPI();
 
+import SelectSearch from 'react-select-search'
+var S = new ServicesAPI();
+var countryJson = require("../../../Resources/Translations/countries.json");
 const KeyCodes = {
   comma: 188,
   enter: 13,
@@ -24,16 +27,17 @@ class PortfoliosAreaView extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            portfolios:[],
-            filters:[],
-            hasMoreItems: true,
-            error:[],
+                    portfolios:[],
+                    filters:[],
+                    hasMoreItems: true,
+                    error:[],
 
-            tags: [
-              
-           ],
-          suggestions: [
-           ] 
+                    tags: [
+                    
+                ],
+                suggestions: [
+                ],
+                countries:[]
         };
         this.handleDelete = this.handleDelete.bind(this);
         this.handleAddition = this.handleAddition.bind(this);
@@ -73,7 +77,8 @@ class PortfoliosAreaView extends React.Component {
     
 
     componentDidMount() {
-        S.getter(`getPortfolioByIdRecent`, {limit:1000 }, (res) => {  
+        
+        S.getter(`getPortfolioById`, { }, (res) => {  
                const portfolios = res.data.portfolioList;
                 console.log(res);
                  this.setState({ portfolios: portfolios });
@@ -104,7 +109,12 @@ class PortfoliosAreaView extends React.Component {
     render() {
         
       const { tags, suggestions } = this.state;
-       
+      let countries=[];
+      console.log(countryJson);
+      for (var index in countryJson) {
+          console.log(countryJson[index],index);
+          countries.push({name:countryJson[index],value:index});
+      }
       return (
           <>
             <Row style={{margin: 0}}>
@@ -132,6 +142,7 @@ class PortfoliosAreaView extends React.Component {
                     placeholder="Keywords" 
                     allowDragDrop="false"
                     />
+                    <SelectSearch options={countries} value="pt" name="country" placeholder="" />
                 </Col>
                 <Col sm={12}>
                     <hr className="Hr-Sections"/>
