@@ -1,5 +1,6 @@
 import React from 'react'
-import { Modal, Image, Card, Row } from 'react-bootstrap';
+import { Link } from "react-router-dom";
+import { Modal, Image, Card, Row, Button, Col } from 'react-bootstrap';
 import { Translate } from "react-localize-redux";
 import './CardsModalProposal.css';
 import getImageLanguage from "../../../../../Resources/Translations/compilerLanguageImages.js"
@@ -79,16 +80,26 @@ class CardsModalPortfolio extends React.Component {
                 <div><b><Translate id="description"></Translate></b></div>
                 <div className="Modal-Portfolio-Description">{data.descriptionProposal}</div>
 
-                <Card.Footer style={{backgroundColor: "red"}}>
+                <Card.Footer style={{backgroundColor: "gray"}}>
                   Anexos
                 </Card.Footer>
 
               </Card>
 
-          
-
             </Modal.Body>
             <Modal.Footer>
+              <Row>
+                <Col md={6}>
+                <Link to={"/ApplicationRegister/"+data.idProposal}>
+                <Button className={"Modal-Portfolio-Button-Register"}><Translate id="apply for proposal"></Translate></Button>
+                </Link>
+                </Col>
+                <Col md={6}>
+                <Button className={"Modal-Portfolio-Button-Message"}><Translate id="message proponent"></Translate></Button>
+                </Col>
+
+              </Row>
+              
             </Modal.Footer>
             </Modal>
         );
