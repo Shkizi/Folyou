@@ -18,10 +18,50 @@ class ProfileView extends React.Component {
         user: {},
         error:{},
         showRender:false,
-        pageContent: 'Projects'
+        pageContent: 'Projects',
+        portfolios:[],
+        proposals:[],
+        talents:[]
       }
     //request example
     componentDidMount() {
+        S.getter(`getPortfolioByIdUser`, {
+            idUser:this.props.match.params.id, 
+            limit:3000,
+          }, (res) => {  
+            const portfolios = res.data.portfolioList;
+            console.log(res);
+              this.setState({ portfolios: portfolios });
+        },
+        (error) => { 
+        console.log("Error: Portfolio", error);
+            this.setState({ error: {message:error,error:true} });
+        });
+        S.getter(`getProposalByIdUser`, {
+
+            idUser:this.props.match.params.id, 
+            limit:3000,
+          }, (res) => {  
+            const proposals = res.data.proposalList;
+            console.log(res);
+              this.setState({ proposals: proposals });
+          },
+          (error) => { 
+              console.log("Error: Proposal", error);
+              this.setState({ error: {message:error,error:true} });
+          });
+          S.getter(`getTalentByIdUser`, {
+            limit:3000,
+            idUser:this.props.match.params.id,
+          }, (res) => {  
+            const talents = res.data.talentList;
+            console.log(res);
+              this.setState({ talents: talents });
+          },
+          (error) => { 
+              console.log("Error: Talent", error);
+              this.setState({ error: {message:error,error:true} });
+          });
         S.serviceAPI().get(`getUserById`, 
           { params: {
                 idUser: this.props.match.params.id
@@ -88,7 +128,7 @@ class ProfileView extends React.Component {
                         <Col m={2}>
                         <Row>
                             <Col style={{textAlign: "center", paddingLeft: 5, paddingRight: 5}}>
-                            <Button className="Modal-Portfolio-Button-Categories"><Translate id="dashboard"></Translate></Button>
+                            <Button onClick={()=>{this.setState({pageContent:'Dashboards'})}} className="Modal-Portfolio-Button-Categories"><Translate id="dashboard"></Translate></Button>
                             </Col>
                         </Row>
                         </Col>
@@ -96,10 +136,10 @@ class ProfileView extends React.Component {
                         <Col m={5}>
                         <Row>
                             <Col m={6} style={{textAlign: "center", paddingLeft: 5, paddingRight: 5}}>
-                            <Button className="Modal-Portfolio-Button-Categories"><Translate id="talents"></Translate></Button>
+                            <Button onClick={()=>{this.setState({pageContent:'Talents'})}} className="Modal-Portfolio-Button-Categories"><Translate id="talents"></Translate></Button>
                             </Col>
                             <Col m={6} style={{textAlign: "center", paddingLeft: 5}}>
-                            <Button className="Modal-Portfolio-Button-Categories"><Translate id="settings"></Translate></Button>
+                            <Button onClick={()=>{this.setState({pageContent:'Settings'})}} className="Modal-Portfolio-Button-Categories"><Translate id="settings"></Translate></Button>
                             </Col>
                         </Row>
                         </Col>
@@ -113,8 +153,11 @@ class ProfileView extends React.Component {
                         {
                         (this.state.pageContent=='Projects')?this.pageContentProjects():
                         ((this.state.pageContent=='Proposals')?this.pageContentProposals():
-                        this.pageContentTalents())
-                       
+                        ((this.state.pageContent=='Talents')?this.pageContentTalents():
+                        ((this.state.pageContent=='Dashboard')?this.pageContentDashboard():
+                        ((this.state.pageContent=='Settings')?this.pageContentSettings():
+                        this.pageContentDashboard()
+                        ))))                       
                         }
 
 
@@ -128,14 +171,34 @@ class ProfileView extends React.Component {
         }
     }
         pageContentProjects(){
-            return (<div></div>);
+            return (<>{this.state.portfolios.map(val =>{return(
+                <CardPortfolio  parent={this} data={val} />
+              );})}</>
+            )
         }
         pageContentProposals(){
-            return (<div>Proposals</div>);
+            return (<>{this.state.proposals.map(val =>{return(
+                <CardProposal  parent={this} data={val} />
+              );})}</>
+            )
         }
         pageContentTalents(){
-            return (<div>Talents</div>);
+            
+              return (<>{this.state.talents.map(val =>{return(
+                <CardTalent data={val} parent={this} />
+              );})}</>
+            )
         }
+        pageContentDashboard(){
+            
+            return (<></>
+          )
+      }
+      pageContentSettings(){
+            
+        return (<></>
+      )
+  }
     }
 
 export default withLocalize(ProfileView);
