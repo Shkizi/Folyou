@@ -12,7 +12,7 @@ import { Button} from "reactstrap";
 import '../../Elements/Notifications/Notifications';
 import "./PortfoliosAreaView.css";
 import CardsModalPortfolio from '../../Elements/CardsModal/Types/CardsModalPorfolio/CardsModalPortfolio.jsx'
-
+import getImageLanguage from "../../../Resources/Translations/compilerLanguageImages.js";
 import SelectSearch from 'react-select-search'
 var S = new ServicesAPI();
 var countryJson = require("../../../Resources/Translations/countries.json");
@@ -107,14 +107,23 @@ class PortfoliosAreaView extends React.Component {
     
   
     render() {
+        function renderFriend(option) {
+            const imgStyle = {
+                borderRadius: '50%',
+                verticalAlign: 'middle',
+                marginRight: 10,
+            };
         
+            return (<span><img alt="" style={imgStyle} width="40" height="40" src={option.photo} /><span>{option.name}</span></span>);
+        }
       const { tags, suggestions } = this.state;
       let countries=[];
-      console.log(countryJson);
+        
       for (var index in countryJson) {
           console.log(countryJson[index],index);
-          countries.push({name:countryJson[index],value:index});
+          countries.push({name:countryJson[index],value:index,photo:getImageLanguage(index.toLowerCase())});
       }
+      console.log(countries);
       return (
           <>
             <Row style={{margin: 0}}>
@@ -130,7 +139,7 @@ class PortfoliosAreaView extends React.Component {
                     <Translate id="projects" ></Translate>
                 </div>
                 </Col>
-                <Col sm={10} className="Header-Sections">
+                <Col sm={5} className="Header-Sections">
                 <ReactTags tags={tags}
                     
                     inputFieldPosition="top"
@@ -140,9 +149,11 @@ class PortfoliosAreaView extends React.Component {
                     handleDrag={this.handleDrag}
                     delimiters={delimiters}
                     placeholder="Keywords" 
-                    allowDragDrop="false"
+                    allowDragDrop={false}
                     />
-                    <SelectSearch options={countries} value="pt" name="country" placeholder="" />
+                    
+                    </Col><Col sm={5} className="Header-Sections">
+                <SelectSearch renderOption={renderFriend} options={countries} value="pt" name="country" placeholder="" />
                 </Col>
                 <Col sm={12}>
                     <hr className="Hr-Sections"/>

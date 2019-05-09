@@ -186,3 +186,6 @@
             color: rgba(0, 0, 0, 0.5);
             font-size: 12px;
 }
+.select-search-box__options{
+    padding-left: 0px;
+}
