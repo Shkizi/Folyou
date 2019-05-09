@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Card, Row, Image } from 'react-bootstrap';
+import { Col, Card, Row, Image, Button } from 'react-bootstrap';
 import './CardTalent.css'
 import AvatarImage from '../../../../Resources/Images/avatar.png'
 import { MdMailOutline } from "react-icons/md";
@@ -8,11 +8,19 @@ import ServicesAPI from "../../../../serviceAPI";
 import { withLocalize, Translate } from "react-localize-redux";
 import getImageLanguage from "../../../../Resources/Translations/compilerLanguageImages.js"
 var S = new ServicesAPI();
+
+
+function doit(event) {
+  event.preventDefault();
+  console.log("itsssssssssssitsssssssssssitsssssssssssitsssssssssssitsssssssssssitsssssssssssitsssssssssssitsssssssssssitsssssssssss");
+}
+
 function CreateTalent(props) {
   var data= props.data;
    var parent = props.parent;
    const avatUser =(data.avatarUser=="")?AvatarImage:S.baseURL()+"public/anexes/profiles/"+data.avatarUser;
   
+
   return (
    
     <div className="C-Talent" onClick={() => {parent.handleModalShow("talentSheet",data.idTalentArea)}}>
@@ -33,7 +41,7 @@ function CreateTalent(props) {
     </Card.Body>
     <Card.Footer className="C-Talent-Footer">
       <div className="C-Talent-Footer-Risingstar">{data.valueCategory}</div>
-      <div  className="C-Talent-Footer-Mailbox"><MdMailOutline/></div>
+      <Button onclick={(event)=>{doit(event)}}className="C-Talent-Footer-Mailbox"><MdMailOutline/></Button>
     </Card.Footer>
    
    </Card>
@@ -43,8 +51,21 @@ function CreateTalent(props) {
 }
 
 class CardTalent extends React.Component { 
+  constructor(props) {
+    super(props);
+    this.state = {
+      addClass: false
+    }
+  }
+  
+  toggle () {
+    this.setState({addClass: !this.state.addClass});
+  }
+
   
   render() {
+
+
     return ( 
    
       <Col xs={12} sm={6} md={6} lg={4} xl={3}>

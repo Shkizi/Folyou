@@ -44,19 +44,29 @@ class ProfileView extends React.Component {
         return (
             <>
                 <Card className="Profile-Header-Card">
-                    <Row className="Profile-Top-Row">
-                    <Image src={getImageLanguage(this.state.user.countryUser)} className="Modal-Portfolio-Avatar" roundedCircle />
-                        <Card.Text className="Profile-Header-RegionCountry">
-                            {"" + this.state.user.regionUser}
-                        </Card.Text>
-                    </Row>
-
-                    <Image src={S.baseURL()+"public/anexes/profiles/"+this.state.user.anexes.fileName} className="Profile-Avatar" roundedCircle />
-
                     <Card.Body style={{paddingTop: "5px"}}>
-                        <Card.Text className="Profile-Header-Username">
-                            {this.state.user.nameUser}
-                        </Card.Text>
+                        <Row>
+                            <Col xs={2} s={2} m={2} l={2} xl={2}>
+                                <Image src={S.baseURL()+"public/anexes/profiles/"+this.state.user.anexes.fileName} className="Profile-Avatar"  />
+                            </Col>
+                            <Col xs={10} s={10} m={10} l={10} xl={10}>
+                            <Row>
+                                <Col m={12} l={12} xl={12}>
+                                <Row>
+                                <Card.Text className="C-Portfolio-Username"><b>{this.state.user.nameUser}</b></Card.Text>
+                                </Row>
+                                <Row>
+                                <Image src={getImageLanguage(this.state.user.countryUser)} className="Modal-Portfolio-Avatar" roundedCircle />
+                                <Card.Text className="Profile-Header-RegionCountry">
+                                {"" + this.state.user.regionUser}
+                                </Card.Text>
+                                </Row>
+                                </Col>
+                            </Row>
+                            </Col>
+                            <Col xs={10} s={10} m={10} l={10} xl={10}>
+                            </Col>
+                        </Row>
                     </Card.Body>
                 </Card>
 
