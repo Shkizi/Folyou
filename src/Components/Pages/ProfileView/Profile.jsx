@@ -70,7 +70,8 @@ class ProfileView extends React.Component {
             if(!res.data.error){
         const user = res.data.user;
         console.log(res);
-        this.setState({ user });
+        console.log(user);
+        this.setState({ user:user });
        
             }else{
                 const error={message:res.data.error,error:true};
@@ -100,14 +101,18 @@ class ProfileView extends React.Component {
                                 <Row>
                                 <Image src={getImageLanguage(this.state.user.countryUser)} className="Modal-Portfolio-Avatar" roundedCircle />
                                 <Card.Text className="Profile-Header-RegionCountry">
-                                {"" + this.state.user.regionUser}
+                                {this.state.user.regionUser}
+                                
                                 </Card.Text>
                                 </Row>
                                 </Col>
                             </Row>
                             </Col>
                             <Col xs={8} s={8} m={8} l={8} xl={8}>
-
+                            <Card.Text className="Profile-Header-Text">
+                                {"" + this.state.user.descriptionUser}
+                                </Card.Text>
+                                
                             </Col>
                         </Row>
                     </Card.Body>

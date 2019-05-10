@@ -1,6 +1,6 @@
 class User {
     
-    constructor(idUser,nameUser,emailUser,passwordUser,isAdmin,countryUser,regionUser,addressUser,languageUser,isActivated,createdTimestamp){
+    constructor(idUser,nameUser,emailUser,passwordUser,isAdmin,countryUser,regionUser,languageUser,isActivated,createdTimestamp){
         this.roles=this.getArrayOfRoles(isAdmin);
         this.idUser = idUser;
         this.nameUser = nameUser;
@@ -9,7 +9,6 @@ class User {
         this.isAdmin = isAdmin;
         this.countryUser = countryUser;
         this.regionUser = regionUser;
-        this.addressUser = addressUser;
         this.languageUser = languageUser;
         this.isActivated = isActivated;
         this.createdTimestamp = createdTimestamp;

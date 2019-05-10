@@ -15,21 +15,10 @@ function getUserById(req, res,next) {
                 res.send({error: true, err: error});
             }else{
             var row=rows[0];
-            var idUser = row.idUser;
-            var nameUser = row.nameUser;
-            var emailUser = row.emailUser;
-            var passwordUser = row.passwordUser;
-            var isAdmin = row.isAdmin;
-            var countryUser = row.countryUser;
-            var regionUser = row.regionUser;
-            var languageUser = row.languageUser;
-            var isActivated = row.isActivated;
-            var createdTimestamp = row.createdTimestamp;
-            var descriptionUser = row.descriptionUser;
-
+            
            
 
-            let user = new User(idUser, nameUser, emailUser, passwordUser, isAdmin, countryUser, regionUser, languageUser, isActivated, createdTimestamp, descriptionUser);
+            let user =row;
             user.anexes={
                   idAnexes:row.idAnexes,
                   fileName:row.fileName            
