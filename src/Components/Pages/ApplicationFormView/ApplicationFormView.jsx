@@ -1,7 +1,7 @@
 //place for all the portfolios
 
 import React from 'react';
-import { Container, Row, Col} from 'react-bootstrap';
+import { Container, Row, Col, Form, FormGroup, FormText} from 'react-bootstrap';
 import { withLocalize } from "react-localize-redux";
 import { WithContext as ReactTags } from 'react-tag-input';
 import { Translate } from "react-localize-redux";
@@ -27,10 +27,23 @@ class ApplicationFormView extends React.Component {
                     tags: [],
                 suggestions: [],
                 countries:[],
-                gotData:false
+                gotData:false,
+                isChecked: false
         };
-        
+
+        this.handleRadioTeam = this.handleRadioTeam.bind(this);
+        this.handleRadioIndividual = this.handleRadioIndividual.bind(this);
     }
+
+
+    handleRadioIndividual() {
+        this.setState({isChecked: false});
+    }
+
+    handleRadioTeam() {
+        this.setState({ isChecked: false });
+    }
+
     componentDidMount() {
         S.getter(`getProposalById`, {
             idProposal:this.props.match.params.id,
@@ -46,24 +59,24 @@ class ApplicationFormView extends React.Component {
      console.log("finish Mounting");    
     }
     
+
   
     render() {
         return (
             <>
             <Row>
-                <Col sm={1}>
-                
-                </Col>
-                <Col sm={11}>
-
-                </Col>
-            </Row>
-            <Row>
-                <Col sm={1}>
-                
-                </Col>
-                <Col sm={11}>
-
+                <Col sm={12}>
+                 <Form>
+                    <Form.Group controlId="formBasicChecbox">
+                        <Row>
+                            <Form.Check className="Form-Individual" name="check" type="radio" label="Individual" checked/>
+                            <Form.Check name="check" type="radio" label="Team"  />
+                        </Row>
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                        <Translate id="candidate"></Translate>
+                    </Button>
+                 </Form>
                 </Col>
             </Row>
             </>     
