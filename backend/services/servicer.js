@@ -6,6 +6,8 @@ module.exports.getPortfolioByIdUser = require("./Portfolio/getPortfolioByIdUser.
 
 module.exports.getProposalByIdRecent = require("./Proposal/getProposalByIdRecent.js");
 module.exports.getProposalByIdUser = require("./Proposal/getProposalByIdUser.js");
+module.exports.getProposalByIdProposal = require("./Proposal/getProposalByIdProposal.js");
+
 
 module.exports.getTalentByIdRecent = require("./Talent/getTalentByIdRecent.js");
 module.exports.getTalentByIdUser = require("./Talent/getTalentByIdUser.js");

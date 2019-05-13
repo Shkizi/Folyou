@@ -13,6 +13,7 @@ import "./ApplicationFormView.css";
 import CardsModalPortfolio from '../../Elements/CardsModal/Types/CardsModalPorfolio/CardsModalPortfolio.jsx'
 import getImageLanguage from "../../../Resources/Translations/compilerLanguageImages.js";
 import SelectSearch from 'react-select-search'
+import { throws } from 'assert';
 var S = new ServicesAPI();
 var countryJson = require("../../../Resources/Translations/countries.json");
 
@@ -20,15 +21,16 @@ class ApplicationFormView extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-                    portfolios:[],
-                    filters:[],
-                    hasMoreItems: true,
-                    error:[],
-                    tags: [],
+                portfolios:[],
+                filters:[],
+                hasMoreItems: true,
+                error:[],
+                tags: [],
                 suggestions: [],
                 countries:[],
                 gotData:false,
-                isIndividual: null
+                isIndividual: null,
+                service:false
         };
 
         this.handleRadioTeam = this.handleRadioTeam.bind(this);
@@ -47,12 +49,14 @@ class ApplicationFormView extends React.Component {
    
 
     componentDidMount() {
-        S.getter(`getProposalById`, {
+        S.getter(`getProposalByIdProposal`, {
             idProposal:this.props.match.params.id,
+            limit:1
           }, (res) => {  
             const proposals = res.data.proposalList;
             console.log(res);
               this.setState({ proposals: proposals });
+              this.setState({service:true});
           },
           (error) => { 
               console.log("Error: Proposal", error);
@@ -64,8 +68,19 @@ class ApplicationFormView extends React.Component {
 
   
     render() {
+        
+        return(
+            (this.state.service==true)?this.page():this.empty()
+        );
+    } 
+    page(){
         return (
             <>
+            <Row>
+                <Col sm={12}>
+                {this.state.proposals[0].descriptionProposal}
+                </Col>
+            </Row>
             <Row>
                 <Col sm={12}>
                  <Form>
@@ -85,7 +100,7 @@ class ApplicationFormView extends React.Component {
             </Row>
             </>     
         );
-    } 
+    }
     empty(){
         return(<></>);
     }
