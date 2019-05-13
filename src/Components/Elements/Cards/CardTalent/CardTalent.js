@@ -11,7 +11,7 @@ var S = new ServicesAPI();
 
 
 function doit(event) {
-  event.preventDefault();
+  event.stopPropagation();
   console.log("itsssssssssssitsssssssssssitsssssssssssitsssssssssssitsssssssssssitsssssssssssitsssssssssssitsssssssssssitsssssssssss");
 }
 
@@ -29,11 +29,10 @@ function CreateTalent(props) {
 
   <Card className="C-Talent-Card">
     <Card.Body className="C-Talent-Body">
-     <div className="C-Talent-Avatar"><Image src={avatUser} className="C-Talent-Avatar-Image"/></div>
+     <div className="C-Talent-Avatar"><Link variant="link" className="C-Talent-Name-User" to={"/Profile/"+data.idUser}><Image src={avatUser} className="C-Talent-Avatar-Image"/><span style={{paddingLeft: "1%"}}>{data.nameUser}</span></Link></div>
      <div style={{minHeight: "280px", display: "block"}}>
      
       <Row className="C-Talent-User-Location rowCards"><Image src={getImageLanguage(data.countryUser)} style={{height: "32px",width: "32px"}} roundedCircle/><div className="C-Talent-Country-Name">{data.regionUser}</div></Row>
-      <Row className="C-Talent-User-Name rowCards">{data.nameUser}</Row>
       <Row className="C-Talent-Website-Link rowCards">{data.nameTalentArea}</Row>
       <Row className="C-Talent-User-Description rowCards">{data.descriptionTalentArea}</Row>
       <Row className="C-Talent-Keywords rowCards"><Translate id="keywords"></Translate >:<div className="C-Talent-Keywords-Name">{data.keywords.join(", ")}</div></Row>
@@ -41,7 +40,7 @@ function CreateTalent(props) {
     </Card.Body>
     <Card.Footer className="C-Talent-Footer">
       <div className="C-Talent-Footer-Risingstar">{data.valueCategory}</div>
-      <Button onclick={(event)=>{doit(event)}}className="C-Talent-Footer-Mailbox"><MdMailOutline/></Button>
+      <Button variant="link" onClick={(event)=>{doit(event)}} className="C-Talent-Footer-Mailbox"><MdMailOutline/></Button>
     </Card.Footer>
    
    </Card>

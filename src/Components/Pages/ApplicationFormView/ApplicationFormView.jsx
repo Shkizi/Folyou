@@ -28,7 +28,7 @@ class ApplicationFormView extends React.Component {
                 suggestions: [],
                 countries:[],
                 gotData:false,
-                isChecked: false
+                isChecked: true
         };
 
         this.handleRadioTeam = this.handleRadioTeam.bind(this);
@@ -37,11 +37,18 @@ class ApplicationFormView extends React.Component {
 
 
     handleRadioIndividual() {
-        this.setState({isChecked: false});
+        this.setState({isChecked: true});
     }
 
     handleRadioTeam() {
         this.setState({ isChecked: false });
+    }
+
+    showwwww() {
+        if(this.isChecked == false) {
+            return (
+            <div>dPASIJIDJASIJPDHASOPJPQWNMOQ</div>
+            )}
     }
 
     componentDidMount() {
@@ -69,8 +76,9 @@ class ApplicationFormView extends React.Component {
                  <Form>
                     <Form.Group controlId="formBasicChecbox">
                         <Row>
-                            <Form.Check className="Form-Individual" name="check" type="radio" label="Individual" checked/>
+                            <Form.Check  onClick={()=>{this.showwwww()}} name="check" type="radio" label="Individual" checked/>
                             <Form.Check name="check" type="radio" label="Team"  />
+                            {}
                         </Row>
                     </Form.Group>
                     <Button variant="primary" type="submit">

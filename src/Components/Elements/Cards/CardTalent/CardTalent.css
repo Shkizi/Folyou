@@ -5,7 +5,6 @@
     transition: all 0.3s ease-in-out;
     height: 100%;
     border-radius: .25rem;
-    z-index: 0;
 }
 
 .C-Talent:hover {
@@ -57,11 +56,21 @@
     overflow: hidden;
 }
 
-.C-Talent-User-Name {
-    padding-left: 0;
+.C-Talent-Name-User {
+    color: black;
     font-weight: bold;
-    width: 100%;
-    overflow: "visible";
+}
+
+
+.C-Talent-Name-User:hover, .C-Talent-Name-User:active, .C-Talent-Name-User:focus, .C-Talent-Name-User:visited  {
+    text-decoration: none;
+}
+
+.C-Talent-Name-User:hover {
+    padding: 0;
+    color: grey;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .C-Talent-Website-Link {
@@ -126,6 +135,10 @@
     -webkit-box-align: center;
     align-items: center;
     font-size: 20px;
-    z-index: 1;
     position: relative;
+    color: black;
+}
+
+.C-Talent-Footer-Mailbox:hover {
+    color: grey;
 }
