@@ -11,6 +11,7 @@ var S = new ServicesAPI();
 function CreateProposal(props) {
   var data= props.data;
    var parent = props.parent; 
+   var app = props.app;
   const avatUser =(data.avatarUser=="")?AvatarImage:S.baseURL()+"public/anexes/profiles/"+data.avatarUser;
    
    
@@ -32,7 +33,7 @@ function CreateProposal(props) {
     </Card.Body>
     <Card.Footer className="C-Proposal-Footer">
       <div className="C-Proposal-Footer-Category">{data.valueCategory}</div>
-      <div  className="C-Proposal-Footer-Date">{data.createdTimestamp}</div>
+      <div  className="C-Proposal-Footer-Date">{(app.state.currentLanguage==app.state.currentLanguage)?app.formatDate(data.createdTimestamp):app.formatDate(data.createdTimestamp)}</div>
     </Card.Footer>
    
    </Card>

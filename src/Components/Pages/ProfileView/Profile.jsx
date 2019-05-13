@@ -211,20 +211,20 @@ class ProfileView extends React.Component {
     }
         pageContentProjects(){
             return (<>{this.state.portfolios.map(val =>{return(
-                <CardPortfolio  parent={this} data={val} />
+                <CardPortfolio  parent={this} data={val}app={this.props.app} />
               );})}</>
             )
         }
         pageContentProposals(){
             return (<>{this.state.proposals.map(val =>{return(
-                <CardProposal  parent={this} data={val} />
+                <CardProposal  parent={this} data={val} app={this.props.app}/>
               );})}</>
             )
         }
         pageContentTalents(){
             
               return (<>{this.state.talents.map(val =>{return(
-                <CardTalent data={val} parent={this} />
+                <CardTalent data={val} parent={this} app={this.props.app}/>
               );})}</>
             )
         }

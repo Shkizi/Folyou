@@ -11,7 +11,7 @@ const LanguageSelector = ({ languages, app, setActiveLanguage, cookies }) => (
      </Dropdown.Toggle>
       <Dropdown.Menu className="Dropdown-Language-Menu">
        {languages.map(lang => (
-        <Dropdown.Item className="Dropdown-Language-Selector" key={lang.code} onClick={() =>{ setActiveLanguage(lang.code); app.changeCurrentLanguage(lang.code,lang.name)}}>
+        <Dropdown.Item className="Dropdown-Language-Selector" data-locale={lang.code} key={lang.code} onClick={() =>{ setActiveLanguage(lang.code); app.changeCurrentLanguage(lang.code,lang.name)}}>
             <Image src={getImageLanguage(lang.code)} className="Dropdown-Language-Flag"></Image>
             &nbsp;{lang.name}   
         </Dropdown.Item>

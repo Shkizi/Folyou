@@ -116,10 +116,10 @@ class Home extends React.Component {
                       <hr className="Hr-Sections"/>
                       <Row>
                       {this.state.portTrending.map(val =>{return(
-                        <CardPortfolio data={val} parent={this} />
+                        <CardPortfolio data={val} parent={this} app={this.props.app}  />
                       );})}
                       {this.state.propTrending.map(val =>{return(
-                        <CardProposal data={val} parent={this}  />
+                        <CardProposal data={val} parent={this} app={this.props.app}  />
                       );})}
                       </Row>
                       </Col>
@@ -151,7 +151,7 @@ class Home extends React.Component {
                       <hr className="Hr-Sections"/>
                       <Row>
                       {this.state.portfolios.map(val =>{return(
-                        <CardPortfolio parent={this} data={val} />
+                        <CardPortfolio parent={this} data={val} app={this.props.app}  />
                       );})}
                       </Row>
                       </Col>
@@ -179,7 +179,7 @@ class Home extends React.Component {
                       <hr className="Hr-Sections"/>
                       <Row>
                       {this.state.proposals.map(val =>{return(
-                        <CardProposal  parent={this} data={val} />
+                        <CardProposal  parent={this} data={val} app={this.props.app}  />
                       );})}
                       </Row>
                       </Col>
@@ -206,7 +206,7 @@ class Home extends React.Component {
                       <hr className="Hr-Sections"/>
                       <Row>
                       {this.state.talents.map(val =>{return(
-                        <CardTalent data={val} parent={this} />
+                        <CardTalent data={val} parent={this} app={this.props.app}  />
                       );})}
                       </Row>
                       </Col>

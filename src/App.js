@@ -6,12 +6,9 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { withLocalize } from "react-localize-redux";
 import gbTranslation from "./Resources/Translations/gb.json";
 import ptTranslation from "./Resources/Translations/pt.json";
-
 import ReactLoading from 'react-loading';
-
-
 import { withCookies } from 'react-cookie';
-
+var moment = require('moment');
 class App extends Component {
   constructor(props) {
     super(props);
@@ -33,16 +30,20 @@ class App extends Component {
       currentLanguageName:"English",
       notificationModule:null,
       isLoading:true,
+      userLogged:{set:false,idUser:1,anexes:{fileName:"Iade.jpg"}}
+    
     };
   }
 
   
   changeCurrentLanguage(code,name) {
+    moment.locale(code);
+    
     this.setState({ currentLanguage: code,currentLanguageName:name });
     const { cookies } = this.props;
     cookies.set('folyou_language', code, { path: '/' });
     cookies.set('folyou_languageName', name, { path: '/' });
-
+    this.forceUpdate();
   }
 
   componentDidMount() {
@@ -60,7 +61,9 @@ class App extends Component {
     //raisenotif("Tset","bl",1);
   }
 
-
+  formatDate(date){
+    return moment(date).format('LLLL');
+  }
   loadingSection = () => {return(<ReactLoading type={"bars"} color={"red"} height={'20%'} width={'20%'} />)}
 
   Page = () => {return(

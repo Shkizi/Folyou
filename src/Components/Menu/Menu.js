@@ -38,7 +38,7 @@ class Menu extends React.Component {
       showLogin: false,
       showTabs: false,
       showSearchButton: true,
-      userLogged:{set:true,idUser:1,anexes:{fileName:"Iade.jpg"}}
+     
     };
   }
   
@@ -143,7 +143,7 @@ searchLine = () => {
         {/* Login/Logout Col*/}
         <Col  xs={1} sm={1} md={1} lg={1} xl={1} style={{paddingRight: 0}} >
          
-        {(this.state.userLogged.set)?this.renderLogged():this.renderSign()}
+        {(this.props.app.state.userLogged.set)?this.renderLogged():this.renderSign()}
             
 
 
@@ -160,8 +160,8 @@ searchLine = () => {
     );} 
      renderLogged(){
       return (
-        <Link to={'/Profile/'+this.state.userLogged.idUser}>
-      <Image src={S.baseURL()+"public/anexes/profiles/"+this.state.userLogged.anexes.fileName} className="Logged-Home-Avatar" roundedCircle />
+        <Link to={'/Profile/'+this.props.app.state.userLogged.idUser}>
+      <Image src={S.baseURL()+"public/anexes/profiles/"+this.props.app.state.userLogged.anexes.fileName } className="Logged-Home-Avatar" roundedCircle />
     </Link>
       );
     }
