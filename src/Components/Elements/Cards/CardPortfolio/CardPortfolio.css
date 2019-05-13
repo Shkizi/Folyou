@@ -109,27 +109,48 @@
 
 .C-Portfolio-Footer:hover {
     background-color: inherit;
+    padding: 0;
+    color: grey;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
 }
 
+.C-Portfolio-Footer-User {
+    display: flex;
+    color: black;
+}
 .C-Portfolio-Footer-Name {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
     -webkit-box-flex: 1;
-    padding-left: 10px;
+    padding-left: 1%;
     flex: 1;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: black;
     overflow: hidden;
 }
 
+.C-Portfolio-Footer-Username {
+    padding-left: 1%;
+    font-weight: bold;
+}
+
+
+.C-Portfolio-Footer-Username:hover {
+    color: grey;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    
+}
+
+
+
 .C-Portfolio-Footer-Category {
     display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-flex: 1;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    float: right;
 }
 

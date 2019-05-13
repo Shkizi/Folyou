@@ -41,6 +41,24 @@
     overflow: hidden;
 }
 
+.C-Proposal-Name-User {
+    color: black;
+    font-weight: bold;
+}
+
+
+.C-Proposal-Name-User:active, .C-Proposal-Name-User:focus, .C-Proposal-Name-User:visited  {
+    text-decoration: none;
+}
+
+.C-Proposal-Name-User:hover {
+    padding: 0;
+    color: grey;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
 .C-Proposal-Offer-Location {
     text-align: left;
 }
@@ -62,16 +80,7 @@
     font-weight: bold;
     width: 100%;
     overflow: "visible";
-}
-
-.C-Proposal-Proponent-Name {
     color: #49c5b6;
-    height: 20px;
-    margin-bottom: 12px;
-    line-height: 20px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
 }
 
 .C-Proposal-Proponent-Description {

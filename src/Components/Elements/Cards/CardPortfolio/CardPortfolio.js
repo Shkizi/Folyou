@@ -5,6 +5,8 @@ import AvatarImage from '../../../../Resources/Images/avatar.png';
 import ServicesAPI from "../../../../serviceAPI";
 import { withLocalize, Translate } from "react-localize-redux";
 import getImageLanguage from "../../../../Resources/Translations/compilerLanguageImages.js"
+import {  Link } from "react-router-dom";
+
 var S = new ServicesAPI();
 function CreatePortfolio(props) {
   var data= props.data;
@@ -29,10 +31,23 @@ function CreatePortfolio(props) {
       <Row className="C-Portfolio-Description rowCards">{data.descriptionSheet}</Row>
      </div>
     </Card.Body>
-    <Card.Footer className="C-Portfolio-Footer">
-      <Image src={avatUser} className="C-Portfolio-Footer-Avatar-Image"></Image>
-      <div  className="C-Portfolio-Footer-Name">By {data.nameUser}</div>
-      <div className="C-Portfolio-Footer-Category">{data.valueCategory}</div>
+    <Card.Footer>
+      <Row>
+        <Col style={{paddingRight: 0}} xs={10} s={10} md={10} lg={10} xl={10}>
+          <Link to={"/Profile/"+data.idUser} style={{width: "50%", textDecoration: "none"}}>
+              <span  className="C-Portfolio-Footer-User">
+                <Image src={avatUser} className="C-Portfolio-Footer-Avatar-Image"></Image>
+                  <div className="C-Portfolio-Footer-Name">
+                  <Translate id="by"></Translate>
+                  <span className="C-Portfolio-Footer-Username">{data.nameUser}</span>
+                  </div>
+              </span>
+          </Link>
+        </Col>
+        <Col xs={2} s={2} md={2} lg={2} xl={2} style={{marginTop: "auto", marginBottom: "auto"}}>
+            <div className="C-Portfolio-Footer-Category">{data.valueCategory}</div>
+        </Col>
+    </Row>
     </Card.Footer>
    </Card>
    </span>
