@@ -3,6 +3,7 @@ import { Col, Card, Row, Image } from 'react-bootstrap';
 import './CardProposal.css'
 import AvatarImage from '../../../../Resources/Images/avatar.png'
 import ServicesAPI from "../../../../serviceAPI";
+import {  Link } from "react-router-dom";
 import { withLocalize, Translate } from "react-localize-redux";
 import getImageLanguage from "../../../../Resources/Translations/compilerLanguageImages.js"
 
@@ -20,12 +21,11 @@ function CreateProposal(props) {
 
   <Card className="C-Proposal-Card">
     <Card.Body className="C-Proposal-Body">
-     <div className="C-Proposal-Avatar"><Image src={avatUser} className="C-Proposal-Avatar-Image"/></div>
+     <div className="C-Proposal-Avatar"><Link variant="link" className="C-Proposal-Name-User" to={"/Profile/"+data.idUser}><Image src={avatUser} className="C-Proposal-Avatar-Image"/><span style={{paddingLeft: "1%"}}>{data.nameUser}</span></Link></div>
      <div style={{minHeight: "280px", display: "block"}}>
      
       <Row className="C-Proposal-Offer-Location rowCards"><Image src={getImageLanguage(data.countryProposal)} style={{height: "32px",width: "32px"}} roundedCircle/><div className="C-Proposal-Country-Name">{data.regionProposal}</div></Row>
       <Row className="C-Proposal-Offer-Name rowCards">{data.nameProposal}</Row>
-      <Row className="C-Proposal-Proponent-Name rowCards">{data.nameUser}</Row>
       <Row className="C-Proposal-Proponent-Description rowCards">{data.descriptionProposal}</Row>
       <Row className="C-Proposal-Keywords rowCards"><Translate id="keywords"></Translate >:<div className="C-Proposal-Keywords-Name">{data.keywords.join(", ")}</div></Row>
      </div>
