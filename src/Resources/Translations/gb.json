@@ -16,7 +16,7 @@
 
 
     "by": "By ",
-    "category": "Category",
+    "category": "Category: ",
     "webdevelopment": "Web Development",
     "softwaredevelopment": "Software Development",
     "gamedevelopment": "Game Development",
@@ -43,8 +43,12 @@
     "dashboard": "Dashboard",
     "about me": "About me",
     "settings": "Settings",
-    "keywords": "Keywords",
-    "candidate": "Candidate"
+    "keywords": "Keywords: ",
+    "candidate": "Candidate",
+    "application form motivation do": "To conclude your submission please fill in the following requisites",
+    "application form motivation text title": "Why do you wanna join our team?",
+    "number of addicional applicants": "Number of adicional applicants"
+
 
 
 

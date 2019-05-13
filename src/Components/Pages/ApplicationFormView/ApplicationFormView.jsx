@@ -1,7 +1,7 @@
 //place for all the portfolios
 
 import React from 'react';
-import { Container, Row, Col, Form, FormGroup, FormText} from 'react-bootstrap';
+import { Container, Row, Col, Form, Image} from 'react-bootstrap';
 import { withLocalize } from "react-localize-redux";
 import { WithContext as ReactTags } from 'react-tag-input';
 import { Translate } from "react-localize-redux";
@@ -18,6 +18,9 @@ var S = new ServicesAPI();
 var countryJson = require("../../../Resources/Translations/countries.json");
 
 class ApplicationFormView extends React.Component { 
+
+
+    
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -76,28 +79,58 @@ class ApplicationFormView extends React.Component {
     page(){
         return (
             <>
+            <Container className="Application-Register-Container">
+                <Row>
+                    <Col sm={12}>
+                        <div style={{float: "left"}}>
+                        <Image src={this.state.proposals[0].dat} className="Application-Register-User-Avatar"/><span style={{paddingLeft: "1%"}}>{this.state.proposals[0].avatarUser}</span>
+                        </div>
+                        <div style={{float: "right"}}>
+                        <Image src={this.state.proposals[0].dat} className="Application-Register-User-Avatar"/><span style={{paddingLeft: "1%"}}>{this.state.proposals[0].regionProposal}</span>
+                        </div>
+                    </Col>
+                </Row>
+            <Row>
+                <Col sm={12} style={{textAlign: "center"}}>
+                        <div className="Application-Register-Proposal-Title">{this.state.proposals[0].nameProposal}</div>
+                        <div className="Application-Register-Proposal-Keywords"><b><Translate id="keywords"></Translate></b>{this.state.proposals[0].keywords}</div>
+
+                </Col>
+            </Row>
             <Row>
                 <Col sm={12}>
-                {this.state.proposals[0].descriptionProposal}
+                        <div className="Application-Register-Proposal-Description">{this.state.proposals[0].descriptionProposal}</div>
                 </Col>
             </Row>
             <Row>
                 <Col sm={12}>
                  <Form>
                     <Form.Group controlId="formBasicChecbox">
-                        <Row>
+                        <Row style={{paddingLeft: "15px", paddingTop: "2%", fontWeight: "bold"}}>
+                            <Translate id="application form motivation do"></Translate>
+                        </Row>
+                        <Row style={{paddingLeft: "15px", paddingTop: "2%"}}>
                             <Form.Check  onClick={()=>{this.handleRadioIndividual()}} name="check" type="radio" label="Individual" default/>
-                            <Form.Check onClick={()=>{this.handleRadioTeam()}} name="check" type="radio" label="Team"  />
-                            
+                            <Form.Check style={{paddingLeft: "4%"}} onClick={()=>{this.handleRadioTeam()}} name="check" type="radio" label="Team"  />
                         </Row>
                     </Form.Group>
-                    {(this.state.isIndividual==false)?this.showTeam():this.empty()}
-                    <Button variant="primary" type="submit">
-                        <Translate id="candidate"></Translate>
-                    </Button>
+                    <Row>
+                      <div>{(this.state.isIndividual==false)?this.showTeam():this.empty()}</div>
+                    </Row>
+                    <Form.Label style={{fontWeight: "bold"}}><Translate id="application form motivation text title"></Translate></Form.Label>
+                    <Form.Control as="textarea" rows="15" maxlength="2000"/>
                  </Form>
                 </Col>
             </Row>
+            </Container>
+
+            <Container className="Application-Register-Footer-Container">
+                <Row style={{float: "right", marginBottom: "2%"}}>
+                    <Button className="Application-Register-Submit-Button">
+                        <Translate id="candidate"></Translate>
+                    </Button>
+                </Row>
+            </Container>
             </>     
         );
     }
@@ -106,8 +139,8 @@ class ApplicationFormView extends React.Component {
     }
     showTeam(){
         return (
-            <Form.Group controlId="numberApplicants">
-                <Form.Label><Translate id="Number of Addicional Applicants:"></Translate> </Form.Label>
+            <Form.Group controlId="numberApplicants" style={{paddingLeft: "15px"}}>
+                <Form.Label><Translate id="number of addicional applicants"></Translate> </Form.Label>
                  <Form.Control type="number" placeholder="" onChange={()=>{this.changeNumberOfSearches()}}/>
             </Form.Group>
         );

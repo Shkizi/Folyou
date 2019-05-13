@@ -18,7 +18,7 @@
 
 
     "by": "Por ",
-    "category": "Categoria",
+    "category": "Categoria: ",
     "webdevelopment": "Desenvolvimento Web",
     "softwaredevelopment": "Desenvolvimento de Software",
     "gamedevelopment": "Desenvolvimento de Jogos",
@@ -45,8 +45,11 @@
     "dashboard": "Dashboard",
     "about me": "Sobre mim",
     "settings": "Configurações",
-    "keywords": "Keywords",
-    "candidate": "Candidatar"
+    "keywords": "Keywords: ",
+    "candidate": "Candidatar",
+    "application form motivation do": "Para concluir a sua candidatura por favor preencha os requisitos abaixo",
+    "application form motivation text title": "O que o leva a inscrever-se no nosso projeto?",
+    "number of addicional applicants": "Número adicionais de candidatos"
 
 
 
