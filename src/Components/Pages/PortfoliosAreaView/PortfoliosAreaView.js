@@ -27,8 +27,17 @@ class PortfoliosAreaView extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-                    portfolios:[],
-                    filters:[],
+          portfolios:[],
+          talents:[],
+          proposals:[],
+          portTrending:[],
+          propTrending:[],
+          showModalPortfolio: false,
+          showModalTalent: false,
+          showModalProposal: false,
+          typeModal: null,
+          idModal: null,
+            filters:[],
                     hasMoreItems: true,
                     error:[],
 
@@ -42,7 +51,7 @@ class PortfoliosAreaView extends React.Component {
         this.handleDelete = this.handleDelete.bind(this);
         this.handleAddition = this.handleAddition.bind(this);
         this.handleModalClose = this.handleModalClose.bind(this);
-    this.handleModalShow = this.handleModalShow.bind(this);
+        this.handleModalShow = this.handleModalShow.bind(this);
 
       }
       handleModalClose() {

@@ -28,7 +28,7 @@ class ApplicationFormView extends React.Component {
                 suggestions: [],
                 countries:[],
                 gotData:false,
-                isChecked: true
+                isIndividual: null
         };
 
         this.handleRadioTeam = this.handleRadioTeam.bind(this);
@@ -37,19 +37,14 @@ class ApplicationFormView extends React.Component {
 
 
     handleRadioIndividual() {
-        this.setState({isChecked: true});
+        this.setState({isIndividual: true});
     }
 
     handleRadioTeam() {
-        this.setState({ isChecked: false });
+        this.setState({ isIndividual: false });
     }
 
-    showwwww() {
-        if(this.isChecked == false) {
-            return (
-            <div>dPASIJIDJASIJPDHASOPJPQWNMOQ</div>
-            )}
-    }
+   
 
     componentDidMount() {
         S.getter(`getProposalById`, {
@@ -76,11 +71,12 @@ class ApplicationFormView extends React.Component {
                  <Form>
                     <Form.Group controlId="formBasicChecbox">
                         <Row>
-                            <Form.Check  onClick={()=>{this.showwwww()}} name="check" type="radio" label="Individual" checked/>
-                            <Form.Check name="check" type="radio" label="Team"  />
-                            {}
+                            <Form.Check  onClick={()=>{this.handleRadioIndividual()}} name="check" type="radio" label="Individual" default/>
+                            <Form.Check onClick={()=>{this.handleRadioTeam()}} name="check" type="radio" label="Team"  />
+                            
                         </Row>
                     </Form.Group>
+                    {(this.state.isIndividual==false)?()=>{this.showTeam()}:()=>{return (<></>);}}
                     <Button variant="primary" type="submit">
                         <Translate id="candidate"></Translate>
                     </Button>
@@ -88,7 +84,20 @@ class ApplicationFormView extends React.Component {
                 </Col>
             </Row>
             </>     
-);} }
+        );
+    } 
+    showTeam(){
+        return (
+            <Form.Group controlId="numberApplicants">
+                <Form.Label><Translate id="Number of Applicants:"></Translate> </Form.Label>
+                 <Form.Control type="number" placeholder="" onChange={()=>{this.changeNumberOfSearches()}}/>
+            </Form.Group>
+        );
+    }
+    changeNumberOfSearches(){
+
+    }
+}
 
 //CHECKBOX individual or team
 //      if checked: textbox : how many
