@@ -5,7 +5,9 @@ import CardTalent from '../../Elements/Cards/CardTalent/CardTalent'
 import { Card, Image, Row, Button, Col } from 'react-bootstrap';
 import { withLocalize, Translate } from "react-localize-redux";
 import getImageLanguage from "../../../Resources/Translations/compilerLanguageImages.js"
-
+import CardsModalProposal from '../../Elements/CardsModal/Types/CardsModalProposal/CardsModalProposal';
+import CardsModalTalent from '../../Elements/CardsModal/Types/CardsModalTalent/CardsModalTalent';
+import CardsModalPortfolio from '../../Elements/CardsModal/Types/CardsModalPorfolio/CardsModalPortfolio.jsx'
 import './Profile.css'
 import ServicesAPI from '../../../serviceAPI.js';
 var S = new ServicesAPI();
@@ -14,14 +16,42 @@ var S = new ServicesAPI();
 
 
 class ProfileView extends React.Component {
-    state = {
+    constructor(props, context) {
+        super(props, context);
+       
+        this.state =  {
         user: {},
         error:{},
         showRender:false,
         pageContent: 'Projects',
         portfolios:[],
+        talents:[],
         proposals:[],
-        talents:[]
+        portTrending:[],
+        propTrending:[],
+        showModalPortfolio: false,
+        showModalTalent: false,
+        showModalProposal: false,
+        typeModal: null,
+        idModal: null,
+    };
+    this.handleModalClose = this.handleModalClose.bind(this);
+    this.handleModalShow = this.handleModalShow.bind(this);
+
+  }
+      handleModalClose() {
+        this.setState({showModalPortfolio: false});
+        this.setState({showModalTalent: false});
+        this.setState({showModalProposal: false});
+        console.log(this.state);
+      }
+    
+      handleModalShow(type, id) {
+        this.setState({ typeModal: type, idModal: id });
+        this.setState({showModalPortfolio: type=="portfolioSheet"});
+        this.setState({showModalTalent: type=="talentSheet"});
+        this.setState({showModalProposal: type=="proposalSheet"});
+        console.log(type, id , this.state);
       }
     //request example
     componentDidMount() {
@@ -169,6 +199,10 @@ class ProfileView extends React.Component {
                         
 
                     </Row>
+                    <CardsModalPortfolio parent={this} closer={this.handleModalClose}/>
+                    <CardsModalProposal parent={this} closer={this.handleModalClose}/>
+                    <CardsModalTalent parent={this} closer={this.handleModalClose}/>
+              
             </>
         )
         }else{

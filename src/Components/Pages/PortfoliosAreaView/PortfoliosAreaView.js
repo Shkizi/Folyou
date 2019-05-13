@@ -27,8 +27,17 @@ class PortfoliosAreaView extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-                    portfolios:[],
-                    filters:[],
+          portfolios:[],
+          talents:[],
+          proposals:[],
+          portTrending:[],
+          propTrending:[],
+          showModalPortfolio: false,
+          showModalTalent: false,
+          showModalProposal: false,
+          typeModal: null,
+          idModal: null,
+            filters:[],
                     hasMoreItems: true,
                     error:[],
 
@@ -42,7 +51,7 @@ class PortfoliosAreaView extends React.Component {
         this.handleDelete = this.handleDelete.bind(this);
         this.handleAddition = this.handleAddition.bind(this);
         this.handleModalClose = this.handleModalClose.bind(this);
-    this.handleModalShow = this.handleModalShow.bind(this);
+        this.handleModalShow = this.handleModalShow.bind(this);
 
       }
       handleModalClose() {
@@ -158,14 +167,14 @@ class PortfoliosAreaView extends React.Component {
                 <Col sm={12}>
                     <hr className="Hr-Sections"/>
                 </Col>
-                 <Col sm={12}>
+                 
                  { this.state.portfolios.map((portfolio, i) => {
                       return (  
                       <CardPortfolio data={portfolio} parent={this}/>
                       );
                   })}
                   
-                </Col>
+                
             </Row>
     <CardsModalPortfolio parent={this} closer={this.handleModalClose}/>
          </>     
