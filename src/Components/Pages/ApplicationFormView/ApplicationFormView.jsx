@@ -76,7 +76,7 @@ class ApplicationFormView extends React.Component {
                             
                         </Row>
                     </Form.Group>
-                    {(this.state.isIndividual==false)?()=>{this.showTeam()}:()=>{return (<></>);}}
+                    {(this.state.isIndividual==false)?this.showTeam():this.empty()}
                     <Button variant="primary" type="submit">
                         <Translate id="candidate"></Translate>
                     </Button>
@@ -86,10 +86,13 @@ class ApplicationFormView extends React.Component {
             </>     
         );
     } 
+    empty(){
+        return(<></>);
+    }
     showTeam(){
         return (
             <Form.Group controlId="numberApplicants">
-                <Form.Label><Translate id="Number of Applicants:"></Translate> </Form.Label>
+                <Form.Label><Translate id="Number of Addicional Applicants:"></Translate> </Form.Label>
                  <Form.Control type="number" placeholder="" onChange={()=>{this.changeNumberOfSearches()}}/>
             </Form.Group>
         );
