@@ -9,8 +9,8 @@ var crypto = require('crypto');
 function getPortfolioById(req, res, next) {
     let params = req.query;
 
-    db.query("SELECT * FROM `Sheet`,`Portfolio`, `Category`, `User`  WHERE `Category`.`idCategory` =`Sheet`.`Category_idCategory`"+
-    " AND `User`.`idUser` = `Portfolio`.`User_idUser` "+
+    db.query("SELECT * FROM `Sheet`,`Portfolio`, `Category`, `User`,(SELECT filename as `avatarUser`, User_idUser from Anexes) as avatar   WHERE `Category`.`idCategory` =`Sheet`.`Category_idCategory`"+
+    " AND `User`.`idUser` = avatar.User_idUser AND `User`.`idUser` = `Portfolio`.`User_idUser` "+
     "AND `Sheet`.`idSheet` = `Portfolio`.`Sheet_idSheet`"+
     "ORDER BY `Sheet`.`createdTimestamp`",[], function (rows, error) {
         if (!error) {

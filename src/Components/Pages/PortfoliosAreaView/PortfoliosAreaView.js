@@ -158,14 +158,14 @@ class PortfoliosAreaView extends React.Component {
                 <Col sm={12}>
                     <hr className="Hr-Sections"/>
                 </Col>
-                 <Col sm={12}>
+                 
                  { this.state.portfolios.map((portfolio, i) => {
                       return (  
                       <CardPortfolio data={portfolio} parent={this}/>
                       );
                   })}
                   
-                </Col>
+                
             </Row>
     <CardsModalPortfolio parent={this} closer={this.handleModalClose}/>
          </>     

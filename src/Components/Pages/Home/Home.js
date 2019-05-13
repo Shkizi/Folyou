@@ -6,12 +6,13 @@ import { Container, Row, Col, Button} from 'react-bootstrap';
 import { withLocalize, Translate } from "react-localize-redux";
 import CardTalent from '../../Elements/Cards/CardTalent/CardTalent';
 import HomeCarousel from '../../Elements/Carousel/HomeCarousel/HomeCarousel'
-import CardsModalPortfolio from '../../Elements/CardsModal/Types/CardsModalPorfolio/CardsModalPortfolio.jsx'
+
 import { IoIosArrowForward } from "react-icons/io";
 import './Home.css'
 import ServicesAPI from '../../../serviceAPI.js';
 import CardsModalProposal from '../../Elements/CardsModal/Types/CardsModalProposal/CardsModalProposal';
 import CardsModalTalent from '../../Elements/CardsModal/Types/CardsModalTalent/CardsModalTalent';
+import CardsModalPortfolio from '../../Elements/CardsModal/Types/CardsModalPorfolio/CardsModalPortfolio.jsx'
 var S = new ServicesAPI();
 
 
@@ -211,7 +212,7 @@ class Home extends React.Component {
                       </Col>
                     </Row>
 
-                    <CardsModalPortfolio parent={this} closer={this.handleModalClose}/>
+              <CardsModalPortfolio parent={this} closer={this.handleModalClose}/>
               <CardsModalProposal parent={this} closer={this.handleModalClose}/>
               <CardsModalTalent parent={this} closer={this.handleModalClose}/>
                     
