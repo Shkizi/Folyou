@@ -46,7 +46,7 @@ class CardProposal extends React.Component {
   render() {
     return ( 
    
-      <Col xs={12} sm={6} md={6} lg={4} xl={3}>
+      <Col xs={12} sm={6} md={6} lg={4} xl={3} style={{marginTop:"10px"}}>
         {CreateProposal(this.props)}
        </Col>
     );} }
