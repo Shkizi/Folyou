@@ -14,11 +14,10 @@ function getUsers(req, res) {
             if(error){
                 res.send({error: true, err: error});
             }else{
-            var row=rows[0];
-            var nameUser = row.nameUser;
-            let user = new User(nameUser);
+          
+           
         
-        res.send({error: false, user: user});         
+        res.send({error: false, user: rows});         
         }
               
             

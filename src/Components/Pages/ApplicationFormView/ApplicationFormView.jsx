@@ -41,6 +41,7 @@ class ApplicationFormView extends React.Component {
 
         this.handleRadioTeam = this.handleRadioTeam.bind(this);
         this.handleRadioIndividual = this.handleRadioIndividual.bind(this);
+        this.changeNumberOfSearches = this.changeNumberOfSearches.bind(this);
         this.updateNumber = this.updateNumber.bind(this);
     }
 
@@ -67,28 +68,24 @@ class ApplicationFormView extends React.Component {
             const proposals = res.data.proposalList;
             console.log(res);
               this.setState({ proposals: proposals });
-              this.setState({service:true});
+                    S.getter(`getUsers`, {
+                }, (res) => {  
+                    const users = res.data.user;
+                    console.log(res.data.user);
+                    this.setState({ users: users });
+                    this.setState({service:true});
+                },
+                (error) => { 
+                    console.log("Error: users", error);
+                    this.setState({ error: {message:error,error:true} });
+                });
           },
           (error) => { 
               console.log("Error: Proposal", error);
               this.setState({ error: {message:error,error:true} });
           });
 
-          S.getter(`getUsers`, {type:"all" }, (res) => {  
-            const users = res.data.users;
-             
-             let suggest=[];
-             users.forEach(element => {
-                suggest.push({ id: element});
-             });
-             console.log(suggest);
-              this.setState({ suggestions: suggest });
-      },
-    (error) => { 
-     console.log("Error do Keywords", error);
-           this.setState({ error: {message:error,error:true} });
-     });
-     console.log("finish Mounting");    
+         
     }
     
 
@@ -155,7 +152,7 @@ class ApplicationFormView extends React.Component {
                         </Row>
                         <Row>
                        
-                            {this.changeNumberOfSearches()}
+                            {(this.state.isIndividual==false)?this.changeNumberOfSearches():this.empty()}
                        
                     </Row>
                     <Form.Label style={{fontWeight: "bold"}}><Translate id="application form motivation text title"></Translate></Form.Label>
@@ -187,21 +184,30 @@ class ApplicationFormView extends React.Component {
         );
     }
     changeNumberOfSearches(){
+        let userlist=[];
         if(this.state.isIndividual==false){
+            console.log(this.state.users);
+      
+            this.state.users.forEach((value, index, array) => {
+                userlist.push({name:array[index].nameUser,value:array[index].idUser,photo:""});
+            })  
+            }
+            console.log(userlist);
+            const userListConstant = userlist;
         let arrayOfMembers = []
-        for(let i = 0; i < this.state.numberOfPeople; i++) {
+         for(let i = 0; i < this.state.numberOfPeople; i++) {
             arrayOfMembers.push (
                 <Col sm={6}>
                     <div>
-                        <SelectSearch  options={this.state.users} value="pt" name="country"/>
+                        <SelectSearch  options={userListConstant} value="" name="country"/>
                     </div>
                 </Col>
             )
-        }
+        } 
         return arrayOfMembers
     }
 }
-}
+
 
 //CHECKBOX individual or team
 //      if checked: textbox : how many
