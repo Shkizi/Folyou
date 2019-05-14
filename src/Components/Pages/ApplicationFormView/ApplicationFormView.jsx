@@ -36,13 +36,19 @@ class ApplicationFormView extends React.Component {
                 isIndividual: null,
                 service:false,
                 users: [],
-                numberOfPeople: 1
+                numberOfPeople: 1,
+                description: '',
+                teamPeople: []
         };
 
         this.handleRadioTeam = this.handleRadioTeam.bind(this);
         this.handleRadioIndividual = this.handleRadioIndividual.bind(this);
         this.changeNumberOfSearches = this.changeNumberOfSearches.bind(this);
+        this.handleDescription = this.handleDescription.bind(this);
         this.updateNumber = this.updateNumber.bind(this);
+        this.handleTeamPeople = this.handleTeamPeople.bind(this);
+
+        this.handleSubmitAplication = this.handleSubmitAplication.bind(this)
     }
 
     updateNumber(event){
@@ -58,6 +64,30 @@ class ApplicationFormView extends React.Component {
         this.setState({ isIndividual: false });
     }
 
+    handleDescription(event) {
+        this.setState({ description: event.target.value})
+    }
+
+    handleTeamPeople(event, id) {
+       
+        let tem = this.state.teamPeople;
+        tem[id]= event.value;
+        console.log(tem);
+        this.setState({ teamPeople: tem});
+
+    }
+
+    handleSubmitAplication(event) {
+        event.preventDefault();
+        let data= {
+            numberOfPeople: this.state.numberOfPeople, isIndividual: this.state.isIndividual, users: this.state.users,
+            teamPeople: this.state.teamPeople, description: this.state.description
+        };
+
+        
+
+    
+    }
    
 
     componentDidMount() {
@@ -100,6 +130,7 @@ class ApplicationFormView extends React.Component {
     page(){
         return (
             <>
+            <form onSubmit={this.handleSubmitAplication}>
             <Container className="Application-Register-Container">
                 <Row>
                     <Col sm={6}>
@@ -144,10 +175,9 @@ class ApplicationFormView extends React.Component {
                     </Form.Group>
                     <Row>
                         <Col sm={12}>
-
-                        <Col sm={6} style={{paddingLeft: 0}}>
-                                                    <div>{(this.state.isIndividual==false)?this.showTeam():this.empty()}</div>
-                                                    </Col>
+                            <Col sm={6} style={{paddingLeft: 0}}>
+                                <div>{(this.state.isIndividual==false)?this.showTeam():this.empty()}</div>
+                            </Col>
                         </Col>
                         </Row>
                         <Row>
@@ -156,7 +186,7 @@ class ApplicationFormView extends React.Component {
                        
                     </Row>
                     <Form.Label style={{fontWeight: "bold"}}><Translate id="application form motivation text title"></Translate></Form.Label>
-                    <Form.Control as="textarea" rows="15" maxlength="2000"/>
+                    <Form.Control as="textarea" rows="15" maxlength="2000" value={this.state.description} onChange={(event) => {this.handleDescription(event)}}/>
                  </Form>
                 </Col>
             </Row>
@@ -164,11 +194,12 @@ class ApplicationFormView extends React.Component {
 
             <Container className="Application-Register-Footer-Container">
                 <Row style={{float: "right", marginBottom: "2%"}}>
-                    <Button className="Application-Register-Submit-Button">
+                    <button className="Application-Register-Submit-Button">
                         <Translate id="candidate"></Translate>
-                    </Button>
+                    </button>
                 </Row>
-            </Container>
+                </Container>
+            </form>
             </>     
         );
     }
@@ -199,7 +230,7 @@ class ApplicationFormView extends React.Component {
             arrayOfMembers.push (
                 <Col sm={6}>
                     <div>
-                        <SelectSearch  options={userListConstant} value="" name="country"/>
+                        <SelectSearch  options={userListConstant} value={this.state.teamPeople[i]} name="country" onChange={(event)=>{this.handleTeamPeople(event,i)}}/>
                     </div>
                 </Col>
             )
