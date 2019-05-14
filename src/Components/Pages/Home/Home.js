@@ -100,6 +100,28 @@ class Home extends React.Component {
           console.log("Error: Talent", error);
           this.setState({ error: {message:error,error:true} });
       });
+      S.getter(`getTrendingProposal`, {
+        limit:4,
+      }, (res) => {  
+        const proposalList = res.data.proposalList;
+        console.log(res);
+          this.setState({ propTrending: proposalList });
+      },
+      (error) => { 
+          console.log("Error: Talent", error);
+          this.setState({ error: {message:error,error:true} });
+      });
+      S.getter(`getTrendingPortfolio`, {
+        limit:4,
+      }, (res) => {  
+        const portfolioList = res.data.portfolioList;
+        console.log(res);
+          this.setState({ portTrending: portfolioList });
+      },
+      (error) => { 
+          console.log("Error: Talent", error);
+          this.setState({ error: {message:error,error:true} });
+      });
 
 
       console.log("finish Mounting");
