@@ -128,7 +128,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `folyou`.`UserLoginHistory` ;
 
 CREATE TABLE IF NOT EXISTS `folyou`.`UserLoginHistory` (
-  `idUserLoginHistory` INT NOT NULL,
+  `idUserLoginHistory` INT NOT NULL AUTO_INCREMENT,
   `loginTimestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `expireTimestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `loginKey` VARCHAR(256) NULL,
@@ -372,8 +372,6 @@ DROP TABLE IF EXISTS `folyou`.`Anexes` ;
 CREATE TABLE IF NOT EXISTS `folyou`.`Anexes` (
   `idAnexes` INT NOT NULL,
   `fileName` VARCHAR(256) NOT NULL,
-  `extension` VARCHAR(20) NOT NULL,
-  `path` VARCHAR(256) NOT NULL,
   `Proposal_idProposal` INT NULL DEFAULT NULL,
   `Sheet_idSheet` INT NULL DEFAULT NULL,
   `User_idUser` INT NULL DEFAULT NULL,
@@ -405,7 +403,8 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `folyou`.`ApplicationTeam` ;
 
 CREATE TABLE IF NOT EXISTS `folyou`.`ApplicationTeam` (
-  `idApplicationTeam` INT NOT NULL,
+  `idApplicationTeam` INT NOT NULL AUTO_INCREMENT,
+  `descriptionApplicationTeam` VARCHAR(2000) NOT NULL,
   PRIMARY KEY (`idApplicationTeam`))
 ENGINE = InnoDB;
 
@@ -793,6 +792,24 @@ CREATE TABLE IF NOT EXISTS `folyou`.`Message` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+USE `folyou` ;
+
+-- -----------------------------------------------------
+-- procedure createApplication
+-- -----------------------------------------------------
+
+USE `folyou`;
+DROP procedure IF EXISTS `folyou`.`createApplication`;
+
+DELIMITER $$
+USE `folyou`$$
+CREATE PROCEDURE `createApplication` (IN descr VARCHAR(200))
+BEGIN
+INSERT INTO `folyou`.`applicationteam`(`descriptionApplicationTeam`)VALUES(descr);
+SELECT LAST_INSERT_ID() AS `insertedId`;
+END$$
+
+DELIMITER ;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -815,6 +832,7 @@ COMMIT;
 START TRANSACTION;
 USE `folyou`;
 INSERT INTO `folyou`.`Category` (`idCategory`, `valueCategory`) VALUES (1, 'Dev');
+INSERT INTO `folyou`.`Category` (`idCategory`, `valueCategory`) VALUES (2, 'Art');
 
 COMMIT;
 
@@ -826,6 +844,9 @@ START TRANSACTION;
 USE `folyou`;
 INSERT INTO `folyou`.`Sheet` (`idSheet`, `nameSheet`, `descriptionSheet`, `createdTimestamp`, `wasProposalCreated`, `defaultImageSheet`, `Category_idCategory`, `countrySheet`, `regionSheet`) VALUES (1, 'Moinhos Eólicos', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', NULL, 0, 'Moinho.png', 1, 'mg', 'Madagascar');
 INSERT INTO `folyou`.`Sheet` (`idSheet`, `nameSheet`, `descriptionSheet`, `createdTimestamp`, `wasProposalCreated`, `defaultImageSheet`, `Category_idCategory`, `countrySheet`, `regionSheet`) VALUES (2, 'Como funciona a ai?', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', NULL, 0, 'Ai.jpg', 1, 'pt', 'Lisboa');
+INSERT INTO `folyou`.`Sheet` (`idSheet`, `nameSheet`, `descriptionSheet`, `createdTimestamp`, `wasProposalCreated`, `defaultImageSheet`, `Category_idCategory`, `countrySheet`, `regionSheet`) VALUES (3, 'Eau', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', NULL, 0, 'Ai.jpg', 2, 'fr', 'Paris');
+INSERT INTO `folyou`.`Sheet` (`idSheet`, `nameSheet`, `descriptionSheet`, `createdTimestamp`, `wasProposalCreated`, `defaultImageSheet`, `Category_idCategory`, `countrySheet`, `regionSheet`) VALUES (4, 'Art 2D', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', NULL, 0, 'Moinho.png', 2, 'es', 'Madrid');
+INSERT INTO `folyou`.`Sheet` (`idSheet`, `nameSheet`, `descriptionSheet`, `createdTimestamp`, `wasProposalCreated`, `defaultImageSheet`, `Category_idCategory`, `countrySheet`, `regionSheet`) VALUES (5, 'Art 3D', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', NULL, 0, 'Moinho.png', 2, 'it', 'Roma');
 
 COMMIT;
 
@@ -857,7 +878,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `folyou`;
-INSERT INTO `folyou`.`TalentArea` (`idTalentArea`, `nameTalentArea`, `descriptionTalentArea`, `isVisible`, `User_idUser`, `Category_idCategory`, `timestamp`) VALUES (1, 'FULLSTACK DEV', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, 1, 1, NULL);
+INSERT INTO `folyou`.`TalentArea` (`idTalentArea`, `nameTalentArea`, `descriptionTalentArea`, `isVisible`, `User_idUser`, `Category_idCategory`, `timestamp`) VALUES (1, 'FULLSTACK DEV', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, 1, 1, '2019-05-06 22:17:02');
+INSERT INTO `folyou`.`TalentArea` (`idTalentArea`, `nameTalentArea`, `descriptionTalentArea`, `isVisible`, `User_idUser`, `Category_idCategory`, `timestamp`) VALUES (2, 'Backend Dev', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, 2, 1, '2019-05-06 22:50:02');
+INSERT INTO `folyou`.`TalentArea` (`idTalentArea`, `nameTalentArea`, `descriptionTalentArea`, `isVisible`, `User_idUser`, `Category_idCategory`, `timestamp`) VALUES (3, 'Paint 3D', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, 1, 2, '2019-05-06 22:30:02');
+INSERT INTO `folyou`.`TalentArea` (`idTalentArea`, `nameTalentArea`, `descriptionTalentArea`, `isVisible`, `User_idUser`, `Category_idCategory`, `timestamp`) VALUES (4, 'Paint 2D', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, 2, 2, '2019-05-06 22:00:02');
+INSERT INTO `folyou`.`TalentArea` (`idTalentArea`, `nameTalentArea`, `descriptionTalentArea`, `isVisible`, `User_idUser`, `Category_idCategory`, `timestamp`) VALUES (5, 'Painting 2D ', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, 1, 2, '2019-05-06 22:15:02');
 
 COMMIT;
 
@@ -869,6 +894,9 @@ START TRANSACTION;
 USE `folyou`;
 INSERT INTO `folyou`.`Portfolio` (`idPortfolio`, `Sheet_idSheet`, `User_idUser`, `isVisible`, `wasEliminated`) VALUES (1, 1, 2, 1, 0);
 INSERT INTO `folyou`.`Portfolio` (`idPortfolio`, `Sheet_idSheet`, `User_idUser`, `isVisible`, `wasEliminated`) VALUES (2, 2, 1, 1, 0);
+INSERT INTO `folyou`.`Portfolio` (`idPortfolio`, `Sheet_idSheet`, `User_idUser`, `isVisible`, `wasEliminated`) VALUES (3, 3, 1, 1, 0);
+INSERT INTO `folyou`.`Portfolio` (`idPortfolio`, `Sheet_idSheet`, `User_idUser`, `isVisible`, `wasEliminated`) VALUES (4, 4, 2, 1, 0);
+INSERT INTO `folyou`.`Portfolio` (`idPortfolio`, `Sheet_idSheet`, `User_idUser`, `isVisible`, `wasEliminated`) VALUES (5, 5, 1, 1, 0);
 
 COMMIT;
 
@@ -898,6 +926,10 @@ COMMIT;
 START TRANSACTION;
 USE `folyou`;
 INSERT INTO `folyou`.`Proposal` (`idProposal`, `User_idUser`, `countryProposal`, `regionProposal`, `nameProposal`, `descriptionProposal`, `anexNumberProposal`, `areAnexesPrivate`, `createdTimestamp`, `ProposalState_idProposalState`, `Category_idCategory`) VALUES (1, 1, 'pt', 'Cacém', 'Junior Java', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat', 0, 0, DEFAULT, 6, 1);
+INSERT INTO `folyou`.`Proposal` (`idProposal`, `User_idUser`, `countryProposal`, `regionProposal`, `nameProposal`, `descriptionProposal`, `anexNumberProposal`, `areAnexesPrivate`, `createdTimestamp`, `ProposalState_idProposalState`, `Category_idCategory`) VALUES (2, 1, 'es', 'Canaria', 'Those who remain', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat', 0, 0, DEFAULT, 6, 1);
+INSERT INTO `folyou`.`Proposal` (`idProposal`, `User_idUser`, `countryProposal`, `regionProposal`, `nameProposal`, `descriptionProposal`, `anexNumberProposal`, `areAnexesPrivate`, `createdTimestamp`, `ProposalState_idProposalState`, `Category_idCategory`) VALUES (3, 2, 'fr', 'Toulouse', 'Computadores Avançados', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat', 0, 0, DEFAULT, 6, 1);
+INSERT INTO `folyou`.`Proposal` (`idProposal`, `User_idUser`, `countryProposal`, `regionProposal`, `nameProposal`, `descriptionProposal`, `anexNumberProposal`, `areAnexesPrivate`, `createdTimestamp`, `ProposalState_idProposalState`, `Category_idCategory`) VALUES (4, 2, 'it', 'Roma', 'Design Gráfico', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat', 0, 0, DEFAULT, 6, 2);
+INSERT INTO `folyou`.`Proposal` (`idProposal`, `User_idUser`, `countryProposal`, `regionProposal`, `nameProposal`, `descriptionProposal`, `anexNumberProposal`, `areAnexesPrivate`, `createdTimestamp`, `ProposalState_idProposalState`, `Category_idCategory`) VALUES (5, 1, 'gb', 'London', '3D Design', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat', 0, 0, DEFAULT, 6, 2);
 
 COMMIT;
 
@@ -911,6 +943,29 @@ INSERT INTO `folyou`.`Keyword` (`idKeyword`, `valueProposalKeywords`, `Proposal_
 INSERT INTO `folyou`.`Keyword` (`idKeyword`, `valueProposalKeywords`, `Proposal_idProposal`, `Sheet_idSheet`, `TalentArea_idTalentArea`) VALUES (2, 'Java', 1, NULL, NULL);
 INSERT INTO `folyou`.`Keyword` (`idKeyword`, `valueProposalKeywords`, `Proposal_idProposal`, `Sheet_idSheet`, `TalentArea_idTalentArea`) VALUES (3, 'Dev', NULL, 1, NULL);
 INSERT INTO `folyou`.`Keyword` (`idKeyword`, `valueProposalKeywords`, `Proposal_idProposal`, `Sheet_idSheet`, `TalentArea_idTalentArea`) VALUES (4, 'Dev', NULL, 2, NULL);
+INSERT INTO `folyou`.`Keyword` (`idKeyword`, `valueProposalKeywords`, `Proposal_idProposal`, `Sheet_idSheet`, `TalentArea_idTalentArea`) VALUES (5, 'Dev', NULL, NULL, 1);
+INSERT INTO `folyou`.`Keyword` (`idKeyword`, `valueProposalKeywords`, `Proposal_idProposal`, `Sheet_idSheet`, `TalentArea_idTalentArea`) VALUES (6, 'Dev', NULL, NULL, 2);
+INSERT INTO `folyou`.`Keyword` (`idKeyword`, `valueProposalKeywords`, `Proposal_idProposal`, `Sheet_idSheet`, `TalentArea_idTalentArea`) VALUES (7, 'Art', NULL, NULL, 3);
+INSERT INTO `folyou`.`Keyword` (`idKeyword`, `valueProposalKeywords`, `Proposal_idProposal`, `Sheet_idSheet`, `TalentArea_idTalentArea`) VALUES (8, 'Art', NULL, NULL, 4);
+INSERT INTO `folyou`.`Keyword` (`idKeyword`, `valueProposalKeywords`, `Proposal_idProposal`, `Sheet_idSheet`, `TalentArea_idTalentArea`) VALUES (9, 'Art', NULL, NULL, 5);
+INSERT INTO `folyou`.`Keyword` (`idKeyword`, `valueProposalKeywords`, `Proposal_idProposal`, `Sheet_idSheet`, `TalentArea_idTalentArea`) VALUES (10, 'Art', 2, NULL, NULL);
+INSERT INTO `folyou`.`Keyword` (`idKeyword`, `valueProposalKeywords`, `Proposal_idProposal`, `Sheet_idSheet`, `TalentArea_idTalentArea`) VALUES (11, 'Dev', 3, NULL, NULL);
+INSERT INTO `folyou`.`Keyword` (`idKeyword`, `valueProposalKeywords`, `Proposal_idProposal`, `Sheet_idSheet`, `TalentArea_idTalentArea`) VALUES (12, 'QA', 4, NULL, NULL);
+INSERT INTO `folyou`.`Keyword` (`idKeyword`, `valueProposalKeywords`, `Proposal_idProposal`, `Sheet_idSheet`, `TalentArea_idTalentArea`) VALUES (13, 'RH', 5, NULL, NULL);
+INSERT INTO `folyou`.`Keyword` (`idKeyword`, `valueProposalKeywords`, `Proposal_idProposal`, `Sheet_idSheet`, `TalentArea_idTalentArea`) VALUES (14, 'Dev', NULL, 3, NULL);
+INSERT INTO `folyou`.`Keyword` (`idKeyword`, `valueProposalKeywords`, `Proposal_idProposal`, `Sheet_idSheet`, `TalentArea_idTalentArea`) VALUES (15, 'Dev', NULL, 4, NULL);
+INSERT INTO `folyou`.`Keyword` (`idKeyword`, `valueProposalKeywords`, `Proposal_idProposal`, `Sheet_idSheet`, `TalentArea_idTalentArea`) VALUES (16, 'Dev', NULL, 5, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `folyou`.`Anexes`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `folyou`;
+INSERT INTO `folyou`.`Anexes` (`idAnexes`, `fileName`, `Proposal_idProposal`, `Sheet_idSheet`, `User_idUser`) VALUES (1, 'Iade.jpg', NULL, NULL, 1);
+INSERT INTO `folyou`.`Anexes` (`idAnexes`, `fileName`, `Proposal_idProposal`, `Sheet_idSheet`, `User_idUser`) VALUES (2, 'Iade.jpg', NULL, NULL, 2);
 
 COMMIT;
 
