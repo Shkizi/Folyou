@@ -13,6 +13,13 @@
     box-sizing: inherit;
 }
 
+.Application-Register-User-Country-Image {
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    box-sizing: inherit;
+}
+
 .Application-Register-Proposal-Title {
     font-weight: bold;
     font-size: 40px;
@@ -64,4 +71,8 @@
 
 .Application-Register-Submit-Button-Text {
     color:black !important;
+}
+
+.select-search-box {
+    width: 100%;
 }
