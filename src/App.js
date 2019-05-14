@@ -8,6 +8,8 @@ import gbTranslation from "./Resources/Translations/gb.json";
 import ptTranslation from "./Resources/Translations/pt.json";
 import ReactLoading from 'react-loading';
 import { withCookies } from 'react-cookie';
+import ServicesAPI from './serviceAPI.js';
+var S = new ServicesAPI();
 var moment = require('moment');
 class App extends Component {
   constructor(props) {
@@ -30,7 +32,7 @@ class App extends Component {
       currentLanguageName:"English",
       notificationModule:null,
       isLoading:true,
-      userLogged:{set:false,idUser:1,anexes:{fileName:"Iade.jpg"}}
+      userLogged:{set:false}
     
     };
   }
@@ -55,6 +57,21 @@ class App extends Component {
     }else{
       this.changeCurrentLanguage(this.state.currentLanguage,this.state.currentLanguageName);
     }
+    console.log(cookies.get("folyou_session"));
+    if(typeof cookies.get("folyou_session") !="undefined"){
+      S.getter(`getUserBySession`, {userLogged:cookies.get("folyou_session")}, (res) => {  
+        const result = res.data;
+        console.log(res);
+        result.user["set"]=result.verified;
+        console.log(result);
+        this.setState({userLogged:result.user});
+        cookies.set('folyou_session', result.session, { path: '/' });
+      },
+      (error) => { 
+          console.log("Error: User", error);
+          this.setState({ error: {message:error,error:true} });
+      });
+    }
     //setTimeout(()=>{ this.setState({isLoading: false}) }, 1300);//time delay for the loading
     this.setState({isLoading: false});//time delay for the loading
     var raisenotif= (name,position,type,icony) => this.state.notificationModule.notify(name,position,type,5,icony);
@@ -78,16 +95,11 @@ class App extends Component {
 
 
   render() {
-
-    
     return (
 
         <div>
           {(this.state.isLoading)?this.loadingSection():this.Page()}
         </div>
-
-      
-
     );
   }
 }

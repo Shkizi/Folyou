@@ -1,5 +1,12 @@
 module.exports.getUserById = require("./User/getUserById.js");
+
 module.exports.getUsers = require("./User/getUsers.js");
+
+module.exports.getUserLogin = require("./User/getUserLogin.js");
+module.exports.getUserBySession = require("./User/getUserBySession.js");
+
+module.exports.getUserById = require("./User/getUsers.js");
+
 
 module.exports.getPortfolioById = require("./Portfolio/getPortfolioById.js");
 module.exports.getPortfolioByIdRecent = require("./Portfolio/getPortfolioByIdRecent.js");
