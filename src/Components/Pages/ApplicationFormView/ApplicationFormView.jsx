@@ -35,12 +35,7 @@ class ApplicationFormView extends React.Component {
                 gotData:false,
                 isIndividual: null,
                 service:false,
-                keywords: [
-                    "Andre",
-                    "Tiago",
-                    "Alexandre",
-                    "Manel"
-                ],
+                users: [],
                 numberOfPeople: 1
         };
 
@@ -78,12 +73,13 @@ class ApplicationFormView extends React.Component {
               console.log("Error: Proposal", error);
               this.setState({ error: {message:error,error:true} });
           });
-          S.getter(`getKeywords`, {type:"all" }, (res) => {  
-            const keywords = res.data.keywords;
+
+          S.getter(`getUsers`, {type:"all" }, (res) => {  
+            const users = res.data.users;
              
              let suggest=[];
-             keywords.forEach(element => {
-                suggest.push({ id: element, text: element });
+             users.forEach(element => {
+                suggest.push({ id: element});
              });
              console.log(suggest);
               this.setState({ suggestions: suggest });
@@ -196,8 +192,8 @@ class ApplicationFormView extends React.Component {
         for(let i = 0; i < this.state.numberOfPeople; i++) {
             arrayOfMembers.push (
                 <Col sm={6}>
-                    <div className="aa">
-                        <SelectSearch  options={this.state.keywords} value="pt" name="country"/>
+                    <div>
+                        <SelectSearch  options={this.state.users} value="pt" name="country"/>
                     </div>
                 </Col>
             )
