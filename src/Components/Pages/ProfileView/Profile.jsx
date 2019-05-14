@@ -54,6 +54,65 @@ class ProfileView extends React.Component {
         console.log(type, id , this.state);
       }
     //request example
+    componentWillReceiveProps(nextProps){
+        this.setState({ showRender:false });
+                   
+        S.getter(`getPortfolioByIdUser`, {
+            idUser:this.props.match.params.id, 
+            limit:3000,
+          }, (res) => {  
+            const portfolios = res.data.portfolioList;
+            console.log(res);
+              this.setState({ portfolios: portfolios });
+              S.getter(`getProposalByIdUser`, {
+
+                idUser:this.props.match.params.id, 
+                limit:3000,
+              }, (res) => {  
+                const proposals = res.data.proposalList;
+                console.log(res);
+                  this.setState({ proposals: proposals });
+                  S.getter(`getTalentByIdUser`, {
+                    limit:3000,
+                    idUser:this.props.match.params.id,
+                  }, (res) => {  
+                    const talents = res.data.talentList;
+                    console.log(res);
+                      this.setState({ talents: talents });
+                      S.serviceAPI().get(`getUserById`, 
+                  { params: {
+                        idUser: this.props.match.params.id
+                    }})
+                .then(res => {
+                    if(!res.data.error){
+                const user = res.data.user;
+                console.log(res);
+                console.log(user);
+                this.setState({ user:user });
+                this.setState({pageContent:'Projects'});
+                    }else{
+                        const error={message:res.data.error,error:true};
+                        this.setState( error );
+                    }
+                    this.setState({ showRender:true });
+                    
+                })
+                  },
+                  (error) => { 
+                      console.log("Error: Talent", error);
+                      this.setState({ error: {message:error,error:true} });
+                  });
+              },
+              (error) => { 
+                  console.log("Error: Proposal", error);
+                  this.setState({ error: {message:error,error:true} });
+              });
+        },
+        (error) => { 
+        console.log("Error: Portfolio", error);
+            this.setState({ error: {message:error,error:true} });
+        });
+    }
     componentDidMount() {
         S.getter(`getPortfolioByIdUser`, {
             idUser:this.props.match.params.id, 
@@ -62,56 +121,61 @@ class ProfileView extends React.Component {
             const portfolios = res.data.portfolioList;
             console.log(res);
               this.setState({ portfolios: portfolios });
+              S.getter(`getProposalByIdUser`, {
+
+                idUser:this.props.match.params.id, 
+                limit:3000,
+              }, (res) => {  
+                const proposals = res.data.proposalList;
+                console.log(res);
+                  this.setState({ proposals: proposals });
+                  S.getter(`getTalentByIdUser`, {
+                    limit:3000,
+                    idUser:this.props.match.params.id,
+                  }, (res) => {  
+                    const talents = res.data.talentList;
+                    console.log(res);
+                      this.setState({ talents: talents });
+                      S.serviceAPI().get(`getUserById`, 
+                  { params: {
+                        idUser: this.props.match.params.id
+                    }})
+                .then(res => {
+                    if(!res.data.error){
+                const user = res.data.user;
+                console.log(res);
+                console.log(user);
+                this.setState({ user:user });
+                this.setState({pageContent:'Projects'});
+                this.setState({pageContent:'Settings'});
+                this.setState({pageContent:'Projects'});
+                
+                    }else{
+                        const error={message:res.data.error,error:true};
+                        this.setState( error );
+                    }
+                    this.setState({ showRender:true });
+                    
+                })
+                  },
+                  (error) => { 
+                      console.log("Error: Talent", error);
+                      this.setState({ error: {message:error,error:true} });
+                  });
+              },
+              (error) => { 
+                  console.log("Error: Proposal", error);
+                  this.setState({ error: {message:error,error:true} });
+              });
         },
         (error) => { 
         console.log("Error: Portfolio", error);
             this.setState({ error: {message:error,error:true} });
-        });
-        S.getter(`getProposalByIdUser`, {
-
-            idUser:this.props.match.params.id, 
-            limit:3000,
-          }, (res) => {  
-            const proposals = res.data.proposalList;
-            console.log(res);
-              this.setState({ proposals: proposals });
-          },
-          (error) => { 
-              console.log("Error: Proposal", error);
-              this.setState({ error: {message:error,error:true} });
-          });
-          S.getter(`getTalentByIdUser`, {
-            limit:3000,
-            idUser:this.props.match.params.id,
-          }, (res) => {  
-            const talents = res.data.talentList;
-            console.log(res);
-              this.setState({ talents: talents });
-          },
-          (error) => { 
-              console.log("Error: Talent", error);
-              this.setState({ error: {message:error,error:true} });
-          });
-        S.serviceAPI().get(`getUserById`, 
-          { params: {
-                idUser: this.props.match.params.id
-            }})
-        .then(res => {
-            if(!res.data.error){
-        const user = res.data.user;
-        console.log(res);
-        console.log(user);
-        this.setState({ user:user });
-       
-            }else{
-                const error={message:res.data.error,error:true};
-                this.setState( error );
-            }
-            this.setState({ showRender:true });
-            
-        })
+        });  
     }
-
+    empty(){
+        return(<></>);
+    }
     render() {
         if(this.state.showRender){
         return (
@@ -185,14 +249,14 @@ class ProfileView extends React.Component {
 
                     <Row>
                         
-                        {
+                        {(this.state.showRender)?(
                         (this.state.pageContent=='Projects')?this.pageContentProjects():
                         ((this.state.pageContent=='Proposals')?this.pageContentProposals():
                         ((this.state.pageContent=='Talents')?this.pageContentTalents():
                         ((this.state.pageContent=='Dashboard')?this.pageContentDashboard():
                         ((this.state.pageContent=='Settings')?this.pageContentSettings():
                         this.pageContentDashboard()
-                        ))))                       
+                        ))))):this.empty() 
                         }
 
 

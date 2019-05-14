@@ -160,9 +160,9 @@ searchLine = () => {
     );} 
      renderLogged(){
       return (
-        <Link to={'/Profile/'+this.props.app.state.userLogged.idUser}>
+        <a href={'/Profile/'+this.props.app.state.userLogged.idUser}>
       <Image src={S.baseURL()+"public/anexes/profiles/"+this.props.app.state.userLogged.anexes.fileName } className="Logged-Home-Avatar" roundedCircle />
-    </Link>
+    </a>
       );
     }
      renderSign(){

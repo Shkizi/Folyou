@@ -13,6 +13,8 @@ import ServicesAPI from '../../../serviceAPI.js';
 import CardsModalProposal from '../../Elements/CardsModal/Types/CardsModalProposal/CardsModalProposal';
 import CardsModalTalent from '../../Elements/CardsModal/Types/CardsModalTalent/CardsModalTalent';
 import CardsModalPortfolio from '../../Elements/CardsModal/Types/CardsModalPorfolio/CardsModalPortfolio.jsx'
+import MessageModal from '../../Elements/CardsModal/Types/MessageModal/MessageModal.jsx'
+
 var S = new ServicesAPI();
 
 
@@ -30,6 +32,7 @@ class Home extends React.Component {
       showModalPortfolio: false,
       showModalTalent: false,
       showModalProposal: false,
+      showModalMessage:false,
       typeModal: null,
       idModal: null,
     };
@@ -42,6 +45,7 @@ class Home extends React.Component {
     this.setState({showModalPortfolio: false});
     this.setState({showModalTalent: false});
     this.setState({showModalProposal: false});
+    this.setState({showModalMessage: false});
     console.log(this.state);
   }
 
@@ -50,6 +54,7 @@ class Home extends React.Component {
     this.setState({showModalPortfolio: type=="portfolioSheet"});
     this.setState({showModalTalent: type=="talentSheet"});
     this.setState({showModalProposal: type=="proposalSheet"});
+    this.setState({showModalMessage: type=="messageModal"});
     console.log(type, id , this.state);
   }
 
@@ -215,6 +220,7 @@ class Home extends React.Component {
               <CardsModalPortfolio parent={this} closer={this.handleModalClose}/>
               <CardsModalProposal parent={this} closer={this.handleModalClose}/>
               <CardsModalTalent parent={this} closer={this.handleModalClose}/>
+               <MessageModal parent={this} closer={this.handleModalClose}/>
                     
 
               

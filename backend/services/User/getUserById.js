@@ -14,14 +14,11 @@ function getUserById(req, res,next) {
             if(error){
                 res.send({error: true, err: error});
             }else{
-            var row=rows[0];
             
-           
-
-            let user =row;
+            let user =rows[0];
             user.anexes={
-                  idAnexes:row.idAnexes,
-                  fileName:row.fileName            
+                  idAnexes:rows[0].idAnexes,
+                  fileName:rows[0].fileName            
             }
             
             res.send({error: false, user: user});     

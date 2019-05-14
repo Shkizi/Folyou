@@ -1,6 +1,7 @@
 import React from 'react'
 import { Modal, Image, Card, Row } from 'react-bootstrap';
 import { Translate } from "react-localize-redux";
+import { Link } from "react-router-dom";
 import './CardsModalTalent.css';
 import getImageLanguage from "../../../../../Resources/Translations/compilerLanguageImages.js"
 import { isNull } from 'util';
@@ -54,10 +55,12 @@ class CardsModalPortfolio extends React.Component {
           >
             <Modal.Header closeButton>
             <div>
+            <Link variant="link" to={"/Profile/"+data.idUser}>
               <Row style={{padding: "16px"}}>
               <Image src={(data.avatarUser=="")?"https://www.w3schools.com/howto/img_avatar.png":S.baseURL()+"public/anexes/profiles/"+data.avatarUser} className="Modal-Portfolio-Avatar" roundedCircle />
               <div className="Modal-Portfolio-Username">{data.nameUser}</div>
               </Row>
+              </Link>
               </div>
             </Modal.Header>
             <Modal.Body  style={{padding: 0}}>

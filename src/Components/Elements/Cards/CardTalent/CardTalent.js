@@ -10,9 +10,12 @@ import getImageLanguage from "../../../../Resources/Translations/compilerLanguag
 var S = new ServicesAPI();
 
 
-function doit(event) {
+function handleMessage(event,props) {
+  var data= props.data;
+   var parent = props.parent;
   event.stopPropagation();
-  console.log("itsssssssssssitsssssssssssitsssssssssssitsssssssssssitsssssssssssitsssssssssssitsssssssssssitsssssssssssitsssssssssss");
+  parent.handleModalShow("messageModal",data.idTalentArea);
+  
 }
 
 function CreateTalent(props) {
@@ -40,7 +43,7 @@ function CreateTalent(props) {
     </Card.Body>
     <Card.Footer className="C-Talent-Footer">
       <div className="C-Talent-Footer-Risingstar">{data.valueCategory}</div>
-      <Button variant="link" onClick={(event)=>{doit(event)}} className="C-Talent-Footer-Mailbox"><MdMailOutline/></Button>
+      <Button variant="link" onClick={(event)=>{handleMessage(event,props)}} className="C-Talent-Footer-Mailbox"><MdMailOutline/></Button>
     </Card.Footer>
    
    </Card>
