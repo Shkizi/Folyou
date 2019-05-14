@@ -61,7 +61,7 @@ class CardsModalPortfolio extends React.Component {
               </div>
             </Modal.Header>
             <Modal.Body  style={{padding: 0}}>
-            <Card style={{backgroundColor: "#badc58"}}>
+            <Card style={{backgroundColor: "inherit"}}>
               <Card.Body>
                 <Row  style={{padding: "16px"}}>
                   <Image src={getImageLanguage(data.countrySheet)} className="Modal-Portfolio-Avatar-Country" roundedCircle/>

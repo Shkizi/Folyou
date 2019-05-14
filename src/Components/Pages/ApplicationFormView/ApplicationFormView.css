@@ -58,6 +58,7 @@
 .Application-Register-Submit-Button:hover {
     background-color: rgba(230,234,234,0.5);
     color: black;
+    cursor: pointer;
 }
 
 .Application-Register-Submit-Button:active {
@@ -67,6 +68,7 @@
 
 .Application-Register-Submit-Button:focus {
     box-shadow: 0 1px 20px 0px rgba(0, 0, 0, 0.1) !important;
+    outline: 0;
 }
 
 .Application-Register-Submit-Button-Text {
