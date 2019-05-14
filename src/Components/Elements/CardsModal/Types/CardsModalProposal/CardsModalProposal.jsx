@@ -61,6 +61,7 @@ class CardsModalPortfolio extends React.Component {
               <div className="Modal-Portfolio-Username">{data.nameUser}</div>
               </Row>
               </Link>
+              <Link variant="primary" to={"/ProposalUpdate/"+data.idProposal}><Button>Config</Button></Link>
               </div>
             </Modal.Header>
             <Modal.Body  style={{padding: 0}}>

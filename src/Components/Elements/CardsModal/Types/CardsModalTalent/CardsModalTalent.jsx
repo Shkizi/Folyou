@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal, Image, Card, Row } from 'react-bootstrap';
+import { Modal, Image, Card, Row,Button } from 'react-bootstrap';
 import { Translate } from "react-localize-redux";
 import { Link } from "react-router-dom";
 import './CardsModalTalent.css';
@@ -61,6 +61,7 @@ class CardsModalPortfolio extends React.Component {
               <div className="Modal-Portfolio-Username">{data.nameUser}</div>
               </Row>
               </Link>
+              <Link variant="link" to={"/TalentAreaUpdate/"+data.idTalentArea}><Button>Config</Button></Link>
               </div>
             </Modal.Header>
             <Modal.Body  style={{padding: 0}}>
