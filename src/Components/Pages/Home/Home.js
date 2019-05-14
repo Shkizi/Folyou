@@ -15,6 +15,7 @@ import CardsModalTalent from '../../Elements/CardsModal/Types/CardsModalTalent/C
 import CardsModalPortfolio from '../../Elements/CardsModal/Types/CardsModalPorfolio/CardsModalPortfolio.jsx'
 import MessageModal from '../../Elements/CardsModal/Types/MessageModal/MessageModal.jsx'
 
+
 var S = new ServicesAPI();
 
 
@@ -50,6 +51,13 @@ class Home extends React.Component {
   }
 
   handleModalShow(type, id) {
+    S.putter(`putClicks`, {
+      idUser:this.props.app.state.userLogged.idUser||null,
+      idClicked:id,
+      type:type
+    }, (res) => { },
+  (error) => { console.log(error);});
+    
     this.setState({ typeModal: type, idModal: id });
     this.setState({showModalPortfolio: type=="portfolioSheet"});
     this.setState({showModalTalent: type=="talentSheet"});

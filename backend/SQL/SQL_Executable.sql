@@ -496,11 +496,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `folyou`.`Iteraction` ;
 
 CREATE TABLE IF NOT EXISTS `folyou`.`Iteraction` (
-  `idIteraction` INT NOT NULL,
-  `User_idUser` INT NOT NULL,
-  `TalentArea_idTalentArea` INT NOT NULL,
-  `Proposal_idProposal` INT NOT NULL,
-  `Sheet_idSheet` INT NOT NULL,
+  `idIteraction` INT NOT NULL AUTO_INCREMENT,
+  `User_idUser` INT NULL,
+  `TalentArea_idTalentArea` INT NULL,
+  `Proposal_idProposal` INT NULL,
+  `Sheet_idSheet` INT NULL,
   `timestamp` TIMESTAMP NOT NULL,
   `InterationType_idInterationType` INT NOT NULL,
   PRIMARY KEY (`idIteraction`),

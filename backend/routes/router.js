@@ -9,6 +9,7 @@ app.get("/getUserBySession", (req, res,next) => {  servicer.getUserBySession(req
 
 app.get("/getUsers", (req, res,next) => {  servicer.getUsers(req,res,next)});
 
+app.put("/putClicks", (req, res,next) => {  servicer.putClicks(req,res,next)});
 
 app.get("/getPortfolioById", (req, res,next) => {  servicer.getPortfolioById(req,res,next)});
 app.get("/getPortfolioByIdRecent", (req, res,next) => {  servicer.getPortfolioByIdRecent(req,res,next)});
