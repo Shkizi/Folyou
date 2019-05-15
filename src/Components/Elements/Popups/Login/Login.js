@@ -50,6 +50,10 @@ class Login extends React.Component {
       this.setState({ result: result });
       this.props.app.setState({userLogged:result.user});
       cookies.set('folyou_session', result.session, { path: '/' });
+      this.props.closer();
+      this.props.app.state.notificationModule.notify("LOGIN SUCCESS","br",2,20);
+       
+
     },
     (error) => { 
         console.log("Error: User", error);

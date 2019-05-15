@@ -146,12 +146,7 @@ class PortfoliosAreaView extends React.Component {
             <Row style={{margin: 0}}>
 
                 <Col sm={2} className="Header-Sections" style={{marginTop: 0}}>
-                {/* BOTAO PARA NOTIFICACOES 
-                <Button
-                              block
-                              color="primary"
-                              onClick={() => this.props.app.state.notificationModule.notify("Test","bl",1,200)}></Button> */}
-
+               
                 <div className="Portfolios-Page-Title">
                     <Translate id="projects" ></Translate>
                 </div>
