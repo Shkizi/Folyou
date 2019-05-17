@@ -33,7 +33,9 @@ class Menu extends React.Component {
     this.handleShowSearchButton = this.handleShowSearchButton.bind(this);
     this.handleCloseSearchButton = this.handleCloseSearchButton.bind(this);
 
+    this.handleLogOff = this.handleLogOff.bind(this);
 
+    
     this.state = {
       showLogin: false,
       showTabs: false,
@@ -159,16 +161,25 @@ searchLine = () => {
     </>
     );} 
      renderLogged(){
-      return (
+      return (<>
         <a href={'/Profile/'+this.props.app.state.userLogged.idUser}>
       <Image src={S.baseURL()+"public/anexes/profiles/"+this.props.app.state.userLogged.anexes.fileName } className="Logged-Home-Avatar" roundedCircle />
     </a>
+    <Button onClick={this.handleLogOff} className="Menu-Login" variant="link">
+    <strong><Translate id="logout"/></strong>
+  </Button></>
       );
     }
      renderSign(){
       return (<Button onClick={this.handleLoginPopUpShow} className="Menu-Login" variant="link">
       <strong><Translate id="login"/></strong>
     </Button>);
+    }
+    handleLogOff(){
+      this.props.app.setState({userLogged:{set:false}});
+      this.props.app.state.notificationModule.notify("LOGOUT SUCCESS","br",2,20);
+      const {cookies} = this.props;
+      cookies.set('folyou_session', "", { path: '/' });
     }
   }
   export default withCookies(withLocalize(Menu));
