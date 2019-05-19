@@ -35,7 +35,7 @@ class Tabs extends React.Component {
           {jsonarray.map((text, index) => (
             <Link to={text.link} onClick={this.props.closer}>
             <ListItem button key={text.page}>
-              <ListItemIcon><text.icon /> </ListItemIcon>
+              <ListItemIcon>{text.icon} </ListItemIcon>
               <ListItemText primary={text.page} />
               
             </ListItem>
