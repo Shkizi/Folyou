@@ -24,12 +24,12 @@ class CardsModalPortfolio extends React.Component {
   }
 
   render() {
-    if( this.props.parent.state.showModalTalent){
+    if(this.props.parent.state.showModalTalent){
       let data = {};
       console.log(this.props.parent.state.propTrending);
       console.log(this.props.parent.state.talents);
       console.log(this.props.parent.state.idModal);
-      if (this.props.parent.state.talents.length > 0){
+      if (!(typeof this.props.parent.state.talents ==="undefined")&&this.props.parent.state.talents.length > 0){
         this.props.parent.state.talents.forEach((valuePort,indexPort,arrayPort)=>{
           if (this.props.parent.state.talents[indexPort].idTalentArea == this.props.parent.state.idModal){
           data = this.props.parent.state.talents[indexPort];
