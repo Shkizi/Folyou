@@ -13,3 +13,13 @@ body {
     text-overflow: ellipsis;
     overflow: hidden;
 }
+
+::-webkit-scrollbar {
+    width: 18px;
+    background-color: white;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: #49c5b6;
+}
