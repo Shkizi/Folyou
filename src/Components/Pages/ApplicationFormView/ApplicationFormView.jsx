@@ -186,7 +186,7 @@ class ApplicationFormView extends React.Component {
                        
                     </Row>
                     <Form.Label style={{fontWeight: "bold"}}><Translate id="application form motivation text title"></Translate></Form.Label>
-                    <Form.Control as="textarea" rows="15" maxlength="2000" value={this.state.description} onChange={(event) => {this.handleDescription(event)}}/>
+                    <Form.Control as="textarea" rows="15" maxlength="2000"/>
                  </Form>
                 </Col>
             </Row>

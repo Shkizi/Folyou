@@ -36,6 +36,7 @@ class PortfoliosAreaView extends React.Component {
           showModalTalent: false,
           showModalProposal: false,
           typeModal: null,
+          liveKeywords: [],
           idModal: null,
             filters:[],
                     hasMoreItems: true,
@@ -52,7 +53,7 @@ class PortfoliosAreaView extends React.Component {
         this.handleAddition = this.handleAddition.bind(this);
         this.handleModalClose = this.handleModalClose.bind(this);
         this.handleModalShow = this.handleModalShow.bind(this);
-
+        this.handleLiveKeywords = this.handleLiveKeywords.bind(this);
       }
       handleModalClose() {
         this.setState({showModalPortfolio: false});
@@ -88,10 +89,10 @@ class PortfoliosAreaView extends React.Component {
         this.setState(state => ({ tags: [...state.tags, tag] }));
     }
 
-  
-
-      
-    
+    handleLiveKeywords(event) {
+     // this.setState({liveKeywords:  });
+     console.log(event)
+    }
 
     componentDidMount() {
         
@@ -162,6 +163,7 @@ class PortfoliosAreaView extends React.Component {
                     delimiters={delimiters}
                     placeholder="Keywords" 
                     allowDragDrop={false}
+                    handleInputChange={this.handleLiveKeywords}
                     />
                     
                     </Col><Col sm={5} className="Header-Sections">
@@ -175,8 +177,7 @@ class PortfoliosAreaView extends React.Component {
                       return (  
                       <CardPortfolio data={portfolio} parent={this}/>
                       );
-                  })}
-                  
+                  })}                  
                 
             </Row>
     <CardsModalPortfolio parent={this} closer={this.handleModalClose}/>

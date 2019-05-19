@@ -27,6 +27,10 @@ div.ReactTags__tagInput input.ReactTags__tagInputField:focus {
     border: 1px solid #eee;
 }
 
+.ReactTags__activeSuggestion {
+    background-color: red;
+}
+
 /* Styles for selected tags */
 div.ReactTags__selected span.ReactTags__tag {
     border: 1px solid white;

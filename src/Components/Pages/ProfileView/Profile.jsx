@@ -9,6 +9,7 @@ import CardsModalProposal from '../../Elements/CardsModal/Types/CardsModalPropos
 import CardsModalTalent from '../../Elements/CardsModal/Types/CardsModalTalent/CardsModalTalent';
 import CardsModalPortfolio from '../../Elements/CardsModal/Types/CardsModalPorfolio/CardsModalPortfolio.jsx'
 import './Profile.css'
+import { Link } from "react-router-dom";
 import ServicesAPI from '../../../serviceAPI.js';
 var S = new ServicesAPI();
 
@@ -219,7 +220,11 @@ class ProfileView extends React.Component {
                         </Row>
                     </Card.Body>
                 </Card>
-
+                    <Row>
+                        <Link to={"/CreateProposal/"}>
+                         <Button className={"Modal-Portfolio-Button-Register"}><Translate id="apply for proposal"></Translate></Button>
+                        </Link>
+                    </Row>
                     <Row>
                         <Col m={5}>
                         <Row>
