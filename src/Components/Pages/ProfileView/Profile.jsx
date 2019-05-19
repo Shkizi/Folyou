@@ -258,12 +258,7 @@ class ProfileView extends React.Component {
                         </Row>
                     </Card.Body>
                 </Card>
-                    <Row>
-
-                        <Link to={"/CreateProposal/"}>
-                         <Button className={"Modal-Portfolio-Button-Register"}><Translate id="create proposal"></Translate></Button>
-                        </Link>
-                    </Row>
+                   
                     <Row>
 
                         <Col m={5}>
