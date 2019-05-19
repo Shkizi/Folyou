@@ -60,3 +60,9 @@
 .Modal-Portfolio-Description {
     margin-top: 1%;
 }
+
+.Modal-Portfolio-Anexes {
+    background-color: white;
+    padding: 16px;
+    text-align: justify;
+}

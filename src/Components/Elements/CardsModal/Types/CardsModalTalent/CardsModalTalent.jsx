@@ -59,7 +59,7 @@ class CardsModalPortfolio extends React.Component {
               </div>
             </Modal.Header>
             <Modal.Body  style={{padding: 0}}>
-            <Card style={{backgroundColor: "#badc58"}}>
+            <Card>
               <Card.Body>
                 <Row  style={{padding: "16px"}}>
                   <Image src={getImageLanguage(data.countryUser)} className="Modal-Portfolio-Avatar-Country" roundedCircle/>
@@ -77,13 +77,11 @@ class CardsModalPortfolio extends React.Component {
               <Card className="Modal-Portfolio-Description-Area">
                 <div><b><Translate id="description"></Translate></b></div>
                 <div className="Modal-Portfolio-Description">{data.descriptionTalentArea}</div>
-
-                <Card.Footer style={{backgroundColor: "red"}}>
-                  Anexos
-                </Card.Footer>
-
               </Card>
 
+              <Card className="Modal-Talent-Anexes">
+                  Anexos
+                </Card>
           
 
             </Modal.Body>

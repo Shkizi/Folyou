@@ -68,3 +68,9 @@
     width:100%;
     height: 100%;
 }
+
+.Modal-Proposal-Anexes {
+    padding: 16px;
+    text-align: justify;
+    border-radius: 0;
+}

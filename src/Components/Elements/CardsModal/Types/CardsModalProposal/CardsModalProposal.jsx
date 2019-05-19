@@ -82,12 +82,12 @@ class CardsModalPortfolio extends React.Component {
               <Card className="Modal-Portfolio-Description-Area">
                 <div><b><Translate id="description"></Translate></b></div>
                 <div className="Modal-Portfolio-Description">{data.descriptionProposal}</div>
-
-                <Card.Footer style={{backgroundColor: "gray"}}>
-                  Anexos
-                </Card.Footer>
-
               </Card>
+
+              <Card className="Modal-Proposal-Anexes">
+                  Anexos
+                </Card>
+
 
             </Modal.Body>
             <Modal.Footer>
