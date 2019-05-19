@@ -92,17 +92,15 @@ class CardsModalPortfolio extends React.Component {
             </Modal.Body>
             <Modal.Footer>
               <Row>
-                <Col md={6}>
-                <Link to={"/ApplicationRegister/"+data.idProposal}>
-                <Button className={"Modal-Portfolio-Button-Register"}><Translate id="apply for proposal"></Translate></Button>
-                </Link>
+                <Col>
+                  <Link to={"/ApplicationRegister/"+data.idProposal}>
+                   <Button className={"Modal-Proposal-Button"}><Translate id="apply"></Translate></Button>
+                  </Link>
                 </Col>
-                <Col md={6}>
-                <Button className={"Modal-Portfolio-Button-Message"}><Translate id="message proponent"></Translate></Button>
+                <Col>
+                   <Button className={"Modal-Proposal-Button-Message"}><Translate id="send a message"></Translate></Button>
                 </Col>
-
               </Row>
-              
             </Modal.Footer>
             </Modal>
         );

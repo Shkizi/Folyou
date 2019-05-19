@@ -48,7 +48,18 @@
     "application form motivation do": "To conclude your submission please fill in the following requisites",
     "application form motivation text title": "Why do you wanna join our team?",
     "number of addicional applicants": "Number of adicional applicants",
-    "name of the candidate": "Name of the candidate"
+    "name of the candidate": "Name of the candidate",
+    "send a message": "Send a message",
+    "apply": "Apply",
+    "create proposal title": "Create proposal form",
+    "proposalName": "Proposal name",
+    "country": "Country",
+    "region": "Region",
+    "proposal description": "Proposal description",
+    "categories": "Categories",
+    "publish": "Publish",
+    "LOGIN SUCCESS": "You are now logged in",
+    "LOGOUT SUCCESS": "Your session was terminated"
 
 
 

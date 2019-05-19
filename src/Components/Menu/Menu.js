@@ -182,7 +182,7 @@ searchLine = () => {
     }
     handleLogOff(){
       this.props.app.setState({userLogged:{set:false}});
-      this.props.app.state.notificationModule.notify("LOGOUT SUCCESS","br",2,20);
+      this.props.app.state.notificationModule.notify("LOGOUT SUCCESS","br",3,2);
       const {cookies} = this.props;
       cookies.set('folyou_session', "", { path: '/' });
     }

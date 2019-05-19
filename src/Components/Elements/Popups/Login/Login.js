@@ -51,7 +51,7 @@ class Login extends React.Component {
       this.props.app.setState({userLogged:result.user});
       cookies.set('folyou_session', result.session, { path: '/' });
       this.props.closer();
-      this.props.app.state.notificationModule.notify("LOGIN SUCCESS","br",2,20);
+      this.props.app.state.notificationModule.notify("LOGIN SUCCESS","br",2,2);
        
 
     },
@@ -73,10 +73,10 @@ class Login extends React.Component {
             </Modal.Header>
             <Modal.Body>
                <Row className="Login-Modal-Row">
-              <Col sm={6} style={{paddingLeft: 0}}><b className="Login-Text-SignIn mr-auto">Sign in to continue</b></Col>
+              <Col sm={5} style={{paddingLeft: 0}}><b className="Login-Text-SignIn mr-auto">Sign in to continue</b></Col>
               <Col sm={4} style={{paddingRight: 0}}><p className="Login-Text-RegisterNow ml-auto">Not a member yet? 
                </p> </Col>
-                <Col sm={2} style={{paddingRight: 0, paddingLeft: 0}}>
+                <Col sm={3} style={{paddingRight: 0, paddingLeft: 0}}>
                 <Button onClick={()=>{
                   this.handleRegisterPopUpShow();
                 } } variant="link" className="Login-Button-RegisterNow">Register Now

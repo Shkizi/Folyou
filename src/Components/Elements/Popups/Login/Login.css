@@ -99,12 +99,17 @@
     margin-right: auto;
     margin-left: auto;
     margin-top: 20px;
+    padding-bottom: 3px;
+    padding-top: 3px;
 }
+
+
 
 .Login-Button-Login:hover {
     color: #fff;
     background-color: #42AB9E;
     transition: all 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .Login-Button-Login:active:focus {

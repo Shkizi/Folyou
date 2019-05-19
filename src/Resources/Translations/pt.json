@@ -50,7 +50,18 @@
     "application form motivation do": "Para concluir a sua candidatura por favor preencha os requisitos abaixo",
     "application form motivation text title": "O que o leva a inscrever-se no nosso projeto?",
     "number of addicional applicants": "Número adicionais de candidatos",
-    "name of the candidate": "Nome do candidato"
+    "name of the candidate": "Nome do candidato",
+    "send a message": "Enviar uma mensagem",
+    "apply": "Candidatar",
+    "create proposal title": "Formulario para criar uma proposta",
+    "proposalName": "Nome da proposta",
+    "country": "País",
+    "region": "Região",
+    "proposal description": "Descrição da proposta",
+    "categories": "Categoria",
+    "publish": "Publicar",
+    "LOGIN SUCCESS": "Sessao inicada",
+    "LOGOUT SUCCESS": "Sessão terminada"
 
 
 
