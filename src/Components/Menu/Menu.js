@@ -7,8 +7,10 @@ import './Menu.css'
 import { IoMdMenu } from "react-icons/io";
 import {MdNotificationsActive} from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
-import Login from '../Elements/Popups/Login/Login'
+import { FaSignOutAlt } from "react-icons/fa";
+import { FaSignInAlt } from "react-icons/fa";
 
+import Login from '../Elements/Popups/Login/Login'
 import { Translate } from "react-localize-redux";
 import { withLocalize } from "react-localize-redux";
 import { withCookies } from 'react-cookie';
@@ -162,17 +164,20 @@ searchLine = () => {
     );} 
      renderLogged(){
       return (<>
+      <Row style={{float: "right", paddingRight: "15px"}}>
         <a href={'/Profile/'+this.props.app.state.userLogged.idUser}>
       <Image src={S.baseURL()+"public/anexes/profiles/"+this.props.app.state.userLogged.anexes.fileName } className="Logged-Home-Avatar" roundedCircle />
     </a>
     <Button onClick={this.handleLogOff} className="Menu-Login" variant="link">
-    <strong><Translate id="logout"/></strong>
-  </Button></>
+     <strong><Translate id="logout"></Translate> <FaSignOutAlt/></strong>
+    </Button>
+    </Row>
+    </>
       );
     }
      renderSign(){
       return (<Button onClick={this.handleLoginPopUpShow} className="Menu-Login" variant="link">
-      <strong><Translate id="login"/></strong>
+      <strong><Translate id="login"/> <FaSignInAlt/></strong>
     </Button>);
     }
     handleLogOff(){

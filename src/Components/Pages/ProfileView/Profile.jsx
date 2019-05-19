@@ -254,24 +254,33 @@ class ProfileView extends React.Component {
                             <Card.Text className="Profile-Header-Text">
                                 {"" + this.state.user.descriptionUser}
                                 </Card.Text>
-                                
                             </Col>
                         </Row>
                     </Card.Body>
                 </Card>
                     <Row>
+
                         <Link to={"/CreateProposal/"}>
                          <Button className={"Modal-Portfolio-Button-Register"}><Translate id="create proposal"></Translate></Button>
                         </Link>
                     </Row>
                     <Row>
+
                         <Col m={5}>
                         <Row>
                             <Col m={6} style={{textAlign: "center", paddingRight:5}}>
-                            <Button onClick={()=>{this.setState({pageContent:'Projects'})}} className="Modal-Portfolio-Button-Categories"><Translate id="projects"></Translate></Button>
+                            <Button onClick={()=>{this.setState({pageContent:'Projects'})}} className="Profile-Button-Categories">
+                            <Translate id="projects"></Translate>
+                            <span className="Profile-Create-Sign">+</span>
+                            </Button>
                             </Col>
                             <Col m={6} style={{textAlign: "center", paddingLeft: 5, paddingRight: 5}}>
-                            <Button onClick={()=>{this.setState({pageContent:'Proposals'})}} className="Modal-Portfolio-Button-Categories"><Translate id="proposals"></Translate></Button>
+                            <Button onClick={()=>{this.setState({pageContent:'Proposals'})}} className="Profile-Button-Categories">
+                            <Translate id="proposals"></Translate>
+                            <Link to={"/CreateProposal/"}>
+                            <span className="Profile-Create-Sign">+</span>
+                            </Link>
+                            </Button>
                             </Col>
                         </Row>
                         </Col>
@@ -279,7 +288,7 @@ class ProfileView extends React.Component {
                         <Col m={2}>
                         <Row>
                             <Col style={{textAlign: "center", paddingLeft: 5, paddingRight: 5}}>
-                            <Button onClick={()=>{this.setState({pageContent:'Dashboards'})}} className="Modal-Portfolio-Button-Categories"><Translate id="dashboard"></Translate></Button>
+                            <Button onClick={()=>{this.setState({pageContent:'Dashboards'})}} className="Profile-Button-Categories"><Translate id="dashboard"></Translate></Button>
                             </Col>
                         </Row>
                         </Col>
@@ -287,10 +296,13 @@ class ProfileView extends React.Component {
                         <Col m={5}>
                         <Row>
                             <Col m={6} style={{textAlign: "center", paddingLeft: 5, paddingRight: 5}}>
-                            <Button onClick={()=>{this.setState({pageContent:'Talents'})}} className="Modal-Portfolio-Button-Categories"><Translate id="talents"></Translate></Button>
+                            <Button onClick={()=>{this.setState({pageContent:'Talents'})}} className="Profile-Button-Categories">
+                            <Translate id="talents"></Translate>
+                            <span className="Profile-Create-Sign">+</span>
+                            </Button>
                             </Col>
                             <Col m={6} style={{textAlign: "center", paddingLeft: 5}}>
-                            <Button onClick={()=>{this.setState({pageContent:'Settings'})}} className="Modal-Portfolio-Button-Categories"><Translate id="settings"></Translate></Button>
+                            <Button onClick={()=>{this.setState({pageContent:'Settings'})}} className="Profile-Button-Categories"><Translate id="settings"></Translate></Button>
                             </Col>
                         </Row>
                         </Col>

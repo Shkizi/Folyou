@@ -32,26 +32,38 @@
 }
 
 
-.Modal-Portfolio-Button-Categories {
+.Profile-Button-Categories {
     background-color: inherit;
     color: black;
     border: none;
     box-shadow: 0 1px 20px 0px rgba(0, 0, 0, 0.1);
     margin-bottom: 2%;
     width: 100%;
+
 }
 
-.Modal-Portfolio-Button-Categories:hover {
+.Profile-Button-Categories:hover {
     background-color: rgba(230,234,234,0.5);
     color:black;
     border-color: grey;
 }
 
-.Modal-Portfolio-Button-Categories:active {
+.Profile-Button-Categories:active {
     background-color: rgba(230,234,234,0.5) !important;
     color:black !important;
 }
 
-.Modal-Portfolio-Button-Categories:focus {
+.Profile-Button-Categories:focus {
     box-shadow: 0 1px 20px 0px rgba(0, 0, 0, 0.1) !important;
+}
+
+.Profile-Create-Sign {
+    float: right;
+    color: rgb(73, 197, 182);
+}
+
+.Profile-Create-Sign:hover {
+    float: right;
+    color: rgb(73, 197, 182);
+    font-weight: bold;
 }
