@@ -250,7 +250,7 @@ class Home extends React.Component {
               <CardsModalPortfolio parent={this} closer={this.handleModalClose}/>
               <CardsModalProposal parent={this} closer={this.handleModalClose}/>
               <CardsModalTalent parent={this} closer={this.handleModalClose}/>
-               <MessageModal parent={this} closer={this.handleModalClose}/>
+              <MessageModal parent={this} closer={this.handleModalClose}/>
                     
 
               

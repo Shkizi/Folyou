@@ -29,13 +29,7 @@ class CardsModalPortfolio extends React.Component {
       console.log(this.props.parent.state.propTrending);
       console.log(this.props.parent.state.talents);
       console.log(this.props.parent.state.idModal);
-      if (this.props.parent.state.propTrending.length > 0){
-       this.props.parent.state.propTrending.forEach((valuePort,indexPort,arrayPort)=>{
-          if (this.props.parent.state.propTrending[indexPort].idTalentArea == this.props.parent.state.idModal){
-          data = this.props.parent.state.propTrending[indexPort];
-            }
-        });
-      }else if (this.props.parent.state.talents.length > 0){
+      if (this.props.parent.state.talents.length > 0){
         this.props.parent.state.talents.forEach((valuePort,indexPort,arrayPort)=>{
           if (this.props.parent.state.talents[indexPort].idTalentArea == this.props.parent.state.idModal){
           data = this.props.parent.state.talents[indexPort];
@@ -73,6 +67,7 @@ class CardsModalPortfolio extends React.Component {
                   <div className="Modal-Portfolio-Talent-Category"><b><Translate id="category"></Translate></b>{"  " + data.valueCategory}</div>
                 </Row>
                 <div className="Modal-Portfolio-TalentName">{data.nameTalentArea}</div> 
+                
                 <div className="Modal-Portfolio-Keywords"><b><Translate id="keywords"></Translate> </b>{data.keywords.join(", ")}</div>
 
               
