@@ -9,7 +9,7 @@ var crypto = require('crypto');
 function getUsers(req, res) {
     let params=req.query;
    
-    db.query("SELECT * FROM `User`", [], function (rows, error) {
+    db.query("SELECT * FROM `User` LEFT JOIN Anexes ON  `User`.`idUser`= `Anexes`.`User_idUser`; ", [], function (rows, error) {
           
             if(error){
                 res.send({error: true, err: error});

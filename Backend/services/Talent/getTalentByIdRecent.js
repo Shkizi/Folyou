@@ -18,7 +18,10 @@ function getTalentByIdRecent(req, res, next) {
         console.log(params);
         if (!error) {
             
-            rows.forEach((valuePort,indexPort,arrayPort)=>{   rows[indexPort].keywords=rows[indexPort].keywords.split(","); });
+            rows.forEach((valuePort,indexPort,arrayPort)=>{  
+                rows[indexPort].keywordsString=rows[indexPort].keywords;
+                 rows[indexPort].keywords=rows[indexPort].keywords.split(",");
+                 });
             console.log(rows);
             res.send({
                 error: false,

@@ -1,6 +1,7 @@
 //place for all the portfolios
 
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 import { Container, Row, Col, Form, Image} from 'react-bootstrap';
 import { withLocalize } from "react-localize-redux";
 import { WithContext as ReactTags } from 'react-tag-input';
@@ -38,7 +39,8 @@ class ApplicationFormView extends React.Component {
                 users: [],
                 numberOfPeople: 1,
                 description: '',
-                teamPeople: []
+                teamPeople: [],
+                submited:false
         };
 
         this.handleRadioTeam = this.handleRadioTeam.bind(this);
@@ -79,12 +81,30 @@ class ApplicationFormView extends React.Component {
 
     handleSubmitAplication(event) {
         event.preventDefault();
-        let data= {
+        let data= { 
             numberOfPeople: this.state.numberOfPeople, isIndividual: this.state.isIndividual, users: this.state.users,
             teamPeople: this.state.teamPeople, description: this.state.description
         };
+        console.log(data);
+        S.putter(`putApplication`, {
+            idProposal:this.props.match.params.id,
+            data:data,
+            idUser: this.props.app.state.userLogged.idUser||null
 
-        
+          }, (res) => {  
+            if(!res.error){
+                this.props.app.state.notificationModule.notify("Application Received","br",2,15);
+                this.setState({submited:true});
+            }else{
+                this.props.app.state.notificationModule.notify("Application ERROR","br",2,15);
+            }
+                 
+          },
+          (error) => { 
+              console.log("Error: Application", error);
+              this.setState({ error: {message:error,error:true} });
+          });
+         
 
     
     }
@@ -124,10 +144,11 @@ class ApplicationFormView extends React.Component {
 
         
         return(
-            (this.state.service==true)?this.page():this.empty()
+            (this.state.service==true)?(this.state.submitted==true)?<Redirect to="/home" />:this.page():this.empty()
         );
     } 
     page(){
+        
         return (
             <>
             <form onSubmit={this.handleSubmitAplication}>
@@ -186,7 +207,7 @@ class ApplicationFormView extends React.Component {
                        
                     </Row>
                     <Form.Label style={{fontWeight: "bold"}}><Translate id="application form motivation text title"></Translate></Form.Label>
-                    <Form.Control as="textarea" rows="15" maxlength="2000"/>
+                    <Form.Control as="textarea" rows="15" maxlength="2000" value={this.state.description} onChange={this.handleDescription}/>
                  </Form>
                 </Col>
             </Row>
@@ -220,17 +241,26 @@ class ApplicationFormView extends React.Component {
             console.log(this.state.users);
       
             this.state.users.forEach((value, index, array) => {
-                userlist.push({name:array[index].nameUser,value:array[index].idUser,photo:""});
+                userlist.push({name:array[index].nameUser,value:array[index].idUser,photo:S.baseURL() + "public/anexes/profiles/"+array[index].fileName});
             })  
             }
             console.log(userlist);
             const userListConstant = userlist;
         let arrayOfMembers = []
          for(let i = 0; i < this.state.numberOfPeople; i++) {
+            function renderFriend(option) {
+                const imgStyle = {
+                    borderRadius: '50%',
+                    verticalAlign: 'middle',
+                    marginRight: 10,
+                };
+            
+                return (<span><img alt="" style={imgStyle} width="40" height="40" src={option.photo} /><span>{option.name}</span></span>);
+            }
             arrayOfMembers.push (
                 <Col sm={6}>
                     <div>
-                        <SelectSearch  options={userListConstant} value={this.state.teamPeople[i]} name="country" onChange={(event)=>{this.handleTeamPeople(event,i)}}/>
+                        <SelectSearch renderOption={renderFriend}  options={userListConstant} value={this.state.teamPeople[i]} name="country" onChange={(event)=>{this.handleTeamPeople(event,i)}}/>
                     </div>
                 </Col>
             )

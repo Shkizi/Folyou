@@ -2,7 +2,7 @@ import React from 'react'
 import CardProposal from '../../../Components/Elements/Cards/CardProposal/CardProposal'
 import CardPortfolio from '../../Elements/Cards/CardPortfolio/CardPortfolio'
 import CardTalent from '../../Elements/Cards/CardTalent/CardTalent'
-import { Card, Image, Row, Button, Col } from 'react-bootstrap';
+import { Card, Image, Row, Button, Col, Table } from 'react-bootstrap';
 import { withLocalize, Translate } from "react-localize-redux";
 import getImageLanguage from "../../../Resources/Translations/compilerLanguageImages.js"
 import CardsModalProposal from '../../Elements/CardsModal/Types/CardsModalProposal/CardsModalProposal';
@@ -30,6 +30,7 @@ class ProfileView extends React.Component {
         proposals:[],
         portTrending:[],
         propTrending:[],
+        dashboardTable:[],
         showModalPortfolio: false,
         showModalTalent: false,
         showModalProposal: false,
@@ -38,7 +39,13 @@ class ProfileView extends React.Component {
     };
     this.handleModalClose = this.handleModalClose.bind(this);
     this.handleModalShow = this.handleModalShow.bind(this);
-
+    
+    this.pageContentDashboard = this.pageContentDashboard.bind(this);
+    this.pageContentProjects= this.pageContentProjects.bind(this);
+    this.pageContentProposals= this.pageContentProposals.bind(this);
+    this.pageContentTalents= this.pageContentTalents.bind(this);
+    this.pageContentSettings= this.pageContentSettings.bind(this);
+    
   }
       handleModalClose() {
         this.setState({showModalPortfolio: false});
@@ -89,21 +96,38 @@ class ProfileView extends React.Component {
                     console.log(res);
                       this.setState({ talents: talents });
                       S.serviceAPI().get(`getUserById`, 
-                  { params: {
-                        idUser: this.props.match.params.id
-                    }})
-                .then(res => {
-                    if(!res.data.error){
-                const user = res.data.user;
-                console.log(res);
-                console.log(user);
-                this.setState({ user:user });
-                this.setState({pageContent:'Projects'});
-                    }else{
+                        { params: {
+                                idUser: this.props.match.params.id
+                            }})
+                        .then(res => {
+                            if(!res.data.error){
+                        const user = res.data.user;
+                        console.log(res);
+                        console.log(user);
+                        this.setState({ user:user });
+                                                S.serviceAPI().get(`getProposalByApplicationIdUser`, 
+                                                { params: {
+                                                        idUser: this.props.match.params.id
+                                                    }})
+                                                .then(res => {
+                                                    if(!res.data.error){
+                                                const table = res.data.table;
+                                                console.log(res);
+                                                console.log(table);
+                                                this.setState({ dashboardTable:table });
+                                                this.setState({pageContent:'Projects'});
+                                                    }else{
+                                                const error={message:res.data.error,error:true};
+                                                this.setState( error );
+                                            }
+                                            this.setState({ showRender:true });
+                                            
+                                        })
+                            }else{
                         const error={message:res.data.error,error:true};
                         this.setState( error );
                     }
-                    this.setState({ showRender:true });
+                    this.setState({ showRender:false });
                     
                 })
                   },
@@ -155,15 +179,30 @@ class ProfileView extends React.Component {
                 console.log(res);
                 console.log(user);
                 this.setState({ user:user });
-                this.setState({pageContent:'Projects'});
-                this.setState({pageContent:'Settings'});
-                this.setState({pageContent:'Projects'});
+                                         S.serviceAPI().get(`getProposalByApplicationIdUser`, 
+                                                { params: {
+                                                        idUser: this.props.match.params.id
+                                                    }})
+                                                .then(res => {
+                                                    if(!res.data.error){
+                                                const table = res.data.table;
+                                                console.log(res);
+                                                console.log(table);
+                                                this.setState({ applicationTable:table });
+                                                this.setState({pageContent:'Projects'});
+                                                    }else{
+                                                const error={message:res.data.error,error:true};
+                                                this.setState( error );
+                                            }
+                                            this.setState({ showRender:true });
+                                            
+                                        })
                 
                     }else{
                         const error={message:res.data.error,error:true};
                         this.setState( error );
                     }
-                    this.setState({ showRender:true });
+                    this.setState({ showRender:false });
                     
                 })
                   },
@@ -222,7 +261,7 @@ class ProfileView extends React.Component {
                 </Card>
                     <Row>
                         <Link to={"/CreateProposal/"}>
-                         <Button className={"Modal-Portfolio-Button-Register"}><Translate id="apply for proposal"></Translate></Button>
+                         <Button className={"Modal-Portfolio-Button-Register"}><Translate id="create proposal"></Translate></Button>
                         </Link>
                     </Row>
                     <Row>
@@ -299,7 +338,6 @@ class ProfileView extends React.Component {
             )
         }
         pageContentTalents(){
-            
               return (<>{this.state.talents.map(val =>{return(
                 <CardTalent data={val} parent={this} app={this.props.app}/>
               );})}</>
@@ -307,7 +345,30 @@ class ProfileView extends React.Component {
         }
         pageContentDashboard(){
             
-            return (<></>
+            return (<>
+
+                <Table responsive="sm">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Proposal Name</th>
+                        <th>Current State</th>
+                        <th>Last Change</th>
+                        <th>Details</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.dashboardTable.map((val) =>{return(
+                        <tr>
+                            <td>0</td>
+                            <td>{val.nameProposal}</td>
+                            <td>{""+val.valueProposalState+" , "+val.value}</td>
+                            <td>{val.createdTimestamp}</td>
+                            <td>{val.descriptionProposal}</td>
+                        </tr>)})}
+                    </tbody>
+                </Table>
+            </>
           )
       }
       pageContentSettings(){

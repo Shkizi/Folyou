@@ -133,7 +133,7 @@ class PortfoliosAreaView extends React.Component {
             };
         
             return (<span><img alt="" style={imgStyle} width="40" height="40" src={option.photo} /><span>{option.name}</span></span>);
-        }
+        } 
       const { tags, suggestions } = this.state;
       let countries=[];
         
