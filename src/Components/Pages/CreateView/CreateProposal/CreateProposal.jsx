@@ -21,7 +21,7 @@ class CreateProposal extends React.Component {
             region: "",
             proposalDescription:"",
             keywords: [],
-            categories: []
+            category: []
                 };
     
     this.handleRegion = this.handleRegion.bind(this);
@@ -30,6 +30,7 @@ class CreateProposal extends React.Component {
     this.handleProposalDescription = this.handleProposalDescription.bind(this);
     this.handleKeywords = this.handleKeywords.bind(this);
     this.handleCategory = this.handleCategory.bind(this);
+    this.handleSubmitProposal = this.handleSubmitProposal.bind(this);
     }
 
     handlePosition(event) {
@@ -56,7 +57,19 @@ class CreateProposal extends React.Component {
         this.setState({ category: event.target.value});
     }
 
-
+    handleSubmitProposal(event){
+        event.preventDefault();
+       
+        const data ={category:this.state.category,
+            keywords:this.state.keywords,
+            proposalDescription:this.state.proposalDescription,
+            region:this.state.region,
+            country:this.state.country,
+            position:this.state.position,
+        idUser: this.props.app.state.userLogged.idUser||null
+    }
+    console.log(data);
+    }
 
     render() {
 
@@ -72,7 +85,7 @@ class CreateProposal extends React.Component {
             </Row>
             <Row>
                 <Col sm={12}>
-                                <Form.Label><Translate id="position"></Translate></Form.Label>
+                                <Form.Label><Translate id="proposalName"></Translate></Form.Label>
                                 <Form.Control type="text" value={this.state.position} onChange={(event)=>{this.handlePosition(event)}} />
                 </Col>
                 </Row>
@@ -99,7 +112,7 @@ class CreateProposal extends React.Component {
                 </Col>
                 <Col sm={12}>
                                 <Form.Label><Translate id="categories"></Translate></Form.Label>
-                                <Form.Control type="text" value={this.state.categories} onChange={(event)=>{this.handleCategory(event)}} />
+                                <Form.Control type="text" value={this.state.category} onChange={(event)=>{this.handleCategory(event)}} />
                 </Col>
                 </Row>
 
