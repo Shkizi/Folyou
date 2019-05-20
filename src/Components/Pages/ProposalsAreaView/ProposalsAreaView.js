@@ -149,7 +149,7 @@ class ProposalsAreaView extends React.Component {
                 <Col sm={2} className="Header-Sections" style={{marginTop: 0}}>
                
                 <div className="Portfolios-Page-Title">
-                    <Translate id="projects" ></Translate>
+                    <Translate id="proposals" ></Translate>
                 </div>
                 </Col>
                 <Col sm={5} className="Header-Sections">
