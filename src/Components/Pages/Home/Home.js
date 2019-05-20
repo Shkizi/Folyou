@@ -136,7 +136,7 @@ class Home extends React.Component {
           {/* HOME CAROUSEL SECTION */}
                     <Row style={{margin: 0}}>
                       <Col sm={12} className="Header-Sections">
-                        <HomeCarousel/>
+                        <HomeCarousel parent={this}/>
                       </Col>
                     </Row>
         
