@@ -1,14 +1,14 @@
 .C-Talent {
     position: relative;
     clear: both;
-    background-color: #e6f4f2;
+    background-color: #cff4f7;
     transition: all 0.3s ease-in-out;
     height: 100%;
     border-radius: .25rem;
 }
 
 .C-Talent:hover {
-    background-color: rgba(230,234,234,0.5);
+    background-color: white;
 }
 
 .C-Talent-Link  {
@@ -75,7 +75,8 @@
 }
 
 .C-Talent-Website-Link {
-    color: #49c5b6;
+    color: black;
+    font-weight: bold;
     height: 20px;
     margin-bottom: 12px;
     line-height: 20px;

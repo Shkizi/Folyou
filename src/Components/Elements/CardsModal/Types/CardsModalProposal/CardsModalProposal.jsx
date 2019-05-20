@@ -5,6 +5,7 @@ import { Translate } from "react-localize-redux";
 import './CardsModalProposal.css';
 import getImageLanguage from "../../../../../Resources/Translations/compilerLanguageImages.js"
 import { isNull } from 'util';
+import { FiFileText, FiMail } from "react-icons/fi";
 import ServicesAPI from "../../../../../serviceAPI";
 var S = new ServicesAPI();
 class CardsModalPortfolio extends React.Component {
@@ -94,11 +95,11 @@ class CardsModalPortfolio extends React.Component {
               <Row>
                 <Col>
                   <Link to={"/ApplicationRegister/"+data.idProposal}>
-                   <Button className={"Modal-Proposal-Button"}><Translate id="apply"></Translate></Button>
+                   <Button className={"Modal-Proposal-Button"}><FiFileText/> <Translate id="apply"></Translate></Button>
                   </Link>
                 </Col>
                 <Col>
-                   <Button className={"Modal-Proposal-Button-Message"}><Translate id="send a message"></Translate></Button>
+                   <Button className={"Modal-Proposal-Button-Message"}><FiMail/> <Translate id="send a message"></Translate></Button>
                 </Col>
               </Row>
             </Modal.Footer>

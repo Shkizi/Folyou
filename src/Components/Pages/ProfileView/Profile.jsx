@@ -8,6 +8,8 @@ import getImageLanguage from "../../../Resources/Translations/compilerLanguageIm
 import CardsModalProposal from '../../Elements/CardsModal/Types/CardsModalProposal/CardsModalProposal';
 import CardsModalTalent from '../../Elements/CardsModal/Types/CardsModalTalent/CardsModalTalent';
 import CardsModalPortfolio from '../../Elements/CardsModal/Types/CardsModalPorfolio/CardsModalPortfolio.jsx'
+import { FiFilePlus } from "react-icons/fi";
+import ReactTooltip from 'react-tooltip'
 import './Profile.css'
 import { Link } from "react-router-dom";
 import ServicesAPI from '../../../serviceAPI.js';
@@ -266,14 +268,14 @@ class ProfileView extends React.Component {
                             <Col m={6} style={{textAlign: "center", paddingRight:5}}>
                             <Button onClick={()=>{this.setState({pageContent:'Projects'})}} className="Profile-Button-Categories">
                             <Translate id="projects"></Translate>
-                            <span className="Profile-Create-Sign">+</span>
+                            <FiFilePlus className="Profile-Create-Sign"/>
                             </Button>
                             </Col>
                             <Col m={6} style={{textAlign: "center", paddingLeft: 5, paddingRight: 5}}>
                             <Button onClick={()=>{this.setState({pageContent:'Proposals'})}} className="Profile-Button-Categories">
                             <Translate id="proposals"></Translate>
                             <Link to={"/CreateProposal/"}>
-                            <span className="Profile-Create-Sign">+</span>
+                            <FiFilePlus className="Profile-Create-Sign"/>
                             </Link>
                             </Button>
                             </Col>
@@ -293,7 +295,7 @@ class ProfileView extends React.Component {
                             <Col m={6} style={{textAlign: "center", paddingLeft: 5, paddingRight: 5}}>
                             <Button onClick={()=>{this.setState({pageContent:'Talents'})}} className="Profile-Button-Categories">
                             <Translate id="talents"></Translate>
-                            <span className="Profile-Create-Sign">+</span>
+                            <FiFilePlus className="Profile-Create-Sign"/>
                             </Button>
                             </Col>
                             <Col m={6} style={{textAlign: "center", paddingLeft: 5}}>
