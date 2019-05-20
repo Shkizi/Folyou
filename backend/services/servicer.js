@@ -19,6 +19,7 @@ module.exports.getProposalByIdUser = require("./Proposal/getProposalByIdUser.js"
 module.exports.getProposalByIdProposal = require("./Proposal/getProposalByIdProposal.js");
 module.exports.getTrendingProposal = require("./Proposal/getTrendingProposal.js");
 module.exports.putCreateProposal = require("./Proposal/putCreateProposal.js");
+module.exports.getProposalById = require("./Proposal/getProposalById.js");
 
 
 

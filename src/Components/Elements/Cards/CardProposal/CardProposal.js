@@ -11,7 +11,8 @@ var S = new ServicesAPI();
 function CreateProposal(props) {
   var data= props.data;
    var parent = props.parent; 
-   var app = props.app;
+   
+   var app = parent.props.app;
   const avatUser =(data.avatarUser=="")?AvatarImage:S.baseURL()+"public/anexes/profiles/"+data.avatarUser;
    
    

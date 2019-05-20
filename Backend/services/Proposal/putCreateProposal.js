@@ -32,6 +32,7 @@ function putCreateProposal(req, res, next) {
                 arrayList.push(params.keywords[i]);
                 arrayList.push(idProposal);
             }
+            console.log(arrayList);
             db.query(query2.repeat(params.keywords.length),arrayList, function (rows, error) {
                 if (error) {
                     res.send({

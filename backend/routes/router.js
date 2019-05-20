@@ -19,6 +19,7 @@ app.get("/getTrendingPortfolio", (req, res,next) => {  servicer.getTrendingPortf
 app.get("/getProposalByApplicationIdUser", (req, res,next) => {  servicer.getProposalByApplicationIdUser(req,res,next)});
 
 
+app.get("/getProposalById", (req, res,next) => {  servicer.getProposalById(req,res,next)});
 app.get("/getTrendingProposal", (req, res,next) => {  servicer.getTrendingProposal(req,res,next)});
 app.get("/getProposalByIdRecent", (req, res,next) => {  servicer.getProposalByIdRecent(req,res,next)});
 app.get("/getProposalByIdUser", (req, res,next) => {  servicer.getProposalByIdUser(req,res,next)});
