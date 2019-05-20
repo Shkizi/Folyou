@@ -23,6 +23,7 @@ app.get("/getTrendingProposal", (req, res,next) => {  servicer.getTrendingPropos
 app.get("/getProposalByIdRecent", (req, res,next) => {  servicer.getProposalByIdRecent(req,res,next)});
 app.get("/getProposalByIdUser", (req, res,next) => {  servicer.getProposalByIdUser(req,res,next)});
 app.get("/getProposalByIdProposal", (req, res,next) => {  servicer.getProposalByIdProposal(req,res,next)});
+app.put("/putCreateProposal", (req, res,next) => {  servicer.putCreateProposal(req,res,next)});
 
 app.get("/getTalentByIdRecent", (req, res,next) => {  servicer.getTalentByIdRecent(req,res,next)});
 app.get("/getTalentByIdUser", (req, res,next) => {  servicer.getTalentByIdUser(req,res,next)});

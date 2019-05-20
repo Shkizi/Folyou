@@ -61,14 +61,23 @@ class CreateProposal extends React.Component {
         event.preventDefault();
        
         const data ={category:this.state.category,
-            keywords:this.state.keywords,
+            keywords:[this.state.keywords],
             proposalDescription:this.state.proposalDescription,
             region:this.state.region,
             country:this.state.country,
-            position:this.state.position,
+            nameProposal:this.state.position,
         idUser: this.props.app.state.userLogged.idUser||null
     }
     console.log(data);
+        S.putter(`putCreateProposal`, data, (res) => {  
+            this.props.app.state.notificationModule.notify("CREATION SUCCESS","br",2,2);
+            
+    
+        },
+        (error) => { 
+            console.log("Error: User", error);
+            this.setState({ error: {message:error,error:true} });
+        });
     }
 
     render() {

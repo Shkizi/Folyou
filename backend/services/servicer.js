@@ -18,6 +18,10 @@ module.exports.getProposalByIdRecent = require("./Proposal/getProposalByIdRecent
 module.exports.getProposalByIdUser = require("./Proposal/getProposalByIdUser.js");
 module.exports.getProposalByIdProposal = require("./Proposal/getProposalByIdProposal.js");
 module.exports.getTrendingProposal = require("./Proposal/getTrendingProposal.js");
+module.exports.putCreateProposal = require("./Proposal/putCreateProposal.js");
+
+
+
 
 module.exports.getTalentByIdRecent = require("./Talent/getTalentByIdRecent.js");
 module.exports.getTalentByIdUser = require("./Talent/getTalentByIdUser.js");
