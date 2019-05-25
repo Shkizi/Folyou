@@ -8,7 +8,10 @@ import ServicesAPI from '../../../../serviceAPI.js';
 import '../../../Elements/Notifications/Notifications';
 import "./CreateProposal.css";
 import { throws } from 'assert';
+import SelectSearch from 'react-select-search'
 
+import getImageLanguage from "../../../../Resources/Translations/compilerLanguageImages.js";
+var countryJson = require("../../../../Resources/Translations/countries.json");
 var S = new ServicesAPI();
 
 class CreateProposal extends React.Component { 
@@ -21,7 +24,9 @@ class CreateProposal extends React.Component {
             region: "",
             proposalDescription:"",
             keywords: [],
-            category: []
+            category: [],
+            categories:[],
+            service:false,
                 };
     
     this.handleRegion = this.handleRegion.bind(this);
@@ -38,7 +43,8 @@ class CreateProposal extends React.Component {
     }
 
     handleCountry(event) {
-        this.setState({ country: event.target.value});
+        
+       this.setState({ country: event.value});
     }
 
     handleRegion(event) {
@@ -54,12 +60,12 @@ class CreateProposal extends React.Component {
     }
 
     handleCategory(event) {
-        this.setState({ category: event.target.value});
+        this.setState({ category: event.value});
     }
 
     handleSubmitProposal(event){
         event.preventDefault();
-       
+        
         const data ={category:this.state.category,
             keywords:[this.state.keywords],
             proposalDescription:this.state.proposalDescription,
@@ -79,9 +85,46 @@ class CreateProposal extends React.Component {
             this.setState({ error: {message:error,error:true} });
         });
     }
-
+componentDidMount(){
+   // categories
+        S.getter(`getCategories`, {
+            }, (res) => {  
+            const categories = res.data.categories;
+            console.log(res.data.categories);
+            this.setState({ categories: categories });
+            this.setState({service:true});
+        },
+        (error) => { 
+            console.log("Error: categories", error);
+            this.setState({ error: {message:error,error:true} });
+        });
+}
     render() {
-
+        return((this.state.service==true)?this.page():this.empty());
+    }
+    empty(){
+        return(<></>);
+    }
+    page(){
+        function renderFriend(option) {
+            const imgStyle = {
+                borderRadius: '50%',
+                verticalAlign: 'middle',
+                marginRight: 10,
+            };
+        
+            return (<span><img alt="" style={imgStyle} width="40" height="40" src={option.photo} /><span>{option.name}</span></span>);
+        } 
+            let countries=[];
+            let categ=[];
+            for (var index in countryJson) {
+                countries.push({name:countryJson[index],value:index,photo:getImageLanguage(index.toLowerCase())});
+            }
+            for (var index in this.state.categories) {
+                categ.push({name:this.state.categories[index].valueCategory,value:this.state.categories[index].idCategory});
+            }
+            console.log(countries);
+            console.log(categ);
         return (
             <>
             <form onSubmit={this.handleSubmitProposal}>
@@ -101,7 +144,8 @@ class CreateProposal extends React.Component {
                 <Row>
                 <Col sm={6}>
                                 <Form.Label><Translate id="country"></Translate></Form.Label>
-                                <Form.Control type="text" value={this.state.country} onChange={(event)=>{this.handleCountry(event)}} />
+                                <SelectSearch renderOption={renderFriend} options={countries} value={this.state.country} name="country" onChange={(event)=>{this.handleCountry(event)}} style={{height: "36px"}} />
+                                
                 </Col>
                 <Col sm={6}>
                                 <Form.Label><Translate id="region"></Translate></Form.Label>
@@ -121,7 +165,8 @@ class CreateProposal extends React.Component {
                 </Col>
                 <Col sm={12}>
                                 <Form.Label><Translate id="categories"></Translate></Form.Label>
-                                <Form.Control type="text" value={this.state.category} onChange={(event)=>{this.handleCategory(event)}} />
+                                  <SelectSearch options={categ} value={this.state.category} name="category" onChange={(event)=>{this.handleCategory(event)}} style={{height: "36px"}} />
+                                
                 </Col>
                 </Row>
 

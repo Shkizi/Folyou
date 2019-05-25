@@ -7,8 +7,15 @@
 }
 
 
-
-
+.select-search-box::after{
+    line-height: 35px;
+}
+input.select-search-box__search{
+    height: 36px;
+}
+.select-search-box__select{
+    top:initial; 
+}
 
 .Create-Proposal-Submit-Button {
     margin-bottom: 0.4%;
