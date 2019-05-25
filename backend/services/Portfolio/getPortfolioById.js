@@ -8,11 +8,17 @@ var crypto = require('crypto');
 // for password use  var hash = crypto.createHash('sha256').update(params.passwordUser).digest('hex');
 function getPortfolioById(req, res, next) {
     let params = req.query;
-
+    let arr=[];
+if(params.country!=""){
+    arr.push(params.country);
+}
+if(params.keywords!=null){
+    
+}
     db.query("SELECT * FROM `Sheet`,`Portfolio`, `Category`, `User`,(SELECT filename as `avatarUser`, User_idUser from Anexes) as avatar   WHERE `Category`.`idCategory` =`Sheet`.`Category_idCategory`"+
     " AND `User`.`idUser` = avatar.User_idUser AND `User`.`idUser` = `Portfolio`.`User_idUser` "+
-    "AND `Sheet`.`idSheet` = `Portfolio`.`Sheet_idSheet`"+
-    "ORDER BY `Sheet`.`createdTimestamp`",[], function (rows, error) {
+    "AND `Sheet`.`idSheet` = `Portfolio`.`Sheet_idSheet` "+ ((params.country!="")?" AND countrySheet LIKE ? ":"")+
+    "ORDER BY `Sheet`.`createdTimestamp`",arr, function (rows, error) {
         if (!error) {
             console.log(rows);
              db.query("SELECT * FROM `Keyword`; ",[], function (rowsKeywords, errorkey) {
@@ -34,6 +40,19 @@ function getPortfolioById(req, res, next) {
                             });
                         });
                         console.log(rows);
+                        if(params.keywords!=null){
+                            let del=[];
+                            rows.forEach((valuePort,indexPort,arrayPort)=>{  
+                                params.keywords.forEach((value,index,array)=> {
+                                    if(!rows[indexPort].keywords.includes(value)){
+                                        del.push(indexPort);
+                                    }                             
+                                });
+                            });
+                            for (var i = del.length -1; i >= 0; i--)
+                                    rows.splice(del[i],1);
+                        }
+                       
                         res.send({
                             error: false,
                             portfolioList: rows
