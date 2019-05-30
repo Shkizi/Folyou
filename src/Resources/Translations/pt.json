@@ -53,7 +53,7 @@
     "name of the candidate": "Nome do candidato",
     "send a message": "Enviar uma mensagem",
     "apply": "Candidatar",
-    "create proposal title": "Formulario para criar uma proposta",
+    "create proposal title": "Formulário para criar uma proposta",
     "proposalName": "Nome da proposta",
     "country": "País",
     "region": "Região",
@@ -61,7 +61,11 @@
     "categories": "Categoria",
     "publish": "Publicar",
     "LOGIN SUCCESS": "Sessao inicada",
-    "LOGOUT SUCCESS": "Sessão terminada"
+    "LOGOUT SUCCESS": "Sessão terminada",
+    "create project form": "Formulário para criar um projeto",
+    "project name": "Nome do projeto",
+    "select image to project": "Selecione a imagem de capa do projeto"
+
 
 
 

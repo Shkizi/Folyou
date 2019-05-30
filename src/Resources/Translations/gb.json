@@ -59,7 +59,10 @@
     "categories": "Categories",
     "publish": "Publish",
     "LOGIN SUCCESS": "You are now logged in",
-    "LOGOUT SUCCESS": "Your session was terminated"
+    "LOGOUT SUCCESS": "Your session was terminated",
+    "create project form": "Create project form",
+    "project name": "Project name",
+    "select image": "Selecione a imagem de capa do projeto"
 
 
 
