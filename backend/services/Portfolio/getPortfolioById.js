@@ -9,6 +9,9 @@ var crypto = require('crypto');
 function getPortfolioById(req, res, next) {
     let params = req.query;
     let arr=[];
+if(!params.hasOwnProperty("country")){
+    params["country"]="";
+}
 if(params.country!=""){
     arr.push(params.country);
 }
