@@ -1,0 +1,51 @@
+.CreateProposal-Container {
+    margin-top: 2%;
+    background-color: white;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 2px;
+}
+
+
+.select-search-box::after{
+    line-height: 35px;
+}
+input.select-search-box__search{
+    height: 36px;
+}
+.select-search-box__select{
+    top:initial; 
+}
+
+.Create-Proposal-Submit-Button {
+    margin-bottom: 0.4%;
+    background-color: white;
+    color: black;
+    border: none;
+    box-shadow: 0 1px 20px 0px rgba(0, 0, 0, 0.1);
+    font-size: 15px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.Create-Proposal-Submit-Button:hover {
+    background-color: rgba(230,234,234,0.5);
+    color: black;
+    cursor: pointer;
+}
+
+.Create-Proposal-Submit-Button:active {
+    background-color: rgba(230,234,234,0.5) !important;
+    color: black !important;
+}
+
+.Create-Proposal-Submit-Button:focus {
+    box-shadow: 0 1px 20px 0px rgba(0, 0, 0, 0.1) !important;
+    outline: 0;
+}
+
+.Create-Proposal-Submit-Button-Text {
+    color:black !important;
+}

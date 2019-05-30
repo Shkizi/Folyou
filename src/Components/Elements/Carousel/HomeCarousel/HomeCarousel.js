@@ -20,6 +20,8 @@ class HomeCarousel extends React.Component {
                           src={S.baseURL()+"public/anexes/sheets/"+val.defaultImageSheet}
                           alt="First slide"
                         />
+                        
+                        
                         <Carousel.Caption style={{color:"black",backgroundColor: "rgba(147, 147, 147,0.4)"}}>
                           <b><h4>{val.nameSheet}</h4></b>
                           <p>{val.descriptionSheet}</p>

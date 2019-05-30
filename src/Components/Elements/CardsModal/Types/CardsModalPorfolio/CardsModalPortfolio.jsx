@@ -70,6 +70,10 @@ class CardsModalPortfolio extends React.Component {
                   <div className="Modal-Portfolio-User-Location">{data.regionSheet}</div>
                   <div className="Modal-Portfolio-Sheet-Category"><b><Translate id="category"></Translate></b>{"  " + data.valueCategory}</div>
                 </Row>
+                <Row>
+                <Image src={S.baseURL()+"public/anexes/sheets/"+data.defaultImageSheet} className="Modal-Portfolio-Project-Image" />
+
+                </Row>
                 <div className="Modal-Portfolio-SheetName">{data.nameSheet}</div> 
                 <div className="Modal-Portfolio-Keywords"><b><Translate id="keywords"></Translate> </b>{data.keywords.join(", ")}</div>
 

@@ -268,7 +268,9 @@ class ProfileView extends React.Component {
                             <Col m={6} style={{textAlign: "center", paddingRight:5}}>
                             <Button onClick={()=>{this.setState({pageContent:'Projects'})}} className="Profile-Button-Categories">
                             <Translate id="projects"></Translate>
+                            <Link to={"/CreateProject/"}>
                             <FiFilePlus className="Profile-Create-Sign"/>
+                            </Link>
                             </Button>
                             </Col>
                             <Col m={6} style={{textAlign: "center", paddingLeft: 5, paddingRight: 5}}>

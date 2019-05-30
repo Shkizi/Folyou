@@ -37,7 +37,7 @@ function CreateTalent(props) {
      
       <Row className="C-Talent-User-Location rowCards"><Image src={getImageLanguage(data.countryUser)} style={{height: "32px",width: "32px"}} roundedCircle/><div className="C-Talent-Country-Name">{data.regionUser}</div></Row>
       <Row className="C-Talent-Website-Link rowCards">{data.nameTalentArea}</Row>
-      <Row className="C-Talent-User-Description rowCards">{data.descriptionTalentArea}</Row>
+      <Row className="C-Talent-User-Description rowCards">{data.descriptionTalentArea.substring(0,600)+((data.descriptionTalentArea.length > 600)?"...":"")}</Row>
       <Row className="C-Talent-Keywords rowCards"><Translate id="keywords"></Translate >:<div className="C-Talent-Keywords-Name">{data.keywords.join(", ")}</div></Row>
      </div>
     </Card.Body>
