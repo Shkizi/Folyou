@@ -132,13 +132,12 @@ componentDidMount(){
                 
             <Row>
                 <Col sm={12} style={{textAlign: "center"}}>
-                        <div><b><Translate id="create project title"></Translate></b>{}</div>
-                        <input type="file"></input>
+                        <div><b><Translate id="create project form"></Translate></b>{}</div>
                 </Col>
             </Row>
             <Row>
                 <Col sm={12}>
-                                <Form.Label><Translate id="proposalName"></Translate></Form.Label>
+                                <Form.Label><Translate id="project name"></Translate></Form.Label>
                                 <Form.Control type="text" value={this.state.position} onChange={(event)=>{this.handlePosition(event)}} />
                 </Col>
                 </Row>
@@ -149,8 +148,8 @@ componentDidMount(){
                                 
                 </Col>
                 <Col sm={6}>
-                                <Form.Label><Translate id="region"></Translate></Form.Label>
-                                <Form.Control type="text" value={this.state.region} onChange={(event)=>{this.handleRegion(event)}} />
+                                <Form.Label><Translate id="select image to project"></Translate></Form.Label>
+                                <input type="file"></input>
                 </Col>
                 </Row>
                 <Row>
