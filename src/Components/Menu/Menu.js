@@ -9,6 +9,7 @@ import {MdNotificationsActive} from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
 import { FaSignOutAlt } from "react-icons/fa";
 import { FaSignInAlt } from "react-icons/fa";
+import Logo from '../../Resources/Images/logo.png'
 
 import Login from '../Elements/Popups/Login/Login'
 import { Translate } from "react-localize-redux";
@@ -31,9 +32,6 @@ class Menu extends React.Component {
 
     this.handleShowTabs = this.handleShowTabs.bind(this);
     this.handleCloseTabs = this.handleCloseTabs.bind(this);
-
-    this.handleShowSearchButton = this.handleShowSearchButton.bind(this);
-    this.handleCloseSearchButton = this.handleCloseSearchButton.bind(this);
 
     this.handleLogOff = this.handleLogOff.bind(this);
 
@@ -62,16 +60,6 @@ class Menu extends React.Component {
     this.setState({ showTabs: false});
   }
 
-  handleShowSearchButton() {
-    this.setState({ showSearchButton: true});
-    
-  }
-
-  handleCloseSearchButton() {
-    this.setState({ showSearchButton: false});
-    
-    
-  }
   componentDidUpdate(){
     if(!this.state.showSearchButton){
       this.focusIn("searchable");
@@ -85,33 +73,7 @@ focusIn(elem)
   }
 
 }
-  searchButton = () => {
-    var STYLES =classNames({  
-      "Menu-Search-Button":true,
-      'hidden': !this.state.showSearchButton 
-    });
-    return(
-            <Button               
-               variant="link"
-               color="primary"
-               className={STYLES} 
-               onClick={this.handleCloseSearchButton}>
-              <FiSearch className="Menu-Search-Button-Icon"/>
-            </Button>  
-    )}
 
-searchLine = () => {
-  var STYLES =classNames({  
-    "Menu-Search-Box":true,
-    'hidden': this.state.showSearchButton 
-  });
-  return (
-  <Form.Group as={Row} className={STYLES} >
-    <Col sm="10">
-      <Form.Control as="input" type="text" className={"Menu-Search-Input"} placeholder="Search..." ref="searchable"/>
-    </Col>
-  </Form.Group>
-)}
 
   render() {
     
@@ -124,7 +86,7 @@ searchLine = () => {
       <Row style={{width:"100%"}}>
 
         {/* Menu button */}
-        <Col xs={11} sm={11} md={11} lg={11} xl={11}>
+        <Col xs={8} sm={8} md={10} lg={10} xl={10}>
         <Row>
           
             <Navbar.Brand>
@@ -136,16 +98,18 @@ searchLine = () => {
              <span className="sr-only"><Translate id ="unreadMessages"/></span>
               </Badge>
             </Link> 
-
-          {this.searchButton()}
-            {this.searchLine()}
+            <div className="Menu-Logo">
+            <Link to='/'>
+            <Image src={Logo} style={{height: "60px", width:"175px"}}></Image>
+            </Link>
+            </div>
         </Row>
         </Col>
 
 
 
         {/* Login/Logout Col*/}
-        <Col  xs={1} sm={1} md={1} lg={1} xl={1} style={{paddingRight: 0}} >
+        <Col  xs={4} sm={4} md={2} lg={2} xl={2} style={{paddingRight: 0, position: "relative"}} >
          
         {(this.props.app.state.userLogged.set)?this.renderLogged():this.renderSign()}
             
