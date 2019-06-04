@@ -25,7 +25,7 @@ if(params.keywords!=null){
     " WHERE `Category`.`idCategory` =`Proposal`.`Category_idCategory`"+
     " AND `User`.`idUser` = `Proposal`.`User_idUser` AND `User`.`idUser` = avatar.User_idUser "+
     "AND  keywords.Proposal_idProposal = idProposal "+ ((params.country!="")?" AND countryProposal LIKE ? ":"")+
-    "ORDER BY `Proposal`.`createdTimestamp`;",[], function (rows, error) {
+    "ORDER BY `Proposal`.`createdTimestamp`;",arr, function (rows, error) {
         if (!error) {
             console.log(rows);
              db.query("SELECT * FROM `Keyword`; ",[], function (rowsKeywords, errorkey) {

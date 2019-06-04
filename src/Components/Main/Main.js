@@ -34,7 +34,6 @@ class Main  extends Component {
             <Route exact path='/TestAxios'  render={(routeProps)=><TestsView {...routeProps} app={this.props.app}/>}/>
             <Route exact path='/NotificationsHub'  render={(routeProps)=><NotificationsHubView {...routeProps} app={this.props.app}/>}/>
             <Route exact path='/Talents'  render={(routeProps)=><TalentSpaceView {...routeProps} app={this.props.app}/>}/>
-            <Route exact path='/Profile'  render={(routeProps)=><TalentSpaceView {...routeProps} app={this.props.app}/>}/>
             <Route exact path='/Proposals'  render={(routeProps)=><ProposalsAreaView {...routeProps} app={this.props.app}/>}/>
             <Route exact path='/Portfolios'  render={(routeProps)=><PortfoliosAreaView {...routeProps} app={this.props.app}/>}/>
             <Route exact path='/TestDashBoard'  render={(routeProps)=><Dashboard {...routeProps} app={this.props.app}/>}/>

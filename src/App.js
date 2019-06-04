@@ -20,7 +20,8 @@ class App extends Component {
         { name: "English", code: "gb" },
         { name: "Português", code: "pt" }
       ],
-      options: { defaultLanguage: (cookies.get("folyou_language") != "undefined" && cookies.get("folyou_language") != "")?cookies.get("folyou_language"):"gb",
+      options: { 
+        defaultLanguage: (cookies.get("folyou_language") != "undefined" && cookies.get("folyou_language") != "" && typeof cookies.get("folyou_language") !== "undefined")?cookies.get("folyou_language"):"gb",
       renderToStaticMarkup: renderToStaticMarkup }
       
     });
@@ -50,13 +51,14 @@ class App extends Component {
 
   componentDidMount() {
     const { cookies } = this.props;
-  
-    if(cookies.get("folyou_language") != "undefined" && cookies.get("folyou_language") != ""){
+  console.log(cookies.get("folyou_language") );
+    if(cookies.get("folyou_language") != "undefined" && cookies.get("folyou_language") != "" && typeof cookies.get("folyou_language") !== "undefined"){
       this.changeCurrentLanguage(cookies.get("folyou_language"),cookies.get("folyou_languageName"));
      
     }else{
-      this.changeCurrentLanguage(this.state.currentLanguage,this.state.currentLanguageName);
+      this.changeCurrentLanguage("gb","English");
     }
+    console.log(cookies.getAll());
     console.log(cookies.get("folyou_session"));
     if(typeof cookies.get("folyou_session") !="undefined"){
       S.getter(`getUserBySession`, {userLogged:cookies.get("folyou_session")}, (res) => {  

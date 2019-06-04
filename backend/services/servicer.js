@@ -24,6 +24,7 @@ module.exports.getProposalById = require("./Proposal/getProposalById.js");
 
 
 
+module.exports.getTalentById = require("./Talent/getTalentById.js");
 module.exports.getTalentByIdRecent = require("./Talent/getTalentByIdRecent.js");
 module.exports.getTalentByIdUser = require("./Talent/getTalentByIdUser.js");
 

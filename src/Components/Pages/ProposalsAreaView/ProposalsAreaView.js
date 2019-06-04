@@ -53,7 +53,8 @@ class ProposalsAreaView extends React.Component {
         this.handleAddition = this.handleAddition.bind(this);
         this.handleModalClose = this.handleModalClose.bind(this);
         this.handleModalShow = this.handleModalShow.bind(this);
-        this.handleLiveKeywords = this.handleLiveKeywords.bind(this);
+        
+        this.handleCountry = this.handleCountry.bind(this);
       }
       handleModalClose() {
         this.setState({showModalPortfolio: false});
@@ -61,7 +62,10 @@ class ProposalsAreaView extends React.Component {
         this.setState({showModalProposal: false});
         console.log(this.state);
       }
-    
+      handleCountry(event) {
+        
+        this.setState({ country: event.value},this.redoService);
+     }
       handleModalShow(type, id) {
 
         S.putter(`putClicks`, {
@@ -82,18 +86,37 @@ class ProposalsAreaView extends React.Component {
         const { tags } = this.state;
         this.setState({
          tags: tags.filter((tag, index) => index !== i),
-        });
+        },this.redoService);
+        console.log(this.state.tags);
+       
     }
 
     handleAddition(tag) {
-        this.setState(state => ({ tags: [...state.tags, tag] }));
+        this.setState(state => ({ tags: [...state.tags, tag] }),this.redoService);
+      
     }
 
     handleLiveKeywords(event) {
      // this.setState({liveKeywords:  });
      console.log(event)
     }
-
+    redoService(){
+      let      kwy = [];
+      this.state.tags.forEach((value,index,array)=>{
+        kwy.push(array[index].text);
+      });
+      console.log(this.state.country,kwy);
+        S.getter(`getProposalById`, { keywords: kwy, country:this.state.country }, (res) => {  
+          const portfolios = res.data.proposalList;
+          console.log(res);
+            this.setState({ proposals: portfolios });
+        },
+        (error) => { 
+        console.log("Error do Proposal", error);
+              this.setState({ error: {message:error,error:true} });
+        });
+    }
+    
     componentDidMount() {
         
         S.getter(`getProposalById`, { }, (res) => {  
@@ -136,9 +159,8 @@ class ProposalsAreaView extends React.Component {
         } 
       const { tags, suggestions } = this.state;
       let countries=[];
-        
+      countries.push({name:"Select...",value:""});
       for (var index in countryJson) {
-          console.log(countryJson[index],index);
           countries.push({name:countryJson[index],value:index,photo:getImageLanguage(index.toLowerCase())});
       }
       console.log(countries);
@@ -167,7 +189,7 @@ class ProposalsAreaView extends React.Component {
                     />
                     
                     </Col><Col sm={5} className="Header-Sections">
-                <SelectSearch renderOption={renderFriend} options={countries} value="pt" name="country" placeholder="" />
+                    <SelectSearch renderOption={renderFriend} options={countries} value={this.state.country} name="country" onChange={(event)=>{this.handleCountry(event)}} style={{height: "36px"}} />
                 </Col>
                 <Col sm={12}>
                     <hr className="Hr-Sections"/>

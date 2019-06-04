@@ -175,7 +175,7 @@ class Home extends React.Component {
                        <Button className="Button-View-All">
                           
                             <Translate id="see more"></Translate>
-                          <IoIosArrowForward style={{    color: "#49c5b6"}}></IoIosArrowForward>
+                          <IoIosArrowForward style={{ color: "#49c5b6"}}></IoIosArrowForward>
                       </Button>
                       </Link>
 
