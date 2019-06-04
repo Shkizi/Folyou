@@ -3,14 +3,15 @@
 .Profile-Header-Card {
     display: flex;
     background-color: white;
-    height: 100%;
+    height: 225px;
     overflow: hidden;
     padding: 1%;
     margin-top: 3vh;
 }
 
 .C-Portfolio-Username {
-    position: relative;
+    display: flex;
+    overflow: hidden;
 }
 
 .Profile-Header-RegionCountry {
@@ -25,12 +26,17 @@
     overflow: hidden;
 }
 
+.Profile-Statistics {
+    position:absolute;
+    bottom:0;
+    left: 0;
+}
+
 .Profile-Avatar {
     width: 11.5rem;
     height: 11.5rem;
     border-radius: 3%;
 }
-
 
 .Profile-Button-Categories {
     background-color: inherit;
@@ -67,4 +73,40 @@
 .Profile-Create-Sign:hover {
     float: right;
     color: rgb(59, 145, 135);
+}
+
+.Profile-Badges {
+    position:absolute;
+    bottom:0;
+    left: 0;
+    padding-left: 15px;
+}
+
+.Profile-Recommend-User {
+    position:absolute;
+    bottom:0;
+    right: 0;
+    padding-right: 15px;
+    background: #49c5b6;
+    color: white;
+    border: 0;
+}
+
+.Profile-Recommend-User:hover {
+    background: #42ab9e;
+    color: white;
+    border: 0;
+}
+
+.Profile-Recommend-User:active {
+    background: #42ab9e !important;
+    color: white;
+    border: 0;
+    outline: none;
+    box-shadow: none;
+}
+
+.Profile-Recommend-User:focus {
+    outline: none;
+    box-shadow: none;
 }
