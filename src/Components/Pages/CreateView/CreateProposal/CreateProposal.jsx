@@ -136,7 +136,7 @@ componentDidMount(){
                 </Col>
             </Row>
             <Row>
-                <Col sm={12}>
+                <Col sm={12} style={{marginBottom: "2%"}}>
                                 <Form.Label><Translate id="proposalName"></Translate></Form.Label>
                                 <Form.Control type="text" value={this.state.position} onChange={(event)=>{this.handlePosition(event)}} />
                 </Col>
@@ -151,24 +151,24 @@ componentDidMount(){
                                 <Form.Label><Translate id="region"></Translate></Form.Label>
                                 <Form.Control type="text" value={this.state.region} onChange={(event)=>{this.handleRegion(event)}} />
                 </Col>
-                </Row>
-                <Row>
+            </Row>
+            <Row  style={{marginBottom: "2%"}}>
                     <div style={{paddingLeft: "15px", paddingRight: "15px", width: "100%"}}>
                      <Form.Label><Translate id="proposal description"></Translate></Form.Label>
                     <Form.Control as="textarea" rows="15" maxlength="2000" value={this.state.proposalDescription} onChange={(event)=>{this.handleProposalDescription(event)}}/>
                     </div>
-                </Row>
-                <Row>
-                <Col sm={12}>
+            </Row>
+            <Row> 
+                <Col sm={12}  style={{marginBottom: "2%"}}>
                                 <Form.Label><Translate id="keywords"></Translate></Form.Label>
                                 <Form.Control type="text" value={this.state.keywords} onChange={(event)=>{this.handleKeywords(event)}} />
                 </Col>
-                <Col sm={12}>
+                <Col sm={12}  style={{marginBottom: "2%"}}>
                                 <Form.Label><Translate id="categories"></Translate></Form.Label>
                                   <SelectSearch options={categ} value={this.state.category} name="category" onChange={(event)=>{this.handleCategory(event)}} style={{height: "36px"}} />
                                 
                 </Col>
-                </Row>
+            </Row>
 
             </Container>
 

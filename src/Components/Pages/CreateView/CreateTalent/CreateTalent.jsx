@@ -19,9 +19,7 @@ class CreateTalent extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            position: "",
-            country: "",
-            region: "",
+            talentName: "",
             talentDescription:"",
             keywords: [],
             category: [],
@@ -29,26 +27,15 @@ class CreateTalent extends React.Component {
             service:false,
                 };
     
-    this.handleRegion = this.handleRegion.bind(this);
-    this.handleCountry = this.handleCountry.bind(this);
-    this.handlePosition = this.handlePosition.bind(this);
+    this.handleTalentName = this.handleTalentName.bind(this);
     this.handleTalentDescription = this.handleTalentDescription.bind(this);
     this.handleKeywords = this.handleKeywords.bind(this);
     this.handleCategory = this.handleCategory.bind(this);
     this.handleSubmitTalent = this.handleSubmitTalent.bind(this);
     }
 
-    handlePosition(event) {
-        this.setState({ position: event.target.value});
-    }
-
-    handleCountry(event) {
-        
-       this.setState({ country: event.value});
-    }
-
-    handleRegion(event) {
-        this.setState({ region: event.target.value});
+    handleTalentName(event) {
+        this.setState({ talentName: event.target.value});
     }
 
     handleTalentDescription(event) {
@@ -69,9 +56,7 @@ class CreateTalent extends React.Component {
         const data ={category:this.state.category,
             keywords:[this.state.keywords],
             talentDescription:this.state.talentDescription,
-            region:this.state.region,
-            country:this.state.country,
-            nameProposal:this.state.position,
+            talentName:this.state.talentName,
         idUser: this.props.app.state.userLogged.idUser||null
     }
     console.log(data);
@@ -135,21 +120,21 @@ componentDidMount(){
                         <div><b><Translate id="create talent title"></Translate></b>{}</div>
                 </Col>
             </Row>
-            <Row>
+            <Row style={{marginBottom: "2%"}}>
                 <Col sm={12}>
                                 <Form.Label><Translate id="talent name"></Translate></Form.Label>
-                                <Form.Control type="text" value={this.state.position} onChange={(event)=>{this.handlePosition(event)}} />
+                                <Form.Control type="text" value={this.state.talentName} onChange={(event)=>{this.handleTalentName(event)}} />
                 </Col>
                 </Row>
 
-                <Row>
+                <Row style={{marginBottom: "2%"}}>
                     <div style={{paddingLeft: "15px", paddingRight: "15px", width: "100%"}}>
                      <Form.Label><Translate id="talent description"></Translate></Form.Label>
                     <Form.Control as="textarea" rows="15" maxlength="2000" value={this.state.talentDescription} onChange={(event)=>{this.handleTalentDescription(event)}}/>
                     </div>
                 </Row>
                 <Row>
-                <Col sm={12}>
+                <Col sm={12} style={{marginBottom: "2%"}}>
                                 <Form.Label><Translate id="keywords"></Translate></Form.Label>
                                 <Form.Control type="text" value={this.state.keywords} onChange={(event)=>{this.handleKeywords(event)}} />
                 </Col>

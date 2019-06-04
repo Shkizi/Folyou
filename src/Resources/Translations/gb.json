@@ -62,7 +62,12 @@
     "LOGOUT SUCCESS": "Your session was terminated",
     "create project form": "Create project form",
     "project name": "Project name",
-    "select image": "Selecione a imagem de capa do projeto"
+    "select image": "Selecione a imagem de capa do projeto",
+    "create talent title": "Create talent form",
+    "talent name": "Talent name",
+    "talent description": "Talent description"
+
+
 
 
 
