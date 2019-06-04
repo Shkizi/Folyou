@@ -1,18 +1,40 @@
 .Home-Carousel {
-    max-height:310px;
+    max-height:300px;
     color:black;
+    padding-left: 0;
 }
 
-.HomeCarousel-Item {
-    
+.HomeCarrousel-Item {
+    text-align:center
 }
+
+.HomeCarrousel-Background {
+    background-color: #49c5b6;
+}
+
+.HomeCarrousel-Image-Container {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-left: 30%;
+}
+
 .HomeCarousel-Image {
-    padding-right: 7%;
-    padding-left: 7%;
-    max-height:310px;
-    /*max-width:310px;
-    height:310px;
-    width:310px;
-    */
+width: 200px;
+height: 200;
+}
 
+.HomeCarrousel-Text-Container {
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.HomeCarrousel-Text-Project-Name {
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.HomeCarrousel-Text-Project-Description {
+    margin-top: 2%;
+    max-width: 85%;
+    text-align: justify;  
 }
