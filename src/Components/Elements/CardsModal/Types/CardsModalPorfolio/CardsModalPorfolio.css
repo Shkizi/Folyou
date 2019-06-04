@@ -42,6 +42,16 @@
     letter-spacing: 0.5px;
 }
 
+.Modal-Portfolio-Like {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 40px;
+}
+
+.Modal-Portfolio-Like:hover {
+    cursor: pointer;
+}
+
 .Modal-Portfolio-SheetName {
     text-align: center;
     font-weight: bold;

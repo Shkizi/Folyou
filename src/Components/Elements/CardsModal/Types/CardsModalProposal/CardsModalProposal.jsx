@@ -6,6 +6,9 @@ import './CardsModalProposal.css';
 import getImageLanguage from "../../../../../Resources/Translations/compilerLanguageImages.js"
 import { isNull } from 'util';
 import { FiFileText, FiMail } from "react-icons/fi";
+import { TiHeart } from "react-icons/ti";
+import { TiHeartOutline } from "react-icons/ti";
+
 import ServicesAPI from "../../../../../serviceAPI";
 var S = new ServicesAPI();
 class CardsModalPortfolio extends React.Component {
@@ -74,7 +77,7 @@ class CardsModalPortfolio extends React.Component {
                   <div className="Modal-Portfolio-Proposal-Category"><b><Translate id="category profile"></Translate></b>{"  " + data.valueCategory}</div>
                 </Row>
                 <div className="Modal-Portfolio-ProposalName">{data.nameProposal}</div> 
-                <div className="Modal-Portfolio-Keywords"><b><Translate id="keywords"></Translate> </b>{data.keywords.join(", ")}</div>
+                <div className="Modal-Portfolio-Keywords"><b><Translate id="keywords"></Translate> </b>{": " + data.keywords.join(", ")}</div>
 
               
               </Card.Body>

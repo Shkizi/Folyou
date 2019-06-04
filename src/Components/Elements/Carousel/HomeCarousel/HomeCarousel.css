@@ -19,6 +19,7 @@
 }
 
 .HomeCarousel-Image {
+display: flex;
 width: 200px;
 height: 200;
 }
@@ -35,6 +36,6 @@ height: 200;
 
 .HomeCarrousel-Text-Project-Description {
     margin-top: 2%;
-    max-width: 85%;
+    max-width: 80%;
     text-align: justify;  
 }

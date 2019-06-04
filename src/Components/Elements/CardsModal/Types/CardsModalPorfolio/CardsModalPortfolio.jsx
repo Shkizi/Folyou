@@ -4,6 +4,9 @@ import { Translate } from "react-localize-redux";
 import './CardsModalPorfolio.css';
 import {  Link } from "react-router-dom";
 import getImageLanguage from "../../../../../Resources/Translations/compilerLanguageImages.js"
+import { IoIosHeart } from "react-icons/io";
+import { IoIosHeartEmpty } from "react-icons/io";
+
 import { isNull } from 'util';
 import ServicesAPI from "../../../../../serviceAPI";
 var S = new ServicesAPI();
@@ -13,16 +16,34 @@ class CardsModalPortfolio extends React.Component {
     super(props, context);
    
     this.state = {
-      data: {}
+      data: {},
+      like: false
     };
     
 
-  }
-  componentDidMount(){
-  
-    
+    this.handleLikeClick = this.handleLikeClick.bind(this)
   }
 
+  handleLikeClick() {
+    if(this.state.like == false) {
+      this.setState({like: true});
+    } else {
+      this.setState({like: false});
+    }
+  }
+
+  fullHeart () {
+    return(
+      <IoIosHeart className="Modal-Portfolio-Like" onClick={() => {this.handleLikeClick()}}/>
+    )
+  }
+
+  emptyHeart() {
+    return (
+      <IoIosHeartEmpty className="Modal-Portfolio-Like" onClick={() => {this.handleLikeClick()}}/>
+    )
+  }
+  
   render() {
     if( this.props.parent.state.showModalPortfolio){
       let data = {};
@@ -75,8 +96,10 @@ class CardsModalPortfolio extends React.Component {
 
                 </Row>
                 <div className="Modal-Portfolio-SheetName">{data.nameSheet}</div> 
-                <div className="Modal-Portfolio-Keywords"><b><Translate id="keywords"></Translate> </b>{data.keywords.join(", ")}</div>
-
+                <div className="Modal-Portfolio-Keywords"><b><Translate id="keywords"></Translate></b>{": " + data.keywords.join(", ")}</div>
+                <Row style={{alignContent: "center"}}>
+                  {(this.state.like == false)? this.emptyHeart() : this.fullHeart()}
+                </Row>
               
               </Card.Body>
             </Card>

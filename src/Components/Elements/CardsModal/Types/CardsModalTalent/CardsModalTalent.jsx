@@ -4,6 +4,8 @@ import { Translate } from "react-localize-redux";
 import { Link } from "react-router-dom";
 import './CardsModalTalent.css';
 import getImageLanguage from "../../../../../Resources/Translations/compilerLanguageImages.js"
+import { TiHeart } from "react-icons/ti";
+import { TiHeartOutline } from "react-icons/ti";
 import { isNull } from 'util';
 import ServicesAPI from "../../../../../serviceAPI";
 var S = new ServicesAPI();
@@ -68,7 +70,7 @@ class CardsModalPortfolio extends React.Component {
                 </Row>
                 <div className="Modal-Portfolio-TalentName">{data.nameTalentArea}</div> 
                 
-                <div className="Modal-Portfolio-Keywords"><b><Translate id="keywords"></Translate> </b>{data.keywords.join(", ")}</div>
+                <div className="Modal-Portfolio-Keywords"><b><Translate id="keywords"></Translate> </b>{": " + data.keywords.join(", ")}</div>
 
               
               </Card.Body>

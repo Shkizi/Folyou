@@ -24,12 +24,12 @@ class HomeCarousel extends React.Component {
                            <Carousel.Item className="HomeCarousel-Item">
                               <div className="w-100 HomeCarrousel-Background">
                                 <Row>
-                                <Col md="5" lg="5">
+                                <Col xs="5" sm="5" md="5" lg="5" xl="5">
                                     <div className="container HomeCarrousel-Image-Container">
                                       <Image className="HomeCarousel-Image" src="https://rockcontent.com/wp-content/uploads/2017/01/formatos-de-imagem-2.jpg" thumbnail />
                                     </div>
                                 </Col>
-                                <Col md="7" lg="7">
+                                <Col xs="7" sm="7" md="7" lg="7" xl="7">
                                     <div className="HomeCarrousel-Text-Container">
                                       <div className="HomeCarrousel-Text-Project-Name">Project Name</div>
                                       <div className="HomeCarrousel-Text-Project-Origin">Country, region</div>
