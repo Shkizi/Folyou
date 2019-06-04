@@ -15,6 +15,7 @@ import { Container} from 'react-bootstrap';
 import Notifications from '../../Components/Elements/Notifications/Notifications';
 import CreateProposal from '../Pages/CreateView/CreateProposal/CreateProposal';
 import CreateProject from '../Pages/CreateView/CreateProject/CreateProject';
+import CreateTalent from '../Pages/CreateView/CreateTalent/CreateTalent';
 
 
 
@@ -41,6 +42,7 @@ class Main  extends Component {
             <Route exact path='/ApplicationRegister/:id' render ={(routeProps)=><ApplicationFormView {...routeProps} app={this.props.app}/>}/>
             <Route exact path='/CreateProposal' render ={(routeProps)=><CreateProposal {...routeProps} app={this.props.app}/>}/>
             <Route exact path='/CreateProject' render ={(routeProps)=><CreateProject {...routeProps} app={this.props.app}/>}/>
+            <Route exact path='/CreateTalent' render ={(routeProps)=><CreateTalent {...routeProps} app={this.props.app}/>}/>
 
 
           </Switch>
