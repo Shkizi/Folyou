@@ -65,7 +65,10 @@
     "select image": "Selecione a imagem de capa do projeto",
     "create talent title": "Create talent form",
     "talent name": "Talent name",
-    "talent description": "Talent description"
+    "talent description": "Talent description",
+    "recommend user": "Recommend user",
+    "user recommended": "Recommended",
+    "recommended by": "Recommended by"
 
 
 

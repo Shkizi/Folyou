@@ -13,6 +13,17 @@ import ReactTooltip from 'react-tooltip'
 import './Profile.css'
 import { Link } from "react-router-dom";
 import ServicesAPI from '../../../serviceAPI.js';
+import { MdAdd } from "react-icons/md";
+import { MdCheck } from "react-icons/md";
+
+
+
+
+
+import Recommended from '../../../Resources/Images/Recommended.png'
+import clickToRecommend from '../../../Resources/Images/Recommend.png'
+
+
 var S = new ServicesAPI();
 
 
@@ -38,10 +49,13 @@ class ProfileView extends React.Component {
         showModalProposal: false,
         typeModal: null,
         idModal: null,
+        recommendBadge: Recommended,
+        recomendedUser: false,
     };
     this.handleModalClose = this.handleModalClose.bind(this);
     this.handleModalShow = this.handleModalShow.bind(this);
-    
+
+    this.handleRecommendUserClick = this.handleRecommendUserClick.bind(this);
     this.pageContentDashboard = this.pageContentDashboard.bind(this);
     this.pageContentProjects= this.pageContentProjects.bind(this);
     this.pageContentProposals= this.pageContentProposals.bind(this);
@@ -54,6 +68,16 @@ class ProfileView extends React.Component {
         this.setState({showModalTalent: false});
         this.setState({showModalProposal: false});
         console.log(this.state);
+      }
+
+      handleRecommendUserClick() {
+        if(this.state.recomendedUser == false){
+        this.setState({recomendedUser: true});
+        
+    }
+        else {
+            this.setState({recomendedUser: false});
+        }
       }
     
       handleModalShow(type, id) {
@@ -237,8 +261,6 @@ class ProfileView extends React.Component {
                                 <Image src={S.baseURL()+"public/anexes/profiles/"+this.state.user.anexes.fileName} className="Profile-Avatar"  />
                             </Col>
                             <Col xs={2} s={2} m={2} l={2} xl={2}>
-                            <Row>
-                                <Col m={12} l={12} xl={12}>
                                 <Row>
                                 <Card.Text className="C-Portfolio-Username"><b>{this.state.user.nameUser}</b></Card.Text>
                                 </Row>
@@ -246,16 +268,23 @@ class ProfileView extends React.Component {
                                 <Image src={getImageLanguage(this.state.user.countryUser)} className="Modal-Portfolio-Avatar" roundedCircle />
                                 <Card.Text className="Profile-Header-RegionCountry">
                                 {this.state.user.regionUser}
+                                </Card.Text>
                                 
+                                <Card.Text className="Profile-Statistics">
+                                <Translate id="recommended by"></Translate>
                                 </Card.Text>
                                 </Row>
-                                </Col>
-                            </Row>
                             </Col>
                             <Col xs={8} s={8} m={8} l={8} xl={8}>
-                            <Card.Text className="Profile-Header-Text">
+                                <Card.Text className="Profile-Header-Text">
                                 {"" + this.state.user.descriptionUser}
                                 </Card.Text>
+                                { (this.state.recomendedUser == true)?this.pageImageBadges(): <div></div>}
+                                <Button className="Profile-Recommend-User" onChange={this.state.recomendedUser} onClick={()=>{this.handleRecommendUserClick()}}>
+                                 
+                                 { (this.state.recomendedUser == false)?this.buttonRecommendUser(): this.buttonUserRecommended()}
+
+                                </Button>
                             </Col>
                         </Row>
                     </Card.Body>
@@ -384,6 +413,29 @@ class ProfileView extends React.Component {
             </>
           )
       }
+
+      pageImageBadges() {
+          return (
+        <Image className="Profile-Badges" src={this.state.recommendBadge}/>
+          )
+      }
+
+      buttonRecommendUser() {
+          return (
+              <>
+            <MdAdd style={{height: "20px", width:"20px"}}/><Translate id="recommend user"></Translate>
+            </>
+          )
+      }
+
+      buttonUserRecommended() {
+        return (
+            <>
+          <MdCheck style={{height: "20px", width:"20px"}}/><Translate id="user recommended"></Translate>
+          </>
+        )
+    }
+
       pageContentSettings(){
             
         return (<></>

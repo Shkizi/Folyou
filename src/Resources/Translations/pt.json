@@ -67,7 +67,11 @@
     "select image to project": "Selecione a imagem de capa do projeto",
     "create talent title": "Formulário para criar um talento",
     "talent name": "Nome do talento",
-    "talent description": "Descrição do talento"
+    "talent description": "Descrição do talento",
+    "recommend user": "Recomendar utilizador",
+    "user recommended": "Recomendado",
+    "recommended by": "Recomendado por"
+
 
 
 
