@@ -71,3 +71,22 @@
     float: right;
     margin-top: 2px;
 }
+
+@media (max-width: 376px) 
+{
+    .Menu-Navbar-Brand
+    {
+        display: none;
+    }
+}
+
+@media (max-width: 376px) 
+{
+    .Menu-Logo {
+        position: absolute;
+        display: block;
+        left: 35%;
+        top: -20%;
+    }
+}
+

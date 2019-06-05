@@ -39,3 +39,11 @@ height: 200;
     max-width: 80%;
     text-align: justify;  
 }
+
+@media (max-width: 991.5px) 
+{
+    .Home-Carousel
+    {
+        display: none;
+    }
+}
