@@ -36,6 +36,7 @@ class CreateProject extends React.Component {
     this.handleKeywords = this.handleKeywords.bind(this);
     this.handleCategory = this.handleCategory.bind(this);
     this.handleSubmitProposal = this.handleSubmitProposal.bind(this);
+    this.handleImageLoadedName = this.handleImageLoadedName.bind(this);
     }
 
     handlePosition(event) {
@@ -59,9 +60,15 @@ class CreateProject extends React.Component {
         this.setState({ keywords: event.target.value});
     }
 
+    handleImageLoadedName(event) {
+        this.setState({ imageLoadedName: event.target.value})
+    }
+
     handleCategory(event) {
         this.setState({ category: event.value});
     }
+
+ 
 
     handleSubmitProposal(event){
         event.preventDefault();
@@ -128,7 +135,7 @@ componentDidMount(){
         return (
             <>
             <form onSubmit={this.handleSubmitProposal}>
-            <Container className="CreateProposal-Container">
+            <Container className="CreateProject-Container">
                 
             <Row>
                 <Col sm={12} style={{textAlign: "center"}}>
@@ -148,8 +155,16 @@ componentDidMount(){
                                 
                 </Col>
                 <Col sm={6}>
-                                <Form.Label><Translate id="select image to project"></Translate></Form.Label>
-                                <input type="file"></input>
+                                <Form.Label><Translate id="region"></Translate></Form.Label>
+                                <Form.Control type="text" value={this.state.region} onChange={(event)=>{this.handleRegion(event)}} />
+                </Col>
+                <Col sm={6}>        
+                                <div class="fileUpload btn btn-primary">
+                                    <span>Upload</span>
+                                    <input id="uploadBtn" type="file" class="upload"  onChange={(event)=>{this.handleImageLoadedName(event)}} />
+                                </div>
+                                <input id="uploadFile"  disabled="disabled" value={this.state.imageLoadedName} />
+
                 </Col>
                 </Row>
                 <Row>
