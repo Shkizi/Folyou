@@ -1,16 +1,37 @@
-.Modal-Portfolio-Avatar {
+.Modal-Talent-Avatar {
     height: 32px;
     width: 32px;
     box-sizing: inherit;
 }
 
-.Modal-Portfolio-Avatar-Country {
+.Modal-Talent-Avatar-Country {
     height: 32px;
     width: 32px;
 
 }
 
-.Modal-Portfolio-Username {
+.Modal-Talent-Username {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-flex: 1;
+    padding-left: 10px;
+    flex: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.Modal-Talent-Username:hover {
+    color: grey;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out; 
+}
+
+.Modal-Talent-User-Location {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -22,19 +43,42 @@
     overflow: hidden;
 }
 
-.Modal-Portfolio-User-Location {
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-flex: 1;
-    padding-left: 10px;
-    flex: 1;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+
+.Modal-Talent-Config {
+    margin-bottom: 0.4%;
+    background-color: white;
+    color: black;
+    border: none;
+    box-shadow: 0 1px 20px 0px rgba(0, 0, 0, 0.1);
+    margin-left: 1%;
+    font-size: 100%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 8px;
+    padding-left: 8px;
+    min-height: 50px;
+    min-width: 100px;
+    position: absolute;
+    right: 5%;
 }
 
-.Modal-Portfolio-Talent-Category {
+.Modal-Talent-Config:hover {
+    background-color: rgba(230,234,234,0.5);
+    color: black;
+    box-shadow: 0 1px 20px 0px white !important;
+
+}
+
+.Modal-Talent-Config:active {
+    background-color: rgba(230,234,234,0.5) !important;
+    color: black !important;
+}
+
+.Modal-Talent-Config:focus {
+    background-color: rgba(230,234,234,0.5) !important;
+}
+
+.Modal-Talent-Talent-Category {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -42,22 +86,22 @@
     letter-spacing: 0.5px;
 }
 
-.Modal-Portfolio-TalentName {
+.Modal-Talent-TalentName {
     text-align: center;
     font-weight: bold;
     font-size: 30px;
 }
 
-.Modal-Portfolio-Keywords {
+.Modal-Talent-Keywords {
     text-align: center;
 }
 
-.Modal-Portfolio-Description-Area {
+.Modal-Talent-Description-Area {
     padding: 16px;
     text-align: justify;
 }
 
-.Modal-Portfolio-Description {
+.Modal-Talent-Description {
     margin-top: 1%;
 }
 

@@ -9,7 +9,7 @@ import { TiHeartOutline } from "react-icons/ti";
 import { isNull } from 'util';
 import ServicesAPI from "../../../../../serviceAPI";
 var S = new ServicesAPI();
-class CardsModalPortfolio extends React.Component {
+class CardsModalTalent extends React.Component {
 
   constructor(props, context) {
     super(props, context);
@@ -50,35 +50,37 @@ class CardsModalPortfolio extends React.Component {
             centered
           >
             <Modal.Header closeButton>
-            <div>
-            <Link variant="link" to={"/Profile/"+data.idUser}>
-              <Row style={{padding: "16px"}}>
-              <Image src={(data.avatarUser=="")?"https://www.w3schools.com/howto/img_avatar.png":S.baseURL()+"public/anexes/profiles/"+data.avatarUser} className="Modal-Portfolio-Avatar" roundedCircle />
-              <div className="Modal-Portfolio-Username">{data.nameUser}</div>
-              </Row>
-              </Link>
-              <Link variant="link" to={"/TalentAreaUpdate/"+data.idTalentArea}><Button>Config</Button></Link>
-              </div>
+            <Row style={{padding: "16px"}}>
+                <Link style={{textDecoration: "none"}}variant="link" to={"/Profile/"+data.idUser}>
+                  <Row style={{paddingLeft: "16px", paddingTop: "16px"}}>
+                  <Image src={(data.avatarUser=="")?"https://www.w3schools.com/howto/img_avatar.png":S.baseURL()+"public/anexes/profiles/"+data.avatarUser} className="Modal-Talent-Avatar" roundedCircle />
+                  <div className="Modal-Talent-Username">{data.nameUser}</div>
+                  </Row>
+                </Link>
+                <Link variant="primary" to={"/TalentAreaUpdate/"+data.idTalentArea}>
+                  <Button className="Modal-Talent-Config"><Translate id="edit project"/></Button>
+                </Link>
+            </Row>
             </Modal.Header>
             <Modal.Body  style={{padding: 0}}>
             <Card>
               <Card.Body>
                 <Row  style={{padding: "16px"}}>
-                  <Image src={getImageLanguage(data.countryUser)} className="Modal-Portfolio-Avatar-Country" roundedCircle/>
-                  <div className="Modal-Portfolio-User-Location">{data.regionUser}</div>
-                  <div className="Modal-Portfolio-Talent-Category"><b><Translate id="category"></Translate></b>{"  " + data.valueCategory}</div>
+                  <Image src={getImageLanguage(data.countryUser)} className="Modal-Talent-Avatar-Country" roundedCircle/>
+                  <div className="Modal-Talent-User-Location">{data.regionUser}</div>
+                  <div className="Modal-Talent-Talent-Category"><b><Translate id="category"></Translate></b>{"  " + data.valueCategory}</div>
                 </Row>
-                <div className="Modal-Portfolio-TalentName">{data.nameTalentArea}</div> 
+                <div className="Modal-Talent-TalentName">{data.nameTalentArea}</div> 
                 
-                <div className="Modal-Portfolio-Keywords"><b><Translate id="keywords"></Translate> </b>{": " + data.keywords.join(", ")}</div>
+                <div className="Modal-Talent-Keywords"><b><Translate id="keywords"></Translate> </b>{": " + data.keywords.join(", ")}</div>
 
               
               </Card.Body>
             </Card>
 
-              <Card className="Modal-Portfolio-Description-Area">
+              <Card className="Modal-Talent-Description-Area">
                 <div><b><Translate id="description"></Translate></b></div>
-                <div className="Modal-Portfolio-Description">{data.descriptionTalentArea}</div>
+                <div className="Modal-Talent-Description">{data.descriptionTalentArea}</div>
               </Card>
 
               <Card className="Modal-Talent-Anexes">
@@ -97,5 +99,5 @@ class CardsModalPortfolio extends React.Component {
     }
 }
   
-  export default (CardsModalPortfolio);
+  export default (CardsModalTalent);
   

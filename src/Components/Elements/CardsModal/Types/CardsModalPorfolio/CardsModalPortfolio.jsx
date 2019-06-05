@@ -76,15 +76,17 @@ class CardsModalPortfolio extends React.Component {
             centered
           >
             <Modal.Header closeButton>
-            <div><Link variant="link" to={"/Profile/"+data.idUser}>
-              <Row style={{padding: "16px"}}>
-              <Image src={(data.avatarUser=="")?"https://www.w3schools.com/howto/img_avatar.png":S.baseURL()+"public/anexes/profiles/"+data.avatarUser} className="Modal-Portfolio-Avatar" roundedCircle />
-              <div className="Modal-Portfolio-Username">{data.nameUser}</div>
-              </Row>
-            
-              </Link>
-              <Link variant="primary" to={"/SheetUpdate/"+data.idSheet}><Button>Config</Button></Link>
-              </div>
+                <Row style={{padding: "16px"}}>
+                  <Link style={{textDecoration: "none"}}variant="link" to={"/Profile/"+data.idUser}>
+                    <Row style={{paddingLeft: "16px", paddingTop: "16px"}}>
+                    <Image src={(data.avatarUser=="")?"https://www.w3schools.com/howto/img_avatar.png":S.baseURL()+"public/anexes/profiles/"+data.avatarUser} className="Modal-Portfolio-Avatar" roundedCircle />
+                    <div className="Modal-Portfolio-Username">{data.nameUser}</div>
+                    </Row>
+                  </Link>
+                  <Link variant="primary" to={"/SheetUpdate/"+data.idSheet}>
+                    <Button className="Modal-Portfolio-Config"><Translate id="edit project"/></Button>
+                  </Link>
+                </Row>
             </Modal.Header>
             <Modal.Body  style={{padding: 0}}>
             <Card style={{backgroundColor: "inherit"}}>
