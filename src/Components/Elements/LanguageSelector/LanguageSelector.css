@@ -1,12 +1,18 @@
 .Dropdown-Language-Menu {
     padding: 0;
+    margin-left: 20%;
 }
 
 .Dropdown-Language-Select {
     background-color: inherit;
     color: black;
-    
     padding-bottom: 0;
+    margin-left: 16px;
+}
+
+
+.Dropdown-Language-Text {
+    margin-left: 32px;
 }
 
 .Dropdown-Language-Select:hover {

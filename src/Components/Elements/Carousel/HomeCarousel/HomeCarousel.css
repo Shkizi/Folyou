@@ -18,10 +18,11 @@
     padding-bottom: 5%;
     margin-left: 30%;
     padding-right: 35%;
-    
+
     max-height:300px;
     min-height:300px;
 }
+
 
 .HomeCarousel-Image {
 display: flex;
@@ -31,6 +32,7 @@ max-width: 300px;
 min-width: 300px;
 }
 
+
 .HomeCarrousel-Text-Container {
     padding-top: 2%;
     padding-bottom: 2%;
@@ -39,6 +41,19 @@ min-width: 300px;
 .HomeCarrousel-Text-Project-Name {
     font-weight: bold;
     font-size: 32px;
+}
+
+.HomeCarrousel-Text-Project-Name:hover {
+    cursor: pointer;
+}
+
+
+.HomeCarousel-Profile-Image {
+
+}
+
+.HomeCarrousel-Text-Project-Origin {
+    margin-top: 2%;
 }
 
 .HomeCarrousel-Text-Project-Description {

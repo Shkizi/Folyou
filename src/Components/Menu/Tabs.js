@@ -29,9 +29,9 @@ class Tabs extends React.Component {
     const sideList = (
       <div className={classes.list}>
           
-          <LanguageSelector languages={this.props.app.props.languages} app={this.props.app} cookies={this.props.cookies}/>
         
         <List>
+        <LanguageSelector languages={this.props.app.props.languages} app={this.props.app} cookies={this.props.cookies}/>
           {jsonarray.map((text, index) => (
             <Link to={text.link} onClick={this.props.closer}>
             <ListItem button key={text.page}>
