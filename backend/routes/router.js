@@ -1,7 +1,8 @@
 function router(app, express) {
     const servicer = require("../services/servicer.js");
 
-
+    
+    app.get("/getRecomendNumberByIdUser", (req, res,next) => {  servicer.getRecomendNumberByIdUser(req,res,next)});
     app.get("/getUserById", (req, res,next) => {  servicer.getUserById(req,res,next)});
 
     app.get("/getUserLogin", (req, res,next) => {  servicer.getUserLogin(req,res,next)});
