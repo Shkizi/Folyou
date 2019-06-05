@@ -40,7 +40,10 @@ class CardsModalPortfolio extends React.Component {
 
   emptyHeart() {
     return (
+      <div>
       <IoIosHeartEmpty className="Modal-Portfolio-Like" onClick={() => {this.handleLikeClick()}}/>
+      <div className="Modal-Portfolio-Like-Text"><Translate id="like"></Translate></div>
+      </div>
     )
   }
   
@@ -92,15 +95,15 @@ class CardsModalPortfolio extends React.Component {
                   <div className="Modal-Portfolio-Sheet-Category"><b><Translate id="category"></Translate></b>{"  " + data.valueCategory}</div>
                 </Row>
                 <Row>
-                <Image src={S.baseURL()+"public/anexes/sheets/"+data.defaultImageSheet} className="Modal-Portfolio-Project-Image" />
-
+                  <div className="Modal-Portfolio-Image-Container">
+                    <Image src={S.baseURL()+"public/anexes/sheets/"+data.defaultImageSheet} className="Modal-Portfolio-Project-Image" />
+                      <div className="Modal-Portfolio-Like" style={{alignContent: "center"}}>
+                        {(this.state.like == false)? this.emptyHeart() : this.fullHeart()}
+                      </div>
+                </div>
                 </Row>
                 <div className="Modal-Portfolio-SheetName">{data.nameSheet}</div> 
                 <div className="Modal-Portfolio-Keywords"><b><Translate id="keywords"></Translate></b>{": " + data.keywords.join(", ")}</div>
-                <Row style={{alignContent: "center"}}>
-                  {(this.state.like == false)? this.emptyHeart() : this.fullHeart()}
-                </Row>
-              
               </Card.Body>
             </Card>
 
