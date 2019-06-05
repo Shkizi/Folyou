@@ -22,7 +22,9 @@ class CreateProject extends React.Component {
             position: "",
             country: "",
             region: "",
-            proposalDescription:"",
+            imageLoaded: null,
+            imageLoadedName: "",
+            sheetDescription:"",
             keywords: [],
             category: [],
             categories:[],
@@ -32,7 +34,7 @@ class CreateProject extends React.Component {
     this.handleRegion = this.handleRegion.bind(this);
     this.handleCountry = this.handleCountry.bind(this);
     this.handlePosition = this.handlePosition.bind(this);
-    this.handleProposalDescription = this.handleProposalDescription.bind(this);
+    this.handlesheetDescription = this.handlesheetDescription.bind(this);
     this.handleKeywords = this.handleKeywords.bind(this);
     this.handleCategory = this.handleCategory.bind(this);
     this.handleSubmitProposal = this.handleSubmitProposal.bind(this);
@@ -52,8 +54,8 @@ class CreateProject extends React.Component {
         this.setState({ region: event.target.value});
     }
 
-    handleProposalDescription(event) {
-        this.setState({ proposalDescription: event.target.value});
+    handlesheetDescription(event) {
+        this.setState({ sheetDescription: event.target.value});
     }
 
     handleKeywords(event) {
@@ -61,7 +63,10 @@ class CreateProject extends React.Component {
     }
 
     handleImageLoadedName(event) {
-        this.setState({ imageLoadedName: event.target.value})
+        this.setState({ imageLoaded: event.target.files[0]})
+        
+        this.setState({ imageLoadedName: event.target.files[0].name})
+        
     }
 
     handleCategory(event) {
@@ -75,7 +80,7 @@ class CreateProject extends React.Component {
         
         const data ={category:this.state.category,
             keywords:[this.state.keywords],
-            proposalDescription:this.state.proposalDescription,
+            sheetDescription:this.state.sheetDescription,
             region:this.state.region,
             country:this.state.country,
             nameProposal:this.state.position,
@@ -161,7 +166,7 @@ componentDidMount(){
                 <Col sm={6}>        
                                 <div class="fileUpload btn btn-primary">
                                     <span>Upload</span>
-                                    <input id="uploadBtn" type="file" class="upload"  onChange={(event)=>{this.handleImageLoadedName(event)}} />
+                                    <input id="uploadBtn" type="file" class="upload"  onChange={(event)=>{this.handleImageLoadedName(event)}}   />
                                 </div>
                                 <input id="uploadFile"  disabled="disabled" value={this.state.imageLoadedName} />
 
@@ -169,8 +174,8 @@ componentDidMount(){
                 </Row>
                 <Row>
                     <div style={{paddingLeft: "15px", paddingRight: "15px", width: "100%"}}>
-                     <Form.Label><Translate id="proposal description"></Translate></Form.Label>
-                    <Form.Control as="textarea" rows="15" maxlength="2000" value={this.state.proposalDescription} onChange={(event)=>{this.handleProposalDescription(event)}}/>
+                     <Form.Label><Translate id="project description"></Translate></Form.Label>
+                    <Form.Control as="textarea" rows="15" maxlength="2000" value={this.state.sheetDescription} onChange={(event)=>{this.handlesheetDescription(event)}}/>
                     </div>
                 </Row>
                 <Row>
