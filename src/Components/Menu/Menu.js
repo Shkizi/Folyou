@@ -100,7 +100,7 @@ focusIn(elem)
             </Link> 
             <div className="Menu-Logo">
             <Link to='/'>
-            <Image src={Logo} style={{height: "60px", width:"175px"}}></Image>
+            <Image src={Logo} style={{height: "50px", width:"145px"}}></Image>
             </Link>
             </div>
         </Row>
