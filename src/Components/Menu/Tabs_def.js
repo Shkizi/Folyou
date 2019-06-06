@@ -1,6 +1,9 @@
 import React from 'react'
 import Home from '@material-ui/icons/Home';
+import Star from '@material-ui/icons/Star';
+import People from '@material-ui/icons/People';
 import Description from '@material-ui/icons/Description';
+import Rankings from '../Pages/RankingsView/Rankings';
 export default
 [
     {
@@ -22,9 +25,15 @@ export default
         
     },
     {
-        "icon" : <Description></Description>,
+        "icon" : <People></People>,
         "page" : "Talents",
         "link" : "/Talents",
+        
+    },
+    {
+        "icon" : <Star></Star>,
+        "page" : "Rankings",
+        "link" : "/Rankings",
         
     },
     {
