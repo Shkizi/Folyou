@@ -51,7 +51,7 @@ class NotificationHubView extends React.Component {
     render() {
         const {cookies}= this.props.cookies;
         
-       
+     /*   
            return (!isCookieValid(cookies,"folyou_userId"))?(<PleaseLogin/>):(
         <Row style={{margin: 0}}>
         <Table responsive>
@@ -63,12 +63,39 @@ class NotificationHubView extends React.Component {
             <tbody>
            
                 <tr>
-                <td></td>
+                <td>SSSS</td>
                 </tr>
             </tbody>
             </Table>
-        </Row>
-   
+        </Row> */
+
+        return (
+            <Row style={{margin: 0}}>
+            <Table striped bordered hover className="Notifications-Message-Table">
+                <thead>
+                    <tr>
+                    <th><Translate id="message origin"></Translate></th>
+                    <th><Translate id="message"></Translate></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>Jacob</td>
+                    <td>{"aaaaaaaaaaaaac".substring(0,15)+(("aaa" > 2)?"...":"")}</td>
+
+                    </tr>
+                    <tr>
+                    <td>Mark</td>
+                    <td>{"bbbbbbbbbbbbbbbbb".substring(0,5)+(("aaa" > 2)?"...":"")}</td>
+
+                    </tr>
+                    <tr>
+                    <td>Larry</td>
+                    <td>{"ccccccccccccccccccccc".substring(0,2)+(("aaa" > 2)?"...":"")}</td>
+                    </tr>
+                </tbody>
+            </Table>
+            </Row>
         );
         
     }
