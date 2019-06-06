@@ -5,10 +5,43 @@ const port = 5500 //porta de comunicação
 var bodyParser = require('body-parser');
 var db = require('./services/dbconnect.js');
 var cors = require('cors');
+var multer  = require('multer')
+
+var storagesheet = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/anexes/sheets')
+  },
+  filename: function (req, file, cb) {
+    let fil = Date.now() +"-"+file.originalname
+    cb(null, fil)
+  }
+})
+var storageproposal = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/anexes/proposals')
+  },
+  filename: function (req, file, cb) {
+    let fil = Date.now() +"-"+file.originalname
+    cb(null, fil)
+  }
+})
+var storageuser = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/anexes/profiles')
+  },
+  filename: function (req, file, cb) {
+    let fil = Date.now() +"-"+file.originalname
+    cb(null, fil)
+  }
+})
+var uploadsheet = multer({ storage: storagesheet })
+var uploadproposal = multer({ storage: storageproposal })
+var uploaduser = multer({ storage: storageuser })
 
 require('events').EventEmitter.defaultMaxListeners = 100;
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({extended: true})); // support encoded bodies
+
 app.use('/public', express.static(__dirname + '/public'));
 
 var whitelist = ['http://localhost:3000']
@@ -33,7 +66,7 @@ app.use(function(req, res, next) {
    next();
  });
  
-router.router(app,express);
+router.router(app,express,uploadsheet,uploadproposal,uploaduser,multer);
 
 
 
