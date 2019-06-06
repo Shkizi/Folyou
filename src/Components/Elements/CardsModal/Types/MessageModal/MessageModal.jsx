@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal, Image, Card, Row } from 'react-bootstrap';
+import { Modal, Image, Card, Row, Form } from 'react-bootstrap';
 import { Translate } from "react-localize-redux";
 import './MessageModal.css';
 import getImageLanguage from "../../../../../Resources/Translations/compilerLanguageImages.js"
@@ -60,36 +60,18 @@ class MessageModal extends React.Component {
               </Row>
               </div>
             </Modal.Header>
-            <Modal.Body  style={{padding: 0}}>
-            <Card style={{backgroundColor: "#badc58"}}>
-              <Card.Body>
-                <Row  style={{padding: "16px"}}>
-                  <Image src={getImageLanguage(data.countryUser)} className="Modal-Portfolio-Avatar-Country" roundedCircle/>
-                  <div className="Modal-Portfolio-User-Location">{data.regionUser}</div>
-                  <div className="Modal-Portfolio-Talent-Category"><b><Translate id="category"></Translate></b>{"  " + data.valueCategory}</div>
-                </Row>
-                <div className="Modal-Portfolio-TalentName">{data.nameTalentArea}</div> 
-                <div className="Modal-Portfolio-Keywords"><b><Translate id="keywords"></Translate> </b>{data.keywords.join(", ")}</div>
+            <Modal.Body style={{padding: 0}}>
+            <Card style={{padding: "16px"}}>
+                <div className="Modal-Message-Sendme-Text"><Translate id="send me a message"></Translate></div>
+                <Form>
+                    <Form.Group>
+                    <Form.Control as="textarea" rows="10" maxLength="2000" />
+                    </Form.Group>
+                </Form>
+ 
 
-              
-              </Card.Body>
             </Card>
-
-              <Card className="Modal-Portfolio-Description-Area">
-                <div><b><Translate id="description"></Translate></b></div>
-                <div className="Modal-Portfolio-Description">{data.descriptionTalentArea}</div>
-
-                <Card.Footer style={{backgroundColor: "red"}}>
-                  Anexos
-                </Card.Footer>
-
-              </Card>
-
-          
-
             </Modal.Body>
-            <Modal.Footer>
-            </Modal.Footer>
             </Modal>
         );
       }else{

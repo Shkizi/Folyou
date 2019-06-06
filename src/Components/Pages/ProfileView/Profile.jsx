@@ -8,6 +8,8 @@ import getImageLanguage from "../../../Resources/Translations/compilerLanguageIm
 import CardsModalProposal from '../../Elements/CardsModal/Types/CardsModalProposal/CardsModalProposal';
 import CardsModalTalent from '../../Elements/CardsModal/Types/CardsModalTalent/CardsModalTalent';
 import CardsModalPortfolio from '../../Elements/CardsModal/Types/CardsModalPorfolio/CardsModalPortfolio.jsx'
+import MessageModal from '../../Elements/CardsModal/Types/MessageModal/MessageModal'
+
 import { FiFilePlus } from "react-icons/fi";
 import ReactTooltip from 'react-tooltip'
 import './Profile.css'
@@ -49,6 +51,7 @@ class ProfileView extends React.Component {
         showModalPortfolio: false,
         showModalTalent: false,
         showModalProposal: false,
+        showModalMessage: false,
         typeModal: null,
         idModal: null,
         recommendBadge: Recommended,
@@ -69,6 +72,7 @@ class ProfileView extends React.Component {
         this.setState({showModalPortfolio: false});
         this.setState({showModalTalent: false});
         this.setState({showModalProposal: false});
+        this.setState({showModalMessage: false})
         console.log(this.state);
       }
 
@@ -95,6 +99,7 @@ class ProfileView extends React.Component {
         this.setState({showModalPortfolio: type=="portfolioSheet"});
         this.setState({showModalTalent: type=="talentSheet"});
         this.setState({showModalProposal: type=="proposalSheet"});
+        this.setState({showModalMessage: type=="messageModal"});
         console.log(type, id , this.state);
       }
     //request example
@@ -282,7 +287,7 @@ class ProfileView extends React.Component {
                                 {"" + this.state.user.descriptionUser}
                                 </Card.Text>
                                 { (this.state.recomendedUser == true)?this.pageImageBadges(): <div></div>}
-                                <Button className="Profile-Send-Message"><FiMail style={{}}/></Button>
+                                <Button className="Profile-Send-Message" onClick={() => {this.handleModalShow("messageModal", this.user)}}><FiMail/></Button>
                                 <Button className="Profile-Recommend-User" onChange={this.state.recomendedUser} onClick={()=>{this.handleRecommendUserClick()}}>
                                  
                                  { (this.state.recomendedUser == false)?this.buttonRecommendUser(): this.buttonUserRecommended()}
@@ -363,6 +368,7 @@ class ProfileView extends React.Component {
                     <CardsModalPortfolio parent={this} closer={this.handleModalClose}/>
                     <CardsModalProposal parent={this} closer={this.handleModalClose}/>
                     <CardsModalTalent parent={this} closer={this.handleModalClose}/>
+                    <MessageModal parent={this} closer={this.handleModalClose}/>
               
             </>
         )
