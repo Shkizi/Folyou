@@ -82,8 +82,39 @@
     padding-left: 15px;
 }
 
+.Profile-Send-Message {
+    position:block;
+    bottom:0;
+    right: 0;
+    padding-right: 15px;
+    padding-left: 15px;
+    background: #49c5b6;
+    color: white;
+    border: 0;
+}
+
+.Profile-Send-Message:hover {
+    background: #42ab9e;
+    color: white;
+    border: 0;
+}
+
+.Profile-Send-Message:active {
+    background: #42ab9e !important;
+    color: white;
+    border: 0;
+    outline: none;
+    box-shadow: none;
+}
+
+.Profile-Send-Message:focus {
+    outline: none;
+    box-shadow: none;
+}
+
 .Profile-Recommend-User {
-    position:absolute;
+    position:block;
+    margin-left: 1%;
     bottom:0;
     right: 0;
     padding-right: 15px;

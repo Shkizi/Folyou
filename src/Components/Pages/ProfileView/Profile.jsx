@@ -15,6 +15,8 @@ import { Link } from "react-router-dom";
 import ServicesAPI from '../../../serviceAPI.js';
 import { MdAdd } from "react-icons/md";
 import { MdCheck } from "react-icons/md";
+import { FiMail } from "react-icons/fi";
+
 
 
 
@@ -280,6 +282,7 @@ class ProfileView extends React.Component {
                                 {"" + this.state.user.descriptionUser}
                                 </Card.Text>
                                 { (this.state.recomendedUser == true)?this.pageImageBadges(): <div></div>}
+                                <Button className="Profile-Send-Message"><FiMail style={{}}/></Button>
                                 <Button className="Profile-Recommend-User" onChange={this.state.recomendedUser} onClick={()=>{this.handleRecommendUserClick()}}>
                                  
                                  { (this.state.recomendedUser == false)?this.buttonRecommendUser(): this.buttonUserRecommended()}
