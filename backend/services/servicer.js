@@ -30,6 +30,7 @@ module.exports.getKeywords = require("./Keyword/getKeywords.js");
 module.exports.putApplication = require("./Application/putApplication.js");
 
 module.exports.getRecomendNumberByIdUser = require("./Recommend/getRecomendNumberByIdUser.js");
+module.exports.getRecomendBoolFromIds = require("./Recommend/getRecomendBoolFromIds.js");
 
 
 

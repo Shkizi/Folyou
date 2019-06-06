@@ -3,6 +3,8 @@ function router(app, express) {
 
     
     app.get("/getRecomendNumberByIdUser", (req, res,next) => {  servicer.getRecomendNumberByIdUser(req,res,next)});
+    app.get("/getRecomendBoolFromIds", (req, res,next) => {  servicer.getRecomendBoolFromIds(req,res,next)});
+    
     app.get("/getUserById", (req, res,next) => {  servicer.getUserById(req,res,next)});
 
     app.get("/getUserLogin", (req, res,next) => {  servicer.getUserLogin(req,res,next)});
