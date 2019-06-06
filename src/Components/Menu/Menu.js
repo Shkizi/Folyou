@@ -100,7 +100,7 @@ focusIn(elem)
             </Link> 
             <div className="Menu-Logo">
             <Link to='/'>
-            <Image src={Logo} style={{height: "50px", width:"145px"}}></Image>
+            <Image src={Logo} className="Menu-Navbar-Logo-Size"></Image>
             </Link>
             </div>
         </Row>
@@ -133,17 +133,18 @@ focusIn(elem)
       <Image src={S.baseURL()+"public/anexes/profiles/"+this.props.app.state.userLogged.anexes.fileName } className="Logged-Home-Avatar" roundedCircle />
     </a>
     <Button onClick={this.handleLogOff} className="Menu-Login" variant="link">
-     <strong><Translate id="logout"></Translate> <FaSignOutAlt/></strong>
+     <strong><Translate className="Menu-Logout-Text hidden-xs hidden-sm" id="logout"></Translate> <FaSignOutAlt/></strong>
     </Button>
     </Row>
     </>
       );
     }
      renderSign(){
-      return (<Button onClick={this.handleLoginPopUpShow} className="Menu-Login" variant="link">
-      <strong><Translate id="login"/> <FaSignInAlt/></strong>
-    </Button>);
-    }
+      return (
+      <Button onClick={this.handleLoginPopUpShow} className="Menu-Login" variant="link">
+      <strong><Translate className="Menu-Login-Text hidden-xs hidden-sm"  id="login"/> <FaSignInAlt/></strong>
+      </Button>);
+      }
     handleLogOff(){
       this.props.app.setState({userLogged:{set:false}});
       this.props.app.state.notificationModule.notify("LOGOUT SUCCESS","br",3,2);

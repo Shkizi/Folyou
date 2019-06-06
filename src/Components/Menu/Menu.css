@@ -21,7 +21,12 @@
 .Menu-Logo {
     position: absolute;
     display: block;
-    left: 55%;
+    left: 54%;
+}
+
+.Menu-Navbar-Logo-Size {
+    height: 50px;
+    width: 145px;
 }
 
 .Menu-Navbar-Brand {
@@ -73,19 +78,30 @@
 
 @media (max-width: 376px) 
 {
+
     .Menu-Navbar-Brand
     {
         display: none;
     }
-}
 
-@media (max-width: 376px) 
-{
     .Menu-Logo {
         position: absolute;
         display: block;
         left: 35%;
-        top: -20%;
+    }
+    
+    .Menu-Navbar-Logo-Size  {
+        height: 40px;
+        width: 130px;
+        margin-top: 3%;
+    }
+    
+    .Menu-Login {
+        margin-top: 5%;
+    }
+
+    .Logged-Home-Avatar {
+        margin-top: 25%;    
     }
 }
 

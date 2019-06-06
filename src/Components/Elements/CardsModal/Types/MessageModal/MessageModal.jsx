@@ -1,7 +1,11 @@
 import React from 'react'
-import { Modal, Image, Card, Row, Form } from 'react-bootstrap';
+import { Link } from "react-router-dom";
+import { Modal, Image, Card, Row, Col, Form, Button } from 'react-bootstrap';
 import { Translate } from "react-localize-redux";
+
 import './MessageModal.css';
+import { FiMail } from "react-icons/fi";
+
 import getImageLanguage from "../../../../../Resources/Translations/compilerLanguageImages.js"
 import { isNull } from 'util';
 import ServicesAPI from "../../../../../serviceAPI";
@@ -12,15 +16,17 @@ class MessageModal extends React.Component {
     super(props, context);
    
     this.state = {
-      data: {}
+      data: {},
+      messageText: ""
     };
-    
 
+    this.handleMessageText = this.handleMessageText.bind(this);
   }
-  componentDidMount(){
   
-    
-  }
+  handleMessageText(event) {
+    this.setState({ messageText: event.target.value});
+}
+
 
   render() {
     if( this.props.parent.state.showModalMessage){
@@ -55,12 +61,16 @@ class MessageModal extends React.Component {
             size="xl"
             aria-labelledby="contained-modal-title-vcenter"
             centered
-          >
+          >              
             <Modal.Header closeButton>
             <div>
               <Row style={{padding: "16px"}}>
-              <Image src={(data.avatarUser=="")?"https://www.w3schools.com/howto/img_avatar.png":S.baseURL()+"public/anexes/profiles/"+data.avatarUser} className="Modal-Portfolio-Avatar" roundedCircle />
-              <div className="Modal-Portfolio-Username">{data.nameUser}</div>
+              <Link style={{textDecoration: "none"}} variant="link" to={"/Profile/"+data.idUser}>
+                <Row style={{paddingLeft: "16px", paddingTop: "16px"}}>
+                  <Image src={(data.avatarUser=="")?"https://www.w3schools.com/howto/img_avatar.png":S.baseURL()+"public/anexes/profiles/"+data.avatarUser} className="Modal-Portfolio-Avatar" roundedCircle />
+                  <div className="Modal-Portfolio-Username">{data.nameUser}</div>
+                </Row>
+              </Link>
               </Row>
               </div>
             </Modal.Header>
@@ -69,12 +79,18 @@ class MessageModal extends React.Component {
                 <div className="Modal-Message-Sendme-Text"><Translate id="send me a message"></Translate></div>
                 <Form>
                     <Form.Group>
-                    <Form.Control as="textarea" rows="10" maxLength="2000" />
+                    <Form.Control as="textarea" rows="10" maxLength="2000" value={this.state.handleMessageText} onChange={(event) => {this.handleMessageText(event)}}/>
                     </Form.Group>
                 </Form>
- 
-
             </Card>
+            <Modal.Footer>
+              <Row>
+                <Col>
+                   <Button className={"Modal-Message-Button-Message"}><FiMail/> <Translate id="send"></Translate></Button>
+                </Col>
+              </Row>
+            </Modal.Footer>
+
             </Modal.Body>
             </Modal>
         );
