@@ -34,7 +34,8 @@ class MessageModal extends React.Component {
           data = this.props.parent.state.propTrending[indexPort];
             }
         });
-      }else if (this.props.parent.state.talents.length > 0){
+      }
+      if (this.props.parent.state.talents.length > 0){
         this.props.parent.state.talents.forEach((valuePort,indexPort,arrayPort)=>{
           if (this.props.parent.state.talents[indexPort].idTalentArea == this.props.parent.state.idModal){
           data = this.props.parent.state.talents[indexPort];
@@ -42,7 +43,10 @@ class MessageModal extends React.Component {
             }
         });
       }
-      else{data = {};}
+      if(this.props.parent.state.UserMessage ==true){
+        data=this.props.parent.state.user;
+        data.avatarUser=data.anexes.fileName;
+      }
       console.log(data);
         return (   
           <Modal

@@ -72,7 +72,9 @@ class ProfileView extends React.Component {
         this.setState({showModalPortfolio: false});
         this.setState({showModalTalent: false});
         this.setState({showModalProposal: false});
-        this.setState({showModalMessage: false})
+        this.setState({showModalMessage: false});
+        this.setState({UserMessage:false});
+       
         console.log(this.state);
       }
 
@@ -86,8 +88,8 @@ class ProfileView extends React.Component {
         }
       }
     
-      handleModalShow(type, id) {
-
+      handleModalShow(type, id,usermes) {
+    if( type!="messageModal")
         S.putter(`putClicks`, {
             idUser:this.props.app.state.userLogged.idUser||null,
             idClicked:id,
@@ -100,6 +102,7 @@ class ProfileView extends React.Component {
         this.setState({showModalTalent: type=="talentSheet"});
         this.setState({showModalProposal: type=="proposalSheet"});
         this.setState({showModalMessage: type=="messageModal"});
+        this.setState({UserMessage:usermes});
         console.log(type, id , this.state);
       }
     //request example
@@ -287,7 +290,7 @@ class ProfileView extends React.Component {
                                 {"" + this.state.user.descriptionUser}
                                 </Card.Text>
                                 { (this.state.recomendedUser == true)?this.pageImageBadges(): <div></div>}
-                                <Button className="Profile-Send-Message" onClick={() => {this.handleModalShow("messageModal", this.user)}}><FiMail/></Button>
+                                <Button className="Profile-Send-Message" onClick={() => {this.handleModalShow("messageModal", this.user,true)}}><FiMail/></Button>
                                 <Button className="Profile-Recommend-User" onChange={this.state.recomendedUser} onClick={()=>{this.handleRecommendUserClick()}}>
                                  
                                  { (this.state.recomendedUser == false)?this.buttonRecommendUser(): this.buttonUserRecommended()}
