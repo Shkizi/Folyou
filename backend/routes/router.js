@@ -27,8 +27,10 @@ function router(app, express) {
     app.get("/getProposalByIdRecent", (req, res,next) => {  servicer.getProposalByIdRecent(req,res,next)});
     app.get("/getProposalByIdUser", (req, res,next) => {  servicer.getProposalByIdUser(req,res,next)});
     app.get("/getProposalByIdProposal", (req, res,next) => {  servicer.getProposalByIdProposal(req,res,next)});
-    app.put("/putCreateProposal", (req, res,next) => {  servicer.putCreateProposal(req,res,next)});
 
+
+    app.put("/putCreateProposal", (req, res,next) => {  servicer.putCreateProposal(req,res,next)});
+    app.post("/postCreateSheet", (req, res,next) => {  servicer.postCreateSheet(req,res,next)});
     
     app.get("/getTalentById", (req, res,next) => {  servicer.getTalentById(req,res,next)});
     app.get("/getTalentByIdRecent", (req, res,next) => {  servicer.getTalentByIdRecent(req,res,next)});

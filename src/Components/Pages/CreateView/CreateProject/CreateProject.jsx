@@ -103,16 +103,18 @@ class CreateProject extends React.Component {
         kwy.push(array[index].text);
       });
       
-    const data ={category:this.state.category,
-            keywords:kwy,
-            sheetDescription:this.state.sheetDescription,
-            region:this.state.region,
-            country:this.state.country,
-            nameProposal:this.state.position,
-            image:this.state.imageLoaded,
-            imageName:this.state.imageLoadedName,
-            idUser: this.props.app.state.userLogged.idUser||null
-    }
+    const data = new FormData() 
+    
+    data.append('category', this.state.category)
+    data.append('keywords', kwy)
+    data.append('sheetDescription', this.state.sheetDescription)
+    data.append('region', this.state.region)
+    data.append('country', this.state.country)
+    data.append('nameProposal', this.state.position)
+    data.append('file', this.state.imageLoaded)
+    data.append('imageName', this.state.imageLoadedName )
+    data.append('idUser',  this.props.app.state.userLogged.idUser||null)
+    
     console.log(data);
         S.poster(`postCreateSheet`, data, (res) => {  
             this.props.app.state.notificationModule.notify("CREATION SUCCESS","br",2,2);

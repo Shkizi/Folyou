@@ -3,7 +3,7 @@ var db = require('../dbconnect.js');
 
 
 function putCreateProposal(req, res, next) {
-    let params = req.body.params;
+    let params = req.body;
     let query1 ="CALL createProposal(?,?,?,?,?,?);"
     console.log(params, "This is the Create Proposal");
    

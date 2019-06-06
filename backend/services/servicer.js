@@ -27,7 +27,10 @@ module.exports.getTalentByIdUser = require("./Talent/getTalentByIdUser.js");
 
 module.exports.getCategories = require("./Category/getCategories.js");
 module.exports.getKeywords = require("./Keyword/getKeywords.js");
+
 module.exports.putApplication = require("./Application/putApplication.js");
+module.exports.postCreateSheet = require("./Portfolio/postCreateSheet.js");
+
 
 module.exports.getRecomendNumberByIdUser = require("./Recommend/getRecomendNumberByIdUser.js");
 module.exports.getRecomendBoolFromIds = require("./Recommend/getRecomendBoolFromIds.js");

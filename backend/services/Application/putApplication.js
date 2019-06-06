@@ -3,7 +3,7 @@ var db = require('../dbconnect.js');
 
 
 function putApplication(req, res, next) {
-    let params = req.body.params;
+    let params = req.body;
     let query1 ="call createApplication(?);"
     
     db.query(query1,[params.data.description], function (rows, error) {

@@ -5,6 +5,7 @@ const port = 5500 //porta de comunicação
 var bodyParser = require('body-parser');
 var db = require('./services/dbconnect.js');
 var cors = require('cors');
+
 require('events').EventEmitter.defaultMaxListeners = 100;
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({extended: true})); // support encoded bodies

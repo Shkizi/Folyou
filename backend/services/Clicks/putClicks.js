@@ -3,7 +3,7 @@ var db = require('../dbconnect.js');
 
 
 function putClicks(req, res, next) {
-    let params = req.body.params;
+    let params = req.body;
     let query1 =""
     console.log(params, "This is the putclick");
     switch(params.type){
