@@ -25,7 +25,7 @@ function postCreateSheet(req, res,next,upload,multer) {
                 arrayList.push(idSheet);
             }
             console.log(arrayList);
-            db.query(query2.repeat(params.keywords.length),arrayList, function (rows, error) {
+            db.query(query2.repeat(params.keywords.split(",").length),arrayList, function (rows, error) {
                 if (error) {
                     res.send({
                         error: true,
