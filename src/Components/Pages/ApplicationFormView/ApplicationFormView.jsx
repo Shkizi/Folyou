@@ -86,7 +86,7 @@ class ApplicationFormView extends React.Component {
             teamPeople: this.state.teamPeople, description: this.state.description
         };
         console.log(data);
-        S.putter(`putApplication`, {
+        S.postter(`postApplication`, {
             idProposal:this.props.match.params.id,
             data:data,
             idUser: this.props.app.state.userLogged.idUser||null

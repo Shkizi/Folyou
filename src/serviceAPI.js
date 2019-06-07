@@ -21,7 +21,7 @@ baseURL(){
     callbackerr(errore);
   }); 
   }
-  poster(url,params,callback,callbackerr) {
+  postter(url,params,callback,callbackerr) {
     this.serviceAPI().post(url, params).then(res => {
    callback(res);
 }).catch((error) => {

@@ -69,12 +69,11 @@ class TalentSpaceView extends React.Component {
         this.setState({ country: event.value},this.redoService);
      }
       handleModalShow(type, id) {
-
-        S.putter(`putClicks`, {
-          idUser:this.props.app.state.userLogged.idUser||null,
-          idClicked:id,
-          type:type
-        }, (res) => { },
+        const data = new FormData();
+        data.append("idUser",this.props.app.state.userLogged.idUser||null);
+        data.append("idClicked",id);
+        data.append("type",type);
+        S.postter(`postClicks`, data, (res) => { },
       (error) => { console.log(error);});
       
         this.setState({ typeModal: type, idModal: id });

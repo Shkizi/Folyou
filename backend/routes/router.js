@@ -12,8 +12,8 @@ function router(app,express,uploadsheet,uploadproposal,uploaduser,multer) {
 
     app.get("/getUsers", (req, res,next) => {  servicer.getUsers(req,res,next)});
 
-    app.put("/putClicks", (req, res,next) => {  servicer.putClicks(req,res,next)});
-    app.put("/putApplication", (req, res,next) => {  servicer.putApplication(req,res,next)});
+    app.post("/postClicks", uploadsheet.none(),(req, res,next) => {  servicer.postClicks(req,res,next)});
+    app.post("/postApplication", uploadsheet.none(),(req, res,next) => {  servicer.postApplication(req,res,next)});
 
     app.get("/getPortfolioById", (req, res,next) => {  servicer.getPortfolioById(req,res,next)});
     app.get("/getPortfolioByIdRecent", (req, res,next) => {  servicer.getPortfolioByIdRecent(req,res,next)});
@@ -29,7 +29,7 @@ function router(app,express,uploadsheet,uploadproposal,uploaduser,multer) {
     app.get("/getProposalByIdProposal", (req, res,next) => {  servicer.getProposalByIdProposal(req,res,next)});
 
 
-    app.put("/putCreateProposal", (req, res,next) => {  servicer.putCreateProposal(req,res,next)});
+    app.post("/postCreateProposal",uploadsheet.none(), (req, res,next) => {  servicer.postCreateProposal(req,res,next)});
     app.post("/postCreateSheet",uploadsheet.single('file'), (req, res,next) => {  servicer.postCreateSheet(req,res,next,uploadsheet,multer)});
     
     app.get("/getTalentById", (req, res,next) => {  servicer.getTalentById(req,res,next)});

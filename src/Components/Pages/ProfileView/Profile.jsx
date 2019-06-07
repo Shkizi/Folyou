@@ -40,6 +40,7 @@ class ProfileView extends React.Component {
         this.state =  {
         user: {},
         error:{},
+        recommendNumber:0,
         showRender:false,
         pageContent: 'Projects',
         portfolios:[],
@@ -89,12 +90,13 @@ class ProfileView extends React.Component {
       }
     
       handleModalShow(type, id,usermes) {
+        const data = new FormData();
+        data.append("idUser",this.props.app.state.userLogged.idUser||null);
+        data.append("idClicked",id);
+        data.append("type",type);
+        
     if( type!="messageModal")
-        S.putter(`putClicks`, {
-            idUser:this.props.app.state.userLogged.idUser||null,
-            idClicked:id,
-            type:type
-          }, (res) => { },
+        S.postter(`postClicks`, data, (res) => { },
         (error) => { console.log(error);});
         
         this.setState({ typeModal: type, idModal: id });
@@ -141,24 +143,24 @@ class ProfileView extends React.Component {
                         console.log(res);
                         console.log(user);
                         this.setState({ user:user });
-                                                S.serviceAPI().get(`getProposalByApplicationIdUser`, 
-                                                { params: {
-                                                        idUser: this.props.match.params.id
-                                                    }})
-                                                .then(res => {
-                                                    if(!res.data.error){
-                                                const table = res.data.table;
-                                                console.log(res);
-                                                console.log(table);
-                                                this.setState({ dashboardTable:table });
-                                                this.setState({pageContent:'Projects'});
-                                                    }else{
-                                                const error={message:res.data.error,error:true};
-                                                this.setState( error );
-                                            }
-                                            this.setState({ showRender:true });
-                                            
-                                        })
+                                        S.serviceAPI().get(`getProposalByApplicationIdUser`, 
+                                        { params: {
+                                                idUser: this.props.match.params.id
+                                            }})
+                                        .then(res => {
+                                            if(!res.data.error){
+                                        const table = res.data.table;
+                                        console.log(res);
+                                        console.log(table);
+                                        this.setState({ dashboardTable:table });
+                                        this.setState({pageContent:'Projects'});
+                                            }else{
+                                        const error={message:res.data.error,error:true};
+                                        this.setState( error );
+                                    }
+                                    this.setState({ showRender:true });
+                                    
+                                })
                             }else{
                         const error={message:res.data.error,error:true};
                         this.setState( error );
@@ -183,6 +185,13 @@ class ProfileView extends React.Component {
         });
     }
     componentDidMount() {
+        
+        S.getter(`getRecomendNumberByIdUser`, {
+            idUser:this.props.match.params.id, 
+            
+          }, (res) => { 
+              console.log("RES RECOMMEND:",res);
+              this.setState({recommendNumber:res.data.number});
         S.getter(`getPortfolioByIdUser`, {
             idUser:this.props.match.params.id, 
             limit:3000,
@@ -255,7 +264,12 @@ class ProfileView extends React.Component {
         (error) => { 
         console.log("Error: Portfolio", error);
             this.setState({ error: {message:error,error:true} });
-        });  
+        });
+    },
+    (error) => { 
+        console.log("Error: Number Recommend", error);
+        this.setState({ error: {message:error,error:true} });
+    });  
     }
     empty(){
         return(<></>);
@@ -281,7 +295,7 @@ class ProfileView extends React.Component {
                                 </Card.Text>
                                 
                                 <Card.Text className="Profile-Statistics">
-                                <Translate id="recommended by"></Translate>
+                                <Translate id="recommended by"></Translate> {" "+this.state.recommendNumber}
                                 </Card.Text>
                                 </Row>
                             </Col>

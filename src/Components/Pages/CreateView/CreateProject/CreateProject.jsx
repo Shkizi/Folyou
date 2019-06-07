@@ -118,7 +118,7 @@ class CreateProject extends React.Component {
     data.append('idUser',  this.props.app.state.userLogged.idUser||null)
     
     console.log(data);
-        S.poster(`postCreateSheet`, data, (res) => {  
+        S.postter(`postCreateSheet`, data, (res) => {  
             this.props.app.state.notificationModule.notify("CREATION SUCCESS","br",2,2);
             
     

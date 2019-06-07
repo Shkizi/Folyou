@@ -75,7 +75,7 @@ class CreateProposal extends React.Component {
         idUser: this.props.app.state.userLogged.idUser||null
     }
     console.log(data);
-        S.putter(`putCreateProposal`, data, (res) => {  
+        S.postter(`postCreateProposal`, data, (res) => {  
             this.props.app.state.notificationModule.notify("CREATION SUCCESS","br",2,2);
             
     

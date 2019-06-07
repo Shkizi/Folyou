@@ -2,7 +2,7 @@ var db = require('../dbconnect.js');
 
 
 
-function putApplication(req, res, next) {
+function postApplication(req, res, next) {
     let params = req.body;
     let query1 ="call createApplication(?);"
     
@@ -72,4 +72,4 @@ function putApplication(req, res, next) {
     
     });
 }
-module.exports = putApplication;
+module.exports = postApplication;
