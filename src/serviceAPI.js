@@ -40,7 +40,7 @@ callbackerr(errore);
 }
 
 deleter(url,params,callback,callbackerr) {
-  this.serviceAPI().delete(url, { data: params }).then(res => {
+  this.serviceAPI().delete(url, {data:params}).then(res => {
  callback(res);
 }).catch((error) => {
 const errore=error;

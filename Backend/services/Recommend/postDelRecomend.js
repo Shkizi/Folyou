@@ -1,9 +1,9 @@
 var db = require('../dbconnect.js');
 
-function postRecomend(req, res,next) {
+function postDelRecomend(req, res,next) {
     let params=req.body;
-   
-    db.query("CALL createUpdateRecomendation(?,?)", [params.idUser,params.idUser1], function (rows, error) {
+   console.log(params,"DELETE");
+    db.query("CALL deleteRecomendation(?,?)", [params.idUser,params.idUser1], function (rows, error) {
           
         if(error){
                 res.send({error: true, err: error});
@@ -13,4 +13,4 @@ function postRecomend(req, res,next) {
         }
     });
 }
-module.exports = postRecomend;
+module.exports = postDelRecomend;

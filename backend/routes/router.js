@@ -31,6 +31,7 @@ function router(app,express,uploadsheet,uploadproposal,uploaduser,multer) {
 
     app.post("/postCreateProposal",uploadsheet.none(), (req, res,next) => {  servicer.postCreateProposal(req,res,next)});
     app.post("/postCreateSheet",uploadsheet.single('file'), (req, res,next) => {  servicer.postCreateSheet(req,res,next,uploadsheet,multer)});
+    app.post("/postRecomend",uploadsheet.none(), (req, res,next) => {  servicer.postRecomend(req,res,next)});
     
     app.get("/getTalentById", (req, res,next) => {  servicer.getTalentById(req,res,next)});
     app.get("/getTalentByIdRecent", (req, res,next) => {  servicer.getTalentByIdRecent(req,res,next)});
@@ -38,6 +39,6 @@ function router(app,express,uploadsheet,uploadproposal,uploaduser,multer) {
 
     app.get("/getKeywords", (req, res,next) => {  servicer.getKeywords(req,res,next)});
     app.get("/getCategories", (req, res,next) => {  servicer.getCategories(req,res,next)});
-
+    app.post("/postDelRecomend",uploadsheet.none(),(req, res,next) => {  servicer.postDelRecomend(req,res,next)});
 }
 module.exports.router = router;

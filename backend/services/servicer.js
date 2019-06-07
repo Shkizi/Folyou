@@ -30,13 +30,12 @@ module.exports.getKeywords = require("./Keyword/getKeywords.js");
 
 module.exports.postApplication = require("./Application/postApplication.js");
 module.exports.postCreateSheet = require("./Portfolio/postCreateSheet.js");
+module.exports.postRecomend = require("./Recommend/postRecomend.js");
 
 
 module.exports.getRecomendNumberByIdUser = require("./Recommend/getRecomendNumberByIdUser.js");
 module.exports.getRecomendBoolFromIds = require("./Recommend/getRecomendBoolFromIds.js");
-
-
-
+module.exports.postDelRecomend = require("./Recommend/postDelRecomend.js");
 
 module.exports.dbconnect = require("./dbconnect.js");
 

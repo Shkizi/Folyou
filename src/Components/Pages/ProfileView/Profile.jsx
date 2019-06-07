@@ -78,14 +78,44 @@ class ProfileView extends React.Component {
        
         console.log(this.state);
       }
-
+      redoRecommend(){
+        S.getter(`getRecomendNumberByIdUser`, {
+            idUser:this.props.match.params.id, 
+            
+          }, (res) => { 
+              console.log("RES RECOMMEND:",res);
+              this.setState({recommendNumber:res.data.number});
+          },  (error) => { 
+            console.log("Error: Number Recommend", error);
+            this.setState({ error: {message:error,error:true} });
+        });  
+      }
       handleRecommendUserClick() {
+        const data = new FormData();
+        let item = {idUser:this.props.match.params.id, idUser1:this.props.app.state.userLogged.idUser||null}
+        for ( var key in item ) {
+            data.append(key, item[key]);
+         }
         if(this.state.recomendedUser == false){
-        this.setState({recomendedUser: true});
+            
+            S.postter("postRecomend",data,(res)=>{
+                this.setState({recomendedUser: true});
+                this.redoRecommend();
+            },  (error) => { 
+                console.log("Error: Number Recommend", error);
+                this.setState({ error: {message:error,error:true} });
+            });  
+        
         
     }
         else {
-            this.setState({recomendedUser: false});
+            S.postter("postDelRecomend",data,(res)=>{
+                this.setState({recomendedUser: false});
+                this.redoRecommend();
+            },  (error) => { 
+                console.log("Error: Number Recommend", error);
+                this.setState({ error: {message:error,error:true} });
+            });  
         }
       }
     
