@@ -216,6 +216,11 @@ class ProfileView extends React.Component {
     }
     componentDidMount() {
         
+
+                S.getter(`getRecomendBoolFormIds`, {idUser:this.props.match.params.id, idUser1:this.props.app.state.userLogged.idUser||null}, (res) => { 
+              console.log("RES RECOMMEND:",res);
+              this.setState({recomendedUser:res.answer});
+        
         S.getter(`getRecomendNumberByIdUser`, {
             idUser:this.props.match.params.id, 
             
@@ -300,6 +305,11 @@ class ProfileView extends React.Component {
         console.log("Error: Number Recommend", error);
         this.setState({ error: {message:error,error:true} });
     });  
+},
+(error) => { 
+console.log("Error: Recommended", error);
+    this.setState({ error: {message:error,error:true} });
+});
     }
     empty(){
         return(<></>);
