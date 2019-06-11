@@ -140,7 +140,11 @@ class ProfileView extends React.Component {
     //request example
     componentWillReceiveProps(nextProps){
         this.setState({ showRender:false });
-                   
+        
+        S.getter(`getRecomendBoolFromIds`, {idUser:this.props.match.params.id, idUser1:this.props.app.state.userLogged.idUser||null}, (res) => { 
+            console.log("RES RECOMMEND:",res);
+            this.setState({recomendedUser:res.data.answer==true});
+                 
         S.getter(`getPortfolioByIdUser`, {
             idUser:this.props.match.params.id, 
             limit:3000,
@@ -212,14 +216,18 @@ class ProfileView extends React.Component {
         (error) => { 
         console.log("Error: Portfolio", error);
             this.setState({ error: {message:error,error:true} });
+        });},
+        (error) => { 
+        console.log("Error: Rec", error);
+            this.setState({ error: {message:error,error:true} });
         });
     }
     componentDidMount() {
         
 
-                S.getter(`getRecomendBoolFormIds`, {idUser:this.props.match.params.id, idUser1:this.props.app.state.userLogged.idUser||null}, (res) => { 
+                S.getter(`getRecomendBoolFromIds`, {idUser:this.props.match.params.id, idUser1:this.props.app.state.userLogged.idUser||null}, (res) => { 
               console.log("RES RECOMMEND:",res);
-              this.setState({recomendedUser:res.answer});
+              this.setState({recomendedUser:res.data.answer==true});
         
         S.getter(`getRecomendNumberByIdUser`, {
             idUser:this.props.match.params.id, 
