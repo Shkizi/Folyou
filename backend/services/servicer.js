@@ -36,9 +36,11 @@ module.exports.postRecomend = require("./Recommend/postRecomend.js");
 module.exports.getRecomendNumberByIdUser = require("./Recommend/getRecomendNumberByIdUser.js");
 module.exports.getRecomendBoolFromIds = require("./Recommend/getRecomendBoolFromIds.js");
 module.exports.postDelRecomend = require("./Recommend/postDelRecomend.js");
+module.exports.getTopRecommendedUsers = require("./Recommend/getTopRecommendedUsers.js");
 
 module.exports.postMessage = require("./Message/postMessage.js");
 module.exports.getMessagesToUser = require("./Message/getMessagesToUser.js");
+
 
 module.exports.dbconnect = require("./dbconnect.js");
 

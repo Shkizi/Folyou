@@ -17,13 +17,26 @@ class CreateProject extends React.Component {
             activeValue: true,
             mostViewed: true,
             mostRecommended: false,
-            mostBadges: false
+            mostBadges: false,
+            mostRecommendedUsers:[]
         };
         this.handleMostViewedClick = this.handleMostViewedClick.bind(this);
         this.handleMostRecommendedClick = this.handleMostRecommendedClick.bind(this);
         this.handleMostBadgesClick = this.handleMostBadgesClick.bind(this);
       }
-
+      componentDidMount(){
+        
+        S.getter(`getTopRecommendedUsers`, {
+          
+          }, (res) => { 
+              console.log("RES Message:",res);
+              this.setState({mostRecommendedUsers:res.data.users});
+            },
+            (error) => { 
+                console.log("Error: Mesage", error);
+                this.setState({ error: {message:error,error:true} });
+            });
+      }
 
     handleMostViewedClick() {
         this.setState({
@@ -78,7 +91,9 @@ class CreateProject extends React.Component {
     }
 
     mostRecommendedTable () {
+        let i =0;
         return (
+            
             <Table striped bordered hover className="Rankings-Table">
             <thead>
                 <tr>
@@ -88,16 +103,14 @@ class CreateProject extends React.Component {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>4</td>
-                </tr>
-                <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>5</td>
-                </tr>
+            {this.state.mostRecommendedUsers.map(val =>{ i ++; return(
+                 <tr>
+                 <td>{i}</td>
+                 <td>{val.nameUser}</td>
+                 <td>{val.recom}</td>
+                 </tr>
+                  );})}
+                
              </tbody>
             </Table>
         )
