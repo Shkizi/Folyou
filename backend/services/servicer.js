@@ -38,6 +38,8 @@ module.exports.getRecomendBoolFromIds = require("./Recommend/getRecomendBoolFrom
 module.exports.postDelRecomend = require("./Recommend/postDelRecomend.js");
 
 module.exports.postMessage = require("./Message/postMessage.js");
+module.exports.getMessagesToUser = require("./Message/getMessagesToUser.js");
+
 module.exports.dbconnect = require("./dbconnect.js");
 
 

@@ -29,6 +29,7 @@ function router(app,express,uploadsheet,uploadproposal,uploaduser,multer) {
 
     app.get("/getKeywords", (req, res,next) => {  servicer.getKeywords(req,res,next)});
     app.get("/getCategories", (req, res,next) => {  servicer.getCategories(req,res,next)});
+    app.get("/getMessagesToUser", (req, res,next) => {  servicer.getMessagesToUser(req,res,next)});
     
 
     app.post("/postCreateProposal",uploadsheet.none(), (req, res,next) => {  servicer.postCreateProposal(req,res,next)});

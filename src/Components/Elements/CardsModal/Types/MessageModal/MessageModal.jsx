@@ -71,6 +71,7 @@ handleFormSubmission(event,uyser){
         data=this.props.parent.state.user;
         data.avatarUser=data.anexes.fileName;
       }
+      
       console.log(data);
         return (   
           <Modal

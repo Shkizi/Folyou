@@ -4,6 +4,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import { Container, Row, Table } from 'react-bootstrap';
+import { Carousel, Image} from 'react-bootstrap';
+
+import {  Link } from "react-router-dom";
 import { withLocalize, Translate } from "react-localize-redux";
 import isCookieValid from '../../../cookies.js';
 import ServicesAPI from '../../../serviceAPI.js';
@@ -18,57 +21,43 @@ class NotificationHubView extends React.Component {
         notifications:[],
         error:false,
         redirect:false,
-        message:{}
+        message:[],
+        user:{}
       }
       
     //request example
     componentDidMount() {
-        const {cookies}= this.props.cookies;
-        if(isCookieValid(cookies,"folyou_userId")){
+        let th = this;
+        S.getter(`getMessagesToUser`, {
+            idUser:th.props.app.state.userLogged.idUser|null, 
             
-            S.getNotificationsByUserId(cookies["folyou_userId"])
-            .then(res => {
-                if(!res.data.error){
-            const notifications = res.data.notifications;
-            console.log(res);
-            this.setState({ notifications });
-                }else{
-                   var error=true;
-                    var message=res.data.error;
-                    this.setState( {error} );
-                    this.setState( {message} );
-                }
+          }, (res) => { 
+              console.log("RES Message:",res);
+              th.setState({message:res.data.messages});
+            },
+            (error) => { 
+                console.log("Error: Mesage", error);
+                th.setState({ error: {message:error,error:true} });
             });
-        }else{ 
-            var error=true;
-            var message="pleaseLogin";
-            this.setState( {error} );
-            this.setState( {message} );
-        }
+            
+        setInterval(function() {
+            S.getter(`getMessagesToUser`, {
+            idUser:th.props.app.state.userLogged.idUser|null, 
+            
+          }, (res) => { 
+              console.log("RES Message:",res);
+              th.setState({message:res.data.messages});
+            },
+            (error) => { 
+                console.log("Error: Mesage", error);
+                th.setState({ error: {message:error,error:true} });
+            });
+        }, 60 * 1000/2);
         
     }
   
     render() {
         const {cookies}= this.props.cookies;
-        
-     /*   
-           return (!isCookieValid(cookies,"folyou_userId"))?(<PleaseLogin/>):(
-        <Row style={{margin: 0}}>
-        <Table responsive>
-            <thead>
-                <tr>
-                <th>#</th>
-                </tr>
-            </thead>
-            <tbody>
-           
-                <tr>
-                <td>SSSS</td>
-                </tr>
-            </tbody>
-            </Table>
-        </Row> */
-
         return (
             <Row style={{margin: 0}}>
             <Table striped bordered hover className="Notifications-Message-Table">
@@ -76,23 +65,25 @@ class NotificationHubView extends React.Component {
                     <tr>
                     <th><Translate id="message origin"></Translate></th>
                     <th><Translate id="message"></Translate></th>
+                    <th><Translate id="actions"></Translate></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <td>Jacob</td>
-                    <td>{"aaaaaaaaaaaaac".substring(0,15)+(("aaa" > 2)?"...":"")}</td>
 
-                    </tr>
-                    <tr>
-                    <td>Mark</td>
-                    <td>{"bbbbbbbbbbbbbbbbb".substring(0,5)+(("aaa" > 2)?"...":"")}</td>
+                {this.state.message.map(val =>{return(
+                      <tr style={(val.viewed==0)?{backgroundColor:"#49c5b6"}:{}}>
+                      <td>  <Link style={{textDecoration: "none"}}variant="link" to={"/Profile/"+val.idUser}>
+                     <Image className="HomeCarousel-Profile-Image" src={S.baseURL()+"public/anexes/profiles/"+val.fileName} style={{height: "32px",width: "32px"}} roundedCircle/>{val.nameUser}
+                     </Link>
+                      </td>                  
+                      <td>{val.valueText}</td>
+                      <td>reply, {(val.viewed==0)?"mark as viewed":"V viewed"}</td>
+                      </tr>
 
-                    </tr>
-                    <tr>
-                    <td>Larry</td>
-                    <td>{"ccccccccccccccccccccc".substring(0,2)+(("aaa" > 2)?"...":"")}</td>
-                    </tr>
+                      );})}
+
+
+                    
                 </tbody>
             </Table>
             </Row>
