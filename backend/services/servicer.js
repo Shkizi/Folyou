@@ -37,6 +37,7 @@ module.exports.getRecomendNumberByIdUser = require("./Recommend/getRecomendNumbe
 module.exports.getRecomendBoolFromIds = require("./Recommend/getRecomendBoolFromIds.js");
 module.exports.postDelRecomend = require("./Recommend/postDelRecomend.js");
 
+module.exports.postMessage = require("./Message/postMessage.js");
 module.exports.dbconnect = require("./dbconnect.js");
 
 

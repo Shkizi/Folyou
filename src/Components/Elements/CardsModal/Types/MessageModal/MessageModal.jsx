@@ -17,6 +17,7 @@ class MessageModal extends React.Component {
    
     this.state = {
       data: {},
+      done:false,
       messageText: ""
     };
 
@@ -26,7 +27,24 @@ class MessageModal extends React.Component {
   handleMessageText(event) {
     this.setState({ messageText: event.target.value});
 }
+handleFormSubmission(event,uyser){
+  const data = new FormData()
+  let item = {text:this.state.messageText,maker:this.props.app.state.userLogged.idUser, recetor:uyser.idUser}
+  for ( var key in item ) {
+    data.append(key, item[key]);
+ }
+ S.postter("postMessage",data,(res)=>{
+  this.setState({done: true});
+  
+  this.props.closer();
+  this.props.app.state.notificationModule.notify("Message Sent","br",2,15);
+},  (error) => { 
+  console.log("Error: Message", error);
+  this.props.app.state.notificationModule.notify("Message ERROR","br",3,15);
+  this.setState({ error: {message:error,error:true} });
+}); 
 
+}
 
   render() {
     if( this.props.parent.state.showModalMessage){
@@ -86,7 +104,7 @@ class MessageModal extends React.Component {
             <Modal.Footer>
               <Row>
                 <Col>
-                   <Button className={"Modal-Message-Button-Message"}><FiMail/> <Translate id="send"></Translate></Button>
+                   <Button className={"Modal-Message-Button-Message"} onClick={(event)=>{this.handleFormSubmission(event,data)}}><FiMail/> <Translate id="send"></Translate></Button>
                 </Col>
               </Row>
             </Modal.Footer>
