@@ -14,6 +14,7 @@ import "./PortfoliosAreaView.css";
 import CardsModalPortfolio from '../../Elements/CardsModal/Types/CardsModalPorfolio/CardsModalPortfolio.jsx'
 import getImageLanguage from "../../../Resources/Translations/compilerLanguageImages.js";
 import SelectSearch from 'react-select-search'
+import MessageModal from '../../Elements/CardsModal/Types/MessageModal/MessageModal.jsx'
 var S = new ServicesAPI();
 var countryJson = require("../../../Resources/Translations/countries.json");
 const KeyCodes = {
@@ -61,6 +62,7 @@ class PortfoliosAreaView extends React.Component {
         this.setState({showModalPortfolio: false});
         this.setState({showModalTalent: false});
         this.setState({showModalProposal: false});
+        this.setState({showModalMessage: false});
         console.log(this.state);
       }
     
@@ -68,21 +70,34 @@ class PortfoliosAreaView extends React.Component {
         
         this.setState({ country: event.value},this.redoService);
      }
-      handleModalShow(type, id) {
-        const data = new FormData();
-        data.append("idUser",this.props.app.state.userLogged.idUser||null);
-        data.append("idClicked",id);
-        data.append("type",type);
-        
-        S.postter(`postClicks`, data, (res) => { },
-      (error) => { console.log(error);});
+     handleModalShow(type, id) {
+      const data = new FormData();
+      data.append("idUser",this.props.app.state.userLogged.idUser||null);
+      data.append("idClicked",id);
+      data.append("type",type);
+       
+      S.postter(`postClicks`, data, (res) => { },
+    (error) => { console.log(error);});
       
-        this.setState({ typeModal: type, idModal: id });
-        this.setState({showModalPortfolio: type=="portfolioSheet"});
-        this.setState({showModalTalent: type=="talentSheet"});
-        this.setState({showModalProposal: type=="proposalSheet"});
-        console.log(type, id , this.state);
-      }
+      this.setState({ typeModal: type, idModal: id });
+      this.setState({showModalPortfolio: type=="portfolioSheet"});
+      this.setState({showModalTalent: type=="talentSheet"});
+      this.setState({showModalProposal: type=="proposalSheet"});
+      if(type=="messageModal"){
+      this.setState({showModalMessage: type=="messageModal" },()=>console.log(this.state.showModalMessage));
+      console.log(type, id );
+      }else if(type=="messageModalSheet"){
+        this.setState({showModalMessage: type=="messageModalSheet" },()=>console.log(this.state.showModalMessage));
+        console.log(type, id );
+        }else if(type=="messageModalTalent"){
+          this.setState({showModalMessage: type=="messageModalTalent" },()=>console.log(this.state.showModalMessage));
+          console.log(type, id );
+          }else {
+            this.setState({showModalMessage: type=="messageModalProposal" },()=>console.log(this.state.showModalMessage));
+            console.log(type, id );
+            }
+      console.log(type, id , this.state);
+    }
 
     handleDelete(i) {
         const { tags } = this.state;
@@ -195,12 +210,14 @@ class PortfoliosAreaView extends React.Component {
                  
                  { this.state.portfolios.map((portfolio, i) => {
                       return (  
-                      <CardPortfolio data={portfolio} parent={this}/>
+                      <CardPortfolio data={portfolio} parent={this} app={this.props.app}/>
                       );
                   })}                  
                 
             </Row>
-    <CardsModalPortfolio parent={this} closer={this.handleModalClose}/>
+            <MessageModal app={this.props.app} parent={this} closer={this.handleModalClose}/>
+             
+    <CardsModalPortfolio parent={this} closer={this.handleModalClose} app={this.props.app}/>
          </>     
 );} }
 

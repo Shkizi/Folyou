@@ -14,6 +14,7 @@ import "./TalentSpaceView.css";
 import CardsModalTalent from '../../Elements/CardsModal/Types/CardsModalTalent/CardsModalTalent.jsx'
 import getImageLanguage from "../../../Resources/Translations/compilerLanguageImages.js";
 import SelectSearch from 'react-select-search'
+import MessageModal from '../../Elements/CardsModal/Types/MessageModal/MessageModal.jsx'
 var S = new ServicesAPI();
 var countryJson = require("../../../Resources/Translations/countries.json");
 const KeyCodes = {
@@ -53,32 +54,43 @@ class TalentSpaceView extends React.Component {
     
         
       }
-      handleModalClose() {
-        this.setState({showModalPortfolio: false});
-        this.setState({showModalTalent: false});
-        this.setState({showModalProposal: false});
-        console.log(this.state);
-      }
+     
     
       handleCountry(event) {
         
         this.setState({ country: event.value},this.redoService);
-     }
-      handleModalShow(type, id) {
-        const data = new FormData();
-        data.append("idUser",this.props.app.state.userLogged.idUser||null);
-        data.append("idClicked",id);
-        data.append("type",type);
-        S.postter(`postClicks`, data, (res) => { },
-      (error) => { console.log(error);});
-      
-        this.setState({ typeModal: type, idModal: id });
-        this.setState({showModalPortfolio: type=="portfolioSheet"});
-        this.setState({showModalTalent: type=="talentSheet"});
-        this.setState({showModalProposal: type=="proposalSheet"});
-        console.log(type, id , this.state);
       }
-
+     handleModalClose() {
+      this.setState({showModalPortfolio: false});
+      this.setState({showModalTalent: false});
+      this.setState({showModalProposal: false});
+      this.setState({showModalMessage: false});
+      console.log(this.state);
+    }
+     handleModalShow(type, id) {
+      const data = new FormData();
+      data.append("idUser",this.props.app.state.userLogged.idUser||null);
+      data.append("idClicked",id);
+      data.append("type",type);
+       
+      S.postter(`postClicks`, data, (res) => { },
+    (error) => { console.log(error);});
+      
+      this.setState({ typeModal: type, idModal: id });
+      this.setState({showModalPortfolio: type=="portfolioSheet"});
+      this.setState({showModalTalent: type=="talentSheet"});
+      this.setState({showModalProposal: type=="proposalSheet"});
+      if(type=="messageModal"){
+      this.setState({showModalMessage: type=="messageModal" });
+      }else if(type=="messageModalSheet"){
+        this.setState({showModalMessage: type=="messageModalSheet" });
+        }else if(type=="messageModalTalent"){
+          this.setState({showModalMessage: type=="messageModalTalent" });
+          }else {
+            this.setState({showModalMessage: type=="messageModalProposal" });
+            }
+      console.log(type, id , this.state);
+    }
     handleDelete(i) {
         const { tags } = this.state;
         this.setState({
@@ -195,6 +207,8 @@ class TalentSpaceView extends React.Component {
                   })}                  
                 
             </Row>
+            <MessageModal app={this.props.app} parent={this} closer={this.handleModalClose}/>
+          
     <CardsModalTalent parent={this} closer={this.handleModalClose}/>
          </>     
 );} }

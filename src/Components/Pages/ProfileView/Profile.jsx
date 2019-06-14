@@ -119,22 +119,30 @@ class ProfileView extends React.Component {
         }
       }
     
+      
       handleModalShow(type, id,usermes) {
         const data = new FormData();
         data.append("idUser",this.props.app.state.userLogged.idUser||null);
         data.append("idClicked",id);
         data.append("type",type);
-        
-    if( type!="messageModal")
+         
         S.postter(`postClicks`, data, (res) => { },
-        (error) => { console.log(error);});
+      (error) => { console.log(error);});
         
         this.setState({ typeModal: type, idModal: id });
         this.setState({showModalPortfolio: type=="portfolioSheet"});
         this.setState({showModalTalent: type=="talentSheet"});
         this.setState({showModalProposal: type=="proposalSheet"});
-        this.setState({showModalMessage: type=="messageModal"});
-        this.setState({UserMessage:usermes});
+        if(type=="messageModal"){
+        this.setState({showModalMessage: type=="messageModal" });
+        }else if(type=="messageModalSheet"){
+          this.setState({showModalMessage: type=="messageModalSheet" });
+          }else if(type=="messageModalTalent"){
+            this.setState({showModalMessage: type=="messageModalTalent" });
+            }else {
+              this.setState({showModalMessage: type=="messageModalProposal" });
+              }
+              this.setState({UserMessage:usermes});
         console.log(type, id , this.state);
       }
     //request example
