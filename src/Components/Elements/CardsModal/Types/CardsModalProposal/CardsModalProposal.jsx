@@ -104,7 +104,8 @@ class CardsModalProposal extends React.Component {
                   </Link>
                 </Col>
                 <Col>
-                   <Button className={"Modal-Proposal-Button-Message"}><FiMail/> <Translate id="send a message"></Translate></Button>
+                {(this.props.app.state.userLogged.idUser!=data.idUser)?this.sendMessage(data):<></>}
+                   
                 </Col>
               </Row>
             </Modal.Footer>
@@ -114,7 +115,18 @@ class CardsModalProposal extends React.Component {
       return(<></>);
     } 
     }
+    sendMessage(data){
+      return(
+      <Button className={"Modal-Proposal-Button-Message"} onClick={(event)=>{handleMessage(event,this,data)}} ><FiMail/> <Translate id="send a message"></Translate></Button>
+      );
+    }
 }
+function handleMessage(event,card,data) {
+  var data= data;
+   var parent = card.props.parent;
+  event.stopPropagation();
+  parent.handleModalShow("messageModalProposal",data.idProposal);
   
+}
   export default (CardsModalProposal);
   

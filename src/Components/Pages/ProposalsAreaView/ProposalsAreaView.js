@@ -196,12 +196,12 @@ class ProposalsAreaView extends React.Component {
                  
                  { this.state.proposals.map((portfolio, i) => {
                       return (  
-                      <CardProposal data={portfolio} parent={this}/>
+                      <CardProposal data={portfolio} parent={this} app={this.props.app}/>
                       );
                   })}                  
                 
             </Row>
-    <CardsModalProposal parent={this} closer={this.handleModalClose}/>
+    <CardsModalProposal parent={this} closer={this.handleModalClose} app={this.props.app}/>
          </>     
 );} }
 

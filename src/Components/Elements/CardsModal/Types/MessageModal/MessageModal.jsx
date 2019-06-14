@@ -52,13 +52,8 @@ handleFormSubmission(event,uyser){
       console.log(this.props.parent.state.propTrending);
       console.log(this.props.parent.state.talents);
       console.log(this.props.parent.state.idModal);
-      if (this.props.parent.state.propTrending.length > 0){
-       this.props.parent.state.propTrending.forEach((valuePort,indexPort,arrayPort)=>{
-          if (this.props.parent.state.propTrending[indexPort].idTalentArea == this.props.parent.state.idModal){
-          data = this.props.parent.state.propTrending[indexPort];
-            }
-        });
-      }
+      if(this.props.parent.state.typeModal=="messageModal" ||this.props.parent.state.typeModal=="messageModalTalent"){
+     
       if (this.props.parent.state.talents.length > 0){
         this.props.parent.state.talents.forEach((valuePort,indexPort,arrayPort)=>{
           if (this.props.parent.state.talents[indexPort].idTalentArea == this.props.parent.state.idModal){
@@ -67,6 +62,40 @@ handleFormSubmission(event,uyser){
             }
         });
       }
+    }
+    if(this.props.parent.state.typeModal=="messageModalProposal" ){
+      if (this.props.parent.state.propTrending.length > 0){
+       this.props.parent.state.propTrending.forEach((valuePort,indexPort,arrayPort)=>{
+          if (this.props.parent.state.propTrending[indexPort].idProposal == this.props.parent.state.idModal){
+          data = this.props.parent.state.propTrending[indexPort];
+            }
+        });
+      }
+      if (this.props.parent.state.proposals.length > 0){
+        this.props.parent.state.proposals.forEach((valuePort,indexPort,arrayPort)=>{
+          if (this.props.parent.state.proposals[indexPort].idProposal == this.props.parent.state.idModal){
+          data = this.props.parent.state.proposals[indexPort];
+         
+            }
+        });
+      }
+    }  if(this.props.parent.state.typeModal=="messageModalSheet" ){
+      if (this.props.parent.state.propTrending.length > 0){
+       this.props.parent.state.propTrending.forEach((valuePort,indexPort,arrayPort)=>{
+          if (this.props.parent.state.propTrending[indexPort].idSheet == this.props.parent.state.idModal){
+          data = this.props.parent.state.propTrending[indexPort];
+            }
+        });
+      }
+      if (this.props.parent.state.portfolios.length > 0){
+        this.props.parent.state.portfolios.forEach((valuePort,indexPort,arrayPort)=>{
+          if (this.props.parent.state.portfolios[indexPort].idSheet == this.props.parent.state.idModal){
+          data = this.props.parent.state.portfolios[indexPort];
+         
+            }
+        });
+      }
+    } 
       if(this.props.parent.state.UserMessage ==true){
         data=this.props.parent.state.user;
         data.avatarUser=data.anexes.fileName;

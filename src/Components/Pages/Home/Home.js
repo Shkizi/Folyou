@@ -55,7 +55,7 @@ class Home extends React.Component {
     data.append("idUser",this.props.app.state.userLogged.idUser||null);
     data.append("idClicked",id);
     data.append("type",type);
-      
+     
     S.postter(`postClicks`, data, (res) => { },
   (error) => { console.log(error);});
     
@@ -63,7 +63,15 @@ class Home extends React.Component {
     this.setState({showModalPortfolio: type=="portfolioSheet"});
     this.setState({showModalTalent: type=="talentSheet"});
     this.setState({showModalProposal: type=="proposalSheet"});
-    this.setState({showModalMessage: type=="messageModal"});
+    if(type=="messageModal"){
+    this.setState({showModalMessage: type=="messageModal" });
+    }else if(type=="messageModalSheet"){
+      this.setState({showModalMessage: type=="messageModalSheet" });
+      }else if(type=="messageModalTalent"){
+        this.setState({showModalMessage: type=="messageModalTalent" });
+        }else {
+          this.setState({showModalMessage: type=="messageModalProposal" });
+          }
     console.log(type, id , this.state);
   }
 
@@ -248,9 +256,9 @@ class Home extends React.Component {
                       </Col>
                     </Row>
 
-              <CardsModalPortfolio parent={this} closer={this.handleModalClose}/>
-              <CardsModalProposal parent={this} closer={this.handleModalClose}/>
-              <CardsModalTalent parent={this} closer={this.handleModalClose}/>
+              <CardsModalPortfolio parent={this} closer={this.handleModalClose} app={this.props.app}/>
+              <CardsModalProposal parent={this} closer={this.handleModalClose} app={this.props.app}/>
+              <CardsModalTalent parent={this} closer={this.handleModalClose} app={this.props.app}/>
               <MessageModal app={this.props.app} parent={this} closer={this.handleModalClose}/>
                     
 

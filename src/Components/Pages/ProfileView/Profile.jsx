@@ -426,9 +426,9 @@ console.log("Error: Recommended", error);
                         
 
                     </Row>
-                    <CardsModalPortfolio parent={this} closer={this.handleModalClose}/>
-                    <CardsModalProposal parent={this} closer={this.handleModalClose}/>
-                    <CardsModalTalent parent={this} closer={this.handleModalClose}/>
+                    <CardsModalPortfolio parent={this} closer={this.handleModalClose} app={this.props.app}/>
+                    <CardsModalProposal parent={this} closer={this.handleModalClose} app={this.props.app}/>
+                    <CardsModalTalent parent={this} closer={this.handleModalClose} app={this.props.app}/>
                     <MessageModal app={this.props.app} parent={this} closer={this.handleModalClose}/>
               
             </>

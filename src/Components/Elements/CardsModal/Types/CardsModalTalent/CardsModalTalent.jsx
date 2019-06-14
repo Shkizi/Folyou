@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal, Image, Card, Row,Button } from 'react-bootstrap';
+import { Modal, Image, Card, Row,Button, Col } from 'react-bootstrap';
 import { Translate } from "react-localize-redux";
 import { Link } from "react-router-dom";
 import './CardsModalTalent.css';
@@ -7,6 +7,8 @@ import getImageLanguage from "../../../../../Resources/Translations/compilerLang
 import { TiHeart } from "react-icons/ti";
 import { TiHeartOutline } from "react-icons/ti";
 import { isNull } from 'util';
+
+import { FiFileText, FiMail } from "react-icons/fi";
 import ServicesAPI from "../../../../../serviceAPI";
 var S = new ServicesAPI();
 class CardsModalTalent extends React.Component {
@@ -90,6 +92,13 @@ class CardsModalTalent extends React.Component {
 
             </Modal.Body>
             <Modal.Footer>
+              <Row>
+               
+                <Col>
+                {(this.props.app.state.userLogged.idUser!=data.idUser)?this.sendMessage(data):<></>}
+                   
+                </Col>
+              </Row>
             </Modal.Footer>
             </Modal>
         );
@@ -97,7 +106,18 @@ class CardsModalTalent extends React.Component {
       return(<></>);
     } 
     }
+    sendMessage(data){
+      return(
+      <Button className={"Modal-Proposal-Button-Message"} onClick={(event)=>{handleMessage(event,this,data)}}><FiMail/> <Translate id="send a message"></Translate></Button>
+      );
+    }
 }
+function handleMessage(event,card,data) {
+  var data= data;
+   var parent = card.props.parent;
+  event.stopPropagation();
+  parent.handleModalShow("messageModalTalent",data.idTalentArea);
   
+}
   export default (CardsModalTalent);
   

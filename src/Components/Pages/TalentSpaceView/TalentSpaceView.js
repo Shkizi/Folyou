@@ -38,16 +38,12 @@ class TalentSpaceView extends React.Component {
           typeModal: null,
           liveKeywords: [],
           idModal: null,
-            filters:[],
-                    hasMoreItems: true,
-                    error:[],
-
-                    tags: [
-                    
-                ],
-                suggestions: [
-                ],
-                countries:[]
+          filters:[],
+          hasMoreItems: true,
+          error:[],
+          tags: [],
+          suggestions: [],
+          countries:[]
         };
         this.handleDelete = this.handleDelete.bind(this);
         this.handleAddition = this.handleAddition.bind(this);
