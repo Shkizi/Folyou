@@ -1,10 +1,12 @@
 import React from 'react';
 import { Row, Col, Table, Button} from 'react-bootstrap';
+import { Modal, Image, Card } from 'react-bootstrap';
 import { withLocalize } from "react-localize-redux";
 import { Translate } from "react-localize-redux";
 import ServicesAPI from '../../../serviceAPI';
 import "./Rankings.css";
 
+import {  Link } from "react-router-dom";
 var S = new ServicesAPI();
 
     
@@ -18,7 +20,8 @@ class CreateProject extends React.Component {
             mostViewed: true,
             mostRecommended: false,
             mostBadges: false,
-            mostRecommendedUsers:[]
+            mostRecommendedUsers:[],
+            mostViewedUsers:[],
         };
         this.handleMostViewedClick = this.handleMostViewedClick.bind(this);
         this.handleMostRecommendedClick = this.handleMostRecommendedClick.bind(this);
@@ -36,6 +39,17 @@ class CreateProject extends React.Component {
                 console.log("Error: Mesage", error);
                 this.setState({ error: {message:error,error:true} });
             });
+            S.getter(`getTopViewedUsers`, {
+          
+            }, (res) => { 
+                console.log("RES Message:",res);
+                this.setState({mostViewedUsers:res.data.users});
+              },
+              (error) => { 
+                  console.log("Error: Mesage", error);
+                  this.setState({ error: {message:error,error:true} });
+              });
+            
       }
 
     handleMostViewedClick() {
@@ -64,26 +78,28 @@ class CreateProject extends React.Component {
 
 
     mostViewedTable () {
+        let i =0;
         return (
             <Table striped bordered hover className="Rankings-Table">
             <thead>
                 <tr>
                 <th><Translate id="position"></Translate></th>
                 <th><Translate id="user"></Translate></th>
-                <th><Translate id="project name"></Translate></th>
+                <th><Translate id="number of views"></Translate></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                </tr>
-                <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                </tr>
+            {this.state.mostViewedUsers.map(val =>{ i ++; return(
+                 <tr>
+                 <td>{i}</td>
+                 <td> <Link style={{textDecoration: "none"}}variant="link" to={"/Profile/"+val.idUser}>
+                  
+                      <Image src={S.baseURL()+"public/anexes/profiles/"+val.fileName} className="Modal-Portfolio-Avatar" roundedCircle />
+                   {val.nameUser}
+                   </Link></td> 
+                 <td>{val.views}</td>
+                 </tr>
+                  );})}
 
              </tbody>
             </Table>
@@ -106,7 +122,11 @@ class CreateProject extends React.Component {
             {this.state.mostRecommendedUsers.map(val =>{ i ++; return(
                  <tr>
                  <td>{i}</td>
-                 <td>{val.nameUser}</td>
+                 <td> <Link style={{textDecoration: "none"}}variant="link" to={"/Profile/"+val.idUser}>
+                  
+                      <Image src={S.baseURL()+"public/anexes/profiles/"+val.fileName} className="Modal-Portfolio-Avatar" roundedCircle />
+                   {val.nameUser}
+                   </Link></td> 
                  <td>{val.recom}</td>
                  </tr>
                   );})}
