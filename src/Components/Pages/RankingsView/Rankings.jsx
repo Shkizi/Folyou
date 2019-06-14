@@ -22,6 +22,7 @@ class CreateProject extends React.Component {
             mostBadges: false,
             mostRecommendedUsers:[],
             mostViewedUsers:[],
+            mostBadgeUsers:[],
         };
         this.handleMostViewedClick = this.handleMostViewedClick.bind(this);
         this.handleMostRecommendedClick = this.handleMostRecommendedClick.bind(this);
@@ -49,7 +50,17 @@ class CreateProject extends React.Component {
                   console.log("Error: Mesage", error);
                   this.setState({ error: {message:error,error:true} });
               });
-            
+              S.getter(`getTopBadgeUsers`, {
+          
+            }, (res) => { 
+                console.log("RES Message:",res);
+                this.setState({mostBadgeUsers:res.data.users});
+              },
+              (error) => { 
+                  console.log("Error: Mesage", error);
+                  this.setState({ error: {message:error,error:true} });
+              });
+              
       }
 
     handleMostViewedClick() {
@@ -137,6 +148,7 @@ class CreateProject extends React.Component {
     }
 
     mostBadgesTable () {
+        let i =0;
         return (
             <Table striped bordered hover className="Rankings-Table">
             <thead>
@@ -147,16 +159,17 @@ class CreateProject extends React.Component {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>4</td>
-                </tr>
-                <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>5</td>
-                </tr>
+            {this.state.mostBadgeUsers.map(val =>{ i ++; return(
+                 <tr>
+                 <td>{i}</td>
+                 <td> <Link style={{textDecoration: "none"}}variant="link" to={"/Profile/"+val.idUser}>
+                  
+                      <Image src={S.baseURL()+"public/anexes/profiles/"+val.fileName} className="Modal-Portfolio-Avatar" roundedCircle />
+                   {val.nameUser}
+                   </Link></td> 
+                 <td>{val.numBadge}</td>
+                 </tr>
+                  );})}
              </tbody>
             </Table>
         )

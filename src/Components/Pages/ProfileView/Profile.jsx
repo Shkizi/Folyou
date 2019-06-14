@@ -352,12 +352,8 @@ console.log("Error: Recommended", error);
                                 {"" + this.state.user.descriptionUser}
                                 </Card.Text>
                                 { (this.state.recomendedUser == true)?this.pageImageBadges(): <div></div>}
-                                <Button className="Profile-Send-Message" onClick={() => {this.handleModalShow("messageModal", this.user,true)}}><FiMail/></Button>
-                                <Button className="Profile-Recommend-User" onChange={this.state.recomendedUser} onClick={()=>{this.handleRecommendUserClick()}}>
-                                 
-                                 { (this.state.recomendedUser == false)?this.buttonRecommendUser(): this.buttonUserRecommended()}
-
-                                </Button>
+                                {(this.props.match.params.id!=this.props.app.state.userLogged.idUser)?this.diferentProfile():this.empty()}
+                                
                             </Col>
                         </Row>
                     </Card.Body>
@@ -440,6 +436,13 @@ console.log("Error: Recommended", error);
         }else{
             return(<></>);
         }
+    }
+    diferentProfile(){
+        return (<><Button className="Profile-Send-Message" onClick={() => {this.handleModalShow("messageModal", this.user,true)}}><FiMail/></Button>
+                                <Button className="Profile-Recommend-User" onChange={this.state.recomendedUser} onClick={()=>{this.handleRecommendUserClick()}}>
+                                 
+                                 { (this.state.recomendedUser == false)?this.buttonRecommendUser(): this.buttonUserRecommended()}
+                                </Button></>);
     }
         pageContentProjects(){
             return (<>{this.state.portfolios.map(val =>{return(

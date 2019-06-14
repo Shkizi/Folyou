@@ -42,6 +42,7 @@ module.exports.postMessage = require("./Message/postMessage.js");
 module.exports.getMessagesToUser = require("./Message/getMessagesToUser.js");
 
 module.exports.getTopViewedUsers = require("./Viewed/getTopViewedUsers.js");
+module.exports.getTopBadgeUsers = require("./Badges/getTopBadgeUsers.js");
 
 module.exports.dbconnect = require("./dbconnect.js");
 
