@@ -43,7 +43,8 @@ function router(app,express,uploadsheet,uploadproposal,uploaduser,multer) {
     app.post("/postDelRecomend",uploadsheet.none(),(req, res,next) => {  servicer.postDelRecomend(req,res,next)});
     app.post("/postClicks", uploadsheet.none(),(req, res,next) => {  servicer.postClicks(req,res,next)});
     app.post("/postApplication", uploadsheet.none(),(req, res,next) => {  servicer.postApplication(req,res,next)});
-
+    app.post("/postCreateTalent", uploadsheet.none(),(req, res,next) => {  servicer.postCreateTalent(req,res,next)});
+    
    
 }
 module.exports.router = router;

@@ -5,6 +5,7 @@ import { Container, Row, Col, Form, Image} from 'react-bootstrap';
 import { withLocalize } from "react-localize-redux";
 import { Translate } from "react-localize-redux";
 import ServicesAPI from '../../../../serviceAPI.js';
+import { WithContext as ReactTags } from 'react-tag-input';
 import '../../../Elements/Notifications/Notifications';
 import "./CreateProposal.css";
 import { throws } from 'assert';
@@ -13,7 +14,13 @@ import SelectSearch from 'react-select-search'
 import getImageLanguage from "../../../../Resources/Translations/compilerLanguageImages.js";
 var countryJson = require("../../../../Resources/Translations/countries.json");
 var S = new ServicesAPI();
-
+const KeyCodes = {
+    comma: 188,
+    enter: 13,
+  };
+  
+  const delimiters = [KeyCodes.comma, KeyCodes.enter];
+  
 class CreateProposal extends React.Component { 
  
     constructor(props, context) {
@@ -26,9 +33,13 @@ class CreateProposal extends React.Component {
             keywords: [],
             category: [],
             categories:[],
+            tags: [],
+            suggestions: [],
             service:false,
                 };
-    
+                this.handleDelete = this.handleDelete.bind(this);
+                this.handleAddition = this.handleAddition.bind(this);
+               
     this.handleRegion = this.handleRegion.bind(this);
     this.handleCountry = this.handleCountry.bind(this);
     this.handlePosition = this.handlePosition.bind(this);
@@ -62,18 +73,37 @@ class CreateProposal extends React.Component {
     handleCategory(event) {
         this.setState({ category: event.value});
     }
+    handleDelete(i) {
+        const { tags } = this.state;
+        this.setState({
+         tags: tags.filter((tag, index) => index !== i),
+        });
+        console.log(this.state.tags);
+       
+    }
 
+    handleAddition(tag) {
+        this.setState(state => ({ tags: [...state.tags, tag] }));
+        console.log(this.state.tags);
+    }
     handleSubmitProposal(event){
         event.preventDefault();
-        
-        const data ={category:this.state.category,
-            keywords:[this.state.keywords],
+        let      kwy = [];
+      this.state.tags.forEach((value,index,array)=>{
+        kwy.push(array[index].text);
+      });
+        let data = new FormData();
+        const item ={category:this.state.category,
+            keywords:kwy,
             proposalDescription:this.state.proposalDescription,
             region:this.state.region,
             country:this.state.country,
             nameProposal:this.state.position,
         idUser: this.props.app.state.userLogged.idUser||null
     }
+    for ( var key in item ) {
+        data.append(key, item[key]);
+     }
     console.log(data);
         S.postter(`postCreateProposal`, data, (res) => {  
             this.props.app.state.notificationModule.notify("CREATION SUCCESS","br",2,2);
@@ -86,7 +116,7 @@ class CreateProposal extends React.Component {
         });
     }
 componentDidMount(){
-   // categories
+   // categories 
         S.getter(`getCategories`, {
             }, (res) => {  
             const categories = res.data.categories;
@@ -106,6 +136,8 @@ componentDidMount(){
         return(<></>);
     }
     page(){
+        const { tags, suggestions } = this.state;
+     
         function renderFriend(option) {
             const imgStyle = {
                 borderRadius: '50%',
@@ -161,7 +193,18 @@ componentDidMount(){
             <Row> 
                 <Col sm={12}  style={{marginBottom: "2%"}}>
                                 <Form.Label><Translate id="keywords"></Translate></Form.Label>
-                                <Form.Control type="text" value={this.state.keywords} onChange={(event)=>{this.handleKeywords(event)}} />
+                                <ReactTags tags={tags}
+                    
+                    inputFieldPosition="top"
+                    suggestions={suggestions}
+                    handleDelete={this.handleDelete}
+                    handleAddition={this.handleAddition}
+                    handleDrag={this.handleDrag}
+                    delimiters={delimiters}
+                    placeholder="Keywords" 
+                    allowDragDrop={false}
+                    
+                    />
                 </Col>
                 <Col sm={12}  style={{marginBottom: "2%"}}>
                                 <Form.Label><Translate id="categories"></Translate></Form.Label>

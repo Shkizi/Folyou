@@ -42,12 +42,8 @@ class ProposalsAreaView extends React.Component {
             filters:[],
                     hasMoreItems: true,
                     error:[],
-
-                    tags: [
-                    
-                ],
-                suggestions: [
-                ],
+                    tags: [],
+                suggestions: [],
                 countries:[]
         };
         this.handleDelete = this.handleDelete.bind(this);
@@ -174,7 +170,6 @@ class ProposalsAreaView extends React.Component {
       for (var index in countryJson) {
           countries.push({name:countryJson[index],value:index,photo:getImageLanguage(index.toLowerCase())});
       }
-      console.log(countries);
       return (
           <>
             <Row style={{margin: 0}}>

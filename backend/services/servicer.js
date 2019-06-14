@@ -24,6 +24,7 @@ module.exports.getProposalById = require("./Proposal/getProposalById.js");
 module.exports.getTalentById = require("./Talent/getTalentById.js");
 module.exports.getTalentByIdRecent = require("./Talent/getTalentByIdRecent.js");
 module.exports.getTalentByIdUser = require("./Talent/getTalentByIdUser.js");
+module.exports.postCreateTalent = require("./Talent/postCreateTalent.js");
 
 module.exports.getCategories = require("./Category/getCategories.js");
 module.exports.getKeywords = require("./Keyword/getKeywords.js");

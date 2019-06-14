@@ -1,18 +1,20 @@
+
+
+
 var db = require('../dbconnect.js');
 
 
 
-function postCreateProposal(req, res, next) {
+function postCreateTalent(req, res, next) {
     let params = req.body;
-    let query1 ="CALL createProposal(?,?,?,?,?,?);"
-    console.log(params, "This is the Create Proposal");
-   
+    let query1 ="call createTalentArea(?,?,1,?,?)"
+    console.log(params, "This is the Create Talent");
+    
     db.query(query1,[
-        params.idUser,
-        params.country.toLowerCase(),
-        params.region,
-        params.nameProposal,
-        params.proposalDescription,
+        
+        params.talentName,
+        params.talentDescription,
+        params.idUser,        
         params.category
     ], function (rows, error) {
         if (error) {
@@ -26,7 +28,7 @@ function postCreateProposal(req, res, next) {
         } else {
             console.log(rows);
             let idProposal=rows[0][0].insId;
-            let query2 = "INSERT INTO `folyou`.`keyword`(`idKeyword`,`valueProposalKeywords`,`Proposal_idProposal`,`Sheet_idSheet`,`TalentArea_idTalentArea`)VALUES(NULL,?,?,NULL,NULL);"
+            let query2 = "INSERT INTO `folyou`.`keyword`(`idKeyword`,`valueProposalKeywords`,`Proposal_idProposal`,`Sheet_idSheet`,`TalentArea_idTalentArea`)VALUES(NULL,?,NULL,NULL,?);"
             let arrayList = []
             for(let i = 0 ; i<params.keywords.split(",").length; i++){
                 arrayList.push(params.keywords.split(",")[i]);
@@ -53,4 +55,4 @@ function postCreateProposal(req, res, next) {
     });
    
 }
-module.exports = postCreateProposal; 
+module.exports = postCreateTalent; 
