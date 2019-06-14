@@ -130,7 +130,7 @@ class ProposalsAreaView extends React.Component {
     
     componentDidMount() {
         
-        S.getter(`getProposalById`, { }, (res) => {  
+        S.getter(`getProposalById`, {keywords: [], country:"" }, (res) => {  
                const portfolios = res.data.proposalList;
                 console.log(res);
                  this.setState({ proposals: portfolios });
