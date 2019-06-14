@@ -194,7 +194,7 @@ class TalentSpaceView extends React.Component {
                  
                  { this.state.talents.map((talent, i) => {
                       return (  
-                      <CardTalent data={talent} parent={this}/>
+                      <CardTalent data={talent} parent={this} app={this.props.app}/>
                       );
                   })}                  
                 

@@ -17,7 +17,11 @@ function handleMessage(event,props) {
   parent.handleModalShow("messageModal",data.idTalentArea);
   
 }
-
+function diferentPersonMessage(props){
+  return(
+    <Button variant="link" onClick={(event)=>{handleMessage(event,props)}} className="C-Talent-Footer-Mailbox" ><MdMailOutline/></Button>
+  );
+}
 function CreateTalent(props) {
   var data= props.data;
    var parent = props.parent;
@@ -43,7 +47,8 @@ function CreateTalent(props) {
     </Card.Body>
     <Card.Footer className="C-Talent-Footer">
       <div className="C-Talent-Footer-Risingstar">{data.valueCategory}</div>
-      <Button variant="link" onClick={(event)=>{handleMessage(event,props)}} className="C-Talent-Footer-Mailbox"><MdMailOutline/></Button>
+      {(props.app.state.userLogged.idUser==data.idUser)?<></>:diferentPersonMessage(props)}
+      
     </Card.Footer>
    
    </Card>
