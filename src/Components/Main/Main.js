@@ -17,6 +17,11 @@ import CreateProposal from '../Pages/CreateView/CreateProposal/CreateProposal';
 import CreateProject from '../Pages/CreateView/CreateProject/CreateProject';
 import CreateTalent from '../Pages/CreateView/CreateTalent/CreateTalent';
 import Rankings from '../Pages/RankingsView/Rankings';
+import EditProject from '../Pages/EditView/EditProject/EditProject'
+import EditProposal from '../Pages/EditView/EditProposal/EditProposal'
+import EditTalent from '../Pages/EditView/EditTalent/EditTalent'
+
+
 
 
 
@@ -44,7 +49,9 @@ class Main  extends Component {
             <Route exact path='/CreateProject' render ={(routeProps)=><CreateProject {...routeProps} app={this.props.app}/>}/>
             <Route exact path='/CreateTalent' render ={(routeProps)=><CreateTalent {...routeProps} app={this.props.app}/>}/>
             <Route exact path='/Rankings' render ={(routeProps)=><Rankings {...routeProps} app={this.props.app}/>}/>
-
+            <Route exact path='/EditProject' render ={(routeProps)=><EditProject {...routeProps} app={this.props.app}/>}/>
+            <Route exact path='/EditProposal' render ={(routeProps)=><EditProposal {...routeProps} app={this.props.app}/>}/>
+            <Route exact path='/EditTalent' render ={(routeProps)=><EditTalent {...routeProps} app={this.props.app}/>}/>
 
           </Switch>
         

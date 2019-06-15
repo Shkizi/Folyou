@@ -84,7 +84,7 @@ class CardsModalPortfolio extends React.Component {
                     <div className="Modal-Portfolio-Username">{data.nameUser}</div>
                     </Row>
                   </Link>
-                  <Link variant="primary" to={"/SheetUpdate/"+data.idSheet}>
+                  <Link variant="primary" to={"/EditProject/"+data.idSheet}>
                     <Button className="Modal-Portfolio-Config"><Translate id="edit project"/></Button>
                   </Link>
                 </Row>
