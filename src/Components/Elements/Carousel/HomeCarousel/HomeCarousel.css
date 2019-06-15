@@ -23,11 +23,14 @@
     min-height:300px;
 }
 
+.HomeCarrousel-Image-Container {
+    cursor: pointer;
+}
 
 .HomeCarousel-Image {
 display: flex;
-max-height: 260px;
-min-height: 260px;
+max-height: 250px;
+min-height: 250px;
 max-width: 300px;
 min-width: 300px;
 }
@@ -41,16 +44,13 @@ min-width: 300px;
 .HomeCarrousel-Text-Project-Name {
     font-weight: bold;
     font-size: 32px;
+    margin-bottom: 1%;
 }
 
 .HomeCarrousel-Text-Project-Name:hover {
     cursor: pointer;
 }
 
-
-.HomeCarousel-Profile-Image {
-
-}
 
 .HomeCarrousel-Text-Project-Origin {
     margin-top: 2%;
@@ -61,6 +61,44 @@ min-width: 300px;
     max-width: 80%;
     text-align: justify;  
 }
+
+
+.HomeCarrousel-Username {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-flex: 1;
+    padding-left: 10px;
+    flex: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.HomeCarrousel-Username:hover {
+    color: grey;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out; 
+}
+
+.HomeCarrousel-Region {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-flex: 1;
+    padding-left: 10px;
+    flex: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
 
 @media (max-width: 991.5px) 
 {

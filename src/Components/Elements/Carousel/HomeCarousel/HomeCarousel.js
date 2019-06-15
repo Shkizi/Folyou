@@ -1,5 +1,7 @@
 import React from 'react'
 import { Carousel, Image, Col, Row,} from 'react-bootstrap';
+import {  Link } from "react-router-dom";
+
 
 import ServicesAPI from "../../../../serviceAPI";
 import getImageLanguage from "../../../../Resources/Translations/compilerLanguageImages.js"
@@ -29,11 +31,20 @@ class HomeCarousel extends React.Component {
                                     <div className="HomeCarrousel-Text-Container">
                                  
                                       <div className="HomeCarrousel-Text-Project-Name" onClick={() => {parent.handleModalShow("portfolioSheet",val.idSheet)}} >{val.nameSheet}</div>
-                                      <Image className="HomeCarousel-Profile-Image" src={S.baseURL()+"public/anexes/profiles/"+val.avatarUser} style={{height: "32px",width: "32px"}} roundedCircle/>{val.nameUser} 
+                                      <Link style={{textDecoration: "none"}}variant="link" to={"/Profile/"+val.idUser}>
+                                      <Row style={{marginLeft: "0"}}>
+                                      <Image className="HomeCarousel-Profile-Image" src={S.baseURL()+"public/anexes/profiles/"+val.avatarUser} style={{height: "32px",width: "32px"}} roundedCircle/>
+                                      <div className="HomeCarrousel-Username">{val.nameUser}</div> 
+                                      </Row>
+                                      </Link>
+
                                       
                                       <div className="HomeCarrousel-Text-Project-Origin">
-                                      <Image src={getImageLanguage(val.countrySheet)} style={{height: "32px",width: "32px"}} roundedCircle/>{val.regionSheet} 
-                                        </div>
+                                      <Row style={{marginLeft: "0"}}>
+                                      <Image src={getImageLanguage(val.countrySheet)} style={{height: "32px",width: "32px"}} roundedCircle/>
+                                      <div className="HomeCarrousel-Region">{val.regionSheet}</div> 
+                                      </Row>                                      
+                                      </div>
                                       <div className="HomeCarrousel-Text-Project-Description">
                                       {val.descriptionSheet.substring(0,200)+((val.descriptionSheet.length > 200)?"...":"")}
                                       </div>
@@ -43,9 +54,6 @@ class HomeCarousel extends React.Component {
                               </div>
                               
               </Carousel.Item>  
-            
-            
-            
             )} )}
         </Carousel>
         )}
