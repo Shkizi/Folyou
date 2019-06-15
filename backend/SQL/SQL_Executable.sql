@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `folyou`.`Sheet` (
   `descriptionSheet` VARCHAR(2000) NULL,
   `createdTimestamp` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   `wasProposalCreated` TINYINT NULL DEFAULT 0,
-  `defaultImageSheet` VARCHAR(100) NULL,
+  `defaultImageSheet` VARCHAR(256) NULL,
   `Category_idCategory` INT NOT NULL,
   `countrySheet` VARCHAR(5) NULL,
   `regionSheet` VARCHAR(100) NULL,
@@ -149,7 +149,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `folyou`.`TalentArea` ;
 
 CREATE TABLE IF NOT EXISTS `folyou`.`TalentArea` (
-  `idTalentArea` INT NOT NULL,
+  `idTalentArea` INT NOT NULL AUTO_INCREMENT,
   `nameTalentArea` VARCHAR(50) NULL,
   `descriptionTalentArea` TEXT NULL,
   `isVisible` TINYINT NULL,
@@ -674,7 +674,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `folyou`.`Recomendation` ;
 
 CREATE TABLE IF NOT EXISTS `folyou`.`Recomendation` (
-  `idRecomendation` INT NOT NULL,
+  `idRecomendation` INT NOT NULL AUTO_INCREMENT,
   `User_idUser` INT NOT NULL,
   `User_idUser1` INT NOT NULL,
   PRIMARY KEY (`idRecomendation`, `User_idUser`, `User_idUser1`),
@@ -772,7 +772,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `folyou`.`Message` ;
 
 CREATE TABLE IF NOT EXISTS `folyou`.`Message` (
-  `idMessage` INT NOT NULL,
+  `idMessage` INT NOT NULL AUTO_INCREMENT,
   `viewed` TINYINT NULL,
   `valueText` TEXT NOT NULL,
   `User_idUser` INT NOT NULL,
@@ -860,6 +860,84 @@ INSERT INTO `folyou`.`portfolio`(`idPortfolio`,`Sheet_idSheet`,`User_idUser`,`is
 VALUES(NULL,INSERTEDIDSHEET,IDUSER,1,0);
 
 SELECT INSERTEDIDSHEET AS 'insId' FROM DUAL;
+
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure createUpdateRecomendation
+-- -----------------------------------------------------
+
+USE `folyou`;
+DROP procedure IF EXISTS `folyou`.`createUpdateRecomendation`;
+
+DELIMITER $$
+USE `folyou`$$
+CREATE PROCEDURE `createUpdateRecomendation` (IN User_idUserp INT(11),IN User_idUserp1 INT(11))
+BEGIN
+DECLARE cur INT(11) DEFAULT -1;
+
+SELECT idRecomendation into cur from Recomendation WHERE User_idUser = User_idUserp AND User_idUser1 = User_idUserp1;
+
+	IF cur < 0 THEN
+		INSERT INTO `folyou`.`recomendation`(`idRecomendation`,`User_idUser`,`User_idUser1`)VALUES(NULL,User_idUserp,User_idUserp1);
+	END IF;
+
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure deleteRecomendation
+-- -----------------------------------------------------
+
+USE `folyou`;
+DROP procedure IF EXISTS `folyou`.`deleteRecomendation`;
+
+DELIMITER $$
+USE `folyou`$$
+CREATE PROCEDURE `deleteRecomendation` (IN User_idUserp INT(11),IN User_idUserp1 INT(11))
+BEGIN
+DECLARE cur INT(11) DEFAULT -1;
+
+SELECT idRecomendation into cur from Recomendation WHERE User_idUser = User_idUserp AND User_idUser1 = User_idUserp1;
+IF cur > 0 THEN
+DELETE FROM `folyou`.`recomendation` WHERE idRecomendation = cur;		
+END IF;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure createTalentArea
+-- -----------------------------------------------------
+
+USE `folyou`;
+DROP procedure IF EXISTS `folyou`.`createTalentArea`;
+
+DELIMITER $$
+USE `folyou`$$
+CREATE PROCEDURE `createTalentArea` (IN namen varchar(50),
+IN descrip text,IN isV tinyint(4),IN idU int(11),IN IdC int(11))
+BEGIN
+INSERT INTO `folyou`.`talentarea`
+(`idTalentArea`,
+`nameTalentArea`,
+`descriptionTalentArea`,
+`isVisible`,
+`User_idUser`,
+`Category_idCategory`,
+`timestamp`)
+VALUES
+(NULL,
+namen,
+descrip,
+isV,
+idU,
+IdC,
+now());
+SELECT LAST_INSERT_ID() AS 'insId' FROM DUAL;
 
 END$$
 
