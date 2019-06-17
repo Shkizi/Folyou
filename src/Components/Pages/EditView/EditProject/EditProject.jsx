@@ -119,8 +119,8 @@ class EditProject extends React.Component {
     data.append('idSheet',  this.props.match.params.id||null)
     
     console.log(data);
-        S.postter(`postEditSheet`, data, (res) => {  
-            this.props.app.state.notificationModule.notify("CREATION SUCCESS","br",2,2);
+        S.postter(`postUpdateSheet`, data, (res) => {  
+            this.props.app.state.notificationModule.notify("UPDATE SUCCESS","br",2,2);
             
     
         },
@@ -138,8 +138,8 @@ componentDidMount(){
             this.setState({ categories: categories });
             S.getter(`getPortfolioById`, { idSheet: this.props.match.params.id
             }, (res) => {  
-            const sheet = res.data;
-            this.setState({ keywords: sheet.keywords.split(",")});
+            const sheet = res;
+            this.setState({ keywords: sheet.keywords});
             this.setState({ position: sheet.nameSheet});
             this.setState({ category: sheet.Category_idCategory});
             this.setState({ sheetDescription: sheet.descriptionSheet});

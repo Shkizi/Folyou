@@ -49,9 +49,9 @@ class Main  extends Component {
             <Route exact path='/CreateProject' render ={(routeProps)=><CreateProject {...routeProps} app={this.props.app}/>}/>
             <Route exact path='/CreateTalent' render ={(routeProps)=><CreateTalent {...routeProps} app={this.props.app}/>}/>
             <Route exact path='/Rankings' render ={(routeProps)=><Rankings {...routeProps} app={this.props.app}/>}/>
-            <Route exact path='/EditProject' render ={(routeProps)=><EditProject {...routeProps} app={this.props.app}/>}/>
-            <Route exact path='/EditProposal' render ={(routeProps)=><EditProposal {...routeProps} app={this.props.app}/>}/>
-            <Route exact path='/EditTalent' render ={(routeProps)=><EditTalent {...routeProps} app={this.props.app}/>}/>
+            <Route exact path='/EditProject/:id' render ={(routeProps)=><EditProject {...routeProps} app={this.props.app}/>}/>
+            <Route exact path='/EditProposal/:id' render ={(routeProps)=><EditProposal {...routeProps} app={this.props.app}/>}/>
+            <Route exact path='/EditTalent/:id' render ={(routeProps)=><EditTalent {...routeProps} app={this.props.app}/>}/>
 
           </Switch>
         
