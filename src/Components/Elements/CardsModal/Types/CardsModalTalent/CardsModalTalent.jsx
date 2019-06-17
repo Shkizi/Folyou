@@ -59,9 +59,12 @@ class CardsModalTalent extends React.Component {
                   <div className="Modal-Talent-Username">{data.nameUser}</div>
                   </Row>
                 </Link>
+                {(this.props.app.state.userLogged.idUser==data.idUser)?
                 <Link variant="primary" to={"/TalentAreaUpdate/"+data.idTalentArea}>
                   <Button className="Modal-Talent-Config"><Translate id="edit project"/></Button>
                 </Link>
+                  :
+                  <></>}
             </Row>
             </Modal.Header>
             <Modal.Body  style={{padding: 0}}>

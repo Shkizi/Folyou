@@ -65,9 +65,12 @@ class CardsModalProposal extends React.Component {
                     <div className="Modal-Proposal-Username">{data.nameUser}</div>
                   </Row>
                 </Link>
+                {(this.props.app.state.userLogged.idUser==data.idUser)?
                 <Link variant="primary" to={"/ProposalUpdate/"+data.idProposal}>
                     <Button className="Modal-Proposal-Config"><Translate id="edit project"/></Button>
                 </Link>
+                  :
+                  <></>}
             </Row>
             </Modal.Header>
             <Modal.Body  style={{padding: 0}}>
