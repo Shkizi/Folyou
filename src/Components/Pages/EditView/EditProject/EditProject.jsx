@@ -78,11 +78,12 @@ class EditProject extends React.Component {
         this.setState({
          tags: tags.filter((tag, index) => index !== i),
         });
-        console.log(this.state.tags);
+        
        
     }
 
     handleAddition(tag) {
+        console.log(tag);
         this.setState(state => ({ tags: [...state.tags, tag] }));
       
     }
@@ -134,12 +135,14 @@ componentDidMount(){
         S.getter(`getCategories`, {
             }, (res) => {  
             const categories = res.data.categories;
-            console.log(res.data.categories);
+         
             this.setState({ categories: categories });
             S.getter(`getPortfolioById`, { idSheet: this.props.match.params.id
             }, (res) => {  
-            const sheet = res;
-            this.setState({ keywords: sheet.keywords});
+            const sheet = res.data.portfolioList[0];
+            console.log("RES: getPortfolioById: ", sheet);
+           sheet.keywords.forEach((value)=> {this.handleAddition({id:value,text:value})});
+            
             this.setState({ position: sheet.nameSheet});
             this.setState({ category: sheet.Category_idCategory});
             this.setState({ sheetDescription: sheet.descriptionSheet});
@@ -215,7 +218,7 @@ componentDidMount(){
                                 <Form.Control type="text" value={this.state.region} onChange={(event)=>{this.handleRegion(event)}} />
                 </Col>
                 <Col sm={6}>        
-                                <Image src={S.baseURL()+"/public/anexes/sheet/"+this.state.imageLoadedName}></Image>
+                                <Image src={S.baseURL()+"public/anexes/sheets/"+this.state.imageLoadedName}></Image>
 
                 </Col>
                 </Row>
