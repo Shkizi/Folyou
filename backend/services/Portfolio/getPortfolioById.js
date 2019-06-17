@@ -9,18 +9,26 @@ var crypto = require('crypto');
 function getPortfolioById(req, res, next) {
     let params = req.query;
     let arr=[];
-if(!params.hasOwnProperty("country")){
-    params["country"]="";
-}
-if(params.country!=""){
-    arr.push(params.country);
-}
+    if(!params.hasOwnProperty("idSheet")){
+        params["idSheet"]="";
+    }
+    if(!params.hasOwnProperty("country")){
+        params["country"]="";
+    }
+    if(params.country!=""){
+        arr.push(params.country);
+    }
+    if(params.idSheet!=""){
+        arr.push(parseInt(params.idSheet));
+    }
+
 if(params.keywords!=null){
     
 }
     db.query("SELECT * FROM `Sheet`,`Portfolio`, `Category`, `User`,(SELECT filename as `avatarUser`, User_idUser from Anexes) as avatar   WHERE `Category`.`idCategory` =`Sheet`.`Category_idCategory`"+
     " AND `User`.`idUser` = avatar.User_idUser AND `User`.`idUser` = `Portfolio`.`User_idUser` "+
     "AND `Sheet`.`idSheet` = `Portfolio`.`Sheet_idSheet` "+ ((params.country!="")?" AND countrySheet LIKE ? ":"")+
+    ((params.idSheet!="")?" AND idSheet = ? ":"")+
     "ORDER BY `Sheet`.`createdTimestamp`",arr, function (rows, error) {
         if (!error) {
             console.log(rows);

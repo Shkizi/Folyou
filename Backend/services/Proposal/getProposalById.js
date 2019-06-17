@@ -9,11 +9,17 @@ var crypto = require('crypto');
 function getProposalById(req, res, next) {
     let params = req.query;
     let arr=[];
+if(!params.hasOwnProperty("idProposal")){
+    params["idProposal"]="";
+}
 if(!params.hasOwnProperty("country")){
     params["country"]="";
 }
 if(params.country!=""){
     arr.push(params.country);
+}
+if(params.idProposal!=""){
+    arr.push(parseInt(params.idProposal));
 }
 if(params.keywords!=null){
     
@@ -25,6 +31,7 @@ if(params.keywords!=null){
     " WHERE `Category`.`idCategory` =`Proposal`.`Category_idCategory`"+
     " AND `User`.`idUser` = `Proposal`.`User_idUser` AND `User`.`idUser` = avatar.User_idUser "+
     "AND  keywords.Proposal_idProposal = idProposal "+ ((params.country!="")?" AND countryProposal LIKE ? ":"")+
+    ((params.idProposal!="")?" AND idProposal = ? ":"")+
     "ORDER BY `Proposal`.`createdTimestamp`;",arr, function (rows, error) {
         if (!error) {
             console.log(rows);

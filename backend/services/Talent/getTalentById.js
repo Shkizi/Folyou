@@ -7,12 +7,18 @@ var db = require('../dbconnect.js');
 function getTalentById(req, res, next) {
     let params = req.query;
     let arr=[];
-if(!params.hasOwnProperty("country")){
-    params["country"]="";
-}
-if(params.country!=""){
-    arr.push(params.country);
-}
+    if(!params.hasOwnProperty("idTalentArea")){
+        params["idTalentArea"]="";
+    }
+    if(!params.hasOwnProperty("country")){
+        params["country"]="";
+    }
+    if(params.country!=""){
+        arr.push(params.country);
+    }
+    if(params.idTalentArea!=""){
+        arr.push(parseInt(params.idTalentArea));
+    }
 if(params.keywords!=null){
     
 }
@@ -23,6 +29,7 @@ if(params.keywords!=null){
     "  WHERE `Category`.`idCategory` =`TalentArea`.`Category_idCategory`"+
     " AND `User`.`idUser` = `TalentArea`.`User_idUser` AND `User`.`idUser` = avatar.User_idUser "+
     "AND  keywords.TalentArea_idTalentArea = idTalentArea "+  ((params.country!="")?" AND countryUser LIKE ? ":"")+
+    ((params.idTalentArea!="")?" AND idTalentArea = ? ":"")+
     "ORDER BY `TalentArea`.`timestamp` ; ",arr , function (rows, error) {
         console.log(params);
         if (!error) {
