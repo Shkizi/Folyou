@@ -66,7 +66,7 @@ class CardsModalProposal extends React.Component {
                   </Row>
                 </Link>
                 {(this.props.app.state.userLogged.idUser==data.idUser)?
-                <Link variant="primary" to={"/ProposalUpdate/"+data.idProposal}>
+                <Link variant="primary" to={"/EditProposal/"+data.idProposal}>
                     <Button className="Modal-Proposal-Config"><Translate id="edit project"/></Button>
                 </Link>
                   :

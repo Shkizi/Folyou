@@ -105,8 +105,8 @@ class EditProposal extends React.Component {
         data.append(key, item[key]);
      }
     console.log(data);
-        S.postter(`postCreateProposal`, data, (res) => {  
-            this.props.app.state.notificationModule.notify("CREATION SUCCESS","br",2,2);
+        S.postter(`postUpdateProposal`, data, (res) => {  
+            this.props.app.state.notificationModule.notify("UPDATE SUCCESS","br",2,2);
             
     
         },
@@ -117,12 +117,31 @@ class EditProposal extends React.Component {
     }
 componentDidMount(){
    // categories 
+   console.log("RES: STARTED MOUNTING");
         S.getter(`getCategories`, {
             }, (res) => {  
             const categories = res.data.categories;
             console.log(res.data.categories);
             this.setState({ categories: categories });
-            this.setState({service:true});
+            S.getter(`getProposalById`, { idProposal: this.props.match.params.id
+            }, (res) => {  
+            const proposal = res.data.proposalList[0];
+            console.log("RES: getProposalById: ", proposal);
+            proposal.keywords.forEach((value)=> {this.handleAddition({id:value,text:value})});
+            
+            this.setState({ position: proposal.nameProposal});
+            this.setState({ category: proposal.Category_idCategory});
+            this.setState({ proposalDescription: proposal.descriptionProposal});
+            this.setState({ country: proposal.countryProposal.toUpperCase()});
+          
+            this.setState({ region: proposal.regionProposal});
+           this.setState({ service:true});
+        },
+        (error) => { 
+            console.log("Error: Sheet", error);
+            this.setState({ error: {message:error,error:true} });
+            
+        });
         },
         (error) => { 
             console.log("Error: categories", error);
