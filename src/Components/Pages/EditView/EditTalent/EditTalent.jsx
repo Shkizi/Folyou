@@ -83,14 +83,15 @@ class EditTalent extends React.Component {
             keywords:kwy,
             talentDescription:this.state.talentDescription,
             talentName:this.state.talentName,
-        idUser: this.props.app.state.userLogged.idUser||null
+        idUser: this.props.app.state.userLogged.idUser||null,
+        idTalentArea:this.props.match.params.id
     }
     for ( var key in item ) {
         data.append(key, item[key]);
      }
     console.log(data);
-        S.postter(`postCreateTalent`, data, (res) => {  
-            this.props.app.state.notificationModule.notify("CREATION SUCCESS","br",2,2);
+        S.postter(`postUpdateTalent`, data, (res) => {  
+            this.props.app.state.notificationModule.notify("UPDATE SUCCESS","br",2,2);
             
     
         },
@@ -106,7 +107,23 @@ componentDidMount(){
             const categories = res.data.categories;
             console.log(res.data.categories);
             this.setState({ categories: categories });
-            this.setState({service:true});
+            S.getter(`getTalentById`, { idTalentArea: this.props.match.params.id
+            }, (res) => {  
+            const talent = res.data.talentList[0];
+            console.log("RES: getTalentById: ", talent);
+            talent.keywords.forEach((value)=> {this.handleAddition({id:value,text:value})});
+            this.setState({ talentName: talent.nameTalentArea});
+            this.setState({ category: talent.Category_idCategory});
+            this.setState({ talentDescription: talent.descriptionTalentArea});
+            
+            
+           this.setState({ service:true});
+        },
+        (error) => { 
+            console.log("Error: Sheet", error);
+            this.setState({ error: {message:error,error:true} });
+            
+        });
         },
         (error) => { 
             console.log("Error: categories", error);
