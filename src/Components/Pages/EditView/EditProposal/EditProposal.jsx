@@ -99,7 +99,8 @@ class EditProposal extends React.Component {
             region:this.state.region,
             country:this.state.country,
             nameProposal:this.state.position,
-        idUser: this.props.app.state.userLogged.idUser||null
+        idUser: this.props.app.state.userLogged.idUser||null,
+        idProposal:this.props.match.params.id
     }
     for ( var key in item ) {
         data.append(key, item[key]);
@@ -128,12 +129,10 @@ componentDidMount(){
             const proposal = res.data.proposalList[0];
             console.log("RES: getProposalById: ", proposal);
             proposal.keywords.forEach((value)=> {this.handleAddition({id:value,text:value})});
-            
             this.setState({ position: proposal.nameProposal});
             this.setState({ category: proposal.Category_idCategory});
             this.setState({ proposalDescription: proposal.descriptionProposal});
             this.setState({ country: proposal.countryProposal.toUpperCase()});
-          
             this.setState({ region: proposal.regionProposal});
            this.setState({ service:true});
         },

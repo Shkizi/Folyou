@@ -21,6 +21,7 @@ module.exports.getTrendingProposal = require("./Proposal/getTrendingProposal.js"
 module.exports.postCreateProposal = require("./Proposal/postCreateProposal.js");
 module.exports.getProposalById = require("./Proposal/getProposalById.js");
 
+
 module.exports.getTalentById = require("./Talent/getTalentById.js");
 module.exports.getTalentByIdRecent = require("./Talent/getTalentByIdRecent.js");
 module.exports.getTalentByIdUser = require("./Talent/getTalentByIdUser.js");
@@ -33,7 +34,7 @@ module.exports.postApplication = require("./Application/postApplication.js");
 module.exports.postUpdateSheet = require("./Portfolio/postUpdateSheet.js");
 module.exports.postCreateSheet = require("./Portfolio/postCreateSheet.js");
 module.exports.postRecomend = require("./Recommend/postRecomend.js");
-
+module.exports.postUpdateProposal = require("./Proposal/postUpdateProposal.js");
 
 module.exports.getRecomendNumberByIdUser = require("./Recommend/getRecomendNumberByIdUser.js");
 module.exports.getRecomendBoolFromIds = require("./Recommend/getRecomendBoolFromIds.js");

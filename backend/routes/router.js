@@ -45,6 +45,7 @@ function router(app,express,uploadsheet,uploadproposal,uploaduser,multer) {
     app.post("/postApplication", uploadsheet.none(),(req, res,next) => {  servicer.postApplication(req,res,next)});
     app.post("/postCreateTalent", uploadsheet.none(),(req, res,next) => {  servicer.postCreateTalent(req,res,next)});
     app.post("/postUpdateSheet", uploadsheet.none(),(req, res,next) => {  servicer.postUpdateSheet(req,res,next)});
+    app.post("/postUpdateProposal", uploadsheet.none(),(req, res,next) => {  servicer.postUpdateProposal(req,res,next)});
     
    
 }
