@@ -215,11 +215,7 @@ componentDidMount(){
                                 <Form.Control type="text" value={this.state.region} onChange={(event)=>{this.handleRegion(event)}} />
                 </Col>
                 <Col sm={6}>        
-                                <div class="fileUpload btn btn-primary">
-                                    <span>Upload</span>
-                                    <input id="uploadBtn" type="file" class="upload"  onChange={(event)=>{this.handleImageLoadedName(event)}}   />
-                                </div>
-                                <input id="uploadFile"  disabled="disabled" value={this.state.imageLoadedName} />
+                                <Image src={S.baseURL()+"/public/anexes/sheet/"+this.state.imageLoadedName}></Image>
 
                 </Col>
                 </Row>
