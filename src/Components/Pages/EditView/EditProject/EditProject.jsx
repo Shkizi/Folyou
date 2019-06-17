@@ -116,9 +116,10 @@ class EditProject extends React.Component {
     data.append('file', this.state.imageLoaded)
     data.append('imageName', this.state.imageLoadedName )
     data.append('idUser',  this.props.app.state.userLogged.idUser||null)
+    data.append('idSheet',  this.props.match.params.id||null)
     
     console.log(data);
-        S.postter(`postCreateSheet`, data, (res) => {  
+        S.postter(`postEditSheet`, data, (res) => {  
             this.props.app.state.notificationModule.notify("CREATION SUCCESS","br",2,2);
             
     
@@ -135,12 +136,29 @@ componentDidMount(){
             const categories = res.data.categories;
             console.log(res.data.categories);
             this.setState({ categories: categories });
-            this.setState({service:true});
+            S.getter(`getPortfolioById`, { idSheet: this.props.match.params.id
+            }, (res) => {  
+            const sheet = res.data;
+            this.setState({ keywords: sheet.keywords.split(",")});
+            this.setState({ position: sheet.nameSheet});
+            this.setState({ category: sheet.Category_idCategory});
+            this.setState({ sheetDescription: sheet.descriptionSheet});
+            this.setState({ country: sheet.countrySheet.toUpperCase()});
+            this.setState({ imageLoadedName:sheet.defaultImageSheet});
+            this.setState({ region: sheet.regionSheet});
+            this.setState({ service:true});
+        },
+        (error) => { 
+            console.log("Error: Sheet", error);
+            this.setState({ error: {message:error,error:true} });
+        });
+            
         },
         (error) => { 
             console.log("Error: categories", error);
             this.setState({ error: {message:error,error:true} });
         });
+       
 }
     render() {
         return((this.state.service==true)?this.page():this.empty());
