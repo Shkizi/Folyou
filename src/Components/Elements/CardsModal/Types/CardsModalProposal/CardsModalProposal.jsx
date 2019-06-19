@@ -5,7 +5,8 @@ import { Translate } from "react-localize-redux";
 import './CardsModalProposal.css';
 import getImageLanguage from "../../../../../Resources/Translations/compilerLanguageImages.js"
 import { isNull } from 'util';
-import { FiFileText, FiMail } from "react-icons/fi";
+import {  FiMail } from "react-icons/fi";
+import { FaFileContract } from "react-icons/fa";
 import { TiHeart } from "react-icons/ti";
 import { TiHeartOutline } from "react-icons/ti";
 
@@ -104,7 +105,7 @@ class CardsModalProposal extends React.Component {
               {(this.props.app.state.userLogged.idUser!=data.idUser  && this.props.app.state.userLogged.set!=false)?
               <Row>  <Col>
                   <Link to={"/ApplicationRegister/"+data.idProposal}>
-                   <Button className={"Modal-Proposal-Button"}><FiFileText/> <Translate id="apply"></Translate></Button>
+                   <Button className={"Modal-Proposal-Button"}><FaFileContract/> <Translate id="apply"></Translate></Button>
                   </Link>
                 </Col>
                 <Col>
