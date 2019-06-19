@@ -382,17 +382,22 @@ console.log("Error: Recommended", error);
                             <Col m={6} style={{textAlign: "center", paddingRight:5}}>
                             <Button onClick={()=>{this.setState({pageContent:'Projects'})}} className="Profile-Button-Categories">
                             <Translate id="projects"></Translate>
+                            {(this.props.match.params.id==this.props.app.state.userLogged.idUser && this.props.app.state.userLogged.set!=false)?
                             <Link to={"/CreateProject/"}>
                             <FiFilePlus className="Profile-Create-Sign"/>
                             </Link>
+                            :<></>}
                             </Button>
                             </Col>
                             <Col m={6} style={{textAlign: "center", paddingLeft: 5, paddingRight: 5}}>
                             <Button onClick={()=>{this.setState({pageContent:'Proposals'})}} className="Profile-Button-Categories">
                             <Translate id="proposals"></Translate>
+                            {(this.props.match.params.id==this.props.app.state.userLogged.idUser && this.props.app.state.userLogged.set!=false)?
+                          
                             <Link to={"/CreateProposal/"}>
                             <FiFilePlus className="Profile-Create-Sign"/>
                             </Link>
+                            :<></>}
                             </Button>
                             </Col>
                         </Row>
@@ -411,9 +416,12 @@ console.log("Error: Recommended", error);
                             <Col m={6} style={{textAlign: "center", paddingLeft: 5, paddingRight: 5}}>
                             <Button onClick={()=>{this.setState({pageContent:'Talents'})}} className="Profile-Button-Categories">
                             <Translate id="talents"></Translate>
-                            <Link to={"/CreateTalent/"}>
+                            
+                            {(this.props.match.params.id==this.props.app.state.userLogged.idUser && this.props.app.state.userLogged.set!=false)?
+                          <Link to={"/CreateTalent/"}>
                             <FiFilePlus className="Profile-Create-Sign"/>
                             </Link>
+                              :<></>}
                             </Button>
                             </Col>
                             <Col m={6} style={{textAlign: "center", paddingLeft: 5}}>
