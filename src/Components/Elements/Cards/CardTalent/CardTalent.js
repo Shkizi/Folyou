@@ -47,7 +47,7 @@ function CreateTalent(props) {
     </Card.Body>
     <Card.Footer className="C-Talent-Footer">
       <div className="C-Talent-Footer-Risingstar">{data.valueCategory}</div>
-      {(props.app.state.userLogged.idUser==data.idUser)?<></>:diferentPersonMessage(props)}
+      {(props.app.state.userLogged.idUser==data.idUser || props.app.state.userLogged.set==false)?<></>:diferentPersonMessage(props)}
       
     </Card.Footer>
    
