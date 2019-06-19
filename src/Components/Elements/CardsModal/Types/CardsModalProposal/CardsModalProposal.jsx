@@ -100,28 +100,26 @@ class CardsModalProposal extends React.Component {
 
             </Modal.Body>
             <Modal.Footer>
-              <Row>
-                <Col>
+              
+              {(this.props.app.state.userLogged.idUser!=data.idUser  && this.props.app.state.userLogged.set!=false)?
+              <Row>  <Col>
                   <Link to={"/ApplicationRegister/"+data.idProposal}>
                    <Button className={"Modal-Proposal-Button"}><FiFileText/> <Translate id="apply"></Translate></Button>
                   </Link>
                 </Col>
                 <Col>
-                {(this.props.app.state.userLogged.idUser!=data.idUser  && this.props.app.state.userLogged.set!=false)?this.sendMessage(data):<></>}
+                   <Button className={"Modal-Proposal-Button-Message"} onClick={(event)=>{handleMessage(event,this,data)}} ><FiMail/> <Translate id="send a message"></Translate></Button>           
                    
                 </Col>
-              </Row>
+                </Row>
+                :<></>}
+              
             </Modal.Footer>
             </Modal>
         );
       }else{
       return(<></>);
     } 
-    }
-    sendMessage(data){
-      return(
-      <Button className={"Modal-Proposal-Button-Message"} onClick={(event)=>{handleMessage(event,this,data)}} ><FiMail/> <Translate id="send a message"></Translate></Button>
-      );
     }
 }
 function handleMessage(event,card,data) {
