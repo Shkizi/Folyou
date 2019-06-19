@@ -9,7 +9,7 @@ import CardsModalProposal from '../../Elements/CardsModal/Types/CardsModalPropos
 import CardsModalTalent from '../../Elements/CardsModal/Types/CardsModalTalent/CardsModalTalent';
 import CardsModalPortfolio from '../../Elements/CardsModal/Types/CardsModalPorfolio/CardsModalPortfolio.jsx'
 import MessageModal from '../../Elements/CardsModal/Types/MessageModal/MessageModal'
-
+import { GitHub,  Facebook, StackOverflow, LinkedIn, Instagram, Youtube,  Twitch, Twitter } from 'react-profiles';
 import { FiFilePlus } from "react-icons/fi";
 import ReactTooltip from 'react-tooltip'
 import './Profile.css'
@@ -360,8 +360,16 @@ console.log("Error: Recommended", error);
                                 {"" + this.state.user.descriptionUser}
                                 </Card.Text>
                                 { (this.state.recomendedUser == true)?this.pageImageBadges(): <div></div>}
-                                {(this.props.match.params.id!=this.props.app.state.userLogged.idUser)?this.diferentProfile():this.empty()}
-                                
+                                {(this.props.match.params.id!=this.props.app.state.userLogged.idUser && this.props.app.state.userLogged.set!=false)?this.diferentProfile():this.empty()}
+                                <Instagram link="https://www.instagram.com/nateshmbhat/" />
+                                <Facebook link="" newPage={false} />
+                                <Youtube link="" />
+                                <Twitch link="" />
+                                <Twitter link="" />    
+                                <GitHub username="nateshmbhat" />
+                                <StackOverflow userid="6665568" tooltip="custom tooltip" />
+                                <LinkedIn username="nateshmbhat" organization="Google" role="Developer" />
+                                                            
                             </Col>
                         </Row>
                     </Card.Body>

@@ -65,7 +65,7 @@ class CardsModalProposal extends React.Component {
                     <div className="Modal-Proposal-Username">{data.nameUser}</div>
                   </Row>
                 </Link>
-                {(this.props.app.state.userLogged.idUser==data.idUser)?
+                {(this.props.app.state.userLogged.idUser==data.idUser  && this.props.app.state.userLogged.set!=false)?
                 <Link variant="primary" to={"/EditProposal/"+data.idProposal}>
                     <Button className="Modal-Proposal-Config"><Translate id="edit project"/></Button>
                 </Link>
@@ -107,7 +107,7 @@ class CardsModalProposal extends React.Component {
                   </Link>
                 </Col>
                 <Col>
-                {(this.props.app.state.userLogged.idUser!=data.idUser)?this.sendMessage(data):<></>}
+                {(this.props.app.state.userLogged.idUser!=data.idUser  && this.props.app.state.userLogged.set!=false)?this.sendMessage(data):<></>}
                    
                 </Col>
               </Row>

@@ -85,7 +85,7 @@ class CardsModalPortfolio extends React.Component {
                     </Row>
                   </Link>
                  
-                  {(this.props.app.state.userLogged.idUser==data.idUser)?
+                  {(this.props.app.state.userLogged.idUser==data.idUser  && this.props.app.state.userLogged.set!=false)?
                   <Link variant="primary" to={"/EditProject/"+data.idSheet}>
                     <Button className="Modal-Portfolio-Config"><Translate id="edit project"/></Button>
                   </Link>
@@ -134,7 +134,7 @@ class CardsModalPortfolio extends React.Component {
               <Row>
                
                 <Col>
-                {(this.props.app.state.userLogged.idUser!=data.idUser)?this.sendMessage(data):<></>}
+                {(this.props.app.state.userLogged.idUser!=data.idUser  && this.props.app.state.userLogged.set!=false)?this.sendMessage(data):<></>}
                    
                 </Col>
               </Row>

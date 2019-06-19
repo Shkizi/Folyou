@@ -59,7 +59,7 @@ class CardsModalTalent extends React.Component {
                   <div className="Modal-Talent-Username">{data.nameUser}</div>
                   </Row>
                 </Link>
-                {(this.props.app.state.userLogged.idUser==data.idUser)?
+                {(this.props.app.state.userLogged.idUser==data.idUser  && this.props.app.state.userLogged.set!=false)?
                 <Link variant="primary" to={"/EditTalent/"+data.idTalentArea}>
                   <Button className="Modal-Talent-Config"><Translate id="edit project"/></Button>
                 </Link>
@@ -98,7 +98,7 @@ class CardsModalTalent extends React.Component {
               <Row>
                
                 <Col>
-                {(this.props.app.state.userLogged.idUser!=data.idUser)?this.sendMessage(data):<></>}
+                {(this.props.app.state.userLogged.idUser!=data.idUser  && this.props.app.state.userLogged.set!=false)?this.sendMessage(data):<></>}
                    
                 </Col>
               </Row>
