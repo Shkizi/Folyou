@@ -20,8 +20,6 @@ function postUploadImageUser(req, res, next, upload, multer) {
             });
             next();
         }
-
-
     });
 }
 module.exports = postUploadImageUser;

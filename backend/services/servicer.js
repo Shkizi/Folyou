@@ -15,7 +15,9 @@ module.exports.getPortfolioById = require("./Portfolio/getPortfolioById.js");
 module.exports.getPortfolioByIdRecent = require("./Portfolio/getPortfolioByIdRecent.js");
 module.exports.getPortfolioByIdUser = require("./Portfolio/getPortfolioByIdUser.js");
 module.exports.getTrendingPortfolio = require("./Portfolio/getTrendingPortfolio.js");
+module.exports.postUploadSheetFiles = require("./Portfolio/postUploadSheetFiles.js");
 
+module.exports.postUploadProposalFiles = require("./Proposal/postUploadProposalFiles.js");
 module.exports.getProposalByApplicationIdUser = require("./Proposal/getProposalByApplicationIdUser.js");
 
 module.exports.getProposalByIdRecent = require("./Proposal/getProposalByIdRecent.js");

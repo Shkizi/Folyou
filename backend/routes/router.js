@@ -50,6 +50,10 @@ function router(app,express,uploadsheet,uploadproposal,uploaduser,multer) {
 
     app.post("/postUpdateUser",uploadsheet.none(), (req,res,next)=>{servicer.postUpdateUser(req,res,next)});
     app.post("/postCreateUser",uploadsheet.none(), (req,res,next)=>{servicer.postCreateUser(req,res,next)});
-   app.post("/postUploadImageUser",uploaduser.single('file'),(req, res,next) => {  servicer.postUploadImageUser(req,res,next,uploaduser,multer)});
+    app.post("/postUploadImageUser",uploaduser.single('file'),(req, res,next) => {  servicer.postUploadImageUser(req,res,next,uploaduser,multer)});
+
+    app.post("/postUploadSheetFiles",uploadsheet.array('file'),(req, res,next) => {  servicer.postUploadSheetFiles(req,res,next,uploadsheet,multer)});
+    app.post("/postUploadProposalFiles",uploadproposal.array('file'),(req, res,next) => {  servicer.postUploadProposalFiles(req,res,next,uploadproposal,multer)});
+
 }
 module.exports.router = router;
