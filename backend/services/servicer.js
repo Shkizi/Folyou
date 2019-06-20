@@ -4,6 +4,7 @@ module.exports.getUsers = require("./User/getUsers.js");
 
 module.exports.postUpdateUser = require("./User/postUpdateUser.js");
 module.exports.postCreateUser = require("./User/postCreateUser.js");
+module.exports.postUploadImageUser = require("./User/postUploadImageUser.js");
 
 module.exports.getUserLogin = require("./User/getUserLogin.js");
 module.exports.getUserBySession = require("./User/getUserBySession.js");
