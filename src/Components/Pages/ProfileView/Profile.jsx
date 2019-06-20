@@ -361,14 +361,14 @@ console.log("Error: Recommended", error);
                                 </Card.Text>
                                 { (this.state.recomendedUser == true)?this.pageImageBadges(): <div></div>}
                                 {(this.props.match.params.id!=this.props.app.state.userLogged.idUser && this.props.app.state.userLogged.set!=false)?this.diferentProfile():this.empty()}
-                                <Instagram link="https://www.instagram.com/nateshmbhat/" />
-                                <Facebook link="" newPage={false} />
-                                <Youtube link="" />
-                                <Twitch link="" />
-                                <Twitter link="" />    
-                                <GitHub username="nateshmbhat" />
-                                <StackOverflow userid="6665568" tooltip="custom tooltip" />
-                                <LinkedIn username="nateshmbhat" organization="Google" role="Developer" />
+                                <Instagram link={this.state.user.idProfileInstagram} />
+                                <Facebook link={this.state.user.idProfileFacebook} />
+                                <Youtube link={this.state.user.idProfileYoutube} />
+                                <Twitch link={this.state.user.idProfileTwitch} />
+                                <Twitter link={this.state.user.idProfileTwitter} />    
+                                <GitHub username={this.state.user.idProfileGithub} />
+                                <StackOverflow userid={this.state.user.idProfileStackOverflow} />
+                                <LinkedIn username={this.state.user.idProfileLinkedIn} organization={this.state.user.linkedInOrganization} role={this.state.user.linkedInRole} />
                                                             
                             </Col>
                         </Row>

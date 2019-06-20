@@ -9,7 +9,7 @@ var crypto = require('crypto');
 function getUserById(req, res,next) {
     let params=req.query;
    
-    db.query("SELECT * FROM `User`, `Anexes` WHERE `idUser` = ? AND `User`.`idUser`= `Anexes`.`User_idUser` ; ", [params.idUser], function (rows, error) {
+    db.query("SELECT * FROM `User`, `Anexes`,`UserMedia` WHERE `idUser` = ? AND `User`.`idUser`= `Anexes`.`User_idUser` and `UserMedia`.User_idUser = User.idUser ; ", [params.idUser], function (rows, error) {
           
             if(error){
                 res.send({error: true, err: error});

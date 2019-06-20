@@ -792,6 +792,32 @@ CREATE TABLE IF NOT EXISTS `folyou`.`Message` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `folyou`.`UserMedia`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `folyou`.`UserMedia` ;
+
+CREATE TABLE IF NOT EXISTS `folyou`.`UserMedia` (
+  `User_idUser` INT NOT NULL,
+  `idProfileGithub` VARCHAR(500) NULL,
+  `idProfileStackOverflow` VARCHAR(500) NULL,
+  `idProfileLinkedIn` VARCHAR(500) NULL,
+  `idProfileYoutube` VARCHAR(500) NULL,
+  `idProfileFacebook` VARCHAR(500) NULL,
+  `idProfileTwitter` VARCHAR(500) NULL,
+  `idProfileInstagram` VARCHAR(500) NULL,
+  `idProfileTwitch` VARCHAR(500) NULL,
+  `linkedInOrganization` VARCHAR(256) NULL,
+  `linkedInRole` VARCHAR(256) NULL,
+  PRIMARY KEY (`User_idUser`),
+  CONSTRAINT `fk_MediaProfiles_User1`
+    FOREIGN KEY (`User_idUser`)
+    REFERENCES `folyou`.`User` (`idUser`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 USE `folyou` ;
 
 -- -----------------------------------------------------
@@ -939,6 +965,28 @@ IdC,
 now());
 SELECT LAST_INSERT_ID() AS 'insId' FROM DUAL;
 
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure createUser
+-- -----------------------------------------------------
+
+USE `folyou`;
+DROP procedure IF EXISTS `folyou`.`createUser`;
+
+DELIMITER $$
+USE `folyou`$$
+CREATE PROCEDURE `createUser` ( in nameUser varchar(50),in emailUser varchar(100) ,in passwordUser varchar(256), in countryUser varchar(20) ,in regionUser varchar(100) ,in languageUser varchar(5) ,in descriptionUser varchar(500))
+BEGIN
+DECLARE insId INT DEFAULT 0;
+INSERT INTO `folyou`.`user` (`idUser`, `nameUser`, `emailUser`, `passwordUser`, `isAdmin`, `countryUser`, `regionUser`, `languageUser`, `isActivated`, `createdTimestamp`,`descriptionUser`)
+VALUES (NULL,  nameUser, emailUser, passwordUser, 0, countryUser, regionUser, languageUser, 1,CURRENT_TIMESTAMP,descriptionUser);
+
+SELECT LAST_INSERT_ID() INTO insId FROM DUAL;
+INSERT INTO `folyou`.`usermedia` (`User_idUser`)VALUES(insId);
+INSERT INTO `folyou`.`anexes`(`idAnexes`,`fileName`,`Proposal_idProposal`,`Sheet_idSheet`,`User_idUser`)VALUES(NULL,"",NULL,NULL,insId);
 END$$
 
 DELIMITER ;
@@ -1145,6 +1193,8 @@ COMMIT;
 START TRANSACTION;
 USE `folyou`;
 INSERT INTO `folyou`.`Badge` (`idBadge`, `valueBadge`, `descriptionBadge`) VALUES (1, 'FirstLogin', 'You have entered the site for the first time!');
+INSERT INTO `folyou`.`Badge` (`idBadge`, `valueBadge`, `descriptionBadge`) VALUES (2, 'Github Coder', 'You have submitted your Github Profile to this platform for the world to see, happy coding ;)');
+INSERT INTO `folyou`.`Badge` (`idBadge`, `valueBadge`, `descriptionBadge`) VALUES (3, 'Programmer Jedi', 'You have submitted your Stackoverflow Profile to this platform for the world to see, may the code be with you!');
 
 COMMIT;
 
@@ -1156,6 +1206,25 @@ START TRANSACTION;
 USE `folyou`;
 INSERT INTO `folyou`.`BadgeUser` (`idBadgeUser`, `Badge_idBadge`, `User_idUser`, `timestamp`) VALUES (1, 1, 1, '2019-05-02 14:55:20');
 INSERT INTO `folyou`.`BadgeUser` (`idBadgeUser`, `Badge_idBadge`, `User_idUser`, `timestamp`) VALUES (1, 1, 2, '2019-05-02 14:55:20');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `folyou`.`UserMedia`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `folyou`;
+INSERT INTO `folyou`.`UserMedia` (`User_idUser`, `idProfileGithub`, `idProfileStackOverflow`, `idProfileLinkedIn`, `idProfileYoutube`, `idProfileFacebook`, `idProfileTwitter`, `idProfileInstagram`, `idProfileTwitch`, `linkedInOrganization`, `linkedInRole`) VALUES (1, 'nateshmbhat', '6665568', 'nateshmbhat', 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/nateshmbhat/', 'https://www.twitch.tv/', 'Google', 'Developer');
+INSERT INTO `folyou`.`UserMedia` (`User_idUser`, `idProfileGithub`, `idProfileStackOverflow`, `idProfileLinkedIn`, `idProfileYoutube`, `idProfileFacebook`, `idProfileTwitter`, `idProfileInstagram`, `idProfileTwitch`, `linkedInOrganization`, `linkedInRole`) VALUES (2, 'nateshmbhat', '6665568', 'nateshmbhat', 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/nateshmbhat/', 'https://www.twitch.tv/', 'Google', 'Developer');
+INSERT INTO `folyou`.`UserMedia` (`User_idUser`, `idProfileGithub`, `idProfileStackOverflow`, `idProfileLinkedIn`, `idProfileYoutube`, `idProfileFacebook`, `idProfileTwitter`, `idProfileInstagram`, `idProfileTwitch`, `linkedInOrganization`, `linkedInRole`) VALUES (3, 'nateshmbhat', '6665568', 'nateshmbhat', 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/nateshmbhat/', 'https://www.twitch.tv/', 'Google', 'Developer');
+INSERT INTO `folyou`.`UserMedia` (`User_idUser`, `idProfileGithub`, `idProfileStackOverflow`, `idProfileLinkedIn`, `idProfileYoutube`, `idProfileFacebook`, `idProfileTwitter`, `idProfileInstagram`, `idProfileTwitch`, `linkedInOrganization`, `linkedInRole`) VALUES (4, 'nateshmbhat', '6665568', 'nateshmbhat', 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/nateshmbhat/', 'https://www.twitch.tv/', 'Google', 'Developer');
+INSERT INTO `folyou`.`UserMedia` (`User_idUser`, `idProfileGithub`, `idProfileStackOverflow`, `idProfileLinkedIn`, `idProfileYoutube`, `idProfileFacebook`, `idProfileTwitter`, `idProfileInstagram`, `idProfileTwitch`, `linkedInOrganization`, `linkedInRole`) VALUES (5, 'nateshmbhat', '6665568', 'nateshmbhat', 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/nateshmbhat/', 'https://www.twitch.tv/', 'Google', 'Developer');
+INSERT INTO `folyou`.`UserMedia` (`User_idUser`, `idProfileGithub`, `idProfileStackOverflow`, `idProfileLinkedIn`, `idProfileYoutube`, `idProfileFacebook`, `idProfileTwitter`, `idProfileInstagram`, `idProfileTwitch`, `linkedInOrganization`, `linkedInRole`) VALUES (6, 'nateshmbhat', '6665568', 'nateshmbhat', 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/nateshmbhat/', 'https://www.twitch.tv/', 'Google', 'Developer');
+INSERT INTO `folyou`.`UserMedia` (`User_idUser`, `idProfileGithub`, `idProfileStackOverflow`, `idProfileLinkedIn`, `idProfileYoutube`, `idProfileFacebook`, `idProfileTwitter`, `idProfileInstagram`, `idProfileTwitch`, `linkedInOrganization`, `linkedInRole`) VALUES (7, 'nateshmbhat', '6665568', 'nateshmbhat', 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/nateshmbhat/', 'https://www.twitch.tv/', 'Google', 'Developer');
+INSERT INTO `folyou`.`UserMedia` (`User_idUser`, `idProfileGithub`, `idProfileStackOverflow`, `idProfileLinkedIn`, `idProfileYoutube`, `idProfileFacebook`, `idProfileTwitter`, `idProfileInstagram`, `idProfileTwitch`, `linkedInOrganization`, `linkedInRole`) VALUES (8, 'nateshmbhat', '6665568', 'nateshmbhat', 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/nateshmbhat/', 'https://www.twitch.tv/', 'Google', 'Developer');
+INSERT INTO `folyou`.`UserMedia` (`User_idUser`, `idProfileGithub`, `idProfileStackOverflow`, `idProfileLinkedIn`, `idProfileYoutube`, `idProfileFacebook`, `idProfileTwitter`, `idProfileInstagram`, `idProfileTwitch`, `linkedInOrganization`, `linkedInRole`) VALUES (9, 'nateshmbhat', '6665568', 'nateshmbhat', 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/nateshmbhat/', 'https://www.twitch.tv/', 'Google', 'Developer');
+INSERT INTO `folyou`.`UserMedia` (`User_idUser`, `idProfileGithub`, `idProfileStackOverflow`, `idProfileLinkedIn`, `idProfileYoutube`, `idProfileFacebook`, `idProfileTwitter`, `idProfileInstagram`, `idProfileTwitch`, `linkedInOrganization`, `linkedInRole`) VALUES (10, 'nateshmbhat', '6665568', 'nateshmbhat', 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/nateshmbhat/', NULL, 'Google', 'Developer');
 
 COMMIT;
 
