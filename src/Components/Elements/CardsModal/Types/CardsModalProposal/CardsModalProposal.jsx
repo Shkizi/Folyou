@@ -9,6 +9,7 @@ import {  FiMail } from "react-icons/fi";
 import { FaFileContract } from "react-icons/fa";
 import { TiHeart } from "react-icons/ti";
 import { TiHeartOutline } from "react-icons/ti";
+import { getIconForExtension } from 'font-awesome-filetypes'
 
 import ServicesAPI from "../../../../../serviceAPI";
 var S = new ServicesAPI();
@@ -95,7 +96,13 @@ class CardsModalProposal extends React.Component {
               </Card>
 
               <Card className="Modal-Proposal-Anexes">
-                  Anexos
+              <div className="Modal-Proposal-Anexes-Container">
+                    <div style={{marginBottom: "2%", fontWeight: "bold"}}><Translate id="anexes"></Translate></div>
+                    <Row style={{paddingLeft: "16px"}}>
+                    <div  dangerouslySetInnerHTML={{__html: getIconForExtension('foobar.pdf'.split('.').pop())}} />
+                    <div style={{marginLeft: "6px"}}>Anex Name</div>
+                    </Row>
+                </div>
                 </Card>
 
 

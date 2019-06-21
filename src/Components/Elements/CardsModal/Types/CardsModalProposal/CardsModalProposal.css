@@ -105,11 +105,12 @@
     margin-top: 1%;
 }
 
-.Modal-Proposal-Anexes {
+.Modal-Proposal-Anexes-Container {
     padding: 16px;
     text-align: justify;
     border-radius: 0;
 }
+
 
 .Modal-Proposal-Button{
     width:100%;
