@@ -466,7 +466,6 @@ console.log("Error: Recommended", error);
                                     <Translate id="recommended by"></Translate> {" "+this.state.recommendNumber}
                                     </Card.Text>
                                     </Col>
-
                                     </Row>
                                 </Row>
                             </Col>
@@ -597,11 +596,19 @@ console.log("Error: Recommended", error);
         }
     }
     diferentProfile(){
-        return (<><Button className="Profile-Send-Message" onClick={() => {this.handleModalShow("messageModal", this.user,true)}}><FiMail/></Button>
-                                <Button className="Profile-Recommend-User" onChange={this.state.recomendedUser} onClick={()=>{this.handleRecommendUserClick()}}>
-                                 
-                                 { (this.state.recomendedUser == false)?this.buttonRecommendUser(): this.buttonUserRecommended()}
-                                </Button></>);
+        return (<Row>
+        <Col sm={2} style={{paddingLeft: 0, paddingRight: 0, marginLeft: "20px"}}>
+        <Button className="Profile-Send-Message" onClick={() => {this.handleModalShow("messageModal", this.user,true)}}><FiMail/></Button>
+        </Col>
+        <Col sm={4} style={{paddingLeft: 0, paddingRight: 0, marginLeft: "-50px"}}>
+        <Button className="Profile-Recommend-User" onChange={this.state.recomendedUser} onClick={()=>{this.handleRecommendUserClick()}}>
+         { (this.state.recomendedUser == false)?this.buttonRecommendUser(): this.buttonUserRecommended()} </Button>
+         </Col>
+         <Col sm={2} style={{marginLeft: "-60px"}}>
+         {(this.state.recomendedUser == true)?this.pageImageBadges(): <div></div>}
+         </Col>
+
+                                </Row>);
     }
         pageContentProjects(){
             return (<>{this.state.portfolios.map(val =>{return(
