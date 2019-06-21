@@ -198,9 +198,16 @@ componentDidMount(){
                 
             <Row>
                 <Col sm={12} style={{textAlign: "center"}}>
-                        <div><b><Translate id="create project form"></Translate></b>{}</div>
+                        <div><b><Translate id="edit project"></Translate></b>{}</div>
                 </Col>
             </Row>
+
+            <Row>
+                <div className="Edit-Project-Image-Container">      
+                    <Image className="Edit-Project-Image" src={S.baseURL()+"public/anexes/sheets/"+this.state.imageLoadedName}></Image>
+                </div> 
+            </Row>
+
             <Row>
                 <Col sm={12}>
                                 <Form.Label><Translate id="project name"></Translate></Form.Label>
@@ -217,10 +224,7 @@ componentDidMount(){
                                 <Form.Label><Translate id="region"></Translate></Form.Label>
                                 <Form.Control type="text" value={this.state.region} onChange={(event)=>{this.handleRegion(event)}} />
                 </Col>
-                <Col sm={6}>        
-                                <Image src={S.baseURL()+"public/anexes/sheets/"+this.state.imageLoadedName}></Image>
-
-                </Col>
+                
                 </Row>
                 <Row>
                     <div style={{paddingLeft: "15px", paddingRight: "15px", width: "100%"}}>
