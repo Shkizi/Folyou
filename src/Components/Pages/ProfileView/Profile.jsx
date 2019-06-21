@@ -567,10 +567,6 @@ console.log("Error: Recommended", error);
                         </Col>
                     </Row>
 
-
-
-
-                        
                         {(this.state.showRender)?(
                         (this.state.pageContent=='Projects')?this.pageContentProjects():
                         ((this.state.pageContent=='Proposals')?this.pageContentProposals():
