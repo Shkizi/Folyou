@@ -25,7 +25,7 @@ function diferentPersonMessage(props){
 function CreateTalent(props) {
   var data= props.data;
    var parent = props.parent;
-   const avatUser =(data.avatarUser=="")?AvatarImage:S.baseURL()+"public/anexes/profiles/"+data.avatarUser;
+   const avatUser =(data.avatarUser=="")?AvatarImage:S.baseURL()+"public/anexes/profiles/"+((data.avatarUser!="")?data.avatarUser:"default_user_pic.jpg");
   
 
   return (

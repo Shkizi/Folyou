@@ -130,7 +130,7 @@ focusIn(elem)
       return (<>
       <Row style={{float: "right", paddingRight: "15px"}}>
         <a href={'/Profile/'+this.props.app.state.userLogged.idUser}>
-      <Image src={S.baseURL()+"public/anexes/profiles/"+this.props.app.state.userLogged.anexes.fileName } className="Logged-Home-Avatar" roundedCircle />
+      <Image src={S.baseURL()+"public/anexes/profiles/"+ ((this.props.app.state.userLogged.anexes.fileName!="")?this.props.app.state.userLogged.anexes.fileName:"default_user_pic.jpg")} className="Logged-Home-Avatar" roundedCircle />
     </a>
     <Button onClick={this.handleLogOff} className="Menu-Login" variant="link">
      <strong><Translate className="Menu-Logout-Text hidden-xs hidden-sm" id="logout"></Translate> <FaSignOutAlt/></strong>

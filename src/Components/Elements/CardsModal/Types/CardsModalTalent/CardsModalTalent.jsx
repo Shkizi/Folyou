@@ -55,7 +55,7 @@ class CardsModalTalent extends React.Component {
             <Row style={{padding: "16px"}}>
                 <Link style={{textDecoration: "none"}}variant="link" to={"/Profile/"+data.idUser}>
                   <Row style={{paddingLeft: "16px", paddingTop: "16px"}}>
-                  <Image src={(data.avatarUser=="")?"https://www.w3schools.com/howto/img_avatar.png":S.baseURL()+"public/anexes/profiles/"+data.avatarUser} className="Modal-Talent-Avatar" roundedCircle />
+                  <Image src={S.baseURL()+"public/anexes/profiles/"+((data.avatarUser!="")?data.avatarUser:"default_user_pic.jpg")} className="Modal-Talent-Avatar" roundedCircle />
                   <div className="Modal-Talent-Username">{data.nameUser}</div>
                   </Row>
                 </Link>
