@@ -186,7 +186,7 @@ class ProfileView extends React.Component {
               this.setState({showModalMessage: type=="messageModalProposal" });
               }
               this.setState({UserMessage:usermes});
-        console.log(type, id , this.state);
+        
       }
     //request example
     componentWillReceiveProps(nextProps){
