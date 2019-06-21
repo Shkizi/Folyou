@@ -83,7 +83,15 @@
     "send me a message": "Envie-me uma mensagem",
     "send": "Enviar",
     "message origin": "Origem da mensagem",
-    "message": "Mensagem"
+    "message": "Mensagem",
+    "atual password": "Password atual",
+    "new password": "Nova password",
+    "repeat password": "Repita a nova password",
+    "change password": "Mudar a password",
+    "profile settings": "Configurações do perfil",
+    "change name": "Nome"
+
+
 
 
 

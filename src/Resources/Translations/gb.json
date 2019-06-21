@@ -81,7 +81,15 @@
     "send me a message": "Send me a message",
     "send": "Send",
     "message origin": "Message origin",
-    "message": "Message"
+    "message": "Message",
+    "atual password": "Atual password",
+    "new password": "New password",
+    "repeat password": "Repeat the new password",
+    "change password": "Change password",
+    "profile settings": "Profile settings",
+    "change name": "Name"
+
+
 
 
 

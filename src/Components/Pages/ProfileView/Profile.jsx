@@ -2,7 +2,7 @@ import React from 'react'
 import CardProposal from '../../../Components/Elements/Cards/CardProposal/CardProposal'
 import CardPortfolio from '../../Elements/Cards/CardPortfolio/CardPortfolio'
 import CardTalent from '../../Elements/Cards/CardTalent/CardTalent'
-import { Card, Image, Row, Button, Col, Table } from 'react-bootstrap';
+import { Card, Image, Row, Button, Col, Table, Form } from 'react-bootstrap';
 import { withLocalize, Translate } from "react-localize-redux";
 import getImageLanguage from "../../../Resources/Translations/compilerLanguageImages.js"
 import CardsModalProposal from '../../Elements/CardsModal/Types/CardsModalProposal/CardsModalProposal';
@@ -49,6 +49,10 @@ class ProfileView extends React.Component {
         portTrending:[],
         propTrending:[],
         dashboardTable:[],
+        atualPassword: "",
+        newPassword: "",
+        changeUsername: "",
+        repeatNewPassword: "",
         showModalPortfolio: false,
         showModalTalent: false,
         showModalProposal: false,
@@ -67,8 +71,33 @@ class ProfileView extends React.Component {
     this.pageContentProposals= this.pageContentProposals.bind(this);
     this.pageContentTalents= this.pageContentTalents.bind(this);
     this.pageContentSettings= this.pageContentSettings.bind(this);
+
+    this.handleChangeUsername = this.handleChangeUsername.bind(this);
+
+    this.handleAtualPassword = this.handleAtualPassword.bind(this);
+    this.handleNewPassword = this.handleNewPassword.bind(this);
+    this.handleRepeatNewPassword = this.handleRepeatNewPassword.bind(this);
+    
+
     
   }
+      
+
+      handleChangeUsername (event) {
+        this.setState({ changeUsername: event.target.value});
+      }
+      handleAtualPassword(event) {
+        this.setState({ atualPassword: event.target.value});
+      }  
+
+      handleNewPassword(event) {
+        this.setState({ newPassword: event.target.value});
+      }
+
+      handleRepeatNewPassword (event) {
+        this.setState({ repeatNewPassword: event.target.value});
+      }
+  
       handleModalClose() {
         this.setState({showModalPortfolio: false});
         this.setState({showModalTalent: false});
@@ -443,7 +472,6 @@ console.log("Error: Recommended", error);
 
 
 
-                    <Row>
                         
                         {(this.state.showRender)?(
                         (this.state.pageContent=='Projects')?this.pageContentProjects():
@@ -458,7 +486,6 @@ console.log("Error: Recommended", error);
 
                         
 
-                    </Row>
                     <CardsModalPortfolio parent={this} closer={this.handleModalClose} app={this.props.app}/>
                     <CardsModalProposal parent={this} closer={this.handleModalClose} app={this.props.app}/>
                     <CardsModalTalent parent={this} closer={this.handleModalClose} app={this.props.app}/>
@@ -495,6 +522,8 @@ console.log("Error: Recommended", error);
               );})}</>
             )
         }
+
+  
         pageContentDashboard(){
             
             return (<>
@@ -548,7 +577,45 @@ console.log("Error: Recommended", error);
 
       pageContentSettings(){
             
-        return (<></>
+        return (<>
+
+
+            <div>
+                <Col sm={12} style={{fontWeight: "bold", textAlign: "center"}} >
+                                <Form.Label><Translate id="profile settings"></Translate></Form.Label>
+                </Col>
+                <Col sm={3} className="Profile-Content-Settings-Col">
+                                <Form.Label><Translate id="change name"></Translate></Form.Label>
+                                <Form.Control type="text" value={this.state.changeUsername} onChange={(event)=>{this.handleChangeUsername(event)}} />
+                </Col>
+                <Col sm={3} className="Profile-Content-Settings-Col" >
+                                <Form.Label><Translate id="new password"></Translate></Form.Label>
+                                <Form.Control type="text" value={this.state.newPassword} onChange={(event)=>{this.handleNewPassword(event)}} />
+                </Col>
+                <Col sm={3} className="Profile-Content-Settings-Col">
+                                <Form.Label><Translate id="repeat password"></Translate></Form.Label>
+                                <Form.Control type="text" value={this.state.repeatNewPassword} onChange={(event)=>{this.handleRepeatNewPassword(event)}} />
+                </Col>
+            </div>
+            
+            <div>
+                <Col sm={12} style={{fontWeight: "bold", textAlign: "center"}} >
+                                <Form.Label><Translate id="change password"></Translate></Form.Label>
+                </Col>
+                <Col sm={3} className="Profile-Content-Settings-Col">
+                                <Form.Label><Translate id="atual password"></Translate></Form.Label>
+                                <Form.Control type="password" value={this.state.atualPassword} onChange={(event)=>{this.handleAtualPassword(event)}} />
+                </Col>
+                <Col sm={3} className="Profile-Content-Settings-Col" >
+                                <Form.Label><Translate id="new password"></Translate></Form.Label>
+                                <Form.Control type="password" value={this.state.newPassword} onChange={(event)=>{this.handleNewPassword(event)}} />
+                </Col>
+                <Col sm={3} className="Profile-Content-Settings-Col">
+                                <Form.Label><Translate id="repeat password"></Translate></Form.Label>
+                                <Form.Control type="password" value={this.state.repeatNewPassword} onChange={(event)=>{this.handleRepeatNewPassword(event)}} />
+                </Col>
+            </div>
+          </>
       )
   }
     }

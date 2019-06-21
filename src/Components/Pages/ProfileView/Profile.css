@@ -141,3 +141,9 @@
     outline: none;
     box-shadow: none;
 }
+
+.Profile-Content-Settings-Col {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
