@@ -30,6 +30,8 @@ class CreateProposal extends React.Component {
             country: "",
             region: "",
             proposalDescription:"",
+            anex: null,
+            anexName: "",
             keywords: [],
             category: [],
             categories:[],
@@ -47,7 +49,15 @@ class CreateProposal extends React.Component {
     this.handleKeywords = this.handleKeywords.bind(this);
     this.handleCategory = this.handleCategory.bind(this);
     this.handleSubmitProposal = this.handleSubmitProposal.bind(this);
+    this.handleAnex = this.handleAnex.bind(this);
     }
+
+    
+    handleAnex(event) {
+        this.setState({ anex: event.target.files[0]})
+        this.setState({ anexName: event.target.files[0].name})
+    }
+
 
     handlePosition(event) {
         this.setState({ position: event.target.value});
@@ -212,6 +222,17 @@ componentDidMount(){
                                 
                 </Col>
             </Row>
+
+            <Row>
+                <Col sm={12}>        
+                                <div class="fileUpload btn ">
+                                    <span><Translate id="anexes"></Translate></span>
+                                    <input id="uploadBtn" type="file" class="upload"  onChange={(event)=>{this.handleAnex(event)}} multiple />
+                                </div>
+                                <input id="uploadFile"  disabled="disabled" value={this.state.anexName} />
+
+                </Col>
+                </Row>
 
             </Container>
 

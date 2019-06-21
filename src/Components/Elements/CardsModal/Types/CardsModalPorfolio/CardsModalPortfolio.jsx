@@ -6,6 +6,8 @@ import {  Link } from "react-router-dom";
 import getImageLanguage from "../../../../../Resources/Translations/compilerLanguageImages.js"
 import { IoIosHeart } from "react-icons/io";
 import { IoIosHeartEmpty } from "react-icons/io";
+import { getIconForExtension } from 'font-awesome-filetypes'
+
 
 import { FiFileText, FiMail } from "react-icons/fi";
 import { isNull } from 'util';
@@ -49,6 +51,10 @@ class CardsModalPortfolio extends React.Component {
   }
   
   render() {
+
+  
+   
+
     if( this.props.parent.state.showModalPortfolio){
       let data = {};
       
@@ -121,9 +127,12 @@ class CardsModalPortfolio extends React.Component {
               </Card>
 
               <Card>
-                
-              <div className="Modal-Portfolio-Anexes">
-                  Anexos
+                <div className="Modal-Portfolio-Anexes-Container">
+                    <div style={{marginBottom: "2%", fontWeight: "bold"}}><Translate id="anexes"></Translate></div>
+                    <Row style={{paddingLeft: "16px"}}>
+                    <div className="Modal-Portfolio-Anexes" dangerouslySetInnerHTML={{__html: getIconForExtension('foobar.pdf'.split('.').pop())}} />
+                    <div style={{marginLeft: "6px"}}>Anex Name</div>
+                    </Row>
                 </div>
               </Card>
 

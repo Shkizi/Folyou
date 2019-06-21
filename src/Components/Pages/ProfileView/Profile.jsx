@@ -517,11 +517,11 @@ console.log("Error: Recommended", error);
             <>
                 <Card className="Profile-Header-Card">
                     <Card.Body style={{paddingTop: "15px"}}>
-                        <Row>
-                            <Col xs={2} s={2} m={2} l={2} xl={2}>
+                        <Row style={{position: "relative"}}>
+                            <Col xs={12} sm={12} md={12} lg={12} xl={2} className="Profile-Card-Column" >
                                 <Image src={S.baseURL()+"public/anexes/profiles/"+((this.state.user.anexes.fileName!="")?this.state.user.anexes.fileName:"default_user_pic.jpg")} className="Profile-Avatar"  />
                             </Col>
-                            <Col xs={2} s={2} m={2} l={2} xl={2}>
+                            <Col xs={12} sm={12} md={12} lg={12} xl={3} className="Profile-Card-Column">
                                 <Row>
                                 <Card.Text className="C-Portfolio-Username"><b>{this.state.user.nameUser}</b></Card.Text>
                                 </Row>
@@ -540,7 +540,7 @@ console.log("Error: Recommended", error);
                                     </Row>
                                 </Row>
                             </Col>
-                            <Col xs={8} s={8} m={8} l={8} xl={8}>
+                            <Col xs={12} sm={12} md={12} lg={12} xl={7} className="Profile-Card-Column">
                                 <Card.Text className="Profile-Header-Text">
                                 {"" + this.state.user.descriptionUser}
                                 </Card.Text>
@@ -667,11 +667,11 @@ console.log("Error: Recommended", error);
         <Col sm={2} style={{paddingLeft: 0, paddingRight: 0, marginLeft: "20px"}}>
         <Button className="Profile-Send-Message" onClick={() => {this.handleModalShow("messageModal", this.user,true)}}><FiMail/></Button>
         </Col>
-        <Col sm={4} style={{paddingLeft: 0, paddingRight: 0, marginLeft: "-50px"}}>
+        <Col sm={4} style={{paddingLeft: 0, paddingRight: 0, marginLeft: "-30px"}}>
         <Button className="Profile-Recommend-User" onChange={this.state.recomendedUser} onClick={()=>{this.handleRecommendUserClick()}}>
          { (this.state.recomendedUser == false)?this.buttonRecommendUser(): this.buttonUserRecommended()} </Button>
          </Col>
-         <Col sm={2} style={{marginLeft: "-60px"}}>
+         <Col sm={2} style={{marginLeft: "-30px"}}>
          {(this.state.recomendedUser == true)?this.pageImageBadges(): <div></div>}
          </Col>
 
