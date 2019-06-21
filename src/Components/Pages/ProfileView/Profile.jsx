@@ -558,10 +558,10 @@ console.log("Error: Recommended", error);
                                 </Row>
                                   {/*Big ones */}
                                 <Row>
-                                    <Col sm={4} style={{marginTop: "1%"}}>
+                                    <Col sm={5} style={{marginTop: "1%"}}>
                                         {(this.state.user.idProfileGithub!="" && this.state.user.idProfileGithub !=null)?<GitHub username={this.state.user.idProfileGithub} />:<></>}
                                     </Col>
-                                    <Col sm={8} style={{marginTop: "1%"}}>
+                                    <Col sm={7} style={{marginTop: "1%", marginLeft: "-30px"}}>
                                     {(this.state.user.idProfileLinkedIn!="" && this.state.user.idProfileLinkedIn !=null)?
                                         <LinkedIn username={this.state.user.idProfileLinkedIn} 
                                             organization={(this.state.user.linkedInOrganization!=null && this.state.user.linkedInOrganization!="")?this.state.user.linkedInOrganization:undefined}
