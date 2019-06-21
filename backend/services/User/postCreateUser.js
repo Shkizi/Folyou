@@ -4,7 +4,7 @@ var db = require('../dbconnect.js');
 
 function postCreateUser(req, res, next) {
     let params = req.body;
-    let query1 = "call createUser (?,?,?,?,?,?,?);"
+    let query1 = "call createUser (?,?,?,?,?,'pt',?);"
     console.log(params, "This is the Create User");
 
     db.query(query1, [
@@ -13,7 +13,6 @@ function postCreateUser(req, res, next) {
         params.passwordUser,
         params.countryUser,
         params.regionUser,
-        params.languageUser,
         params.descriptionUser
     ], function (rows, error) {
         if (error) {
@@ -25,14 +24,11 @@ function postCreateUser(req, res, next) {
             });
             next();
         } else {
-
             res.send({
                 error: false
             });
             next();
-
         }
-
     });
 
 }
