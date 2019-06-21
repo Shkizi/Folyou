@@ -361,14 +361,14 @@ console.log("Error: Recommended", error);
                                 </Card.Text>
                                 { (this.state.recomendedUser == true)?this.pageImageBadges(): <div></div>}
                                 {(this.props.match.params.id!=this.props.app.state.userLogged.idUser && this.props.app.state.userLogged.set!=false)?this.diferentProfile():this.empty()}
-                                {(this.state.user.idProfileInstagram!="")?<Instagram link={this.state.user.idProfileInstagram} />:<></>}
-                                {(this.state.user.idProfileFacebook!="")?<Facebook link={this.state.user.idProfileFacebook} />:<></>}
-                                {(this.state.user.idProfileYoutube!="")?<Youtube link={this.state.user.idProfileYoutube} />:<></>}
-                                {(this.state.user.idProfileTwitch!="")?<Twitch link={this.state.user.idProfileTwitch} />:<></>}
-                                {(this.state.user.idProfileTwitter!="")?<Twitter link={this.state.user.idProfileTwitter} />    :<></>}
-                                {(this.state.user.idProfileGithub!="")?<GitHub username={this.state.user.idProfileGithub} />:<></>}
-                                {(this.state.user.idProfileStackOverflow!="")?<StackOverflow userid={this.state.user.idProfileStackOverflow} />:<></>}
-                                {(this.state.user.idProfileLinkedIn!="")?<LinkedIn username={this.state.user.idProfileLinkedIn} organization={this.state.user.linkedInOrganization} role={this.state.user.linkedInRole} />:<></>}
+                                {(this.state.user.idProfileInstagram!="" && this.state.user.idProfileInstagram !=null)?<Instagram link={this.state.user.idProfileInstagram} />:<></>}
+                                {(this.state.user.idProfileFacebook!="" && this.state.user.idProfileFacebook !=null)?<Facebook link={this.state.user.idProfileFacebook} />:<></>}
+                                {(this.state.user.idProfileYoutube!="" && this.state.user.idProfileYoutube !=null)?<Youtube link={this.state.user.idProfileYoutube} />:<></>}
+                                {(this.state.user.idProfileTwitch!="" && this.state.user.idProfileTwitch !=null)?<Twitch link={this.state.user.idProfileTwitch} />:<></>}
+                                {(this.state.user.idProfileTwitter!="" && this.state.user.idProfileTwitter !=null)?<Twitter link={this.state.user.idProfileTwitter} />    :<></>}
+                                {(this.state.user.idProfileGithub!="" && this.state.user.idProfileGithub !=null)?<GitHub username={this.state.user.idProfileGithub} />:<></>}
+                                {(this.state.user.idProfileStackOverflow!="" && this.state.user.idProfileStackOverflow !=null)?<StackOverflow userid={this.state.user.idProfileStackOverflow} />:<></>}
+                                {(this.state.user.idProfileLinkedIn!="" && this.state.user.idProfileLinkedIn !=null)?<LinkedIn username={this.state.user.idProfileLinkedIn} organization={this.state.user.linkedInOrganization} role={this.state.user.linkedInRole} />:<></>}
                                                             
                             </Col>
                         </Row>
