@@ -1,4 +1,5 @@
 import React from 'react'
+import { withCookies } from 'react-cookie';
 import { Modal, Button, Row, Form, Col, Image  } from 'react-bootstrap';
 import './Register.css'
 import logo from '../../../../Resources/Images/Logo_black_white.png'
@@ -51,6 +52,7 @@ class Register extends React.Component {
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
     this.handleRegion = this.handleRegion.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 this.handleDescription = this.handleDescription.bind(this);
   }
   handleCountry(event) {
@@ -78,12 +80,13 @@ handleRepeatNewPassword (event) {
   this.setState({ repeatNewPassword: event.target.value});
 }
 handleSubmit(event){
+  const { cookies } = this.props;
   event.preventDefault();
   
   let data = new FormData();
   const item ={ nameUser:this.state.changeUsername,
     emailUser:this.state.email,
-    passwordUser:this.newPassword,
+    passwordUser:this.state.newPassword,
     countryUser:this.state.country,
     regionUser:this.state.region,
     descriptionUser:this.state.description}
@@ -194,15 +197,12 @@ for ( var key in item ) {
                                 <Form.Label><Translate id="password"></Translate></Form.Label>
                                 <Form.Control type="password" value={this.state.newPassword} onChange={(event)=>{this.handleNewPassword(event)}} />
                 </Col>
-                <Col sm={12} className="Profile-Content-Settings-Col">
-                                <Form.Label><Translate id="repeat password"></Translate></Form.Label>
-                                <Form.Control type="password" value={this.state.repeatNewPassword} onChange={(event)=>{this.handleRepeatNewPassword(event)}} />
-                </Col>
+               
             </div>
             
           </>
       
-              <Row> <Button  className="Register-Button-Create">CREATE YOUR ACCOUNT</Button></Row>
+              <Row> <button  className="Register-Button-Create">CREATE YOUR ACCOUNT</button></Row>
               </form>
             </Modal.Body>
             </Modal>
@@ -210,4 +210,4 @@ for ( var key in item ) {
     }
   }
   
-export default Register
+export default withCookies(Register)
