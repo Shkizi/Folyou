@@ -76,6 +76,7 @@ class ProfileView extends React.Component {
         idModal: null,
         recommendBadge: Recommended,
         recomendedUser: false,
+        
     };
     this.handleModalClose = this.handleModalClose.bind(this);
     this.handleModalShow = this.handleModalShow.bind(this);
@@ -295,6 +296,19 @@ class ProfileView extends React.Component {
                         console.log(res);
                         console.log(user);
                         this.setState({ user:user });
+                        this.setState({ changeUsername:user.nameUser });
+                        this.setState({description :user.descriptionUser });
+                        this.setState({ region:user.regionUser });
+                        this.setState({ country:user.countryUser.toUpperCase() });
+                        this.setState({ facebook:user.idProfileFacebook });
+                        this.setState({ github:user.idProfileGithub });
+                        this.setState({ instagram:user.idProfileInstagram });
+                        this.setState({ linkedin:user.idProfileLinkedIn });
+                        this.setState({ twitch:user.idProfileTwitch });
+                        this.setState({ twitter:user.idProfileTwitter });
+                        this.setState({ stackoverflow:user.idProfileStackOverflow });
+                        this.setState({ youtube :user.idProfileYoutube });
+                        
                                         S.serviceAPI().get(`getProposalByApplicationIdUser`, 
                                         { params: {
                                                 idUser: this.props.match.params.id
@@ -776,3 +790,4 @@ console.log("Error: Recommended", error);
     }
 
 export default withLocalize(ProfileView);
+
