@@ -54,8 +54,13 @@ class CreateProposal extends React.Component {
 
     
     handleAnex(event) {
-        this.setState({ anex: event.target.files[0]})
-        this.setState({ anexName: event.target.files[0].name})
+        this.setState({ anex: event.target.files})
+        let name=""
+        for (let index = 0; index < event.target.files.length; index++) {
+            name=name.concat(((index!=0)?" ; ":"")+event.target.files[index].name)
+            
+        }
+        this.setState({ anexName: name})
     }
 
 
@@ -116,7 +121,21 @@ class CreateProposal extends React.Component {
      }
     console.log(data);
         S.postter(`postCreateProposal`, data, (res) => {  
-            this.props.app.state.notificationModule.notify("CREATION SUCCESS","br",2,2);
+            const data = new FormData() 
+            for (let index = 0; index <  this.state.anex.length; index++) {
+                data.append('file', this.state.anex[index]);
+                console.log("appending",this.state.anex[index]);
+            }
+          
+            data.append('idProposal', res.data.idProposal);
+            S.postter(`postUploadProposalFiles`, data, (res) => {  
+       
+                    this.props.app.state.notificationModule.notify("CREATION SUCCESS","br",2,2);
+            },
+            (error) => { 
+                console.log("Error: User", error);
+                this.setState({ error: {message:error,error:true} });
+            });
             
     
         },

@@ -43,7 +43,7 @@ function postCreateProposal(req, res, next) {
                     });
                     next();
                 } else {
-                    res.send({error:false});
+                    res.send({error:false, idProposal:idProposal});
                     next();
                 }
             
