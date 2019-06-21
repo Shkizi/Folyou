@@ -72,7 +72,7 @@ class Home extends React.Component {
         }else {
           this.setState({showModalMessage: type=="messageModalProposal" });
           }
-    console.log(type, id , this.state);
+    
   }
 
   componentDidMount() {

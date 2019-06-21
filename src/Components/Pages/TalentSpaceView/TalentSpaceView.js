@@ -89,7 +89,7 @@ class TalentSpaceView extends React.Component {
           }else {
             this.setState({showModalMessage: type=="messageModalProposal" });
             }
-      console.log(type, id , this.state);
+      
     }
     handleDelete(i) {
         const { tags } = this.state;
@@ -209,7 +209,7 @@ class TalentSpaceView extends React.Component {
             </Row>
             <MessageModal app={this.props.app} parent={this} closer={this.handleModalClose}/>
           
-    <CardsModalTalent parent={this} closer={this.handleModalClose}/>
+    <CardsModalTalent app={this.props.app} parent={this} closer={this.handleModalClose}/>
          </>     
 );} }
 
