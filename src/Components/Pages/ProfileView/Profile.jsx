@@ -445,7 +445,7 @@ console.log("Error: Recommended", error);
         return (
             <>
                 <Card className="Profile-Header-Card">
-                    <Card.Body style={{paddingTop: "5px"}}>
+                    <Card.Body style={{paddingTop: "15px"}}>
                         <Row>
                             <Col xs={2} s={2} m={2} l={2} xl={2}>
                                 <Image src={S.baseURL()+"public/anexes/profiles/"+this.state.user.anexes.fileName} className="Profile-Avatar"  />
@@ -460,35 +460,53 @@ console.log("Error: Recommended", error);
                                 {this.state.user.regionUser}
                                 </Card.Text>
                                 
-                                <Card.Text className="Profile-Statistics">
-                                <Translate id="recommended by"></Translate> {" "+this.state.recommendNumber}
-                                </Card.Text>
+                                <Row  style={{bottom: 0, position: "absolute", width: "100%"}}>
+                                    <Col sm={8}>
+                                    <Card.Text style={{left: 0}}>
+                                    <Translate id="recommended by"></Translate> {" "+this.state.recommendNumber}
+                                    </Card.Text>
+                                    </Col>
+
+                                    </Row>
                                 </Row>
                             </Col>
                             <Col xs={8} s={8} m={8} l={8} xl={8}>
                                 <Card.Text className="Profile-Header-Text">
                                 {"" + this.state.user.descriptionUser}
                                 </Card.Text>
-                                { (this.state.recomendedUser == true)?this.pageImageBadges(): <div></div>}
-                                {(this.props.match.params.id!=this.props.app.state.userLogged.idUser && this.props.app.state.userLogged.set!=false)?this.diferentProfile():this.empty()}
-                                
-                                
-                                {/*Small ones */}
-                                {(this.state.user.idProfileInstagram!="" && this.state.user.idProfileInstagram !=null)?<Instagram link={this.state.user.idProfileInstagram} />:<></>}
-                                {(this.state.user.idProfileFacebook!="" && this.state.user.idProfileFacebook !=null)?<Facebook link={this.state.user.idProfileFacebook} />:<></>}
-                                {(this.state.user.idProfileYoutube!="" && this.state.user.idProfileYoutube !=null)?<Youtube link={this.state.user.idProfileYoutube} />:<></>}
-                                {(this.state.user.idProfileTwitch!="" && this.state.user.idProfileTwitch !=null)?<Twitch link={this.state.user.idProfileTwitch} />:<></>}
-                                {(this.state.user.idProfileTwitter!="" && this.state.user.idProfileTwitter !=null)?<Twitter link={this.state.user.idProfileTwitter} />    :<></>}
+                                <Row>
+                                        <Col sm={4} style={{marginLeft: "-7.5px"}}>
+                                        {(this.state.user.idProfileInstagram!="" && this.state.user.idProfileInstagram !=null)?<Instagram link={this.state.user.idProfileInstagram} />:<></>}
+                                        {(this.state.user.idProfileFacebook!="" && this.state.user.idProfileFacebook !=null)?<Facebook link={this.state.user.idProfileFacebook} />:<></>}
+                                        {(this.state.user.idProfileYoutube!="" && this.state.user.idProfileYoutube !=null)?<Youtube link={this.state.user.idProfileYoutube} />:<></>}
+                                        {(this.state.user.idProfileTwitch!="" && this.state.user.idProfileTwitch !=null)?<Twitch link={this.state.user.idProfileTwitch} />:<></>}
+                                        {(this.state.user.idProfileTwitter!="" && this.state.user.idProfileTwitter !=null)?<Twitter link={this.state.user.idProfileTwitter} />    :<></>}
+                                        </Col>
+                                        <Col  sm={8}>
+                                            {(this.props.match.params.id!=this.props.app.state.userLogged.idUser && this.props.app.state.userLogged.set!=false)?this.diferentProfile():this.empty()}
+                                        </Col>
+                                </Row>
+                                  {/*Big ones */}
+                                <Row>
+                                    <Col sm={4} style={{marginTop: "1%"}}>
+                                        {(this.state.user.idProfileGithub!="" && this.state.user.idProfileGithub !=null)?<GitHub username={this.state.user.idProfileGithub} />:<></>}
+                                    </Col>
+                                    <Col sm={8} style={{marginTop: "1%"}}>
+                                    {(this.state.user.idProfileLinkedIn!="" && this.state.user.idProfileLinkedIn !=null)?
+                                        <LinkedIn username={this.state.user.idProfileLinkedIn} 
+                                            organization={(this.state.user.linkedInOrganization!=null && this.state.user.linkedInOrganization!="")?this.state.user.linkedInOrganization:undefined}
+                                            role={(this.state.user.linkedInRole!=null && this.state.user.linkedInRole!="")?this.state.user.linkedInRole:undefined} />
+                                        :<></>}
+                                    </Col>
+                                </Row>    
 
-                                {/*Big ones */}
-                                {(this.state.user.idProfileGithub!="" && this.state.user.idProfileGithub !=null)?<GitHub username={this.state.user.idProfileGithub} />:<></>}
+                                {/*Stack Overflow*/}
+                                <Row>
+                                <Col sm={12} style={{marginTop: "1%"}}>
                                 {(this.state.user.idProfileStackOverflow!="" && this.state.user.idProfileStackOverflow !=null)?<StackOverflow userid={this.state.user.idProfileStackOverflow} />:<></>}
-                                {(this.state.user.idProfileLinkedIn!="" && this.state.user.idProfileLinkedIn !=null)?
-                                    <LinkedIn username={this.state.user.idProfileLinkedIn} 
-                                        organization={(this.state.user.linkedInOrganization!=null && this.state.user.linkedInOrganization!="")?this.state.user.linkedInOrganization:undefined}
-                                        role={(this.state.user.linkedInRole!=null && this.state.user.linkedInRole!="")?this.state.user.linkedInRole:undefined} />
-                                    :<></>}
-                                                            
+                                </Col>
+                                </Row>
+                              
                             </Col>
                         </Row>
                     </Card.Body>
@@ -592,15 +610,16 @@ console.log("Error: Recommended", error);
             )
         }
         pageContentProposals(){
-            return (<>{this.state.proposals.map(val =>{return(
+            return (<Row>{this.state.proposals.map(val =>{return(
+                
                 <CardProposal  parent={this} data={val} app={this.props.app}/>
-              );})}</>
+              );})}</Row>
             )
         }
         pageContentTalents(){
-              return (<>{this.state.talents.map(val =>{return(
+              return (<Row>{this.state.talents.map(val =>{return(
                 <CardTalent data={val} parent={this} app={this.props.app}/>
-              );})}</>
+              );})}</Row>
             )
         }
 
