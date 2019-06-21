@@ -156,7 +156,7 @@ class ApplicationFormView extends React.Component {
                 <Row>
                     <Col sm={6}>
                         <div style={{width: "100%"}}>
-                        <Image src={S.baseURL()+"public/anexes/profiles/"+this.state.proposals[0].avatarUser} className="Application-Register-User-Avatar"/><span style={{paddingLeft: "1%"}}>{this.state.proposals[0].nameUser}</span>
+                        <Image src={S.baseURL()+"public/anexes/profiles/"+((this.state.proposals[0].avatarUser!="")?this.state.proposals[0].avatarUser:"default_user_pic.jpg")} className="Application-Register-User-Avatar"/><span style={{paddingLeft: "1%"}}>{this.state.proposals[0].nameUser}</span>
                         </div>
                     </Col>
                     <Col sm={6} >
@@ -241,7 +241,7 @@ class ApplicationFormView extends React.Component {
             console.log(this.state.users);
       
             this.state.users.forEach((value, index, array) => {
-                userlist.push({name:array[index].nameUser,value:array[index].idUser,photo:S.baseURL() + "public/anexes/profiles/"+array[index].fileName});
+                userlist.push({name:array[index].nameUser,value:array[index].idUser,photo:S.baseURL() + "public/anexes/profiles/"+((array[index].fileName!="")?array[index].fileName:"default_user_pic.jpg")});
             })  
             }
             console.log(userlist);

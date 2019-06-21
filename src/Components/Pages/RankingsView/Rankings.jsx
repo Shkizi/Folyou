@@ -105,7 +105,7 @@ class CreateProject extends React.Component {
                  <td>{i}</td>
                  <td> <Link style={{textDecoration: "none"}}variant="link" to={"/Profile/"+val.idUser}>
                   
-                      <Image src={S.baseURL()+"public/anexes/profiles/"+val.fileName} className="Modal-Portfolio-Avatar" roundedCircle />
+                      <Image src={S.baseURL()+"public/anexes/profiles/"+((val.fileName!="")?val.fileName:"default_user_pic.jpg")} className="Modal-Portfolio-Avatar" roundedCircle />
                    {val.nameUser}
                    </Link></td> 
                  <td>{val.views}</td>
@@ -135,7 +135,7 @@ class CreateProject extends React.Component {
                  <td>{i}</td>
                  <td> <Link style={{textDecoration: "none"}}variant="link" to={"/Profile/"+val.idUser}>
                   
-                      <Image src={S.baseURL()+"public/anexes/profiles/"+val.fileName} className="Modal-Portfolio-Avatar" roundedCircle />
+                      <Image src={S.baseURL()+"public/anexes/profiles/"+((val.fileName!="")?val.fileName:"default_user_pic.jpg")} className="Modal-Portfolio-Avatar" roundedCircle />
                    {val.nameUser}
                    </Link></td> 
                  <td>{val.recom}</td>
@@ -164,7 +164,7 @@ class CreateProject extends React.Component {
                  <td>{i}</td>
                  <td> <Link style={{textDecoration: "none"}}variant="link" to={"/Profile/"+val.idUser}>
                   
-                      <Image src={S.baseURL()+"public/anexes/profiles/"+val.fileName} className="Modal-Portfolio-Avatar" roundedCircle />
+                      <Image src={S.baseURL()+"public/anexes/profiles/"+((val.fileName!="")?val.fileName:"default_user_pic.jpg")} className="Modal-Portfolio-Avatar" roundedCircle />
                    {val.nameUser}
                    </Link></td> 
                  <td>{val.numBadge}</td>

@@ -33,7 +33,7 @@ class HomeCarousel extends React.Component {
                                       <div className="HomeCarrousel-Text-Project-Name" onClick={() => {parent.handleModalShow("portfolioSheet",val.idSheet)}} >{val.nameSheet}</div>
                                       <Link style={{textDecoration: "none"}}variant="link" to={"/Profile/"+val.idUser}>
                                       <Row style={{marginLeft: "0"}}>
-                                      <Image className="HomeCarousel-Profile-Image" src={S.baseURL()+"public/anexes/profiles/"+val.avatarUser} style={{height: "32px",width: "32px"}} roundedCircle/>
+                                      <Image className="HomeCarousel-Profile-Image" src={S.baseURL()+"public/anexes/profiles/"+((val.avatarUser!="")?val.avatarUser:"default_user_pic.jpg")} style={{height: "32px",width: "32px"}} roundedCircle/>
                                       <div className="HomeCarrousel-Username">{val.nameUser}</div> 
                                       </Row>
                                       </Link>

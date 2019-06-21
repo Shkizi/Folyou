@@ -13,7 +13,7 @@ function CreateProposal(props) {
    var parent = props.parent; 
    
    var app = parent.props.app;
-  const avatUser =(data.avatarUser=="")?AvatarImage:S.baseURL()+"public/anexes/profiles/"+data.avatarUser;
+  const avatUser =(data.avatarUser=="")?AvatarImage:S.baseURL()+"public/anexes/profiles/"+((data.avatarUser!="")?data.avatarUser:"default_user_pic.jpg");
    
    
   return (
