@@ -51,13 +51,23 @@ class ProfileView extends React.Component {
         portTrending:[],
         propTrending:[],
         dashboardTable:[],
+        description: "",
+        region: "",
         atualPassword: "",
         newPassword: "",
         changeUsername: "",
         repeatNewPassword: "",
         newProfileImageLoadedName: "",
+        facebook: "",
+        instagram: "",
+        twitter: "",
+        twitch: "",
+        youtube: "",
         newProfileImageLoaded: null,
         country: "",
+        linkedin: "",
+        github: "",
+        stackoverflow: "",
         showModalPortfolio: false,
         showModalTalent: false,
         showModalProposal: false,
@@ -78,28 +88,85 @@ class ProfileView extends React.Component {
     this.pageContentSettings= this.pageContentSettings.bind(this);
 
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
+    this.handleRegion = this.handleRegion.bind(this);
+    this.handleCountry = this.handleCountry.bind(this);
+    this.handleDescription = this.handleDescription.bind(this);
+
 
     this.handleAtualPassword = this.handleAtualPassword.bind(this);
     this.handleNewPassword = this.handleNewPassword.bind(this);
     this.handleRepeatNewPassword = this.handleRepeatNewPassword.bind(this);
     this.handleNewProfileImageLoadedName = this.handleNewProfileImageLoadedName.bind(this);
-    this.handleCountry = this.handleCountry.bind(this);
-    
-  }
 
-     handleCountry(event) {
-        this.setState({ country: event.value});
-     }
+
+
+    this.handleFacebook = this.handleFacebook.bind(this);
+    this.handleInstagram = this.handleInstagram.bind(this);
+    this.handleTwitter = this.handleTwitter.bind(this);
+    this.handleTwitch = this.handleTwitch.bind(this);
+    this.handleYoutube = this.handleYoutube.bind(this);
+    this.handleLinkedin = this.handleLinkedin.bind(this);
+    this.handleStackoverflow = this.handleStackoverflow.bind(this);
+    this.handleGithub = this.handleGithub.bind(this);
+
+
+    
+  } 
       
      handleNewProfileImageLoadedName (event) {
         this.setState({ newProfileImageLoadedName: event.target.files[0].name});
         this.setState({ newProfileImageLoaded: event.target.files[0]});
 
      }
-
+     
       handleChangeUsername (event) {
         this.setState({ changeUsername: event.target.value});
       }
+
+      handleCountry(event) {
+        this.setState({ country: event.value});
+     }
+
+      handleRegion(event) {
+        this.setState({ region: event.target.value});
+      }
+
+      handleDescription(event) {
+        this.setState({ description: event.target.value});
+      }
+
+      handleFacebook(event) {
+        this.setState({ facebook: event.target.value});
+      }
+
+      handleInstagram(event) {
+        this.setState({ instagram: event.target.value});
+      }
+
+      handleYoutube(event) {
+        this.setState({ youtube: event.target.value});
+      }
+
+      handleTwitter(event) {
+        this.setState({ twitter: event.target.value});
+      }
+
+      handleTwitch(event) {
+        this.setState({ twitch: event.target.value});
+      }
+
+      handleLinkedin(event) {
+        this.setState({ linkedin: event.target.value});
+      }
+
+      handleGithub(event) {
+        this.setState({ github: event.target.value});
+      }
+
+      handleStackoverflow(event) {
+        this.setState({ stackoverflow: event.target.value});
+      }
+
       handleAtualPassword(event) {
         this.setState({ atualPassword: event.target.value});
       }  
@@ -613,8 +680,8 @@ console.log("Error: Recommended", error);
                                 <Form.Label><Translate id="profile settings"></Translate></Form.Label>
                 </Col>
 
-                <Col sm={12} className="Profile-Content-Settings-Col" style={{marginTop: "-1%"}}>        
-                                <Form.Label><Translate id="change profile image"></Translate></Form.Label>
+                <Col sm={12} className="Profile-Content-Settings-Col">        
+                                <Form.Label  style={{marginBottom: "0%"}}><Translate id="change profile image"></Translate></Form.Label>
                                 <Col sm={12} className="Profile-Content-Settings-Col" style={{marginLeft: "-1%"}}>
                                 <div class="fileUpload btn">
                                     <span>Upload</span>
@@ -639,10 +706,29 @@ console.log("Error: Recommended", error);
                 </Col>
                 <Col sm={12} className="Profile-Content-Settings-Col" >
                                 <Form.Label><Translate id="description"></Translate></Form.Label>
-                                <Form.Control as="textarea" rows="15" maxlength="2000" value={this.state.newPassword} onChange={(event)=>{this.handleNewPassword(event)}} />
+                                <Form.Control as="textarea" rows="15" maxlength="2000" value={this.state.description} onChange={(event)=>{this.handleDescription(event)}} />
                 </Col>
 
-                
+                <Col sm={12} className="Profile-Content-Settings-Col" >
+                                <Form.Label>Facebook</Form.Label>
+                                <Form.Control type="text" value={this.state.facebook} onChange={(event)=>{this.handleFacebook(event)}} />
+                </Col>
+                <Col sm={12} className="Profile-Content-Settings-Col">
+                                <Form.Label>Instagram</Form.Label>
+                                <Form.Control type="text" value={this.state.instagram} onChange={(event)=>{this.handleInstagram(event)}} />
+                </Col>
+                <Col sm={12} className="Profile-Content-Settings-Col">
+                                <Form.Label>Youtube</Form.Label>
+                                <Form.Control type="text" value={this.state.youtube} onChange={(event)=>{this.handleYoutube(event)}} />
+                </Col>
+                <Col sm={12} className="Profile-Content-Settings-Col">
+                                <Form.Label>Twitter</Form.Label>
+                                <Form.Control type="text" value={this.state.twitter} onChange={(event)=>{this.handleTwitter(event)}} />
+                </Col>
+                <Col sm={12} className="Profile-Content-Settings-Col">
+                                <Form.Label>Twitch</Form.Label>
+                                <Form.Control type="text" value={this.state.twitch} onChange={(event)=>{this.handleTwitch(event)}} />
+                </Col>
 
             </div>
             <div style={{marginTop: "2%", marginBottom: "2%"}}>
@@ -657,14 +743,10 @@ console.log("Error: Recommended", error);
                                 <Form.Label><Translate id="new password"></Translate></Form.Label>
                                 <Form.Control type="password" value={this.state.newPassword} onChange={(event)=>{this.handleNewPassword(event)}} />
                 </Col>
-                <Col sm={12} className="Profile-Content-Settings-Col">
-                                <Form.Label><Translate id="repeat password"></Translate></Form.Label>
-                                <Form.Control type="password" value={this.state.repeatNewPassword} onChange={(event)=>{this.handleRepeatNewPassword(event)}} />
-                </Col>
             </div>
             <div>
             <Col className="Profile-Content-Settings-Col">
-                <button className="Profile-Save-Changes-Button">
+                <button className="Profile-Save-Changes-Button" style={{right: 0}}>
                     <Translate id="save changes"></Translate>
                 </button>
             </Col>
