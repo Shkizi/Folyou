@@ -6,7 +6,8 @@ function postUploadImageUser(req, res, next, upload, multer) {
     let params = req.body;
     
     let name = req.file.filename;
-    db.query("UPDATE `folyou`.`anexes` SET `fileName` = ? WHERE `idAnexes` = ?;", [name,params.idUser], function (rows, error) {
+    console.log(name);
+    db.query("UPDATE `folyou`.`anexes` SET `fileName` = ? WHERE `User_idUser` = ?;", [name,params.idUser], function (rows, error) {
         if (error) {
             res.send({
                 error: true,

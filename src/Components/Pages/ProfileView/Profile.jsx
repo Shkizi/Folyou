@@ -141,7 +141,21 @@ class ProfileView extends React.Component {
           data.append(key, item[key]);
         }
         S.postter(`postUpdateUser`, data, (res) => {
-          this.props.app.state.notificationModule.notify("UPDATE SUCCESS","br",2,2);  
+          if(this.state.newProfileImageLoadedName!=""){
+            data=new FormData();
+            data.append("file",this.state.newProfileImageLoaded);
+            data.append("idUser",this.state.user.idUser);
+            S.postter(`postUploadImageUser`, data, (res) => {
+            this.props.app.state.notificationModule.notify("UPDATE SUCCESS","br",2,2);  
+              },
+        (error) => { 
+            console.log("Error: User", error);
+            this.setState({ error: {message:error,error:true} });
+        });
+          }else{
+            this.props.app.state.notificationModule.notify("UPDATE SUCCESS","br",2,2);  
+          }
+          
         },
         (error) => { 
             console.log("Error: User", error);
