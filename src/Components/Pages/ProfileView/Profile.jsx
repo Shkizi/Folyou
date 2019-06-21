@@ -746,7 +746,7 @@ console.log("Error: Recommended", error);
             </div>
             <div>
             <Col className="Profile-Content-Settings-Col">
-                <button className="Profile-Save-Changes-Button" style={{right: 0}}>
+                <button className="Profile-Save-Changes-Button">
                     <Translate id="save changes"></Translate>
                 </button>
             </Col>
