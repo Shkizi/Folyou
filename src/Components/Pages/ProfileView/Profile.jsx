@@ -361,11 +361,16 @@ console.log("Error: Recommended", error);
                                 </Card.Text>
                                 { (this.state.recomendedUser == true)?this.pageImageBadges(): <div></div>}
                                 {(this.props.match.params.id!=this.props.app.state.userLogged.idUser && this.props.app.state.userLogged.set!=false)?this.diferentProfile():this.empty()}
+                                
+                                
+                                {/*Small ones */}
                                 {(this.state.user.idProfileInstagram!="" && this.state.user.idProfileInstagram !=null)?<Instagram link={this.state.user.idProfileInstagram} />:<></>}
                                 {(this.state.user.idProfileFacebook!="" && this.state.user.idProfileFacebook !=null)?<Facebook link={this.state.user.idProfileFacebook} />:<></>}
                                 {(this.state.user.idProfileYoutube!="" && this.state.user.idProfileYoutube !=null)?<Youtube link={this.state.user.idProfileYoutube} />:<></>}
                                 {(this.state.user.idProfileTwitch!="" && this.state.user.idProfileTwitch !=null)?<Twitch link={this.state.user.idProfileTwitch} />:<></>}
                                 {(this.state.user.idProfileTwitter!="" && this.state.user.idProfileTwitter !=null)?<Twitter link={this.state.user.idProfileTwitter} />    :<></>}
+
+                                {/*Big ones */}
                                 {(this.state.user.idProfileGithub!="" && this.state.user.idProfileGithub !=null)?<GitHub username={this.state.user.idProfileGithub} />:<></>}
                                 {(this.state.user.idProfileStackOverflow!="" && this.state.user.idProfileStackOverflow !=null)?<StackOverflow userid={this.state.user.idProfileStackOverflow} />:<></>}
                                 {(this.state.user.idProfileLinkedIn!="" && this.state.user.idProfileLinkedIn !=null)?
