@@ -3,7 +3,6 @@
 .Profile-Header-Card {
     display: flex;
     background-color: white;
-    height: 275px;
     overflow: hidden;
     padding: 1%;
     margin-top: 3vh;
@@ -193,4 +192,7 @@
     margin: 0;
     width: 50px;
     height: 38px;
+}
+
+.Profile-Card-Column {
 }

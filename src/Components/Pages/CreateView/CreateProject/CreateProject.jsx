@@ -33,6 +33,8 @@ class CreateProject extends React.Component {
             imageLoaded: null,
             imageLoadedName: "",
             sheetDescription:"",
+            anexName: "",
+            anex: null,
             keywords: [],
             category: [],
             categories:[],
@@ -51,6 +53,12 @@ class CreateProject extends React.Component {
     this.handleCategory = this.handleCategory.bind(this);
     this.handleSubmitSheet = this.handleSubmitSheet.bind(this);
     this.handleImageLoadedName = this.handleImageLoadedName.bind(this);
+    this.handleAnex = this.handleAnex.bind(this);
+    }
+
+    handleAnex(event) {
+        this.setState({ anex: event.target.files[0]})
+        this.setState({ anexName: event.target.files[0].name})
     }
 
     handlePosition(event) {
@@ -89,7 +97,6 @@ class CreateProject extends React.Component {
     handleImageLoadedName(event) {
         this.setState({ imageLoaded: event.target.files[0]})
         this.setState({ imageLoadedName: event.target.files[0].name})
-        
     }
 
     handleCategory(event) {
@@ -198,11 +205,10 @@ componentDidMount(){
                 </Col>
                 <Col sm={6}>        
                                 <div class="fileUpload btn ">
-                                    <span>Upload</span>
+                                    <span><Translate id="project image"></Translate></span>
                                     <input id="uploadBtn" type="file" class="upload"  onChange={(event)=>{this.handleImageLoadedName(event)}}   />
                                 </div>
                                 <input id="uploadFile"  disabled="disabled" value={this.state.imageLoadedName} />
-
                 </Col>
                 </Row>
                 <Row>
@@ -231,6 +237,17 @@ componentDidMount(){
                                 <Form.Label><Translate id="categories"></Translate></Form.Label>
                                   <SelectSearch options={categ} value={this.state.category} name="category" onChange={(event)=>{this.handleCategory(event)}} style={{height: "36px"}} />
                                 
+                </Col>
+                </Row>
+
+                <Row>
+                <Col sm={12}>        
+                                <div class="fileUpload btn ">
+                                    <span><Translate id="anexes"></Translate></span>
+                                    <input id="uploadBtn" type="file" class="upload"  onChange={(event)=>{this.handleAnex(event)}} multiple />
+                                </div>
+                                <input id="uploadFile"  disabled="disabled" value={this.state.anexName} />
+
                 </Col>
                 </Row>
 
