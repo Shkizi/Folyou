@@ -59,9 +59,10 @@ class CreateProject extends React.Component {
     handleAnex(event) {
         this.setState({ anex: event.target.files})
         let name=""
-        event.target.files.forEach((value,index,array)=>{
-            name=name.concat(array[index].name)
-        })
+        for (let index = 0; index < event.target.files.length; index++) {
+            name=name.concat(((index!=0)?" ; ":"")+event.target.files[index].name)
+            
+        }
         this.setState({ anexName: name})
     }
 
@@ -131,9 +132,12 @@ class CreateProject extends React.Component {
     console.log(data);
         S.postter(`postCreateSheet`, data, (res) => {  
             const data = new FormData() 
-            this.state.anex.forEach((value,index,array)=>{
-                data.append('file', array[index]);
-            });
+            for (let index = 0; index <  this.state.anex.length; index++) {
+                data.append('file', this.state.anex[index]);
+                console.log("appending",this.state.anex[index]);
+            }
+          
+            data.append('idSheet', res.data.idSheet);
             S.postter(`postUploadSheetFiles`, data, (res) => {  
        
                     this.props.app.state.notificationModule.notify("CREATION SUCCESS","br",2,2);

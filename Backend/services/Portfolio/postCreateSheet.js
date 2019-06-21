@@ -35,7 +35,7 @@ function postCreateSheet(req, res,next,upload,multer) {
                     });
                     next();
                 } else {
-                    res.status(200).send({error:false});
+                    res.status(200).send({error:false,idSheet:idSheet});
                     next();
                 }
             
