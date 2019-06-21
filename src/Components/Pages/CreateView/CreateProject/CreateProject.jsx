@@ -57,8 +57,12 @@ class CreateProject extends React.Component {
     }
 
     handleAnex(event) {
-        this.setState({ anex: event.target.files[0]})
-        this.setState({ anexName: event.target.files[0].name})
+        this.setState({ anex: event.target.files})
+        let name=""
+        event.target.files.forEach((value,index,array)=>{
+            name=name.concat(array[index].name)
+        })
+        this.setState({ anexName: name})
     }
 
     handlePosition(event) {
@@ -126,8 +130,18 @@ class CreateProject extends React.Component {
     
     console.log(data);
         S.postter(`postCreateSheet`, data, (res) => {  
-            this.props.app.state.notificationModule.notify("CREATION SUCCESS","br",2,2);
-            
+            const data = new FormData() 
+            this.state.anex.forEach((value,index,array)=>{
+                data.append('file', array[index]);
+            });
+            S.postter(`postUploadSheetFiles`, data, (res) => {  
+       
+                    this.props.app.state.notificationModule.notify("CREATION SUCCESS","br",2,2);
+            },
+            (error) => { 
+                console.log("Error: User", error);
+                this.setState({ error: {message:error,error:true} });
+            });
     
         },
         (error) => { 
