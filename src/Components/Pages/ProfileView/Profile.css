@@ -146,4 +146,41 @@
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 1%;
+}
+
+
+
+.Profile-Save-Changes-Button {
+    margin-bottom: 0.4%;
+    background-color: white;
+    color: black;
+    border: none;
+    box-shadow: 0 1px 20px 0px rgba(0, 0, 0, 0.1);
+    font-size: 15px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 8px;
+    padding-left: 8px;
+    margin-left: 0;
+}
+
+.Profile-Save-Changes-Button:hover {
+    background-color: rgba(230,234,234,0.5);
+    color: black;
+    cursor: pointer;
+}
+
+.Profile-Save-Changes-Button:active {
+    background-color: rgba(230,234,234,0.5) !important;
+    color: black !important;
+}
+
+.Profile-Save-Changes-Button:focus {
+    box-shadow: 0 1px 20px 0px rgba(0, 0, 0, 0.1) !important;
+    outline: 0;
+}
+
+.Profile-Save-Changes-Button-Text {
+    color:black !important;
 }

@@ -41,7 +41,7 @@
     "see more": "Ver mais",
     "keywords profile": "Palavras-Chave: ",
     "category profile": "Categoria: ",
-    "description": "Descrição:",
+    "description": "Descrição",
     "dashboard": "Dashboard",
     "about me": "Sobre mim",
     "settings": "Configurações",
@@ -88,8 +88,12 @@
     "new password": "Nova password",
     "repeat password": "Repita a nova password",
     "change password": "Mudar a password",
-    "profile settings": "Configurações do perfil",
-    "change name": "Nome"
+    "profile settings": "Configurações de perfil",
+    "change name": "Nome",
+    "change profile image": "Mudar a imagem de perfil",
+    "save changes": "Guardar alterações"
+
+
 
 
 

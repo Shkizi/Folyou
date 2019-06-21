@@ -40,8 +40,8 @@ class CreateProject extends React.Component {
             suggestions: [],
             service:false,
                 };
-                this.handleDelete = this.handleDelete.bind(this);
-                this.handleAddition = this.handleAddition.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleAddition = this.handleAddition.bind(this);
                
     this.handleRegion = this.handleRegion.bind(this);
     this.handleCountry = this.handleCountry.bind(this);
@@ -197,7 +197,7 @@ componentDidMount(){
                                 <Form.Control type="text" value={this.state.region} onChange={(event)=>{this.handleRegion(event)}} />
                 </Col>
                 <Col sm={6}>        
-                                <div class="fileUpload btn btn-primary">
+                                <div class="fileUpload btn ">
                                     <span>Upload</span>
                                     <input id="uploadBtn" type="file" class="upload"  onChange={(event)=>{this.handleImageLoadedName(event)}}   />
                                 </div>

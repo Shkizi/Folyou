@@ -12,6 +12,7 @@ import MessageModal from '../../Elements/CardsModal/Types/MessageModal/MessageMo
 import { GitHub,  Facebook, StackOverflow, LinkedIn, Instagram, Youtube,  Twitch, Twitter } from 'react-profiles';
 import { FiFilePlus } from "react-icons/fi";
 import ReactTooltip from 'react-tooltip'
+import SelectSearch from 'react-select-search'
 import './Profile.css'
 import { Link } from "react-router-dom";
 import ServicesAPI from '../../../serviceAPI.js';
@@ -27,6 +28,7 @@ import { FiMail } from "react-icons/fi";
 import Recommended from '../../../Resources/Images/Recommended.png'
 import clickToRecommend from '../../../Resources/Images/Recommend.png'
 
+var countryJson = require("../../../Resources/Translations/countries.json");
 
 var S = new ServicesAPI();
 
@@ -53,6 +55,9 @@ class ProfileView extends React.Component {
         newPassword: "",
         changeUsername: "",
         repeatNewPassword: "",
+        newProfileImageLoadedName: "",
+        newProfileImageLoaded: null,
+        country: "",
         showModalPortfolio: false,
         showModalTalent: false,
         showModalProposal: false,
@@ -77,11 +82,20 @@ class ProfileView extends React.Component {
     this.handleAtualPassword = this.handleAtualPassword.bind(this);
     this.handleNewPassword = this.handleNewPassword.bind(this);
     this.handleRepeatNewPassword = this.handleRepeatNewPassword.bind(this);
-    
-
+    this.handleNewProfileImageLoadedName = this.handleNewProfileImageLoadedName.bind(this);
+    this.handleCountry = this.handleCountry.bind(this);
     
   }
+
+     handleCountry(event) {
+        this.setState({ country: event.value});
+     }
       
+     handleNewProfileImageLoadedName (event) {
+        this.setState({ newProfileImageLoadedName: event.target.files[0].name});
+        this.setState({ newProfileImageLoaded: event.target.files[0]});
+
+     }
 
       handleChangeUsername (event) {
         this.setState({ changeUsername: event.target.value});
@@ -576,44 +590,84 @@ console.log("Error: Recommended", error);
     }
 
       pageContentSettings(){
-            
+        function renderFriend(option) {
+            const imgStyle = {
+                borderRadius: '50%',
+                verticalAlign: 'middle',
+                marginRight: 10,
+            };
+        
+            return (<span><img alt="" style={imgStyle} width="40" height="40" src={option.photo} /><span>{option.name}</span></span>);
+        } 
+            let countries=[];
+     
+            for (var index in countryJson) {
+                countries.push({name:countryJson[index],value:index,photo:getImageLanguage(index.toLowerCase())});
+            }  
         return (<>
 
 
             <div>
-                <Col sm={12} style={{fontWeight: "bold", textAlign: "center"}} >
+           
+                <Col sm={12} style={{fontWeight: "bold", textAlign: "center", marginTop: "2%"}} >
                                 <Form.Label><Translate id="profile settings"></Translate></Form.Label>
                 </Col>
-                <Col sm={3} className="Profile-Content-Settings-Col">
+
+                <Col sm={12} className="Profile-Content-Settings-Col" style={{marginTop: "-1%"}}>        
+                                <Form.Label><Translate id="change profile image"></Translate></Form.Label>
+                                <Col sm={12} className="Profile-Content-Settings-Col" style={{marginLeft: "-1%"}}>
+                                <div class="fileUpload btn">
+                                    <span>Upload</span>
+                                    <input id="uploadBtn" type="file" class="upload"  onChange={(event)=>{this.handleNewProfileImageLoadedName(event)}}   />
+                                </div>
+                                <input id="uploadFile"  disabled="disabled" value={this.state.newProfileImageLoadedName} />
+                                </Col>
+                </Col>
+
+                <Col sm={12} className="Profile-Content-Settings-Col">
                                 <Form.Label><Translate id="change name"></Translate></Form.Label>
                                 <Form.Control type="text" value={this.state.changeUsername} onChange={(event)=>{this.handleChangeUsername(event)}} />
                 </Col>
-                <Col sm={3} className="Profile-Content-Settings-Col" >
-                                <Form.Label><Translate id="new password"></Translate></Form.Label>
-                                <Form.Control type="text" value={this.state.newPassword} onChange={(event)=>{this.handleNewPassword(event)}} />
+                <Col sm={12}>
+                                <Form.Label><Translate id="country"></Translate></Form.Label>
+                                <SelectSearch renderOption={renderFriend} options={countries} value={this.state.country} name="country" onChange={(event)=>{this.handleCountry(event)}} style={{height: "36px"}} />
+                                
                 </Col>
-                <Col sm={3} className="Profile-Content-Settings-Col">
-                                <Form.Label><Translate id="repeat password"></Translate></Form.Label>
-                                <Form.Control type="text" value={this.state.repeatNewPassword} onChange={(event)=>{this.handleRepeatNewPassword(event)}} />
+                <Col sm={12}>
+                                <Form.Label><Translate id="region"></Translate></Form.Label>
+                                <Form.Control type="text" value={this.state.region} onChange={(event)=>{this.handleRegion(event)}} />
                 </Col>
+                <Col sm={12} className="Profile-Content-Settings-Col" >
+                                <Form.Label><Translate id="description"></Translate></Form.Label>
+                                <Form.Control as="textarea" rows="15" maxlength="2000" value={this.state.newPassword} onChange={(event)=>{this.handleNewPassword(event)}} />
+                </Col>
+
+                
+
             </div>
-            
-            <div>
+            <div style={{marginTop: "2%", marginBottom: "2%"}}>
                 <Col sm={12} style={{fontWeight: "bold", textAlign: "center"}} >
                                 <Form.Label><Translate id="change password"></Translate></Form.Label>
                 </Col>
-                <Col sm={3} className="Profile-Content-Settings-Col">
+                <Col sm={12} className="Profile-Content-Settings-Col">
                                 <Form.Label><Translate id="atual password"></Translate></Form.Label>
                                 <Form.Control type="password" value={this.state.atualPassword} onChange={(event)=>{this.handleAtualPassword(event)}} />
                 </Col>
-                <Col sm={3} className="Profile-Content-Settings-Col" >
+                <Col sm={12} className="Profile-Content-Settings-Col" >
                                 <Form.Label><Translate id="new password"></Translate></Form.Label>
                                 <Form.Control type="password" value={this.state.newPassword} onChange={(event)=>{this.handleNewPassword(event)}} />
                 </Col>
-                <Col sm={3} className="Profile-Content-Settings-Col">
+                <Col sm={12} className="Profile-Content-Settings-Col">
                                 <Form.Label><Translate id="repeat password"></Translate></Form.Label>
                                 <Form.Control type="password" value={this.state.repeatNewPassword} onChange={(event)=>{this.handleRepeatNewPassword(event)}} />
                 </Col>
+            </div>
+            <div>
+            <Col className="Profile-Content-Settings-Col">
+                <button className="Profile-Save-Changes-Button">
+                    <Translate id="save changes"></Translate>
+                </button>
+            </Col>
             </div>
           </>
       )

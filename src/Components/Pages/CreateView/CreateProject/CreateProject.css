@@ -56,7 +56,9 @@ input.select-search-box__search{
     overflow: hidden;
     margin-right: 10px;
     margin-bottom: 10px;
-
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
 }
 
 .fileUpload input.upload {
@@ -69,4 +71,9 @@ input.select-search-box__search{
     cursor: pointer;
     opacity: 0;
     filter: alpha(opacity=0);
+    height: 20px;
+}
+
+.uploadFile {
+    background-color: yellow !important;
 }

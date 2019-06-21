@@ -39,7 +39,7 @@
     "see more": "See More",
     "keywords profile": "Keywords ",
     "category profile": "Category: ",
-    "description": "Description:",
+    "description": "Description",
     "dashboard": "Dashboard",
     "about me": "About me",
     "settings": "Settings",
@@ -87,7 +87,9 @@
     "repeat password": "Repeat the new password",
     "change password": "Change password",
     "profile settings": "Profile settings",
-    "change name": "Name"
+    "change name": "Name",
+    "change profile image": "Change profile image",
+    "save changes": "Save changes"
 
 
 
