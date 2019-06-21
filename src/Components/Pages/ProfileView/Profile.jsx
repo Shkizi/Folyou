@@ -361,14 +361,14 @@ console.log("Error: Recommended", error);
                                 </Card.Text>
                                 { (this.state.recomendedUser == true)?this.pageImageBadges(): <div></div>}
                                 {(this.props.match.params.id!=this.props.app.state.userLogged.idUser && this.props.app.state.userLogged.set!=false)?this.diferentProfile():this.empty()}
-                                <Instagram link={this.state.user.idProfileInstagram} />
-                                <Facebook link={this.state.user.idProfileFacebook} />
-                                <Youtube link={this.state.user.idProfileYoutube} />
-                                <Twitch link={this.state.user.idProfileTwitch} />
-                                <Twitter link={this.state.user.idProfileTwitter} />    
-                                <GitHub username={this.state.user.idProfileGithub} />
-                                <StackOverflow userid={this.state.user.idProfileStackOverflow} />
-                                <LinkedIn username={this.state.user.idProfileLinkedIn} organization={this.state.user.linkedInOrganization} role={this.state.user.linkedInRole} />
+                                {(this.state.user.idProfileInstagram!="")?<Instagram link={this.state.user.idProfileInstagram} />:<></>}
+                                {(this.state.user.idProfileFacebook!="")?<Facebook link={this.state.user.idProfileFacebook} />:<></>}
+                                {(this.state.user.idProfileYoutube!="")?<Youtube link={this.state.user.idProfileYoutube} />:<></>}
+                                {(this.state.user.idProfileTwitch!="")?<Twitch link={this.state.user.idProfileTwitch} />:<></>}
+                                {(this.state.user.idProfileTwitter!="")?<Twitter link={this.state.user.idProfileTwitter} />    :<></>}
+                                {(this.state.user.idProfileGithub!="")?<GitHub username={this.state.user.idProfileGithub} />:<></>}
+                                {(this.state.user.idProfileStackOverflow!="")?<StackOverflow userid={this.state.user.idProfileStackOverflow} />:<></>}
+                                {(this.state.user.idProfileLinkedIn!="")?<LinkedIn username={this.state.user.idProfileLinkedIn} organization={this.state.user.linkedInOrganization} role={this.state.user.linkedInRole} />:<></>}
                                                             
                             </Col>
                         </Row>
