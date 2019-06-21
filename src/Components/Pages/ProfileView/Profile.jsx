@@ -448,7 +448,7 @@ console.log("Error: Recommended", error);
                     <Card.Body style={{paddingTop: "15px"}}>
                         <Row>
                             <Col xs={2} s={2} m={2} l={2} xl={2}>
-                                <Image src={S.baseURL()+"public/anexes/profiles/"+this.state.user.anexes.fileName} className="Profile-Avatar"  />
+                                <Image src={S.baseURL()+"public/anexes/profiles/"+((this.state.user.anexes.fileName!="")?this.state.user.anexes.fileName:"default_user_pic.jpg")} className="Profile-Avatar"  />
                             </Col>
                             <Col xs={2} s={2} m={2} l={2} xl={2}>
                                 <Row>
