@@ -27,6 +27,7 @@ if(params.keywords!=null){
 }
     db.query("SELECT * FROM `Sheet`,`Portfolio`, `Category`, `User`,(SELECT filename as `avatarUser`, User_idUser from Anexes) as avatar   WHERE `Category`.`idCategory` =`Sheet`.`Category_idCategory`"+
     " AND `User`.`idUser` = avatar.User_idUser AND `User`.`idUser` = `Portfolio`.`User_idUser` "+
+    
     "AND `Sheet`.`idSheet` = `Portfolio`.`Sheet_idSheet` "+ ((params.country!="")?" AND countrySheet LIKE ? ":"")+
     ((params.idSheet!="")?" AND idSheet = ? ":"")+
     "ORDER BY `Sheet`.`createdTimestamp`",arr, function (rows, error) {
