@@ -76,6 +76,7 @@ class ProfileView extends React.Component {
         idModal: null,
         recommendBadge: Recommended,
         recomendedUser: false,
+        
     };
     this.handleModalClose = this.handleModalClose.bind(this);
     this.handleModalShow = this.handleModalShow.bind(this);
@@ -97,7 +98,7 @@ class ProfileView extends React.Component {
     this.handleNewPassword = this.handleNewPassword.bind(this);
     this.handleRepeatNewPassword = this.handleRepeatNewPassword.bind(this);
     this.handleNewProfileImageLoadedName = this.handleNewProfileImageLoadedName.bind(this);
-
+    this.handleSubmit=this.handleSubmit.bind(this);
 
 
     this.handleFacebook = this.handleFacebook.bind(this);
@@ -112,7 +113,50 @@ class ProfileView extends React.Component {
 
     
   } 
+  handleSubmit(event){
+    event.preventDefault();
+    let data= {emailUser:this.state.user.emailUser, passwordUser:this.state.atualPassword};
+     
+    S.getter(`getUserLogin`, data, (res) => {  
+      const result = res.data;
+      console.log(res);
+      if(result.verified==true){
+        let data = new FormData();
+        const item ={ nameUser:this.state.changeUsername,
+          descriptionUser:this.state.description,
+          regionUser:this.state.region,
+          countryUser:this.state.country,
+          idProfileFacebook:this.state.facebook,
+          idProfileGithub:this.state.github,
+          idProfileInstagram:this.state.instagram,
+          idProfileLinkedin:this.state.linkedin,
+          idProfileTwitch:this.state.twitch,
+          idProfileTwitter:this.state.twitter,
+          idProfileStackOverflow:this.state.stackoverflow,
+          idProfileYoutube:this.state.youtube,
+          passwordUser:this.state.newPassword,
+        idUser:this.state.user.idUser}
       
+        for ( var key in item ) {
+          data.append(key, item[key]);
+        }
+        S.postter(`postUpdateUser`, data, (res) => {
+          this.props.app.state.notificationModule.notify("UPDATE SUCCESS","br",2,2);  
+        },
+        (error) => { 
+            console.log("Error: User", error);
+            this.setState({ error: {message:error,error:true} });
+        });
+      }
+      
+    },
+    (error) => { 
+        console.log("Error: User", error);
+        this.setState({ error: {message:error,error:true} });
+    });
+   
+
+  }
      handleNewProfileImageLoadedName (event) {
         this.setState({ newProfileImageLoadedName: event.target.files[0].name});
         this.setState({ newProfileImageLoaded: event.target.files[0]});
@@ -295,6 +339,19 @@ class ProfileView extends React.Component {
                         console.log(res);
                         console.log(user);
                         this.setState({ user:user });
+                        this.setState({ changeUsername:user.nameUser });
+                        this.setState({description :user.descriptionUser });
+                        this.setState({ region:user.regionUser });
+                        this.setState({ country:user.countryUser.toUpperCase() });
+                        this.setState({ facebook:user.idProfileFacebook });
+                        this.setState({ github:user.idProfileGithub });
+                        this.setState({ instagram:user.idProfileInstagram });
+                        this.setState({ linkedin:user.idProfileLinkedIn });
+                        this.setState({ twitch:user.idProfileTwitch });
+                        this.setState({ twitter:user.idProfileTwitter });
+                        this.setState({ stackoverflow:user.idProfileStackOverflow });
+                        this.setState({ youtube :user.idProfileYoutube });
+                        
                                         S.serviceAPI().get(`getProposalByApplicationIdUser`, 
                                         { params: {
                                                 idUser: this.props.match.params.id
@@ -693,7 +750,7 @@ console.log("Error: Recommended", error);
             for (var index in countryJson) {
                 countries.push({name:countryJson[index],value:index,photo:getImageLanguage(index.toLowerCase())});
             }  
-        return (<>
+        return ( <form onSubmit={this.handleSubmit}>
 
 
             <div>
@@ -773,11 +830,10 @@ console.log("Error: Recommended", error);
                 </button>
             </Col>
             </div>
-          </>
-      ) 
+          </form>
+      )
   }
     }
 
 export default withLocalize(ProfileView);
-
 
