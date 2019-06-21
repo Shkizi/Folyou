@@ -368,7 +368,11 @@ console.log("Error: Recommended", error);
                                 {(this.state.user.idProfileTwitter!="" && this.state.user.idProfileTwitter !=null)?<Twitter link={this.state.user.idProfileTwitter} />    :<></>}
                                 {(this.state.user.idProfileGithub!="" && this.state.user.idProfileGithub !=null)?<GitHub username={this.state.user.idProfileGithub} />:<></>}
                                 {(this.state.user.idProfileStackOverflow!="" && this.state.user.idProfileStackOverflow !=null)?<StackOverflow userid={this.state.user.idProfileStackOverflow} />:<></>}
-                                {(this.state.user.idProfileLinkedIn!="" && this.state.user.idProfileLinkedIn !=null)?<LinkedIn username={this.state.user.idProfileLinkedIn} organization={this.state.user.linkedInOrganization} role={this.state.user.linkedInRole} />:<></>}
+                                {(this.state.user.idProfileLinkedIn!="" && this.state.user.idProfileLinkedIn !=null)?
+                                    <LinkedIn username={this.state.user.idProfileLinkedIn} 
+                                        organization={(this.state.user.linkedInOrganization!=null && this.state.user.linkedInOrganization!="")?this.state.user.linkedInOrganization:undefined}
+                                        role={(this.state.user.linkedInRole!=null && this.state.user.linkedInRole!="")?this.state.user.linkedInRole:undefined} />
+                                    :<></>}
                                                             
                             </Col>
                         </Row>
