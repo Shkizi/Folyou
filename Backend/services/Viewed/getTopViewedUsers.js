@@ -7,7 +7,7 @@ function getTopViewedUsers(req, res, next) {
     let params = req.query;
 
 
-             db.query("SELECT count(*) as 'views', user.*, anexes.* FROM folyou.iteraction,folyou.anexes, folyou.user, folyou.talentarea,folyou.proposal,folyou.sheet, folyou.portfolio WHERE InterationType_idInterationType=2 AND (user.idUser = talentarea.User_idUser AND user.idUser = proposal.User_idUser AND (user.idUser = portfolio.User_idUser AND portfolio.Sheet_idSheet=sheet.idSheet )) AND (iteraction.TalentArea_idTalentArea = talentarea.idTalentArea OR 	iteraction.Proposal_idProposal = proposal.idProposal OR     iteraction.Sheet_idSheet = sheet.idSheet ) AND user.idUser = anexes.User_idUser GROUP BY user.idUser Order by 'views' desc;",[], function (rowsKeywords, errorkey) {
+             db.query("SELECT count(*) as views, user.*, anexes.* FROM anexes, user, iteraction LEFT JOIN talentarea on talentarea.idTalentArea=iteraction.TalentArea_idTalentArea  LEFT JOIN proposal on iteraction.Proposal_idProposal = proposal.idProposal LEFT JOIN sheet on iteraction.Sheet_idSheet = sheet.idSheet LEFT JOIN portfolio on portfolio.Sheet_idSheet=sheet.idSheet  WHERE InterationType_idInterationType=2 AND user.idUser = anexes.User_idUser  AND (user.idUser = talentarea.User_idUser or user.idUser = proposal.User_idUser or user.idUser = portfolio.User_idUser) GROUP BY user.idUser Order by views desc; ",[], function (rowsKeywords, errorkey) {
                      if (errorkey && rowsKeywords == null) {
                          res.send({
                             error: true,
