@@ -9,8 +9,8 @@ function getPortfolioByIdUser(req, res, next) {
     let params = req.query;
 
     db.query("SELECT * FROM `Sheet`,`Portfolio`, `Category`, `User`,"+
-    "(SELECT Sheet_idSheet, GROUP_CONCAT(DISTINCT valueProposalKeywords) keywords ,"+
-    "(SELECT Sheet_idSheet, GROUP_CONCAT( fileName) fil FROM anexes WHERE Sheet_idSheet IS NOT NULL GROUP BY Sheet_idSheet ) AS anexedfiles "+
+    "(SELECT Sheet_idSheet, GROUP_CONCAT( fileName) fil FROM anexes WHERE Sheet_idSheet IS NOT NULL GROUP BY Sheet_idSheet ) AS anexedfiles, "+
+    "(SELECT Sheet_idSheet, GROUP_CONCAT(DISTINCT valueProposalKeywords) keywords "+
     "FROM keyword WHERE Sheet_idSheet IS NOT NULL "+
    "GROUP BY Sheet_idSheet ) AS keywords ,(SELECT filename as `avatarUser`, User_idUser from Anexes) as avatar " +
     "  WHERE `Category`.`idCategory` =`Sheet`.`Category_idCategory`"+

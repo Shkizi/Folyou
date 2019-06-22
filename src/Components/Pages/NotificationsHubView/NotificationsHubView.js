@@ -64,6 +64,7 @@ class NotificationHubView extends React.Component {
                 <thead>
                     <tr>
                     <th><Translate id="message origin"></Translate></th>
+                    <th><Translate id="message receiver"></Translate></th>
                     <th><Translate id="message"></Translate></th>
                     <th><Translate id="actions"></Translate></th>
                     </tr>
@@ -71,13 +72,17 @@ class NotificationHubView extends React.Component {
                 <tbody>
 
                 {this.state.message.map(val =>{return(
-                      <tr style={(val.viewed==0)?{backgroundColor:"#49c5b6"}:{}}>
+                      <tr style={(val.viewed==0 && val.SECidUser == this.props.app.state.userLogged.idUser)?{backgroundColor:"#49c5b6"}:{}}>
                       <td>  <Link style={{textDecoration: "none"}}variant="link" to={"/Profile/"+val.idUser}>
                      <Image className="HomeCarousel-Profile-Image" src={S.baseURL()+"public/anexes/profiles/"+((val.fileName!="")?val.fileName:"default_user_pic.jpg")} style={{height: "32px",width: "32px"}} roundedCircle/>{val.nameUser}
                      </Link>
+                      </td>   
+                      <td>  <Link style={{textDecoration: "none"}}variant="link" to={"/Profile/"+val.SECidUser}>
+                     <Image className="HomeCarousel-Profile-Image" src={S.baseURL()+"public/anexes/profiles/"+((val.fileName!="")?val.SECfileName:"default_user_pic.jpg")} style={{height: "32px",width: "32px"}} roundedCircle/>{val.SECnameUser}
+                     </Link>
                       </td>                  
                       <td>{val.valueText}</td>
-                      <td>reply, {(val.viewed==0)?"mark as viewed":"V viewed"}</td>
+                      <td>reply, {(val.SECidUser == this.props.app.state.userLogged.idUser)?((val.viewed==0)?"mark as viewed":"V viewed"):((val.viewed==0)?"Not Read":"Read")}</td>
                       </tr>
 
                       );})}

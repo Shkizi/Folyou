@@ -40,10 +40,35 @@ class Menu extends React.Component {
       showLogin: false,
       showTabs: false,
       showSearchButton: true,
-     
+      number:1
     };
   }
-  
+  componentDidMount(){
+    let data={idUser:this.props.app.state.userLogged.idUser|null}
+    S.getter(`getNumberUnviewedMessages`, data, (res) => {  
+       
+      if(res.data.number>0){this.props.app.state.notificationModule.notify("You have unread Messages","br",2,2);}
+      this.setState({number:res.data.number});
+    },
+    (error) => { 
+      console.log("Error: User", error);
+      this.setState({ error: {message:error,error:true} });
+    });
+    let th = this;
+    setInterval(
+      function() {
+          let data={idUser:th.props.app.state.userLogged.idUser|null}
+        S.getter(`getNumberUnviewedMessages`, data, (res) => {  
+          
+          if(res.data.number>th.state.number){th.props.app.state.notificationModule.notify("You have new unread Messages","br",2,2);}
+          th.setState({number:res.data.number});
+        },
+        (error) => { 
+          console.log("Error: User", error);
+          th.setState({ error: {message:error,error:true} });
+        });
+    }, 60 * 1000/2);
+  }
   handleLoginPopUpClose() {
     this.setState({ showLogin: false });
   }
@@ -93,7 +118,7 @@ focusIn(elem)
               <Button  className="Menu-Navbar-Open-Button" onClick={this.handleShowTabs} variant="link"><IoMdMenu style={{fontSize: "25px", paddingBottom: 2}}/></Button> 
             </Navbar.Brand>
              <Link to='/NotificationsHub' className="Menu-Navbar-Brand" >
-              <Badge style={{fontSize: "25px", paddingBottom: 2}} badgeContent={4} color="primary">
+              <Badge style={{fontSize: "25px", paddingBottom: 2}} badgeContent={this.state.number} color="primary">
                <MdNotificationsActive style={{fontSize: "25px", paddingBottom: 2}}/>
              <span className="sr-only"><Translate id ="unreadMessages"/></span>
               </Badge>

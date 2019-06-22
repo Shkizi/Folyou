@@ -34,8 +34,12 @@ function router(app,express,uploadsheet,uploadproposal,uploaduser,multer) {
     app.get("/getTopRecommendedUsers", (req, res,next) => {  servicer.getTopRecommendedUsers(req,res,next)});
     app.get("/getTopViewedUsers", (req, res,next) => {  servicer.getTopViewedUsers(req,res,next)});
     app.get("/getTopBadgeUsers", (req, res,next) => {  servicer.getTopBadgeUsers(req,res,next)});
+    app.get("/getNumberUnviewedMessages", (req, res,next) => {  servicer.getNumberUnviewedMessages(req,res,next)});
+    
+    
     
 
+    app.post("/postViewedMessage",uploadsheet.none(), (req, res,next) => {  servicer.postViewedMessage(req,res,next)});
     app.post("/postCreateProposal",uploadsheet.none(), (req, res,next) => {  servicer.postCreateProposal(req,res,next)});
     app.post("/postCreateSheet",uploadsheet.single('file'), (req, res,next) => {  servicer.postCreateSheet(req,res,next,uploadsheet,multer)});
     app.post("/postRecomend",uploadsheet.none(), (req, res,next) => {  servicer.postRecomend(req,res,next)});

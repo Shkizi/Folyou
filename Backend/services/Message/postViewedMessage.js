@@ -6,7 +6,7 @@ function postViewedMessage(req, res,next,upload,multer) {
     let params = req.body;
     
 
-            let query = ""
+            let query = "UPDATE `folyou`.`message` SET `viewed` = 1 WHERE `idMessage` = ? ;"
             let arrayList = [params.idMessage]
           
             console.log(arrayList);

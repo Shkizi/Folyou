@@ -50,6 +50,8 @@ module.exports.getTopRecommendedUsers = require("./Recommend/getTopRecommendedUs
 
 module.exports.postMessage = require("./Message/postMessage.js");
 module.exports.getMessagesToUser = require("./Message/getMessagesToUser.js");
+module.exports.getNumberUnviewedMessages = require("./Message/getNumberUnviewedMessages.js");
+module.exports.postViewedMessage = require("./Message/postViewedMessage.js");
 
 module.exports.getTopViewedUsers = require("./Viewed/getTopViewedUsers.js");
 module.exports.getTopBadgeUsers = require("./Badges/getTopBadgeUsers.js");
