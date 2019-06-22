@@ -28,8 +28,8 @@ function CreateProposal(props) {
      
       <Row className="C-Proposal-Offer-Location rowCards"><Image src={getImageLanguage(data.countryProposal)} style={{height: "32px",width: "32px"}} roundedCircle/><div className="C-Proposal-Country-Name">{data.regionProposal}</div></Row>
       <Row className="C-Proposal-Offer-Name rowCards">{data.nameProposal}</Row>
-      <Row className="C-Proposal-Proponent-Description rowCards">{data.descriptionProposal.substring(0,600)+
-      ((data.descriptionProposal.length > 600)?"...":"")}</Row>
+      <Row className="C-Proposal-Proponent-Description rowCards">{data.descriptionProposal.substring(0,200)+
+      ((data.descriptionProposal.length > 200)?"...":"")}</Row>
       <Row className="C-Proposal-Keywords rowCards"><Translate id="keywords"></Translate >:<div className="C-Proposal-Keywords-Name">{data.keywords.join(", ")}</div></Row>
      </div>
     </Card.Body>
