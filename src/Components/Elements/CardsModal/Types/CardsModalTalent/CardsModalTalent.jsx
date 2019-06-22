@@ -86,13 +86,7 @@ class CardsModalTalent extends React.Component {
               <Card className="Modal-Talent-Description-Area">
                 <div><b><Translate id="description"></Translate></b></div>
                 <div className="Modal-Talent-Description">{data.descriptionTalentArea}</div>
-              </Card>
-
-              <Card className="Modal-Talent-Anexes">
-                  Anexos
-                </Card>
-          
-
+              </Card>     
             </Modal.Body>
             <Modal.Footer>
               <Row>

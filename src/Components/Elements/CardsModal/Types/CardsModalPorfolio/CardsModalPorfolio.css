@@ -78,13 +78,6 @@
     background-color: rgba(230,234,234,0.5) !important;
 }
 
-
-
-
-
-
-
-
 .Modal-Portfolio-Sheet-Category {
     display: flex;
     -webkit-box-align: center;
@@ -171,4 +164,29 @@
 .Modal-Portfolio-Like-Text {
     font-size: 25px;
     margin-top: 80px;
+}
+
+.Modal-Portfolio-Anexes {
+    color: #f4f7f6;
+    border-style: solid;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.Modal-Portfolio-Anexes:hover {
+    color: #49c5b6;
+}
+
+.Modal-Portfolio-Anexes a {
+    color: black;
+}
+
+.Modal-Portfolio-Anexes a:hover {
+    color: grey;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out; 
+
 }

@@ -129,13 +129,14 @@ class CardsModalPortfolio extends React.Component {
               <Card>
                 <div className="Modal-Portfolio-Anexes-Container">
                     <div style={{marginBottom: "2%", fontWeight: "bold"}}><Translate id="anexes"></Translate></div>
-                    <Row style={{paddingLeft: "16px"}}>
+                    <Row style={{paddingLeft: "16px", textAlign: "center"}}>
                     {data.fil.split(",").map(val=>{if(val!=""){return(
+                      <Col className="Modal-Portfolio-Anexes" sm={3}>
                       <a href={S.baseURL()+"public/anexes/sheets/"+val} target="_blank" >
                         <div  dangerouslySetInnerHTML={{__html: getIconForExtension(val.split('.').pop())}} />
                         <div style={{marginLeft: "6px"}}>{val}</div>
-
                       </a>
+                      </Col>
                     )}else{
                       return <></>
                     }})}

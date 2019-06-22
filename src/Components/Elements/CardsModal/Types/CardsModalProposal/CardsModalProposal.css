@@ -180,3 +180,28 @@
     width:100%;
     height: 100%;
 }
+
+.Modal-Proposal-Anexes {
+    color: #f4f7f6;
+    border-style: solid;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.Modal-Proposal-Anexes:hover {
+    color: #49c5b6;
+}
+
+.Modal-Proposal-Anexes a {
+    color: black;
+}
+
+.Modal-Proposal-Anexes a:hover {
+    color: grey;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out; 
+
+}
