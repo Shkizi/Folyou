@@ -103,7 +103,7 @@ class CreateProject extends React.Component {
             {this.state.mostViewedUsers.map(val =>{ i ++; return(
                  <tr>
                  <td>{i}</td>
-                 <td> <Link style={{textDecoration: "none"}}variant="link" to={"/Profile/"+val.idUser}>
+                 <td> <Link className="Message-Username" variant="link" to={"/Profile/"+val.idUser}>
                   
                       <Image src={S.baseURL()+"public/anexes/profiles/"+((val.fileName!="")?val.fileName:"default_user_pic.jpg")} className="Modal-Portfolio-Avatar" roundedCircle />
                    {val.nameUser}
@@ -133,7 +133,7 @@ class CreateProject extends React.Component {
             {this.state.mostRecommendedUsers.map(val =>{ i ++; return(
                  <tr>
                  <td>{i}</td>
-                 <td> <Link style={{textDecoration: "none"}}variant="link" to={"/Profile/"+val.idUser}>
+                 <td> <Link className="Message-Username" variant="link" to={"/Profile/"+val.idUser}>
                   
                       <Image src={S.baseURL()+"public/anexes/profiles/"+((val.fileName!="")?val.fileName:"default_user_pic.jpg")} className="Modal-Portfolio-Avatar" roundedCircle />
                    {val.nameUser}
@@ -162,7 +162,7 @@ class CreateProject extends React.Component {
             {this.state.mostBadgeUsers.map(val =>{ i ++; return(
                  <tr>
                  <td>{i}</td>
-                 <td> <Link style={{textDecoration: "none"}}variant="link" to={"/Profile/"+val.idUser}>
+                 <td> <Link className="Message-Username" variant="link" to={"/Profile/"+val.idUser}>
                   
                       <Image src={S.baseURL()+"public/anexes/profiles/"+((val.fileName!="")?val.fileName:"default_user_pic.jpg")} className="Modal-Portfolio-Avatar" roundedCircle />
                    {val.nameUser}
