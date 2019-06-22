@@ -582,34 +582,28 @@ console.log("Error: Recommended", error);
                     </Card.Body>
                 </Card>
                    
+                {(this.props.match.params.id==this.props.app.state.userLogged.idUser && this.props.app.state.userLogged.set!=false)?
                     <Row>
-
                         <Col m={5}>
                         <Row>
                             <Col m={6} style={{textAlign: "center", paddingRight:5}}>
                             <Button onClick={()=>{this.setState({pageContent:'Projects'})}} className="Profile-Button-Categories">
                             <Translate id="projects"></Translate>
-                            {(this.props.match.params.id==this.props.app.state.userLogged.idUser && this.props.app.state.userLogged.set!=false)?
                             <Link to={"/CreateProject/"}>
                             <FiFilePlus className="Profile-Create-Sign"/>
                             </Link>
-                            :<></>}
                             </Button>
                             </Col>
                             <Col m={6} style={{textAlign: "center", paddingLeft: 5, paddingRight: 5}}>
                             <Button onClick={()=>{this.setState({pageContent:'Proposals'})}} className="Profile-Button-Categories">
                             <Translate id="proposals"></Translate>
-                            {(this.props.match.params.id==this.props.app.state.userLogged.idUser && this.props.app.state.userLogged.set!=false)?
-                          
                             <Link to={"/CreateProposal/"}>
                             <FiFilePlus className="Profile-Create-Sign"/>
                             </Link>
-                            :<></>}
                             </Button>
                             </Col>
                         </Row>
                         </Col>
-                        {(this.props.match.params.id==this.props.app.state.userLogged.idUser && this.props.app.state.userLogged.set!=false)?
                         <Col m={2}>
                         <Row>
                             <Col style={{textAlign: "center", paddingLeft: 5, paddingRight: 5}}>
@@ -617,30 +611,59 @@ console.log("Error: Recommended", error);
                             </Col>
                         </Row>
                         </Col>
-                         :<></>}
-
                         <Col m={5}>
                         <Row>
                             <Col m={6} style={{textAlign: "center", paddingLeft: 5, paddingRight: 5}}>
                             <Button onClick={()=>{this.setState({pageContent:'Talents'})}} className="Profile-Button-Categories">
                             <Translate id="talents"></Translate>
-                            
-                            {(this.props.match.params.id==this.props.app.state.userLogged.idUser && this.props.app.state.userLogged.set!=false)?
+                           
                           <Link to={"/CreateTalent/"}>
                             <FiFilePlus className="Profile-Create-Sign"/>
                             </Link>
-                              :<></>}
                             </Button>
                             </Col>
-                            {(this.props.match.params.id==this.props.app.state.userLogged.idUser && this.props.app.state.userLogged.set!=false)?
                             <Col m={6} style={{textAlign: "center", paddingLeft: 5}}>
                             <Button onClick={()=>{this.setState({pageContent:'Settings'})}} className="Profile-Button-Categories"><Translate id="settings"></Translate></Button>
                             </Col>
-                            :<></>}
 
                         </Row>
                         </Col>
                     </Row>
+                  :
+
+
+                  <Row>
+                        <Col m={4}>
+                            <Row>
+                              <Col m={12} style={{textAlign: "center", paddingRight:5}}>
+                              <Button onClick={()=>{this.setState({pageContent:'Projects'})}} className="Profile-Button-Categories">
+                              <Translate id="projects"></Translate>
+                              </Button>
+                              </Col>
+                           </Row>
+                        </Col>
+                        <Col m={4}>
+                          <Row>
+                            <Col m={12} style={{textAlign: "center", paddingLeft: 5, paddingRight: 5}}>
+                                <Button onClick={()=>{this.setState({pageContent:'Proposals'})}} className="Profile-Button-Categories">
+                                <Translate id="proposals"></Translate>
+                                </Button>
+                            </Col>
+                          </Row>
+                        </Col>
+
+                        <Col m={4}>
+                        <Row>
+                            <Col m={12} style={{textAlign: "center", paddingLeft: 5, paddingRight: 5}}>
+                            <Button onClick={()=>{this.setState({pageContent:'Talents'})}} className="Profile-Button-Categories">
+                            <Translate id="talents"></Translate>
+                            </Button>
+                            </Col>
+                        </Row>
+                        </Col>
+                    </Row>
+                  }
+
 
                         {(this.state.showRender)?(
                         (this.state.pageContent=='Projects')?this.pageContentProjects():
