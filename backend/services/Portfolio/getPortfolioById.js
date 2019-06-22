@@ -25,10 +25,13 @@ function getPortfolioById(req, res, next) {
 if(params.keywords!=null){
     
 }
-    db.query("SELECT * FROM `Sheet`,`Portfolio`, `Category`, `User`,(SELECT filename as `avatarUser`, User_idUser from Anexes) as avatar   WHERE `Category`.`idCategory` =`Sheet`.`Category_idCategory`"+
+    db.query("SELECT * FROM `Sheet`,`Portfolio`, `Category`, `User`,"+
+    "(SELECT Sheet_idSheet, GROUP_CONCAT( fileName) fil FROM anexes WHERE Sheet_idSheet IS NOT NULL GROUP BY Sheet_idSheet ) AS anexedfiles ,"+
+    +"(SELECT filename as `avatarUser`, User_idUser from Anexes) as avatar   WHERE `Category`.`idCategory` =`Sheet`.`Category_idCategory`"+
     " AND `User`.`idUser` = avatar.User_idUser AND `User`.`idUser` = `Portfolio`.`User_idUser` "+
     
     "AND `Sheet`.`idSheet` = `Portfolio`.`Sheet_idSheet` "+ ((params.country!="")?" AND countrySheet LIKE ? ":"")+
+    "AND  anexedfiles.Sheet_idSheet = idSheet "+
     ((params.idSheet!="")?" AND idSheet = ? ":"")+
     "ORDER BY `Sheet`.`createdTimestamp`",arr, function (rows, error) {
         if (!error) {

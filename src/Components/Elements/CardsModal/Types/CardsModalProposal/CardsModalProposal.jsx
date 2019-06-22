@@ -99,8 +99,15 @@ class CardsModalProposal extends React.Component {
               <div className="Modal-Proposal-Anexes-Container">
                     <div style={{marginBottom: "2%", fontWeight: "bold"}}><Translate id="anexes"></Translate></div>
                     <Row style={{paddingLeft: "16px"}}>
-                    <div  dangerouslySetInnerHTML={{__html: getIconForExtension('foobar.pdf'.split('.').pop())}} />
-                    <div style={{marginLeft: "6px"}}>Anex Name</div>
+                    {data.fil.split(",").map(val=>{if(val!=""){return(
+                      <a href={S.baseURL()+"public/anexes/proposals/"+val} target="_blank" >
+                        <div  dangerouslySetInnerHTML={{__html: getIconForExtension(val.split('.').pop())}} />
+                        <div style={{marginLeft: "6px"}}>{val}</div>
+
+                      </a>
+                    )}else{
+                      return <></>
+                    }})}
                     </Row>
                 </div>
                 </Card>

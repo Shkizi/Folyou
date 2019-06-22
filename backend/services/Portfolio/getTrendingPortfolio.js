@@ -8,7 +8,11 @@ var db = require('../dbconnect.js');
 function getTrendingPortfolio(req, res, next) {
     let params = req.query;
 
-    db.query("SELECT *, count(*) as `contage` FROM `Iteraction`,`Sheet`,`Portfolio`, `Category`, `User`,(SELECT Sheet_idSheet, GROUP_CONCAT(DISTINCT valueProposalKeywords) keywords FROM keyword WHERE Sheet_idSheet IS NOT NULL  GROUP BY Sheet_idSheet ) AS keywords ,(SELECT filename as `avatarUser`, User_idUser from Anexes) as avatar WHERE `Category`.`idCategory` =`Sheet`.`Category_idCategory` AND `User`.`idUser` = `Portfolio`.`User_idUser` AND `User`.`idUser` = avatar.User_idUser AND `Sheet`.`idSheet` = `Portfolio`.`Sheet_idSheet`AND  keywords.Sheet_idSheet = idSheet AND `Iteraction`.`Sheet_idSheet`= `Sheet`.`idSheet` GROUP BY `Sheet`.`idSheet`ORDER BY `contage`  DESC LIMIT 2 ;",[] , function (rows, error) {
+    db.query("SELECT *, count(*) as `contage` FROM `Iteraction`,`Sheet`,`Portfolio`, `Category`, `User`,(SELECT Sheet_idSheet, GROUP_CONCAT(DISTINCT valueProposalKeywords) keywords FROM keyword WHERE Sheet_idSheet IS NOT NULL  GROUP BY Sheet_idSheet ) AS keywords ,"+
+    "(SELECT Sheet_idSheet, GROUP_CONCAT( fileName) fil FROM anexes WHERE Sheet_idSheet IS NOT NULL GROUP BY Sheet_idSheet ) AS anexedfiles, "+
+    "(SELECT filename as `avatarUser`, User_idUser from Anexes) as avatar WHERE `Category`.`idCategory` =`Sheet`.`Category_idCategory` AND `User`.`idUser` = `Portfolio`.`User_idUser` AND `User`.`idUser` = avatar.User_idUser AND `Sheet`.`idSheet` = `Portfolio`.`Sheet_idSheet`AND  keywords.Sheet_idSheet = idSheet AND `Iteraction`.`Sheet_idSheet`= `Sheet`.`idSheet`"+
+    "AND  anexedfiles.Sheet_idSheet = idSheet "+
+    " GROUP BY `Sheet`.`idSheet`ORDER BY `contage`  DESC LIMIT 2 ;",[] , function (rows, error) {
         console.log(params);
         if (!error) {
             rows.forEach((valuePort,indexPort,arrayPort)=>{   rows[indexPort].keywords=rows[indexPort].keywords.split(","); });

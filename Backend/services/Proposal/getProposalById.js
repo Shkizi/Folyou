@@ -25,11 +25,13 @@ if(params.keywords!=null){
     
 }
     db.query("SELECT * FROM `Proposal`, `Category`, `User`, "+
-    "(SELECT Proposal_idProposal, GROUP_CONCAT(DISTINCT valueProposalKeywords) keywords"+
+    "(SELECT Proposal_idProposal, GROUP_CONCAT(DISTINCT valueProposalKeywords) keywords,"+
+    "(SELECT Proposal_idProposal, GROUP_CONCAT( fileName) fil FROM anexes WHERE Proposal_idProposal IS NOT NULL GROUP BY Proposal_idProposal ) AS anexedfiles" + 
     " FROM keyword WHERE Proposal_idProposal IS NOT NULL "+
    "GROUP BY Proposal_idProposal ) AS keywords ,(SELECT filename as `avatarUser`, User_idUser from Anexes) as avatar  " +
     " WHERE `Category`.`idCategory` =`Proposal`.`Category_idCategory`"+
     " AND `User`.`idUser` = `Proposal`.`User_idUser` AND `User`.`idUser` = avatar.User_idUser "+
+    "AND anexedfiles.Proposal_idProposal = idProposal "+
     "AND  keywords.Proposal_idProposal = idProposal "+ ((params.country!="")?" AND countryProposal LIKE ? ":"")+
     ((params.idProposal!="")?" AND idProposal = ? ":"")+
     "ORDER BY `Proposal`.`createdTimestamp`;",arr, function (rows, error) {
