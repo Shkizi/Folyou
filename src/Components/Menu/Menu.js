@@ -117,12 +117,24 @@ focusIn(elem)
             <Navbar.Brand>
               <Button  className="Menu-Navbar-Open-Button" onClick={this.handleShowTabs} variant="link"><IoMdMenu style={{fontSize: "25px", paddingBottom: 2}}/></Button> 
             </Navbar.Brand>
-             <Link to='/NotificationsHub' className="Menu-Navbar-Brand" >
-              <Badge style={{fontSize: "25px", paddingBottom: 2}} badgeContent={this.state.number} color="primary">
-               <MdNotificationsActive style={{fontSize: "25px", paddingBottom: 2}}/>
-             <span className="sr-only"><Translate id ="unreadMessages"/></span>
-              </Badge>
-            </Link> 
+
+
+
+
+            {(this.props.app.state.userLogged.set!=false)?
+               <Link to='/NotificationsHub' className="Menu-Navbar-Brand" >
+               <Badge style={{fontSize: "25px", paddingBottom: 2}} badgeContent={this.state.number} color="primary">
+                <MdNotificationsActive style={{fontSize: "25px", paddingBottom: 2}}/>
+              <span className="sr-only"><Translate id ="unreadMessages"/></span>
+               </Badge>
+             </Link> 
+              
+              :
+              <></>
+              }
+            
+           
+            
             <div className="Menu-Logo">
             <Link to='/'>
             <Image src={Logo} className="Menu-Navbar-Logo-Size"></Image>
