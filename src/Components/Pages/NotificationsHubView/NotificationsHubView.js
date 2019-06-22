@@ -11,6 +11,8 @@ import { withLocalize, Translate } from "react-localize-redux";
 import isCookieValid from '../../../cookies.js';
 import ServicesAPI from '../../../serviceAPI.js';
 
+import './NotificationsHubView.css';
+
 import { withCookies } from 'react-cookie';
 import PleaseLogin from '../../Elements/PleaseLogin/PleaseLogin.js';
 
@@ -146,12 +148,12 @@ class NotificationHubView extends React.Component {
                       <td>{(val.SECidUser == this.props.app.state.userLogged.idUser)?
                                 ((val.viewed==0)?
                                     (()=>{return(<>
-                                                    <button onClick={()=>{this.handleReply(val.idUser)}}><Translate id="Reply"></Translate></button>
-                                                    <button onClick={()=>{this.handleViewing(val.idMessage)}}><Translate id="View"></Translate></button>
+                                                    <button className="Message-Reply-Button" onClick={()=>{this.handleReply(val.idUser)}}><Translate id="Reply"></Translate></button>
+                                                    <button className="Message-Reply-Button" onClick={()=>{this.handleViewing(val.idMessage)}}><Translate id="View"></Translate></button>
                                                 </>)})()//self executing
                                     :(()=>{return(<>
-                                        <button onClick={()=>{this.handleReply(val.idUser)}}><Translate id="Reply"></Translate></button>
-                                        <button disabled><Translate id="Viewed"></Translate></button>
+                                        <button className="Message-Reply-Button" onClick={()=>{this.handleReply(val.idUser)}}><Translate id="Reply"></Translate></button>
+                                        <button className="Message-Viewed-Button" disabled><Translate id="Viewed"></Translate></button>
                                     </>)})()//self executing
                                     
                                 )
