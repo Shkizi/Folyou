@@ -82,7 +82,7 @@ class NotificationHubView extends React.Component {
                      </Link>
                       </td>                  
                       <td>{val.valueText}</td>
-                      <td>reply, {(val.SECidUser == this.props.app.state.userLogged.idUser)?((val.viewed==0)?"mark as viewed":"V viewed"):((val.viewed==0)?"Not Read":"Read")}</td>
+                      <td>{(val.SECidUser == this.props.app.state.userLogged.idUser)?((val.viewed==0)?"reply,mark as viewed":"reply,V viewed"):((val.viewed==0)?"Not Read":"Read")}</td>
                       </tr>
 
                       );})}
