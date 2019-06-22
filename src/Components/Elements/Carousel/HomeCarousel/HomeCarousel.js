@@ -17,7 +17,7 @@ class HomeCarousel extends React.Component {
         return ( 
        
             <Carousel className="Home-Carousel">
-             {this.props.parent.state.portTrending.concat(this.props.parent.state.portfolios).map(val =>{return(
+             {this.props.parent.state.portTrending.map(val =>{return(
             
             <Carousel.Item className="HomeCarousel-Item">
                               <div className="w-100 HomeCarrousel-Background">

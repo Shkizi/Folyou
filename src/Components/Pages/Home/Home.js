@@ -159,7 +159,7 @@ class Home extends React.Component {
                       <Col sm={12}>
                       <hr className="Hr-Sections"/>
                       <Row>
-                      {this.state.portTrending.map(val =>{return(
+                      {this.state.portTrending.slice(0, 2).map(val =>{return(
                         <CardPortfolio data={val} parent={this} app={this.props.app}  />
                       );})}
                       {this.state.propTrending.map(val =>{return(

@@ -12,7 +12,7 @@ function getTrendingPortfolio(req, res, next) {
     "(SELECT Sheet_idSheet, GROUP_CONCAT( fileName) fil FROM anexes WHERE Sheet_idSheet IS NOT NULL GROUP BY Sheet_idSheet ) AS anexedfiles, "+
     "(SELECT filename as `avatarUser`, User_idUser from Anexes) as avatar WHERE `Category`.`idCategory` =`Sheet`.`Category_idCategory` AND `User`.`idUser` = `Portfolio`.`User_idUser` AND `User`.`idUser` = avatar.User_idUser AND `Sheet`.`idSheet` = `Portfolio`.`Sheet_idSheet`AND  keywords.Sheet_idSheet = idSheet AND `Iteraction`.`Sheet_idSheet`= `Sheet`.`idSheet`"+
     "AND  anexedfiles.Sheet_idSheet = idSheet "+
-    " GROUP BY `Sheet`.`idSheet`ORDER BY `contage`  DESC LIMIT 2 ;",[] , function (rows, error) {
+    " GROUP BY `Sheet`.`idSheet`ORDER BY `contage`  DESC LIMIT 3 ;",[] , function (rows, error) {
         console.log(params);
         if (!error) {
             rows.forEach((valuePort,indexPort,arrayPort)=>{   rows[indexPort].keywords=rows[indexPort].keywords.split(","); });
