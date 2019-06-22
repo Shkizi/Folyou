@@ -544,15 +544,19 @@ console.log("Error: Recommended", error);
                                 <Card.Text className="Profile-Header-Text">
                                 {"" + this.state.user.descriptionUser}
                                 </Card.Text>
-                                <Row>
-                                        <Col sm={4} style={{marginLeft: "-7.5px"}}>
-                                        {(this.state.user.idProfileInstagram!="" && this.state.user.idProfileInstagram !=null)?<Instagram link={this.state.user.idProfileInstagram} />:<></>}
-                                        {(this.state.user.idProfileFacebook!="" && this.state.user.idProfileFacebook !=null)?<Facebook link={this.state.user.idProfileFacebook} />:<></>}
-                                        {(this.state.user.idProfileYoutube!="" && this.state.user.idProfileYoutube !=null)?<Youtube link={this.state.user.idProfileYoutube} />:<></>}
-                                        {(this.state.user.idProfileTwitch!="" && this.state.user.idProfileTwitch !=null)?<Twitch link={this.state.user.idProfileTwitch} />:<></>}
-                                        {(this.state.user.idProfileTwitter!="" && this.state.user.idProfileTwitter !=null)?<Twitter link={this.state.user.idProfileTwitter} />    :<></>}
-                                        </Col>
-                                        <Col  sm={8}>
+                                <Row style={{marginLeft: "-7.5px"}}>
+                                       
+                                        {(this.state.user.idProfileInstagram!="" && this.state.user.idProfileInstagram !=null)? <Col sm={1} ><Instagram link={this.state.user.idProfileInstagram} /> </Col>:<></>}
+                                        
+                                        {(this.state.user.idProfileFacebook!="" && this.state.user.idProfileFacebook !=null)? <Col sm={1} ><Facebook link={this.state.user.idProfileFacebook} /> </Col>:<></>}
+                                        
+                                        {(this.state.user.idProfileYoutube!="" && this.state.user.idProfileYoutube !=null)? <Col sm={1} ><Youtube link={this.state.user.idProfileYoutube} /> </Col>:<></>}
+                                        
+                                        {(this.state.user.idProfileTwitch!="" && this.state.user.idProfileTwitch !=null)? <Col sm={1} ><Twitch link={this.state.user.idProfileTwitch} /> </Col>:<></>}
+                                        
+                                        {(this.state.user.idProfileTwitter!="" && this.state.user.idProfileTwitter !=null)? <Col sm={1} ><Twitter link={this.state.user.idProfileTwitter} />     </Col>:<></>}
+                                        
+                                        <Col  sm={7} style={{paddingLeft: "0px"}}>
                                             {(this.props.match.params.id!=this.props.app.state.userLogged.idUser && this.props.app.state.userLogged.set!=false)?this.diferentProfile():this.empty()}
                                         </Col>
                                 </Row>
