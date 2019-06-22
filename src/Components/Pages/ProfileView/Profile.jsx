@@ -609,7 +609,7 @@ console.log("Error: Recommended", error);
                             </Col>
                         </Row>
                         </Col>
-
+                        {(this.props.match.params.id==this.props.app.state.userLogged.idUser && this.props.app.state.userLogged.set!=false)?
                         <Col m={2}>
                         <Row>
                             <Col style={{textAlign: "center", paddingLeft: 5, paddingRight: 5}}>
@@ -617,6 +617,7 @@ console.log("Error: Recommended", error);
                             </Col>
                         </Row>
                         </Col>
+                         :<></>}
 
                         <Col m={5}>
                         <Row>
@@ -631,9 +632,12 @@ console.log("Error: Recommended", error);
                               :<></>}
                             </Button>
                             </Col>
+                            {(this.props.match.params.id==this.props.app.state.userLogged.idUser && this.props.app.state.userLogged.set!=false)?
                             <Col m={6} style={{textAlign: "center", paddingLeft: 5}}>
                             <Button onClick={()=>{this.setState({pageContent:'Settings'})}} className="Profile-Button-Categories"><Translate id="settings"></Translate></Button>
                             </Col>
+                            :<></>}
+
                         </Row>
                         </Col>
                     </Row>
