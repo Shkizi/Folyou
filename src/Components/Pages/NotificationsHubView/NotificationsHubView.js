@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import { Container, Row, Table } from 'react-bootstrap';
 import { Carousel, Image} from 'react-bootstrap';
-
+import MessageModal from '../../Elements/CardsModal/Types/MessageModal/MessageModal.jsx'
 import {  Link } from "react-router-dom";
 import { withLocalize, Translate } from "react-localize-redux";
 import isCookieValid from '../../../cookies.js';
@@ -17,14 +17,74 @@ import PleaseLogin from '../../Elements/PleaseLogin/PleaseLogin.js';
 var S = new ServicesAPI();
 
 class NotificationHubView extends React.Component {
-    state = {
+    constructor(props, context) {
+        super(props, context);
+   
+    this.state = {
         notifications:[],
         error:false,
         redirect:false,
         message:[],
-        user:{}
+        user:{},
+        showModalPortfolio: false,
+        showModalTalent: false,
+        showModalProposal: false,
+        showModalMessage:false,
+        typeModal: null,
+        idModal: null,
+        UserMessage:false
       }
-      
+      this.handleReply=this.handleReply.bind(this);
+      this.handleViewing=this.handleViewing.bind(this);
+      this.redoServices=this.redoServices.bind(this);
+      this.handleModalClose = this.handleModalClose.bind(this);
+      this.handleShowModal = this.handleShowModal.bind(this);
+    }
+    handleShowModal(){
+        this.setState({UserMessage:true},()=>{
+            this.setState({showModalMessage:true});
+            });
+    }
+    handleModalClose() {
+        this.setState({showModalPortfolio: false});
+        this.setState({showModalTalent: false});
+        this.setState({showModalProposal: false});
+        this.setState({showModalMessage: false});
+        console.log(this.state);
+        this.redoServices();
+      }
+      handleReply(idUser){
+          let data ={idUser:idUser}
+        S.getter(`getUserById`, data ,(res)=>{
+            this.setState({user:res.data.user},()=>{
+                this.handleShowModal();
+            });
+        },(error) => { console.log(error);});
+        
+      }
+    handleViewing(idMessage){
+        let data = new FormData();
+        data.append("idMessage",idMessage);
+        S.postter(`postViewedMessage`, data, (res) => { 
+            this.props.app.state.notificationModule.notify("VIEW SUCCESS","br",2,2);
+            this.redoServices();
+        },
+        (error) => { console.log(error);});
+    }
+    redoServices(){
+        let th = this;
+        S.getter(`getMessagesToUser`, {
+            idUser:th.props.app.state.userLogged.idUser|null, 
+            
+          }, (res) => { 
+              console.log("RES Message:",res);
+              th.setState({message:res.data.messages});
+            },
+            (error) => { 
+                console.log("Error: Mesage", error);
+                th.setState({ error: {message:error,error:true} });
+            });       
+    }
     //request example
     componentDidMount() {
         let th = this;
@@ -59,6 +119,7 @@ class NotificationHubView extends React.Component {
     render() {
         const {cookies}= this.props.cookies;
         return (
+            <>
             <Row style={{margin: 0}}>
             <Table striped bordered hover className="Notifications-Message-Table">
                 <thead>
@@ -82,16 +143,31 @@ class NotificationHubView extends React.Component {
                      </Link>
                       </td>                  
                       <td>{val.valueText}</td>
-                      <td>{(val.SECidUser == this.props.app.state.userLogged.idUser)?((val.viewed==0)?"reply,mark as viewed":"reply,V viewed"):((val.viewed==0)?"Not Read":"Read")}</td>
+                      <td>{(val.SECidUser == this.props.app.state.userLogged.idUser)?
+                                ((val.viewed==0)?
+                                    (()=>{return(<>
+                                                    <button onClick={()=>{this.handleReply(val.idUser)}}><Translate id="Reply"></Translate></button>
+                                                    <button onClick={()=>{this.handleViewing(val.idMessage)}}><Translate id="View"></Translate></button>
+                                                </>)})()//self executing
+                                    :(()=>{return(<>
+                                        <button onClick={()=>{this.handleReply(val.idUser)}}><Translate id="Reply"></Translate></button>
+                                        <button disabled><Translate id="Viewed"></Translate></button>
+                                    </>)})()//self executing
+                                    
+                                )
+                                :((val.viewed==0)?
+                                    (()=>{return(<b><Translate id = "Not Read"></Translate></b>)})()//self executing
+                                    :(()=>{return(<b><Translate id = "Read"></Translate></b>)})()//self executing
+                                )
+                            }</td>
                       </tr>
 
                       );})}
-
-
-                    
                 </tbody>
             </Table>
             </Row>
+            <MessageModal app={this.props.app} parent={this} closer={this.handleModalClose}/>
+            </>
         );
         
     }

@@ -6,9 +6,13 @@
     "login":"Login",
     "logout":"Logout",
     "aboutUs":"We build connections, for your portfolios and your proposals to take flight.",
-
-
-
+    
+    "message receiver":"Message Receiver",
+    "actions":"Actions",
+    "Reply":"Reply",
+    "Viewed":"Viewed",
+    "Read":"Read",
+    "Not Read":"Not Read",
 
 
 
