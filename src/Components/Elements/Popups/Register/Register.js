@@ -142,16 +142,12 @@ for ( var key in item ) {
             </Modal.Header>
 
             <Modal.Body style={{paddingBottom: "50px"}}>
-            
-              <Row className="Register-Modal-Row">
-              <Col sm={6} style={{paddingLeft: 0}}></Col>
-              <Col sm={4} style={{paddingRight: 0}}><p className="Register-Text-Member ml-auto">Are you a member?
-              </p></Col>
-              <Col sm={2} style={{paddingRight: 0, paddingLeft: 0}}>
-              <Button className="Register-Button-LoginNow" variant="link" onClick={ () => {this.props.closer();  this.props.parent.props.parent.handleLoginPopUpShow()}}>Login Now
-              </Button>
-              </Col>
-              </Row>
+              <Col sm={12}>
+                  <Row style={{alignContent: "center"}}>
+                <p className="Register-Text-Member "><Translate id="are you a member"></Translate></p>
+                <Button className="Register-Button-LoginNow" variant="link" onClick={ () => {this.props.closer();  this.props.parent.props.parent.handleLoginPopUpShow()}}><Translate id="login now"></Translate></Button>
+                </Row>
+                </Col>
               <form onSubmit={this.handleSubmit}>
             
         <>
@@ -160,17 +156,22 @@ for ( var key in item ) {
             <div>
            
                 <Col sm={12} style={{fontWeight: "bold", textAlign: "center", marginTop: "2%"}} >
-                                <Form.Label><Translate id="profile settings"></Translate></Form.Label>
+                                <Form.Label><Translate id="register form"></Translate></Form.Label>
                 </Col>
 
-                <Col sm={12} className="Profile-Content-Settings-Col">
-                                <Form.Label><Translate id="email"></Translate></Form.Label>
-                                <Form.Control type="text" value={this.state.email} onChange={(event)=>{this.handleEmail(event)}} />
-                </Col>
                 <Col sm={12} className="Profile-Content-Settings-Col">
                                 <Form.Label><Translate id="name"></Translate></Form.Label>
                                 <Form.Control type="text" value={this.state.changeUsername} onChange={(event)=>{this.handleChangeUsername(event)}} />
                 </Col>
+                <Col sm={12} className="Profile-Content-Settings-Col">
+                                <Form.Label><Translate id="email"></Translate></Form.Label>
+                                <Form.Control type="text" value={this.state.email} onChange={(event)=>{this.handleEmail(event)}} />
+                </Col>
+                <Col sm={12} className="Profile-Content-Settings-Col" >
+                                <Form.Label><Translate id="password"></Translate></Form.Label>
+                                <Form.Control type="password" value={this.state.newPassword} onChange={(event)=>{this.handleNewPassword(event)}} />
+                </Col>
+               
                 <Col sm={12}>
                                 <Form.Label><Translate id="country"></Translate></Form.Label>
                                 <SelectSearch renderOption={renderFriend} options={countries} value={this.state.country} name="country" onChange={(event)=>{this.handleCountry(event)}} style={{height: "36px"}} />
@@ -188,21 +189,11 @@ for ( var key in item ) {
                 
 
             </div>
-            <div style={{marginTop: "2%", marginBottom: "2%"}}>
-                <Col sm={12} style={{fontWeight: "bold", textAlign: "center"}} >
-                                <Form.Label><Translate id="password"></Translate></Form.Label>
-                </Col>
-               
-                <Col sm={12} className="Profile-Content-Settings-Col" >
-                                <Form.Label><Translate id="password"></Translate></Form.Label>
-                                <Form.Control type="password" value={this.state.newPassword} onChange={(event)=>{this.handleNewPassword(event)}} />
-                </Col>
-               
-            </div>
-            
+
+                           
           </>
       
-              <Row> <button  className="Register-Button-Create">CREATE YOUR ACCOUNT</button></Row>
+              <Row> <button  className="Register-Button-Create"><Translate id="create account"></Translate></button></Row>
               </form>
             </Modal.Body>
             </Modal>

@@ -42,8 +42,8 @@ class Tabs extends React.Component {
             </Link>
           ))}
         </List>
-        <Divider />
-        <List>
+       {/* <Divider />
+         <List>
           {['About us'].map((text, index) => (
              <Link to={"/AboutUs"}>
             <ListItem button key={text}>
@@ -52,7 +52,7 @@ class Tabs extends React.Component {
             </ListItem>
             </Link>
           ))}
-        </List>
+        </List> */}
        
       </div>
     );

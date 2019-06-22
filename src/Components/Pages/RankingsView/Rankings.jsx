@@ -181,7 +181,7 @@ class CreateProject extends React.Component {
             <>
             <Button variant="success" className="Rankings-Button-MostViewed" active={this.state.mostViewed==true} onClick={() => this.handleMostViewedClick()}><Translate id="most viewed"></Translate></Button>
             <Button variant="success" className="Rankings-Button-MostRecommended" active={this.state.mostRecommended==true} onClick={() => this.handleMostRecommendedClick()}><Translate id="most recommended"></Translate></Button>
-            <Button variant="success" className="Rankings-Button-MostBadges" active={this.state.mostBadges==true} onClick={() => this.handleMostBadgesClick()}><Translate id="most badges"></Translate></Button>
+            <Button disabled variant="success" className="Rankings-Button-MostBadges" active={this.state.mostBadges==true} onClick={() => this.handleMostBadgesClick()}><Translate id="most badges"></Translate></Button>
             
             { (this.state.mostViewed == true)?
                 this.mostViewedTable():

@@ -12,11 +12,6 @@
     margin-bottom: 5%;
 }
 
-.Register-Modal-Row {
-    width: 76% !important;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 .Register-Text-SignIn {
     overflow: auto;
@@ -25,10 +20,9 @@
 }
 
 .Register-Text-Member {
-    float: right;
     overflow: hidden;
     display: block;
-    margin-right: -5%;
+    margin-left: 2%;
 }
 
 .Register-Button-LoginNow {
@@ -38,8 +32,7 @@
     font-weight: bold;
     box-shadow: inherit;
     text-decoration: none;
-    padding: 0;
-    float: right;
+    margin-top: -18px;
 }
 
 .Register-Button-LoginNow:hover {
@@ -112,16 +105,18 @@
     background-color: #49c5b6;
     border: #49c5b6;
     color: white;
-    width: 73% !important;
+    width: 92.5% !important;
     margin-right: auto;
     margin-left: auto;
     margin-top: 20px;
+    padding: 5px;
 }
 
 .Register-Button-Create:hover {
     color: #fff;
     background-color: #42AB9E;
     transition: all 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .Register-Button-Create:active:focus {

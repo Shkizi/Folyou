@@ -36,17 +36,5 @@ export default
         "link" : "/Rankings",
         
     },
-    {
-        "icon" : <Home></Home>,
-        "page" : "TestAxios",
-        "link" : "/TestAxios",
-        
-    },
-    {
-        "icon" : <Home></Home>,
-        "page" : "TestDashBoard",
-        "link" : "/TestDashBoard",
-        
-    }
 
 ]

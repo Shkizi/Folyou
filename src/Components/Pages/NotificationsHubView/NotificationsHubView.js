@@ -136,11 +136,11 @@ class NotificationHubView extends React.Component {
 
                 {this.state.message.map(val =>{return(
                       <tr style={(val.viewed==0 && val.SECidUser == this.props.app.state.userLogged.idUser)?{backgroundColor:"#49c5b6"}:{}}>
-                      <td>  <Link style={{textDecoration: "none"}}variant="link" to={"/Profile/"+val.idUser}>
+                      <td>  <Link className="Message-Username" variant="link" to={"/Profile/"+val.idUser}>
                      <Image className="HomeCarousel-Profile-Image" src={S.baseURL()+"public/anexes/profiles/"+((val.fileName!="")?val.fileName:"default_user_pic.jpg")} style={{height: "32px",width: "32px"}} roundedCircle/>{val.nameUser}
                      </Link>
                       </td>   
-                      <td>  <Link style={{textDecoration: "none"}}variant="link" to={"/Profile/"+val.SECidUser}>
+                      <td>  <Link className="Message-Username" variant="link" to={"/Profile/"+val.SECidUser}>
                      <Image className="HomeCarousel-Profile-Image" src={S.baseURL()+"public/anexes/profiles/"+((val.fileName!="")?val.SECfileName:"default_user_pic.jpg")} style={{height: "32px",width: "32px"}} roundedCircle/>{val.SECnameUser}
                      </Link>
                       </td>                  
@@ -155,7 +155,6 @@ class NotificationHubView extends React.Component {
                                         <button className="Message-Reply-Button" onClick={()=>{this.handleReply(val.idUser)}}><Translate id="Reply"></Translate></button>
                                         <button className="Message-Viewed-Button" disabled><Translate id="Viewed"></Translate></button>
                                     </>)})()//self executing
-                                    
                                 )
                                 :((val.viewed==0)?
                                     (()=>{return(<b><Translate id = "Not Read"></Translate></b>)})()//self executing

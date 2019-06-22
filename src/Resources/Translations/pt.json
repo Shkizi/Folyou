@@ -101,7 +101,20 @@
     "Message Sent": "Mensagem enviada",
     "number of views": "Número de visualizações",
     "anexes": "Anexos",
-    "project image": "Imagem do projeto"
+    "project image": "Imagem do projeto",
+    "email": "E-mail",
+    "name": "Nome",
+    "password": "Password",
+    "register form": "Formulário de registo",
+    "login now": "LOGIN",
+    "forgot password": "Esqueceu-se da password?",
+    "register now": "Registar agora",
+    "not a member yet": "Ainda não é um membro?",
+    "sign in to continue": "Faça o login para continuar",
+    "are you a member": "Já é um membro?",
+    "create account": "CRIAR CONTA"
+
+
 
 
 

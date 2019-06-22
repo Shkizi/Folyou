@@ -2,6 +2,7 @@ import React from 'react'
 import { Modal, Button, Row, Form, Col, Image  } from 'react-bootstrap';
 import './Login.css'
 import { withCookies } from 'react-cookie';
+import { Translate } from "react-localize-redux";
 import logo from '../../../../Resources/Images/Logo_black_white.png'
 import ServicesAPI from '../../../../serviceAPI.js';
 import Register from '../Register/Register'
@@ -73,13 +74,13 @@ class Login extends React.Component {
             </Modal.Header>
             <Modal.Body>
                <Row className="Login-Modal-Row">
-              <Col sm={5} style={{paddingLeft: 0}}><b className="Login-Text-SignIn mr-auto">Sign in to continue</b></Col>
-              <Col sm={4} style={{paddingRight: 0}}><p className="Login-Text-RegisterNow ml-auto">Not a member yet? 
+              <Col sm={5} style={{paddingLeft: 0}}><b className="Login-Text-SignIn mr-auto"><Translate id="sign in to continue"></Translate></b></Col>
+              <Col sm={4} style={{paddingRight: 0}}><p className="Login-Text-RegisterNow ml-auto"><Translate id="not a member yet"></Translate> 
                </p> </Col>
                 <Col sm={3} style={{paddingRight: 0, paddingLeft: 0}}>
                 <Button onClick={()=>{
                   this.handleRegisterPopUpShow();
-                } } variant="link" className="Login-Button-RegisterNow">Register Now
+                } } variant="link" className="Login-Button-RegisterNow"><Translate id="register now"></Translate>
                 </Button>
               </Col>
               </Row>
@@ -87,9 +88,9 @@ class Login extends React.Component {
                <Form.Control  className="Login-Input-Email" placeholder="E-mail" name={"email"} id={"email"}  value={this.state.email} onChange={this.handleEmailChange} />
                <Form.Control  className="Login-Input-Password" placeholder="Password" type="password" name={"password"} id={"password"} value={this.state.password} onChange={this.handlePasswordChange}/>
                 
-              <Row> <button  className="Login-Button-Login">LOGIN NOW</button></Row>
+              <Row> <button  className="Login-Button-Login"><Translate id="login now"></Translate></button></Row>
               </form>
-              <Row> <p className="Login-Password-Recovery">Forgot your password</p></Row>
+              <Row> <p className="Login-Password-Recovery"><Translate id="forgot password"></Translate></p></Row>
             </Modal.Body>
             
             </Modal>

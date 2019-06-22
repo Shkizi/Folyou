@@ -3,16 +3,21 @@
     border-radius: 0 !important;
 }
 
-
-.Rankings-Button-MostViewed {
+.Message-Username {
+    text-decoration: none;
+    color: black;
 }
 
-.Rankings-Button-MostRecommended {
+.Message-Username:hover {
+    color: grey;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out; 
 }
 
-.Rankings-Button-MostBadges {
 
-}
+
+
+
  .Notifications-Message-Table {
     margin-top: 2%;
  }
