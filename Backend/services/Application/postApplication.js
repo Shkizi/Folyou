@@ -5,7 +5,7 @@ var db = require('../dbconnect.js');
 function postApplication(req, res, next) {
     let params = req.body;
     let query1 ="call createApplication(?);"
-    
+    params.data=JSON.parse(params.data);
     db.query(query1,[params.data.description], function (rows, error) {
         if (error) {
             res.send({

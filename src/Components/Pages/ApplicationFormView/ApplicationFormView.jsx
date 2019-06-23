@@ -86,12 +86,12 @@ class ApplicationFormView extends React.Component {
             teamPeople: this.state.teamPeople, description: this.state.description
         };
         console.log(data);
-        S.postter(`postApplication`, {
-            idProposal:this.props.match.params.id,
-            data:data,
-            idUser: this.props.app.state.userLogged.idUser||null
+let item = new FormData();
+item.append( "idProposal",this.props.match.params.id);
+item.append( "data",data);
+item.append( "idUser", this.props.app.state.userLogged.idUser||null);
 
-          }, (res) => {  
+        S.postter(`postApplication`, item, (res) => {  
             if(!res.error){
                 this.props.app.state.notificationModule.notify("Application Received","br",2,15);
                 this.setState({submited:true});
