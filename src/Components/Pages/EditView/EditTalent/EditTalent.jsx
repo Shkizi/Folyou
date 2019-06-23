@@ -166,7 +166,7 @@ componentDidMount(){
                 
             <Row>
                 <Col sm={12} style={{textAlign: "center"}}>
-                        <div><b><Translate id="create talent title"></Translate></b>{}</div>
+                        <div><b><Translate id="edit talent"></Translate></b>{}</div>
                 </Col>
             </Row>
             <Row style={{marginBottom: "2%"}}>

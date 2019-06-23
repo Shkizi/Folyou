@@ -61,7 +61,7 @@ class CardsModalTalent extends React.Component {
                 </Link>
                 {(this.props.app.state.userLogged.idUser==data.idUser  && this.props.app.state.userLogged.set!=false)?
                 <Link variant="primary" to={"/EditTalent/"+data.idTalentArea}>
-                  <Button className="Modal-Talent-Config"><Translate id="edit project"/></Button>
+                  <Button className="Modal-Talent-Config"><Translate id="edit talent"/></Button>
                 </Link>
                   :
                   <></>}
