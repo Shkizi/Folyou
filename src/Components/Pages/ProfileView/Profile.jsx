@@ -709,9 +709,9 @@ console.log("Error: Recommended", error);
                                 </Row>);
     }
         pageContentProjects(){
-            return (<>{this.state.portfolios.map(val =>{return(
+            return (<Row>{this.state.portfolios.map(val =>{return(
                 <CardPortfolio  parent={this} data={val}app={this.props.app} />
-              );})}</>
+              );})}</Row>
             )
         }
         pageContentProposals(){

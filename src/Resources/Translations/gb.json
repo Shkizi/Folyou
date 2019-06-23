@@ -117,7 +117,9 @@
     "create account": "CREATE ACCOUNT",
     "You have new unread Messages": "You have new unread Messages",
     "You have unread Messages": "You have unread Messages",
-    "VIEW SUCCESS": "Marked as viewed"
+    "VIEW SUCCESS": "Marked as viewed",
+    "UPDATE SUCCESS": "Updat success"
+
     
 
 
