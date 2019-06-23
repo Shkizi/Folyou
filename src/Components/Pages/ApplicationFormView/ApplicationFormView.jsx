@@ -88,7 +88,7 @@ class ApplicationFormView extends React.Component {
         console.log(data);
 let item = new FormData();
 item.append( "idProposal",this.props.match.params.id);
-item.append( "data",data);
+item.append( "data",JSON.stringify(data));
 item.append( "idUser", this.props.app.state.userLogged.idUser||null);
 
         S.postter(`postApplication`, item, (res) => {  
