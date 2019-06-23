@@ -114,7 +114,10 @@
     "not a member yet": "Ainda não é um membro?",
     "sign in to continue": "Faça o login para continuar",
     "are you a member": "Já é um membro?",
-    "create account": "CRIAR CONTA"
+    "create account": "CRIAR CONTA",
+    "You have new unread Messages": "Tem novas mensages não vistas",
+    "You have unread Messages": "Tem mensagens não vistas",
+    "VIEW SUCCESS": "Marcada como vista"
 
 
 

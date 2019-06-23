@@ -114,7 +114,11 @@
     "not a member yet": "Not a member yet?",
     "sign in to continue": "Sign in to continue",
     "are you a member": "Are you a member?",
-    "create account": "CREATE ACCOUNT"
+    "create account": "CREATE ACCOUNT",
+    "You have new unread Messages": "You have new unread Messages",
+    "You have unread Messages": "You have unread Messages",
+    "VIEW SUCCESS": "Marked as viewed"
+    
 
 
 

@@ -67,7 +67,7 @@ class Menu extends React.Component {
           console.log("Error: User", error);
           th.setState({ error: {message:error,error:true} });
         });
-    }, 60 * 1000/2);
+    }, 60 * 1000/10);
   }
   handleLoginPopUpClose() {
     this.setState({ showLogin: false });
