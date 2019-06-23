@@ -4,6 +4,7 @@ import Star from '@material-ui/icons/Star';
 import People from '@material-ui/icons/People';
 import Description from '@material-ui/icons/Description';
 import Rankings from '../Pages/RankingsView/Rankings';
+import Collections from '@material-ui/icons/Collections';
 export default
 [
     {
@@ -13,7 +14,7 @@ export default
 
     },
     {
-        "icon" : <Description></Description>,
+        "icon" : <Collections></Collections>,
         "page" : "Portfolios",
         "link" : "/Portfolios",
         
